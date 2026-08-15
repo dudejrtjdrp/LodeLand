@@ -1,0 +1,175 @@
+{
+  "rerollBase": 5,
+  "rerollPerRound": 2,
+  "swordPriceBase": 25,
+  "swordPricePerTier": 15,
+  "priceGrowth": 1.35,
+  "stats": [
+    {
+      "id": "hp",
+      "name": "체력",
+      "icon": "❤️",
+      "type": "maxHpFlat",
+      "value": 20,
+      "baseCost": 20,
+      "desc": "최대 체력 +20 (즉시 회복)"
+    },
+    {
+      "id": "defense",
+      "name": "방어력",
+      "icon": "🛡️",
+      "type": "defenseAdd",
+      "value": 4,
+      "baseCost": 25,
+      "desc": "받는 피해 -4% (최대 60%)"
+    },
+    {
+      "id": "dodge",
+      "name": "회피",
+      "icon": "💨",
+      "type": "dodgeAdd",
+      "value": 0.03,
+      "baseCost": 25,
+      "desc": "회피율 +3% (최대 40%)"
+    },
+    {
+      "id": "moveSpeed",
+      "name": "이동 속도",
+      "icon": "👟",
+      "type": "moveSpeedMult",
+      "value": 0.04,
+      "baseCost": 20,
+      "desc": "이동 속도 +4%"
+    },
+    {
+      "id": "regen",
+      "name": "재생",
+      "icon": "💚",
+      "type": "regenAdd",
+      "value": 0.5,
+      "baseCost": 25,
+      "desc": "초당 체력 +0.5 회복"
+    },
+    {
+      "id": "lifesteal",
+      "name": "흡혈",
+      "icon": "🩸",
+      "type": "killHealAdd",
+      "value": 1,
+      "baseCost": 30,
+      "desc": "적 처치 시 체력 +1"
+    },
+    {
+      "id": "damage",
+      "name": "공격력",
+      "icon": "⚔️",
+      "type": "damageMultAdd",
+      "value": 0.06,
+      "baseCost": 30,
+      "desc": "모든 검 공격력 +6%"
+    },
+    {
+      "id": "critChance",
+      "name": "치명타 확률",
+      "icon": "🎯",
+      "type": "critChanceAdd",
+      "value": 0.03,
+      "baseCost": 25,
+      "desc": "치명타 확률 +3%"
+    },
+    {
+      "id": "critDamage",
+      "name": "치명타 피해",
+      "icon": "💥",
+      "type": "critDamageAdd",
+      "value": 0.15,
+      "baseCost": 25,
+      "desc": "치명타 피해 +15%"
+    },
+    {
+      "id": "cooldown",
+      "name": "쿨다운",
+      "icon": "⏱️",
+      "type": "cooldownReduce",
+      "value": 0.04,
+      "baseCost": 35,
+      "desc": "검 발사 대기시간 -4%"
+    },
+    {
+      "id": "magnet",
+      "name": "자석",
+      "icon": "🧲",
+      "type": "magnetMult",
+      "value": 0.15,
+      "baseCost": 15,
+      "desc": "경험치 획득 범위 +15%"
+    },
+    {
+      "id": "luck",
+      "name": "행운",
+      "icon": "🍀",
+      "type": "luckAdd",
+      "value": 0.1,
+      "baseCost": 30,
+      "desc": "행운 +10%"
+    },
+    {
+      "id": "xpGain",
+      "name": "경험치",
+      "icon": "📘",
+      "type": "xpGainAdd",
+      "value": 0.08,
+      "baseCost": 30,
+      "desc": "경험치 획득 +8%"
+    },
+    {
+      "id": "thorns",
+      "name": "가시",
+      "icon": "🌵",
+      "type": "thornsAdd",
+      "value": 5,
+      "baseCost": 20,
+      "desc": "몸에 닿은 적에게 5 피해 반사"
+    },
+    {
+      "id": "physResist",
+      "name": "물리 저항",
+      "icon": "🛡️",
+      "type": "physResistAdd",
+      "value": 3,
+      "baseCost": 30,
+      "desc": "물리 피해 -3% (최대 50%)"
+    },
+    {
+      "id": "magicResist",
+      "name": "마법 저항",
+      "icon": "🔮",
+      "type": "magicResistAdd",
+      "value": 3,
+      "baseCost": 30,
+      "desc": "마법 피해 -3% (최대 50%)"
+    }
+  ],
+  "slots": {
+    "startUnlocked": 2,
+    "unlockBaseCost": 80,
+    "unlockGrowth": 2.0,
+    "enhanceBaseCost": 30,
+    "enhanceMaxLevel": 10,
+    "enhanceSuccessRates": [
+      0.95,
+      0.9,
+      0.8,
+      0.7,
+      0.6,
+      0.5,
+      0.4,
+      0.32,
+      0.25,
+      0.18
+    ],
+    "enhanceDamagePerLevel": 0.04,
+    "enhanceCooldownPerLevel": 0.015,
+    "traitSockets": 3
+  }
+}

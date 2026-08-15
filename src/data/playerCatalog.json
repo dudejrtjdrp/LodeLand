@@ -1,0 +1,281 @@
+[
+  {
+    "id": "hero-basic",
+    "name": "기사",
+    "displaySize": {
+      "width": 200,
+      "height": 200
+    },
+    "hitbox": {
+      "shape": "box",
+      "width": 40,
+      "height": 56,
+      "offsetX": 46,
+      "offsetY": 24
+    },
+    "stats": {
+      "moveSpeed": 350,
+      "damage": 10,
+      "defense": 2,
+      "maxHp": 100,
+      "critChance": 0.05,
+      "critDamageMultiplier": 1.5
+    },
+    "spritesheets": {
+      "idle": {
+        "assetName": "playerIdle.png",
+        "filePath": "player/playerIdle.png",
+        "textureKey": "player-idle-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "hurt": {
+        "assetName": "playerHurt.png",
+        "filePath": "player/playerHurt.png",
+        "textureKey": "player-hurt-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 10,
+        "repeat": 0
+      },
+      "death": {
+        "assetName": "playerDeath.png",
+        "filePath": "player/playerDeath.png",
+        "textureKey": "player-death-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 10,
+        "repeat": 0
+      }
+    },
+    "animations": {
+      "idle": "player-idle",
+      "hurt": "player-hurt",
+      "death": "player-death"
+    },
+    "description": "균형 잡힌 표준 전사",
+    "unlockGold": 0
+  },
+  {
+    "id": "berserker",
+    "name": "광전사",
+    "displaySize": {
+      "width": 200,
+      "height": 200
+    },
+    "hitbox": {
+      "shape": "box",
+      "width": 40,
+      "height": 56,
+      "offsetX": 46,
+      "offsetY": 24
+    },
+    "stats": {
+      "moveSpeed": 350,
+      "damage": 10,
+      "defense": 2,
+      "maxHp": 120,
+      "critChance": 0.05,
+      "critDamageMultiplier": 1.5
+    },
+    "spritesheets": {
+      "idle": {
+        "assetName": "playerIdle.png",
+        "filePath": "player/playerIdle.png",
+        "textureKey": "player-idle-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "hurt": {
+        "assetName": "playerHurt.png",
+        "filePath": "player/playerHurt.png",
+        "textureKey": "player-hurt-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 10,
+        "repeat": 0
+      },
+      "death": {
+        "assetName": "playerDeath.png",
+        "filePath": "player/playerDeath.png",
+        "textureKey": "player-death-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 10,
+        "repeat": 0
+      }
+    },
+    "animations": {
+      "idle": "player-idle",
+      "hurt": "player-hurt",
+      "death": "player-death"
+    },
+    "description": "검이 발사되지 않는 대신 궤도 접촉 피해 2.5배 · 궤도 반경 +25% · 체력 +20",
+    "tint": "#f87171",
+    "traits": {
+      "noLaunch": true,
+      "orbitDamageMult": 2.5,
+      "orbitRadiusMult": 1.25
+    },
+    "unlockGold": 5000
+  },
+  {
+    "id": "swordmaster",
+    "name": "검성",
+    "displaySize": {
+      "width": 200,
+      "height": 200
+    },
+    "hitbox": {
+      "shape": "box",
+      "width": 40,
+      "height": 56,
+      "offsetX": 46,
+      "offsetY": 24
+    },
+    "stats": {
+      "moveSpeed": 350,
+      "damage": 10,
+      "defense": 2,
+      "maxHp": 100,
+      "critChance": 0.05,
+      "critDamageMultiplier": 1.5
+    },
+    "spritesheets": {
+      "idle": {
+        "assetName": "playerIdle.png",
+        "filePath": "player/playerIdle.png",
+        "textureKey": "player-idle-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "hurt": {
+        "assetName": "playerHurt.png",
+        "filePath": "player/playerHurt.png",
+        "textureKey": "player-hurt-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 10,
+        "repeat": 0
+      },
+      "death": {
+        "assetName": "playerDeath.png",
+        "filePath": "player/playerDeath.png",
+        "textureKey": "player-death-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 10,
+        "repeat": 0
+      }
+    },
+    "animations": {
+      "idle": "player-idle",
+      "hurt": "player-hurt",
+      "death": "player-death"
+    },
+    "description": "검 1자루 고정 · 피해 2.5배 · 발사 대기 -40% · 행운 +20%",
+    "tint": "#a78bfa",
+    "traits": {
+      "maxSwords": 1,
+      "damageMult": 2.5,
+      "cooldownMult": 0.6,
+      "luckBonus": 0.2
+    },
+    "unlockGold": 15000
+  },
+  {
+    "id": "gambler",
+    "name": "도박꾼",
+    "displaySize": {
+      "width": 200,
+      "height": 200
+    },
+    "hitbox": {
+      "shape": "box",
+      "width": 40,
+      "height": 56,
+      "offsetX": 46,
+      "offsetY": 24
+    },
+    "stats": {
+      "moveSpeed": 350,
+      "damage": 10,
+      "defense": 2,
+      "maxHp": 100,
+      "critChance": 0.05,
+      "critDamageMultiplier": 1.5
+    },
+    "spritesheets": {
+      "idle": {
+        "assetName": "playerIdle.png",
+        "filePath": "player/playerIdle.png",
+        "textureKey": "player-idle-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "hurt": {
+        "assetName": "playerHurt.png",
+        "filePath": "player/playerHurt.png",
+        "textureKey": "player-hurt-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 10,
+        "repeat": 0
+      },
+      "death": {
+        "assetName": "playerDeath.png",
+        "filePath": "player/playerDeath.png",
+        "textureKey": "player-death-sheet",
+        "frameWidth": 128,
+        "frameHeight": 128,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 10,
+        "repeat": 0
+      }
+    },
+    "animations": {
+      "idle": "player-idle",
+      "hurt": "player-hurt",
+      "death": "player-death"
+    },
+    "description": "행운 +100% · 골드 +50% · 최대 체력 -30%",
+    "tint": "#fbbf24",
+    "traits": {
+      "luckBonus": 1.0,
+      "goldMult": 1.5,
+      "hpMult": 0.7
+    },
+    "unlockGold": 10000
+  }
+]

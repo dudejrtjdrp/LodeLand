@@ -1,0 +1,253 @@
+{
+  "enemySpritesheetTypes": {
+    "aseprite": {
+      "description": "한 개의 스프라이트시트 파일에 행별로 애니메이션이 정렬된 형태 (Aseprite 기본 export)",
+      "example": {
+        "id": "skullwolf",
+        "name": "Skullwolf",
+        "hp": 60,
+        "speed": 90,
+        "damage": 18,
+        "size": { "width": 48, "height": 48 },
+        "color": "#1f2937",
+        "critChance": 0.12,
+        "critDamageMultiplier": 1.9,
+        "xpValue": 75,
+        "spriteType": "aseprite",
+        "spritesheet": {
+          "filePath": "enemy/Skullwolf/Massacre Sprite Sheet.png",
+          "textureKey": "skullwolf-sheet",
+          "frameWidth": 64,
+          "frameHeight": 64,
+          "animations": [
+            {
+              "name": "idle",
+              "row": 0,
+              "frameStart": 0,
+              "frameCount": 6,
+              "frameRate": 8,
+              "repeat": -1
+            },
+            {
+              "name": "attack",
+              "row": 1,
+              "frameStart": 0,
+              "frameCount": 5,
+              "frameRate": 10,
+              "repeat": 0
+            },
+            {
+              "name": "hit",
+              "row": 2,
+              "frameStart": 0,
+              "frameCount": 4,
+              "frameRate": 10,
+              "repeat": 0
+            },
+            {
+              "name": "death",
+              "row": 3,
+              "frameStart": 0,
+              "frameCount": 7,
+              "frameRate": 10,
+              "repeat": 0
+            }
+          ]
+        }
+      },
+      "notes": "frameStart: 행 내에서 시작 프레임 인덱스, frameCount: 총 프레임 개수, row: 0부터 시작하는 행 번호"
+    },
+    "separate": {
+      "description": "애니메이션별로 별도의 PNG 파일로 분리된 형태",
+      "example": {
+        "id": "goblin",
+        "name": "Goblin",
+        "hp": 20,
+        "speed": 120,
+        "damage": 8,
+        "size": { "width": 24, "height": 24 },
+        "color": "#22c55e",
+        "critChance": 0.10,
+        "critDamageMultiplier": 1.5,
+        "xpValue": 25,
+        "spriteType": "separate",
+        "spritesheets": {
+          "idle": {
+            "filePath": "enemy/goblin_idle.png",
+            "textureKey": "goblin-idle-sheet",
+            "frameWidth": 32,
+            "frameHeight": 32,
+            "frameStart": 0,
+            "frameCount": 4,
+            "frameRate": 8,
+            "repeat": -1
+          },
+          "attack": {
+            "filePath": "enemy/goblin_attack.png",
+            "textureKey": "goblin-attack-sheet",
+            "frameWidth": 32,
+            "frameHeight": 32,
+            "frameStart": 0,
+            "frameCount": 3,
+            "frameRate": 10,
+            "repeat": 0
+          },
+          "hit": {
+            "filePath": "enemy/goblin_hit.png",
+            "textureKey": "goblin-hit-sheet",
+            "frameWidth": 32,
+            "frameHeight": 32,
+            "frameStart": 0,
+            "frameCount": 2,
+            "frameRate": 10,
+            "repeat": 0
+          },
+          "death": {
+            "filePath": "enemy/goblin_death.png",
+            "textureKey": "goblin-death-sheet",
+            "frameWidth": 32,
+            "frameHeight": 32,
+            "frameStart": 0,
+            "frameCount": 4,
+            "frameRate": 10,
+            "repeat": 0
+          }
+        }
+      },
+      "notes": "각 애니메이션이 별도 파일일 때 사용. spritesheets 객체에 idle, attack, hit, death 키로 구성"
+    },
+    "single": {
+      "description": "애니메이션이 없는 단일 이미지 (보스나 특수 적용)",
+      "example": {
+        "id": "boss",
+        "name": "Boss",
+        "hp": 500,
+        "speed": 40,
+        "damage": 50,
+        "size": { "width": 80, "height": 80 },
+        "color": "#ff0000",
+        "critChance": 0.20,
+        "critDamageMultiplier": 2.5,
+        "xpValue": 500,
+        "spriteType": "single",
+        "spritesheet": {
+          "filePath": "enemy/boss.png",
+          "textureKey": "boss-texture",
+          "width": 80,
+          "height": 80
+        }
+      },
+      "notes": "frameWidth/frameHeight 대신 width/height 사용. 애니메이션 없음"
+    },
+    "atlas": {
+      "description": "Texture Packer/Sprite Atlas 형태 (JSON 메타데이터 포함)",
+      "example": {
+        "id": "dragon",
+        "name": "Dragon",
+        "hp": 200,
+        "speed": 60,
+        "damage": 40,
+        "size": { "width": 64, "height": 64 },
+        "color": "#ff6b00",
+        "critChance": 0.15,
+        "critDamageMultiplier": 2.2,
+        "xpValue": 200,
+        "spriteType": "atlas",
+        "spritesheet": {
+          "filePath": "enemy/dragon_atlas.png",
+          "metaPath": "enemy/dragon_atlas.json",
+          "textureKey": "dragon-sheet",
+          "animations": [
+            {
+              "name": "idle",
+              "frames": ["dragon_idle_0", "dragon_idle_1", "dragon_idle_2"],
+              "frameRate": 8,
+              "repeat": -1
+            },
+            {
+              "name": "attack",
+              "frames": ["dragon_attack_0", "dragon_attack_1", "dragon_attack_2", "dragon_attack_3"],
+              "frameRate": 10,
+              "repeat": 0
+            }
+          ]
+        }
+      },
+      "notes": "Texture Packer 또는 유사 도구로 생성된 atlas.json 사용. 프레임 이름으로 정의"
+    }
+  },
+  "playerSpritesheetTypes": {
+    "aseprite": {
+      "description": "Aseprite 스프라이트시트 형태",
+      "example": {
+        "displaySize": { "width": 200, "height": 200 },
+        "hitbox": { "width": 56, "height": 86, "offsetX": 36, "offsetY": 57 },
+        "stats": {
+          "hp": 100,
+          "speed": 150,
+          "critChance": 0.05,
+          "critDamageMultiplier": 1.5
+        },
+        "spriteType": "aseprite",
+        "spritesheets": {
+          "idle": {
+            "filePath": "player/character_idle.png",
+            "textureKey": "player-idle-sheet",
+            "frameWidth": 128,
+            "frameHeight": 128,
+            "frameStart": 0,
+            "frameCount": 6,
+            "frameRate": 8,
+            "repeat": -1
+          }
+        }
+      }
+    },
+    "separate": {
+      "description": "애니메이션별 별도 파일",
+      "example": {
+        "displaySize": { "width": 200, "height": 200 },
+        "hitbox": { "width": 56, "height": 86, "offsetX": 36, "offsetY": 57 },
+        "stats": {
+          "hp": 100,
+          "speed": 150,
+          "critChance": 0.05,
+          "critDamageMultiplier": 1.5
+        },
+        "spriteType": "separate",
+        "spritesheets": {
+          "idle": {
+            "filePath": "player/character_idle.png",
+            "textureKey": "player-idle-sheet",
+            "frameWidth": 128,
+            "frameHeight": 128,
+            "frameStart": 0,
+            "frameCount": 6,
+            "frameRate": 8,
+            "repeat": -1
+          },
+          "hurt": {
+            "filePath": "player/character_hurt.png",
+            "textureKey": "player-hurt-sheet",
+            "frameWidth": 128,
+            "frameHeight": 128,
+            "frameStart": 0,
+            "frameCount": 3,
+            "frameRate": 10,
+            "repeat": 0
+          },
+          "death": {
+            "filePath": "player/character_death.png",
+            "textureKey": "player-death-sheet",
+            "frameWidth": 128,
+            "frameHeight": 128,
+            "frameStart": 0,
+            "frameCount": 8,
+            "frameRate": 10,
+            "repeat": 0
+          }
+        }
+      }
+    }
+  }
+}

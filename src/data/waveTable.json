@@ -1,0 +1,531 @@
+{
+  "runDurationMs": 900000,
+  "reaper": {
+    "enemyId": "reaper",
+    "repeatEveryMs": 60000,
+    "announcement": "사신이 나타났다..."
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "spawnIntervalMs": 2000,
+      "minAlive": 3,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "minute": 1,
+      "spawnIntervalMs": 1700,
+      "minAlive": 6,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 8
+        },
+        {
+          "id": "skullwolf-swift",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "minute": 2,
+      "spawnIntervalMs": 1500,
+      "minAlive": 8,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 7
+        },
+        {
+          "id": "skullwolf-swift",
+          "weight": 3
+        },
+        {
+          "id": "shooter",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "minute": 3,
+      "spawnIntervalMs": 1300,
+      "minAlive": 10,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 6
+        },
+        {
+          "id": "skullwolf-swift",
+          "weight": 4
+        },
+        {
+          "id": "shooter",
+          "weight": 2
+        },
+        {
+          "id": "slime",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "minute": 4,
+      "spawnIntervalMs": 1150,
+      "minAlive": 12,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 5
+        },
+        {
+          "id": "skullwolf-swift",
+          "weight": 4
+        },
+        {
+          "id": "shooter",
+          "weight": 3
+        },
+        {
+          "id": "slime",
+          "weight": 2
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "minute": 5,
+      "spawnIntervalMs": 1000,
+      "minAlive": 14,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 4
+        },
+        {
+          "id": "skullwolf-swift",
+          "weight": 4
+        },
+        {
+          "id": "shooter",
+          "weight": 3
+        },
+        {
+          "id": "slime",
+          "weight": 2
+        },
+        {
+          "id": "bomber",
+          "weight": 2
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "minute": 6,
+      "spawnIntervalMs": 900,
+      "minAlive": 16,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 3
+        },
+        {
+          "id": "skullwolf-swift",
+          "weight": 4
+        },
+        {
+          "id": "shooter",
+          "weight": 3
+        },
+        {
+          "id": "slime",
+          "weight": 2
+        },
+        {
+          "id": "bomber",
+          "weight": 2
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 2
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "minute": 7,
+      "spawnIntervalMs": 800,
+      "minAlive": 18,
+      "pool": [
+        {
+          "id": "skullwolf",
+          "weight": 3
+        },
+        {
+          "id": "skullwolf-swift",
+          "weight": 3
+        },
+        {
+          "id": "shooter",
+          "weight": 3
+        },
+        {
+          "id": "slime",
+          "weight": 2
+        },
+        {
+          "id": "bomber",
+          "weight": 2
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 2
+        },
+        {
+          "id": "healer",
+          "weight": 1
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "minute": 8,
+      "spawnIntervalMs": 720,
+      "minAlive": 20,
+      "pool": [
+        {
+          "id": "skullwolf-swift",
+          "weight": 4
+        },
+        {
+          "id": "shooter",
+          "weight": 4
+        },
+        {
+          "id": "slime",
+          "weight": 3
+        },
+        {
+          "id": "bomber",
+          "weight": 2
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 2
+        },
+        {
+          "id": "healer",
+          "weight": 1
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "minute": 9,
+      "spawnIntervalMs": 650,
+      "minAlive": 22,
+      "pool": [
+        {
+          "id": "skullwolf-swift",
+          "weight": 4
+        },
+        {
+          "id": "shooter",
+          "weight": 4
+        },
+        {
+          "id": "slime",
+          "weight": 3
+        },
+        {
+          "id": "bomber",
+          "weight": 3
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 3
+        },
+        {
+          "id": "healer",
+          "weight": 2
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "minute": 10,
+      "spawnIntervalMs": 600,
+      "minAlive": 22,
+      "pool": [
+        {
+          "id": "skullwolf-swift",
+          "weight": 4
+        },
+        {
+          "id": "shooter",
+          "weight": 4
+        },
+        {
+          "id": "slime",
+          "weight": 3
+        },
+        {
+          "id": "bomber",
+          "weight": 3
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 3
+        },
+        {
+          "id": "healer",
+          "weight": 2
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "minute": 11,
+      "spawnIntervalMs": 550,
+      "minAlive": 24,
+      "pool": [
+        {
+          "id": "skullwolf-swift",
+          "weight": 3
+        },
+        {
+          "id": "shooter",
+          "weight": 3
+        },
+        {
+          "id": "bomber",
+          "weight": 3
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 3
+        },
+        {
+          "id": "healer",
+          "weight": 2
+        },
+        {
+          "id": "shielded-shooter",
+          "weight": 2
+        },
+        {
+          "id": "venom-slime",
+          "weight": 2
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "minute": 12,
+      "spawnIntervalMs": 500,
+      "minAlive": 26,
+      "pool": [
+        {
+          "id": "skullwolf-swift",
+          "weight": 3
+        },
+        {
+          "id": "shooter",
+          "weight": 3
+        },
+        {
+          "id": "bomber",
+          "weight": 3
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 3
+        },
+        {
+          "id": "healer",
+          "weight": 2
+        },
+        {
+          "id": "shielded-shooter",
+          "weight": 3
+        },
+        {
+          "id": "venom-slime",
+          "weight": 3
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "minute": 13,
+      "spawnIntervalMs": 450,
+      "minAlive": 28,
+      "pool": [
+        {
+          "id": "skullwolf-swift",
+          "weight": 3
+        },
+        {
+          "id": "bomber",
+          "weight": 3
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 3
+        },
+        {
+          "id": "healer",
+          "weight": 3
+        },
+        {
+          "id": "shielded-shooter",
+          "weight": 4
+        },
+        {
+          "id": "venom-slime",
+          "weight": 4
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 4
+        }
+      ]
+    },
+    {
+      "minute": 14,
+      "spawnIntervalMs": 400,
+      "minAlive": 30,
+      "pool": [
+        {
+          "id": "bomber",
+          "weight": 4
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 4
+        },
+        {
+          "id": "healer",
+          "weight": 3
+        },
+        {
+          "id": "shielded-shooter",
+          "weight": 5
+        },
+        {
+          "id": "venom-slime",
+          "weight": 5
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 5
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "timeMs": 120000,
+      "enemyId": "mb-bulwark",
+      "count": 1,
+      "announcement": "⚔ 중간보스: 불워크"
+    },
+    {
+      "timeMs": 180000,
+      "enemyId": "skullwolf-elite",
+      "count": 1,
+      "announcement": "정예 스컬울프가 나타났다!"
+    },
+    {
+      "timeMs": 240000,
+      "enemyId": "mb-slimeking",
+      "count": 1,
+      "announcement": "⚔ 중간보스: 슬라임 킹"
+    },
+    {
+      "timeMs": 360000,
+      "enemyId": "mb-archerlord",
+      "count": 1,
+      "announcement": "⚔ 중간보스: 아처 로드"
+    },
+    {
+      "timeMs": 420000,
+      "enemyId": "skullwolf-elite",
+      "count": 1,
+      "announcement": "정예 스컬울프가 나타났다!"
+    },
+    {
+      "timeMs": 480000,
+      "enemyId": "mb-plaguehealer",
+      "count": 1,
+      "announcement": "⚔ 중간보스: 역병 사제"
+    },
+    {
+      "timeMs": 600000,
+      "enemyId": "skullwolf-boss",
+      "count": 1,
+      "announcement": "⚠ 보스 등장 ⚠"
+    },
+    {
+      "timeMs": 720000,
+      "enemyId": "mb-bulwark",
+      "count": 1,
+      "announcement": "⚔ 중간보스 2인조!"
+    },
+    {
+      "timeMs": 720000,
+      "enemyId": "mb-archerlord",
+      "count": 1
+    },
+    {
+      "timeMs": 780000,
+      "enemyId": "skullwolf-elite",
+      "count": 2,
+      "announcement": "정예 무리가 몰려온다!"
+    },
+    {
+      "timeMs": 840000,
+      "enemyId": "mb-slimeking",
+      "count": 1,
+      "announcement": "⚔ 중간보스 2인조!"
+    },
+    {
+      "timeMs": 840000,
+      "enemyId": "mb-plaguehealer",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "rarities": [
+    {
+      "id": "common",
+      "name": "일반",
+      "color": "#9ca3af",
+      "glow": "#6b7280",
+      "luckScale": 0
+    },
+    {
+      "id": "uncommon",
+      "name": "중급",
+      "color": "#22c55e",
+      "glow": "#16a34a",
+      "luckScale": 0.4
+    },
+    {
+      "id": "rare",
+      "name": "고급",
+      "color": "#3b82f6",
+      "glow": "#2563eb",
+      "luckScale": 1.0
+    },
+    {
+      "id": "epic",
+      "name": "울트라",
+      "color": "#a855f7",
+      "glow": "#9333ea",
+      "luckScale": 2.0
+    },
+    {
+      "id": "legendary",
+      "name": "레전더리",
+      "color": "#fbbf24",
+      "glow": "#f59e0b",
+      "luckScale": 3.0
+    }
+  ],
+  "swordTierByRarity": {
+    "common": [
+      0,
+      1
+    ],
+    "uncommon": [
+      2
+    ],
+    "rare": [
+      3
+    ],
+    "epic": [
+      4,
+      5
+    ],
+    "legendary": [
+      6,
+      7
+    ]
+  },
+  "upgrades": [
+    {
+      "id": "damage",
+      "name": "공격력 강화",
+      "icon": "⚔️",
+      "type": "damageMultiplier",
+      "descTemplate": "모든 검의 공격력 +{pct}",
+      "values": {
+        "common": 0.08,
+        "uncommon": 0.14,
+        "rare": 0.22,
+        "epic": 0.38,
+        "legendary": 0.7
+      }
+    },
+    {
+      "id": "cooldown",
+      "name": "신속한 검",
+      "icon": "⏱️",
+      "type": "cooldownReduction",
+      "descTemplate": "검 발사 대기시간 -{pct}",
+      "values": {
+        "common": 0.05,
+        "uncommon": 0.08,
+        "rare": 0.12,
+        "epic": 0.18,
+        "legendary": 0.3
+      }
+    },
+    {
+      "id": "maxHp",
+      "name": "생명력",
+      "icon": "❤️",
+      "type": "maxHpFlat",
+      "descTemplate": "최대 체력 +{value} (즉시 회복)",
+      "values": {
+        "common": 10,
+        "uncommon": 20,
+        "rare": 35,
+        "epic": 60,
+        "legendary": 100
+      }
+    },
+    {
+      "id": "heal",
+      "name": "응급 치료",
+      "icon": "🍗",
+      "type": "healPercent",
+      "descTemplate": "체력 {pct} 회복",
+      "values": {
+        "common": 0.25,
+        "uncommon": 0.35,
+        "rare": 0.5,
+        "epic": 0.75,
+        "legendary": 1.0
+      }
+    },
+    {
+      "id": "moveSpeed",
+      "name": "질주",
+      "icon": "👟",
+      "type": "moveSpeedMultiplier",
+      "descTemplate": "이동 속도 +{pct}",
+      "values": {
+        "common": 0.05,
+        "uncommon": 0.08,
+        "rare": 0.12,
+        "epic": 0.18,
+        "legendary": 0.3
+      }
+    },
+    {
+      "id": "critChance",
+      "name": "급소 노리기",
+      "icon": "🎯",
+      "type": "critChanceAdd",
+      "descTemplate": "치명타 확률 +{pct}",
+      "values": {
+        "common": 0.03,
+        "uncommon": 0.05,
+        "rare": 0.08,
+        "epic": 0.12,
+        "legendary": 0.2
+      }
+    },
+    {
+      "id": "critDamage",
+      "name": "잔혹한 일격",
+      "icon": "💥",
+      "type": "critDamageAdd",
+      "descTemplate": "치명타 피해 +{pct}",
+      "values": {
+        "common": 0.15,
+        "uncommon": 0.25,
+        "rare": 0.4,
+        "epic": 0.6,
+        "legendary": 1.0
+      }
+    },
+    {
+      "id": "magnet",
+      "name": "자석",
+      "icon": "🧲",
+      "type": "magnetMultiplier",
+      "descTemplate": "경험치 획득 범위 +{pct}",
+      "values": {
+        "common": 0.15,
+        "uncommon": 0.25,
+        "rare": 0.4,
+        "epic": 0.6,
+        "legendary": 1.0
+      }
+    },
+    {
+      "id": "orbitRadius",
+      "name": "궤도 확장",
+      "icon": "🌀",
+      "type": "orbitRadiusMultiplier",
+      "descTemplate": "검 궤도 반경 +{pct}",
+      "values": {
+        "common": 0.06,
+        "uncommon": 0.1,
+        "rare": 0.15,
+        "epic": 0.22,
+        "legendary": 0.35
+      }
+    },
+    {
+      "id": "orbitSpeed",
+      "name": "궤도 가속",
+      "icon": "🌪️",
+      "type": "orbitSpeedMultiplier",
+      "descTemplate": "검 회전 속도 +{pct}",
+      "values": {
+        "common": 0.08,
+        "uncommon": 0.12,
+        "rare": 0.18,
+        "epic": 0.28,
+        "legendary": 0.45
+      }
+    },
+    {
+      "id": "launchSpeed",
+      "name": "발사 가속",
+      "icon": "🚀",
+      "type": "launchSpeedMultiplier",
+      "descTemplate": "검 발사 속도 +{pct}",
+      "values": {
+        "common": 0.08,
+        "uncommon": 0.12,
+        "rare": 0.18,
+        "epic": 0.28,
+        "legendary": 0.45
+      }
+    },
+    {
+      "id": "luck",
+      "name": "행운",
+      "icon": "🍀",
+      "type": "luckAdd",
+      "descTemplate": "행운 +{pct} (희귀 업그레이드 등장 확률 증가)",
+      "values": {
+        "common": 0.15,
+        "uncommon": 0.25,
+        "rare": 0.4,
+        "epic": 0.6,
+        "legendary": 1.0
+      }
+    },
+    {
+      "id": "extraHit",
+      "name": "연격",
+      "icon": "⚡",
+      "type": "bonusHits",
+      "descTemplate": "모든 검의 연속 타격 횟수 +{value}",
+      "values": {
+        "epic": 1,
+        "legendary": 2
+      }
+    },
+    {
+      "id": "cleave",
+      "name": "검기 파동",
+      "icon": "💫",
+      "type": "cleaveAdd",
+      "descTemplate": "검이 타격할 때 주변 적 {value}명을 추가 타격",
+      "values": {
+        "epic": 1,
+        "legendary": 2
+      }
+    }
+  ],
+  "oddsByLevel": [
+    {
+      "minLevel": 1,
+      "weights": {
+        "common": 94,
+        "uncommon": 6,
+        "rare": 0,
+        "epic": 0,
+        "legendary": 0
+      }
+    },
+    {
+      "minLevel": 3,
+      "weights": {
+        "common": 88,
+        "uncommon": 11,
+        "rare": 1,
+        "epic": 0,
+        "legendary": 0
+      }
+    },
+    {
+      "minLevel": 5,
+      "weights": {
+        "common": 80,
+        "uncommon": 16,
+        "rare": 4,
+        "epic": 0,
+        "legendary": 0
+      }
+    },
+    {
+      "minLevel": 7,
+      "weights": {
+        "common": 72,
+        "uncommon": 20,
+        "rare": 7,
+        "epic": 1,
+        "legendary": 0
+      }
+    },
+    {
+      "minLevel": 9,
+      "weights": {
+        "common": 64,
+        "uncommon": 24,
+        "rare": 10,
+        "epic": 2,
+        "legendary": 0.4
+      }
+    },
+    {
+      "minLevel": 11,
+      "weights": {
+        "common": 55,
+        "uncommon": 27,
+        "rare": 13,
+        "epic": 4,
+        "legendary": 1
+      }
+    },
+    {
+      "minLevel": 14,
+      "weights": {
+        "common": 45,
+        "uncommon": 30,
+        "rare": 17,
+        "epic": 6,
+        "legendary": 2
+      }
+    },
+    {
+      "minLevel": 17,
+      "weights": {
+        "common": 38,
+        "uncommon": 30,
+        "rare": 20,
+        "epic": 9,
+        "legendary": 3
+      }
+    }
+  ]
+}

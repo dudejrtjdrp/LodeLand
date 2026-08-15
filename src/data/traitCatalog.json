@@ -1,0 +1,126 @@
+{
+  "pullCost": 150,
+  "traits": [
+    {
+      "id": "storm-sigil",
+      "name": "뇌운 각인",
+      "icon": "⚡",
+      "element": "electric",
+      "effects": {
+        "chainBonus": 1
+      },
+      "desc": "연쇄 번개 대상 +1"
+    },
+    {
+      "id": "flame-sigil",
+      "name": "화염 각인",
+      "icon": "🔥",
+      "element": "fire",
+      "effects": {
+        "dotDpsBonus": 6
+      },
+      "desc": "화상/맹독 피해 +6/s"
+    },
+    {
+      "id": "venom-sigil",
+      "name": "맹독 각인",
+      "icon": "☠️",
+      "element": "poison",
+      "effects": {
+        "dotDurationBonus": 1000
+      },
+      "desc": "지속 피해 시간 +1초"
+    },
+    {
+      "id": "void-sigil",
+      "name": "공허 각인",
+      "icon": "🕳️",
+      "element": "void",
+      "effects": {
+        "executeBonus": 0.05
+      },
+      "desc": "처형 임계치 +5%"
+    },
+    {
+      "id": "gold-sigil",
+      "name": "황금 각인",
+      "icon": "🪙",
+      "element": "gold",
+      "effects": {
+        "goldOnHitChance": 0.08
+      },
+      "desc": "타격 시 8% 확률 골드"
+    },
+    {
+      "id": "frost-sigil",
+      "name": "서리 각인",
+      "icon": "❄️",
+      "element": "ice",
+      "effects": {
+        "slowOnHit": 0.35
+      },
+      "desc": "타격 시 적 감속 35%"
+    },
+    {
+      "id": "blood-sigil",
+      "name": "혈맹 각인",
+      "icon": "🩸",
+      "element": "blood",
+      "effects": {
+        "healOnHitChance": 0.1
+      },
+      "desc": "타격 시 10% 확률 체력 +1"
+    },
+    {
+      "id": "gale-sigil",
+      "name": "질풍 각인",
+      "icon": "🌪️",
+      "element": "wind",
+      "effects": {
+        "launchSpeedMult": 0.15,
+        "cooldownMult": -0.05
+      },
+      "desc": "발사속도 +15% · 쿨다운 -5%"
+    },
+    {
+      "id": "hunter-sigil",
+      "name": "거인 사냥꾼",
+      "icon": "🏹",
+      "element": null,
+      "effects": {
+        "bigGameDamage": 0.25
+      },
+      "desc": "정예/보스급 피해 +25%"
+    },
+    {
+      "id": "ruin-sigil",
+      "name": "파멸 각인",
+      "icon": "💥",
+      "element": null,
+      "effects": {
+        "critDamageAdd": 0.4
+      },
+      "desc": "이 검의 치명타 피해 +40%"
+    },
+    {
+      "id": "gravity-sigil",
+      "name": "중력 각인",
+      "icon": "🌀",
+      "element": "void",
+      "effects": {
+        "cleaveBonus": 1
+      },
+      "desc": "검기 파동 대상 +1"
+    },
+    {
+      "id": "titan-sigil",
+      "name": "거신 각인",
+      "icon": "⚔️",
+      "element": null,
+      "effects": {
+        "damageMult": 0.2
+      },
+      "desc": "이 검의 피해 +20%"
+    }
+  ]
+}

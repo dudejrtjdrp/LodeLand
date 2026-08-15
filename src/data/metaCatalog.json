@@ -1,0 +1,11 @@
+[
+  { "id": "might",     "name": "공격력",     "icon": "⚔️", "type": "damageMult",   "perRank": 0.04, "maxRank": 5, "baseCost": 200,  "descTemplate": "모든 검 공격력 +{pct}/랭크" },
+  { "id": "vitality",  "name": "생명력",     "icon": "❤️", "type": "maxHpFlat",    "perRank": 10,   "maxRank": 5, "baseCost": 150,  "descTemplate": "최대 체력 +{value}/랭크" },
+  { "id": "haste",     "name": "신속",       "icon": "⏱️", "type": "cooldownRed",  "perRank": 0.03, "maxRank": 3, "baseCost": 400,  "descTemplate": "검 발사 대기시간 -{pct}/랭크" },
+  { "id": "swiftness", "name": "이동 속도",  "icon": "👟", "type": "moveSpeedMult","perRank": 0.03, "maxRank": 3, "baseCost": 250,  "descTemplate": "이동 속도 +{pct}/랭크" },
+  { "id": "fortune",   "name": "행운",       "icon": "🍀", "type": "luck",         "perRank": 0.1,  "maxRank": 5, "baseCost": 300,  "descTemplate": "행운 +{pct}/랭크 (희귀 업그레이드 확률)" },
+  { "id": "magnetism", "name": "자석",       "icon": "🧲", "type": "magnetMult",   "perRank": 0.15, "maxRank": 3, "baseCost": 200,  "descTemplate": "경험치 획득 범위 +{pct}/랭크" },
+  { "id": "greed",     "name": "탐욕",       "icon": "🪙", "type": "goldMult",     "perRank": 0.1,  "maxRank": 5, "baseCost": 250,  "descTemplate": "골드 획득 +{pct}/랭크" },
+  { "id": "armory",    "name": "시작 검",    "icon": "🗡️", "type": "extraSword",   "perRank": 1,    "maxRank": 2, "baseCost": 1500, "descTemplate": "시작 시 검 +{value}자루/랭크" },
+  { "id": "revival",   "name": "부활",       "icon": "✨", "type": "revival",      "perRank": 1,    "maxRank": 1, "baseCost": 3000, "descTemplate": "사망 시 1회 부활 (체력 50%)" }
+]

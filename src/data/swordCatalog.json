@@ -1,0 +1,332 @@
+[
+  {
+    "id": "bronze",
+    "name": "Bronze Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 0,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 360,
+    "damage": 16,
+    "cooldownMs": 300,
+    "maxHits": 3,
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.3,
+    "effect": {
+      "type": "slash",
+      "tint": "#f6c177"
+    },
+    "hitbox": {
+      "width": 18,
+      "height": 18,
+      "offsetX": 7,
+      "offsetY": 7
+    },
+    "damageType": "physical"
+  },
+  {
+    "id": "rusty",
+    "name": "Rusty Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 1,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 390,
+    "damage": 20,
+    "cooldownMs": 1350,
+    "maxHits": 1,
+    "critChance": 0.05,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "spark",
+      "tint": "#d97706"
+    },
+    "hitbox": {
+      "width": 20,
+      "height": 20,
+      "offsetX": 6,
+      "offsetY": 6
+    },
+    "damageType": "physical"
+  },
+  {
+    "id": "steel",
+    "name": "Steel Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 2,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 420,
+    "damage": 24,
+    "cooldownMs": 1250,
+    "maxHits": 1,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "flash",
+      "tint": "#cbd5e1"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 22,
+      "offsetX": 5,
+      "offsetY": 5
+    },
+    "damageType": "physical",
+    "physicalPen": 0.15
+  },
+  {
+    "id": "ruby",
+    "name": "Ruby Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 3,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 450,
+    "damage": 30,
+    "cooldownMs": 1150,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "ember",
+      "tint": "#ef4444"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 22,
+      "offsetX": 5,
+      "offsetY": 5
+    },
+    "special": {
+      "type": "burn",
+      "dps": 6,
+      "durationMs": 2000,
+      "label": "화상"
+    },
+    "element": "fire",
+    "damageType": "magic"
+  },
+  {
+    "id": "emerald",
+    "name": "Emerald Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 4,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 470,
+    "damage": 34,
+    "cooldownMs": 1050,
+    "maxHits": 2,
+    "critChance": 0.15,
+    "critDamageMultiplier": 1.7,
+    "effect": {
+      "type": "trail",
+      "tint": "#22c55e"
+    },
+    "hitbox": {
+      "width": 24,
+      "height": 24,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "special": {
+      "type": "poison",
+      "dps": 8,
+      "durationMs": 2500,
+      "label": "맹독"
+    },
+    "element": "poison",
+    "damageType": "magic"
+  },
+  {
+    "id": "gold",
+    "name": "Gold Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 5,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 510,
+    "damage": 40,
+    "cooldownMs": 950,
+    "maxHits": 2,
+    "critChance": 0.2,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "burst",
+      "tint": "#fbbf24"
+    },
+    "hitbox": {
+      "width": 24,
+      "height": 24,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "special": {
+      "type": "midas",
+      "chance": 0.15,
+      "label": "황금손"
+    },
+    "element": "gold",
+    "damageType": "physical",
+    "physicalPen": 0.2
+  },
+  {
+    "id": "violet",
+    "name": "Violet Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 6,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 540,
+    "damage": 46,
+    "cooldownMs": 875,
+    "maxHits": 2,
+    "critChance": 0.25,
+    "critDamageMultiplier": 2.0,
+    "effect": {
+      "type": "arc",
+      "tint": "#a855f7"
+    },
+    "hitbox": {
+      "width": 26,
+      "height": 26,
+      "offsetX": 3,
+      "offsetY": 3
+    },
+    "special": {
+      "type": "chain",
+      "targets": 1,
+      "damagePct": 0.6,
+      "label": "연쇄 번개"
+    },
+    "element": "electric",
+    "damageType": "magic",
+    "magicPen": 0.2
+  },
+  {
+    "id": "obsidian",
+    "name": "Obsidian Sword",
+    "assetName": "sword01.png",
+    "sheetOrder": 7,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 580,
+    "damage": 55,
+    "cooldownMs": 800,
+    "maxHits": 3,
+    "critChance": 0.3,
+    "critDamageMultiplier": 2.2,
+    "effect": {
+      "type": "void",
+      "tint": "#111827"
+    },
+    "hitbox": {
+      "width": 28,
+      "height": 28,
+      "offsetX": 2,
+      "offsetY": 2
+    },
+    "special": {
+      "type": "execute",
+      "threshold": 0.12,
+      "label": "처형"
+    },
+    "element": "void",
+    "damageType": "magic",
+    "magicPen": 0.3
+  },
+  {
+    "id": "inferno",
+    "name": "Inferno Blade",
+    "assetName": "sword01.png",
+    "sheetOrder": 8,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 620,
+    "damage": 75,
+    "cooldownMs": 700,
+    "maxHits": 3,
+    "critChance": 0.25,
+    "critDamageMultiplier": 2.0,
+    "effect": {
+      "type": "ember",
+      "tint": "#f97316"
+    },
+    "hitbox": {
+      "width": 30,
+      "height": 30,
+      "offsetX": 1,
+      "offsetY": 1
+    },
+    "special": {
+      "type": "burn",
+      "dps": 14,
+      "durationMs": 2500,
+      "label": "겁화"
+    },
+    "element": "fire",
+    "damageType": "magic",
+    "magicPen": 0.25,
+    "trueDamage": 12
+  },
+  {
+    "id": "storm",
+    "name": "Storm Blade",
+    "assetName": "sword01.png",
+    "sheetOrder": 9,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.5,
+    "launchSpeed": 700,
+    "damage": 60,
+    "cooldownMs": 500,
+    "maxHits": 4,
+    "critChance": 0.3,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "arc",
+      "tint": "#38bdf8"
+    },
+    "hitbox": {
+      "width": 30,
+      "height": 30,
+      "offsetX": 1,
+      "offsetY": 1
+    },
+    "special": {
+      "type": "chain",
+      "targets": 2,
+      "damagePct": 0.7,
+      "label": "폭풍 연쇄"
+    },
+    "element": "electric",
+    "damageType": "magic",
+    "magicPen": 0.3,
+    "trueDamage": 8
+  },
+  {
+    "id": "voidreaver",
+    "name": "Void Reaver",
+    "assetName": "sword01.png",
+    "sheetOrder": 10,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.2,
+    "launchSpeed": 650,
+    "damage": 120,
+    "cooldownMs": 650,
+    "maxHits": 5,
+    "critChance": 0.35,
+    "critDamageMultiplier": 2.5,
+    "effect": {
+      "type": "void",
+      "tint": "#a78bfa"
+    },
+    "hitbox": {
+      "width": 36,
+      "height": 36,
+      "offsetX": 0,
+      "offsetY": 0
+    },
+    "special": {
+      "type": "execute",
+      "threshold": 0.18,
+      "label": "공허 처형"
+    },
+    "element": "void",
+    "damageType": "magic",
+    "magicPen": 0.4,
+    "maxHpDamage": 0.02
+  }
+]

@@ -1,0 +1,1265 @@
+[
+  {
+    "id": "skullwolf",
+    "name": "Skullwolf",
+    "hp": 60,
+    "speed": 90,
+    "damage": 18,
+    "size": {
+      "width": 48,
+      "height": 48
+    },
+    "color": "#1f2937",
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.9,
+    "xpValue": 75,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "goldValue": 2,
+    "goldChance": 0.35
+  },
+  {
+    "id": "skullwolf-swift",
+    "name": "Swift Skullwolf",
+    "hp": 35,
+    "speed": 150,
+    "damage": 12,
+    "size": {
+      "width": 40,
+      "height": 40
+    },
+    "tint": "#7dd3fc",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.6,
+    "xpValue": 45,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 12,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 12,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 12,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 12,
+          "repeat": 0
+        }
+      ]
+    },
+    "goldValue": 1,
+    "goldChance": 0.3
+  },
+  {
+    "id": "skullwolf-brute",
+    "name": "Brute Skullwolf",
+    "hp": 200,
+    "speed": 55,
+    "damage": 32,
+    "size": {
+      "width": 68,
+      "height": 68
+    },
+    "tint": "#f87171",
+    "critChance": 0.15,
+    "critDamageMultiplier": 2.0,
+    "xpValue": 170,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 6,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 8,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 8,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 8,
+          "repeat": 0
+        }
+      ]
+    },
+    "goldValue": 6,
+    "goldChance": 0.6
+  },
+  {
+    "id": "skullwolf-elite",
+    "name": "Elite Skullwolf",
+    "hp": 1100,
+    "speed": 75,
+    "damage": 45,
+    "size": {
+      "width": 96,
+      "height": 96
+    },
+    "tint": "#fbbf24",
+    "critChance": 0.2,
+    "critDamageMultiplier": 2.2,
+    "xpValue": 900,
+    "isElite": true,
+    "knockbackResist": 0.6,
+    "healthBarWidth": 70,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "goldValue": 60,
+    "goldChance": 1.0
+  },
+  {
+    "id": "skullwolf-boss",
+    "name": "Skullwolf King",
+    "hp": 5000,
+    "speed": 58,
+    "damage": 60,
+    "size": {
+      "width": 150,
+      "height": 150
+    },
+    "tint": "#c084fc",
+    "critChance": 0.25,
+    "critDamageMultiplier": 2.5,
+    "xpValue": 3000,
+    "isBoss": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 110,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 7,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 9,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 9,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 9,
+          "repeat": 0
+        }
+      ]
+    },
+    "goldValue": 250,
+    "goldChance": 1.0,
+    "physicalResist": 0.2,
+    "magicResist": 0.2
+  },
+  {
+    "id": "reaper",
+    "name": "Death",
+    "hp": 1000000,
+    "speed": 250,
+    "damage": 600,
+    "size": {
+      "width": 130,
+      "height": 130
+    },
+    "tint": "#7f1d1d",
+    "critChance": 0,
+    "critDamageMultiplier": 1,
+    "xpValue": 0,
+    "isReaper": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 90,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 10,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "goldValue": 0,
+    "goldChance": 0.0
+  },
+  {
+    "id": "shooter",
+    "name": "Bone Shooter",
+    "hp": 45,
+    "speed": 95,
+    "damage": 10,
+    "size": {
+      "width": 44,
+      "height": 44
+    },
+    "tint": "#34d399",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 60,
+    "goldValue": 3,
+    "goldChance": 0.4,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "behavior": {
+      "type": "ranged",
+      "range": 380,
+      "fireIntervalMs": 2200,
+      "projectileSpeed": 260,
+      "projectileDamage": 14,
+      "damageType": "magic"
+    }
+  },
+  {
+    "id": "slime",
+    "name": "Split Slime",
+    "hp": 80,
+    "speed": 70,
+    "damage": 14,
+    "size": {
+      "width": 52,
+      "height": 52
+    },
+    "tint": "#a3e635",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 60,
+    "goldValue": 3,
+    "goldChance": 0.4,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "splitInto": {
+      "id": "slime-small",
+      "count": 2
+    }
+  },
+  {
+    "id": "slime-small",
+    "name": "Slimeling",
+    "hp": 25,
+    "speed": 130,
+    "damage": 8,
+    "size": {
+      "width": 30,
+      "height": 30
+    },
+    "tint": "#bef264",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 20,
+    "goldValue": 1,
+    "goldChance": 0.2,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "shieldbearer",
+    "name": "Shieldbearer",
+    "hp": 150,
+    "speed": 60,
+    "damage": 20,
+    "size": {
+      "width": 56,
+      "height": 56
+    },
+    "tint": "#94a3b8",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 130,
+    "goldValue": 5,
+    "goldChance": 0.5,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "knockbackResist": 1,
+    "physicalResist": 0.55,
+    "magicResist": 0.15
+  },
+  {
+    "id": "bomber",
+    "name": "Bomber",
+    "hp": 40,
+    "speed": 160,
+    "damage": 5,
+    "size": {
+      "width": 42,
+      "height": 42
+    },
+    "tint": "#fb923c",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 55,
+    "goldValue": 2,
+    "goldChance": 0.3,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "behavior": {
+      "type": "bomber",
+      "fuseMs": 900,
+      "explodeRadius": 170,
+      "explodeDamage": 45
+    }
+  },
+  {
+    "id": "healer",
+    "name": "Bone Priest",
+    "hp": 70,
+    "speed": 80,
+    "damage": 8,
+    "size": {
+      "width": 46,
+      "height": 46
+    },
+    "tint": "#f472b6",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 100,
+    "goldValue": 4,
+    "goldChance": 0.6,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "behavior": {
+      "type": "healer",
+      "healIntervalMs": 2500,
+      "healPercent": 0.12,
+      "healRadius": 260,
+      "keepDistance": 320
+    }
+  },
+  {
+    "id": "shielded-shooter",
+    "name": "Warded Shooter",
+    "hp": 120,
+    "speed": 85,
+    "damage": 12,
+    "size": {
+      "width": 50,
+      "height": 50
+    },
+    "tint": "#2dd4bf",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 150,
+    "goldValue": 6,
+    "goldChance": 0.5,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "knockbackResist": 0.7,
+    "behavior": {
+      "type": "ranged",
+      "range": 400,
+      "fireIntervalMs": 2000,
+      "projectileSpeed": 280,
+      "projectileDamage": 16,
+      "damageType": "magic"
+    },
+    "physicalResist": 0.45,
+    "magicResist": 0.25
+  },
+  {
+    "id": "venom-slime",
+    "name": "Venom Slime",
+    "hp": 140,
+    "speed": 75,
+    "damage": 18,
+    "size": {
+      "width": 58,
+      "height": 58
+    },
+    "tint": "#4ade80",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 140,
+    "goldValue": 5,
+    "goldChance": 0.5,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "splitInto": {
+      "id": "slime",
+      "count": 2
+    },
+    "physicalResist": 0.1,
+    "magicResist": 0.45
+  },
+  {
+    "id": "mb-bulwark",
+    "name": "Bulwark",
+    "hp": 450,
+    "speed": 55,
+    "damage": 35,
+    "size": {
+      "width": 84,
+      "height": 84
+    },
+    "tint": "#64748b",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 500,
+    "goldValue": 40,
+    "goldChance": 1.0,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "isMiniboss": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 60,
+    "physicalResist": 0.6,
+    "magicResist": 0.3
+  },
+  {
+    "id": "mb-slimeking",
+    "name": "Slime King",
+    "hp": 520,
+    "speed": 62,
+    "damage": 30,
+    "size": {
+      "width": 90,
+      "height": 90
+    },
+    "tint": "#84cc16",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 550,
+    "goldValue": 40,
+    "goldChance": 1.0,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "isMiniboss": true,
+    "knockbackResist": 0.8,
+    "splitInto": {
+      "id": "slime",
+      "count": 3
+    },
+    "healthBarWidth": 60,
+    "physicalResist": 0.2,
+    "magicResist": 0.3
+  },
+  {
+    "id": "mb-archerlord",
+    "name": "Archer Lord",
+    "hp": 550,
+    "speed": 70,
+    "damage": 25,
+    "size": {
+      "width": 80,
+      "height": 80
+    },
+    "tint": "#10b981",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 600,
+    "goldValue": 45,
+    "goldChance": 1.0,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "isMiniboss": true,
+    "knockbackResist": 0.8,
+    "healthBarWidth": 60,
+    "behavior": {
+      "type": "ranged",
+      "range": 420,
+      "fireIntervalMs": 1800,
+      "projectileSpeed": 300,
+      "projectileDamage": 20,
+      "projectileCount": 3,
+      "spreadDeg": 24,
+      "damageType": "magic"
+    },
+    "physicalResist": 0.25,
+    "magicResist": 0.2
+  },
+  {
+    "id": "mb-plaguehealer",
+    "name": "Plague Priest",
+    "hp": 650,
+    "speed": 68,
+    "damage": 28,
+    "size": {
+      "width": 84,
+      "height": 84
+    },
+    "tint": "#ec4899",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 650,
+    "goldValue": 50,
+    "goldChance": 1.0,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "isMiniboss": true,
+    "knockbackResist": 0.8,
+    "healthBarWidth": 60,
+    "behavior": {
+      "type": "healer",
+      "healIntervalMs": 2000,
+      "healPercent": 0.15,
+      "healRadius": 300,
+      "keepDistance": 340
+    },
+    "physicalResist": 0.15,
+    "magicResist": 0.5
+  },
+  {
+    "id": "death-lord",
+    "name": "Death Lord",
+    "hp": 12000,
+    "speed": 75,
+    "damage": 90,
+    "size": {
+      "width": 170,
+      "height": 170
+    },
+    "tint": "#991b1b",
+    "critChance": 0.3,
+    "critDamageMultiplier": 2.5,
+    "xpValue": 8000,
+    "goldValue": 1000,
+    "goldChance": 1.0,
+    "isBoss": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 130,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    },
+    "physicalResist": 0.35,
+    "magicResist": 0.35
+  },
+  {
+    "id": "hound",
+    "name": "Relentless Hound",
+    "hp": 55,
+    "speed": 175,
+    "damage": 16,
+    "size": {
+      "width": 44,
+      "height": 44
+    },
+    "tint": "#fca5a5",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 55,
+    "goldValue": 2,
+    "goldChance": 0.3,
+    "knockbackResist": 0.85,
+    "spriteType": "aseprite",
+    "spritesheet": {
+      "filePath": "enemy/Skullwolf/Massacre.png",
+      "textureKey": "skullwolf-sheet",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "frameStart": 0,
+          "frameCount": 6,
+          "frameRate": 8,
+          "repeat": -1
+        },
+        {
+          "name": "attack",
+          "row": 1,
+          "frameStart": 0,
+          "frameCount": 5,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "hit",
+          "row": 2,
+          "frameStart": 0,
+          "frameCount": 4,
+          "frameRate": 10,
+          "repeat": 0
+        },
+        {
+          "name": "death",
+          "row": 3,
+          "frameStart": 0,
+          "frameCount": 7,
+          "frameRate": 10,
+          "repeat": 0
+        }
+      ]
+    }
+  }
+]

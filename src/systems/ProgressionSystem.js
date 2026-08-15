@@ -7,10 +7,13 @@ export default class ProgressionSystem {
 		this.player = null;
 		this.level = 1;
 		this.xp = 0;
-		this.xpToNext = 100;
+		this.maxLevel = options.maxLevel ?? 65;
+		this.xpToNext = this.xpRequiredFor(1);
 		this.orbXp = options.orbXp ?? 25;
-		this.collectRadius = options.collectRadius ?? 60;
+		this.collectRadius = options.collectRadius ?? 120;
 		this.orbs = scene.physics.add.group({ maxSize: options.maxOrbs ?? 256 });
+		this.magnetRadius = options.magnetRadius ?? 220;
+		this.orbAttractDurationPerPx = options.orbAttractDurationPerPx ?? 2.5; // ms per pixel
 		this.hudBackground = scene.add.graphics().setScrollFactor(0).setDepth(1000);
 		this.hudFill = scene.add.graphics().setScrollFactor(0).setDepth(1001);
 		this.hudText = scene.add.text(18, 16, 'Lv. 1', {
@@ -38,7 +41,12 @@ export default class ProgressionSystem {
 			return;
 		}
 
-		this.spawnXPOrb(x, y, payload?.amount ?? this.orbXp);
+		const amount = payload?.amount ?? this.orbXp;
+		if (amount <= 0) {
+			return;
+		}
+
+		this.spawnXPOrb(x, y, amount);
 	}
 
 	spawnXPOrb(x, y, amount = this.orbXp) {
@@ -52,10 +60,19 @@ export default class ProgressionSystem {
 			return false;
 		}
 
-		orb.enableBody?.(true, x, y, true, true);
-		orb.setDepth(2);
+		orb.setDepth(50);
+		orb.setPosition(x, y);
+		orb.setActive(true);
+		orb.setVisible(true);
 		orb.amount = amount;
-		orb.setCircle(Math.max(6, orb.width * 0.35));
+		orb.setTint(0xfbbf24);
+		orb.setDisplaySize(12, 12);
+		orb.setAlpha(0.95);
+		orb._isAttracting = false;
+		if (orb.body) {
+			orb.body.reset(x, y);
+			orb.setCircle(9);
+		}
 
 		if (orb.body) {
 			orb.body.setAllowGravity(false);
@@ -80,6 +97,22 @@ export default class ProgressionSystem {
 			}
 
 			const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, orb.x, orb.y);
+
+			// Visual rotation
+			orb.setRotation((orb.rotation ?? 0) + delta * 0.01);
+
+			// If within magnet radius, use physics to move the orb toward player
+			if (distance <= this.magnetRadius) {
+				orb._isAttracting = true;
+				if (orb.body) {
+					orb.body.enable = true;
+				}
+				// slower attraction: gentler pull toward player
+				const attractionSpeed = Phaser.Math.Clamp(distance * 1.6, 120, 420);
+				this.scene.physics.moveToObject(orb, this.player, attractionSpeed);
+			}
+
+			// safety: collect if already very close
 			if (distance <= this.collectRadius) {
 				this.collectOrb(orb);
 			}
@@ -93,14 +126,24 @@ export default class ProgressionSystem {
 			return;
 		}
 
+		this.scene?.soundSystem?.play('pickup', { volume: 0.6 });
 		this.addXP(orb.amount ?? this.orbXp);
 		this.recycleOrb(orb);
 	}
 
-	addXP(amount) {
-		this.xp += amount;
+	// Gentle quadratic curve tuned for a 60-round run to level 65
+	xpRequiredFor(level) {
+		return Math.ceil(80 + 35 * level + 1.8 * level * level);
+	}
 
-		while (this.xp >= this.xpToNext) {
+	addXP(amount) {
+		if (this.level >= this.maxLevel) {
+			return;
+		}
+
+		this.xp += amount * (this.xpMultiplier ?? 1);
+
+		while (this.xp >= this.xpToNext && this.level < this.maxLevel) {
 			this.xp -= this.xpToNext;
 			this.levelUp();
 		}
@@ -111,11 +154,7 @@ export default class ProgressionSystem {
 
 	levelUp() {
 		this.level += 1;
-		this.xpToNext = Math.ceil(this.xpToNext * 1.4);
-
-		if ([2, 4, 6, 8, 10].includes(this.level) && this.swordOrbit && typeof this.swordOrbit.addSword === 'function') {
-			this.swordOrbit.addSword(this.scene);
-		}
+		this.xpToNext = this.xpRequiredFor(this.level);
 
 		this.refreshPlayerStats();
 		this.scene.events.emit('levelup', this.level);
@@ -148,7 +187,11 @@ export default class ProgressionSystem {
 		this.hudFill.fillStyle(0xfbbf24, 1);
 		this.hudFill.fillRoundedRect(barX, barY, barWidth * fillRatio, barHeight, 6);
 
-		this.hudText.setText(`Lv. ${this.level}   ${Math.floor(this.xp)} / ${this.xpToNext}`);
+		if (this.level >= this.maxLevel) {
+			this.hudText.setText(`Lv. ${this.level} (MAX)`);
+		} else {
+			this.hudText.setText(`Lv. ${this.level}   ${Math.floor(this.xp)} / ${this.xpToNext}`);
+		}
 	}
 
 	isAliveOrb(orb) {

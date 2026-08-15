@@ -1,0 +1,26 @@
+[
+  {
+    "ingredients": [
+      "ruby",
+      "gold"
+    ],
+    "result": "inferno",
+    "announcement": "⚔ 진화! Inferno Blade"
+  },
+  {
+    "ingredients": [
+      "emerald",
+      "violet"
+    ],
+    "result": "storm",
+    "announcement": "⚔ 진화! Storm Blade"
+  },
+  {
+    "ingredients": [
+      "violet",
+      "obsidian"
+    ],
+    "result": "voidreaver",
+    "announcement": "⚔ 진화! Void Reaver"
+  }
+]
