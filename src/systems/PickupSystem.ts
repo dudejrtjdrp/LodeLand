@@ -1,12 +1,51 @@
 import Phaser from 'phaser';
-import MetaProgression from './MetaProgression.js';
+import MetaProgression from './MetaProgression';
+import type GameScene from '../scenes/GameScene';
+import type { EnemyDefinition } from '../types/catalogs';
+import type { EnemySprite } from '../types/actors';
+import type ProgressionSystem from './ProgressionSystem';
+import type { EnemyDiedPayload, XPOrbSprite } from './ProgressionSystem';
+import type LevelUpSystem from './LevelUpSystem';
+import { GameEvents } from '../core/events';
 
 const PICKUP_DROP_CHANCE = 0.015; // chicken / magnet / bomb from normal enemies
 const COLLECT_RADIUS = 55;
 
+/** Minimal structural view of EnemyManager (converted by another agent). */
+interface EnemyManagerLike {
+	enemies: Phaser.Physics.Arcade.Group;
+	isAliveEnemy(enemy: EnemySprite): boolean;
+	takeDamage(enemy: EnemySprite, amount: number, player?: unknown, options?: unknown): unknown;
+}
+
+export interface PickupItem {
+	obj: Phaser.GameObjects.Text & { destroyed?: boolean };
+	kind: string;
+	amount: number;
+	x: number;
+	y: number;
+}
+
+export interface PickupSystemOptions {
+	progression?: ProgressionSystem | null;
+	levelUpSystem?: LevelUpSystem | null;
+	enemyManager?: EnemyManagerLike | null;
+	goldMult?: number;
+}
+
 // Gold coins, treasure chests (elite/boss) and field pickups.
 export default class PickupSystem {
-	constructor(scene, options = {}) {
+	scene: GameScene;
+	progression: ProgressionSystem | null;
+	levelUpSystem: LevelUpSystem | null;
+	enemyManager: EnemyManagerLike | null;
+	items: PickupItem[];
+	runGold: number;
+	goldMult: number;
+	goldText: Phaser.GameObjects.Text;
+	onEnemyDied: (payload: EnemyDiedPayload) => void;
+
+	constructor(scene: GameScene, options: PickupSystemOptions = {}) {
 		this.scene = scene;
 		this.progression = options.progression ?? null;
 		this.levelUpSystem = options.levelUpSystem ?? null;
@@ -24,13 +63,13 @@ export default class PickupSystem {
 		}).setScrollFactor(0).setDepth(1002);
 		this.goldText.setShadow(0, 2, '#000000', 2, false, true);
 
-		this.onEnemyDied = (payload) => this.handleEnemyDeath(payload);
-		scene.events.on('enemy-died', this.onEnemyDied);
+		this.onEnemyDied = (payload: EnemyDiedPayload) => this.handleEnemyDeath(payload);
+		scene.events.on(GameEvents.ENEMY_DIED, this.onEnemyDied);
 	}
 
-	handleEnemyDeath(payload) {
+	handleEnemyDeath(payload: EnemyDiedPayload): void {
 		const enemy = payload?.enemy;
-		const catalog = enemy?.catalog ?? {};
+		const catalog: Partial<EnemyDefinition> = enemy?.catalog ?? {};
 		const x = payload?.x;
 		const y = payload?.y;
 
@@ -61,8 +100,8 @@ export default class PickupSystem {
 		}
 	}
 
-	spawnItem(x, y, kind, amount = 0) {
-		const emoji = { gold: '🪙', chest: '📦', chicken: '🍗', magnet: '🧲', bomb: '💣', gcoin: '💎' }[kind] ?? '✨';
+	spawnItem(x: number, y: number, kind: string, amount = 0): void {
+		const emoji = ({ gold: '🪙', chest: '📦', chicken: '🍗', magnet: '🧲', bomb: '💣', gcoin: '💎' } as Record<string, string>)[kind] ?? '✨';
 		const size = kind === 'chest' ? '34px' : kind === 'gold' ? '18px' : kind === 'gcoin' ? '30px' : '26px';
 
 		const obj = this.scene.add.text(x, y, emoji, { fontSize: size })
@@ -82,7 +121,7 @@ export default class PickupSystem {
 		this.items.push({ obj, kind, amount, x, y });
 	}
 
-	update() {
+	update(): void {
 		const player = this.scene.player;
 		if (!player || player.isDead) {
 			return;
@@ -115,7 +154,7 @@ export default class PickupSystem {
 		}
 	}
 
-	collect(item) {
+	collect(item: PickupItem): void {
 		const player = this.scene.player;
 
 		switch (item.kind) {
@@ -143,7 +182,7 @@ export default class PickupSystem {
 			case 'magnet': {
 				// Vacuum: collect every live XP orb instantly
 				if (this.progression) {
-					for (const orb of this.progression.orbs.getChildren()) {
+					for (const orb of this.progression.orbs.getChildren() as XPOrbSprite[]) {
 						if (this.progression.isAliveOrb(orb)) {
 							this.progression.collectOrb(orb);
 						}
@@ -160,7 +199,7 @@ export default class PickupSystem {
 				this.scene.cameras.main.flash(300, 255, 255, 255);
 
 				if (this.enemyManager) {
-					for (const enemy of this.enemyManager.enemies.getChildren()) {
+					for (const enemy of this.enemyManager.enemies.getChildren() as EnemySprite[]) {
 						if (!this.enemyManager.isAliveEnemy(enemy)) {
 							continue;
 						}
@@ -182,7 +221,7 @@ export default class PickupSystem {
 		item.obj.destroy();
 	}
 
-	addGold(amount) {
+	addGold(amount: number): void {
 		const gained = Math.max(1, Math.round(amount * this.goldMult));
 		this.runGold += gained;
 		// Lifetime gold counts at EARN time (character unlocks) - spending in the shop doesn't reduce it
@@ -190,7 +229,7 @@ export default class PickupSystem {
 		this.goldText.setText(`🪙 ${this.runGold}`);
 	}
 
-	spendGold(amount) {
+	spendGold(amount: number): boolean {
 		if (this.runGold < amount) {
 			return false;
 		}
@@ -200,7 +239,7 @@ export default class PickupSystem {
 		return true;
 	}
 
-	openChest(item) {
+	openChest(item: PickupItem): void {
 		const player = this.scene.player;
 		const luck = player?.luck ?? 0;
 
@@ -226,8 +265,8 @@ export default class PickupSystem {
 		this.scene.waveSystem?.announce?.(`📦 +${gold} 골드${rewardLabel}`, rolls >= 5 ? '#fbbf24' : '#e5e7eb');
 	}
 
-	destroy() {
-		this.scene.events.off('enemy-died', this.onEnemyDied);
+	destroy(): void {
+		this.scene.events.off(GameEvents.ENEMY_DIED, this.onEnemyDied);
 		for (const item of this.items) {
 			item.obj?.destroy();
 		}

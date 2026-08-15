@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import MetaProgression from '../systems/MetaProgression.js';
+import MetaProgression from '../systems/MetaProgression';
 
 export default class TitleScene extends Phaser.Scene {
 	constructor() {
@@ -51,11 +51,11 @@ export default class TitleScene extends Phaser.Scene {
 			duration: 650,
 		});
 
-		this.input.keyboard.once('keydown-SPACE', () => {
+		this.input.keyboard!.once('keydown-SPACE', () => {
 			this.sound.play('click', { volume: 0.4 });
 			this.scene.start('CharacterSelectScene');
 		});
-		this.input.keyboard.once('keydown-U', () => {
+		this.input.keyboard!.once('keydown-U', () => {
 			this.sound.play('click', { volume: 0.4 });
 			this.scene.start('PowerUpScene');
 		});

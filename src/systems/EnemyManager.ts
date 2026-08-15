@@ -1,7 +1,86 @@
 import Phaser from 'phaser';
+import type GameScene from '../scenes/GameScene';
+import type { DamageType, EnemyBehaviorSpec, EnemyDefinition } from '../types/catalogs';
+import type { EnemyProjectile, EnemySprite, PlayerSprite } from '../types/actors';
+import { GameEvents } from '../core/events';
+import { enemyKnockbackForce, mitigateEnemyDamage, resistFor } from '../logic/combat';
+
+/** Pool entries handed to setSpawnProfile (weight defaults to 1 when omitted). */
+interface SpawnPoolEntry {
+	id: string;
+	weight?: number;
+}
+
+interface SpawnProfileOptions {
+	spawnIntervalMs?: number;
+	pool?: SpawnPoolEntry[];
+	minAlive?: number;
+}
+
+interface EnemyManagerOptions {
+	maxEnemies?: number;
+	hp?: number;
+	speed?: number;
+	damage?: number;
+	xpOrbValue?: number;
+	spawnDistance?: number;
+	spawnInterval?: number;
+	minimumSpawnInterval?: number;
+	spawnIntervalStep?: number;
+	maxBurstPerFrame?: number;
+	hpMult?: number;
+	damageMult?: number;
+	enemyCatalog?: EnemyDefinition[];
+}
+
+interface TakeDamageOptions {
+	silent?: boolean;
+	ignoreResist?: boolean;
+	damageType?: DamageType;
+	pen?: number;
+}
+
+/**
+ * Enemies managed by this system always have their behavior timers initialized
+ * in spawnEnemy, so they are non-optional here.
+ */
+type ManagedEnemy = EnemySprite & {
+	fireTimer: number;
+	healTimer: number;
+	fuseStartedAt: number;
+	dotUntil: number;
+	dotDps: number;
+	dotTick: number;
+	slowUntil: number;
+	slowFactor: number;
+};
+
+/** `expiresAt` is missing from the shared EnemyProjectile type; extended locally. */
+type ManagedProjectile = EnemyProjectile & { expiresAt?: number };
 
 export default class EnemyManager {
-	constructor(scene, options = {}) {
+	scene: GameScene;
+	enemies: Phaser.Physics.Arcade.Group;
+	enemyHp: number;
+	enemySpeed: number;
+	enemyDamage: number;
+	xpOrbValue: number;
+	spawnDistance: number;
+	spawnInterval: number;
+	minimumSpawnInterval: number;
+	spawnIntervalStep: number;
+	spawnTimer: number;
+	nextSpawnInterval: number;
+	totalSpawned: number;
+	enemyCatalog: EnemyDefinition[];
+	spawnPool: SpawnPoolEntry[] | null;
+	minAlive: number;
+	maxBurstPerFrame: number;
+	hpMult: number;
+	damageMult: number;
+	projectiles: Phaser.Physics.Arcade.Group;
+
+	constructor(scene: GameScene, options: EnemyManagerOptions = {}) {
 		this.scene = scene;
 		this.enemies = scene.physics.add.group({ maxSize: options.maxEnemies ?? 128 });
 		this.enemyHp = options.hp ?? 30;
@@ -24,7 +103,7 @@ export default class EnemyManager {
 		this.projectiles = scene.physics.add.group({ maxSize: 96 });
 	}
 
-	setSpawnProfile({ spawnIntervalMs, pool, minAlive } = {}) {
+	setSpawnProfile({ spawnIntervalMs, pool, minAlive }: SpawnProfileOptions = {}): void {
 		if (typeof spawnIntervalMs === 'number') {
 			this.nextSpawnInterval = spawnIntervalMs;
 			this.spawnIntervalStep = 0;
@@ -39,11 +118,11 @@ export default class EnemyManager {
 		}
 	}
 
-	getEnemyTypeById(id) {
+	getEnemyTypeById(id: string): EnemyDefinition | null {
 		return this.enemyCatalog.find((entry) => entry.id === id) ?? null;
 	}
 
-	pickFromSpawnPool() {
+	pickFromSpawnPool(): EnemyDefinition | null {
 		if (!Array.isArray(this.spawnPool) || this.spawnPool.length === 0) {
 			return this.getRandomEnemyType();
 		}
@@ -61,23 +140,28 @@ export default class EnemyManager {
 		return this.getRandomEnemyType();
 	}
 
-	getRandomEnemyType() {
+	getRandomEnemyType(): EnemyDefinition | null {
 		if (!this.enemyCatalog.length) {
 			return null;
 		}
 		return this.enemyCatalog[Math.floor(Math.random() * this.enemyCatalog.length)];
 	}
 
-	spawnEnemy(scene = this.scene, player, typeId = null, positionOverride = null) {
+	spawnEnemy(
+		scene: GameScene = this.scene,
+		player?: PlayerSprite,
+		typeId: string | null = null,
+		positionOverride: { x: number; y: number } | null = null,
+	): ManagedEnemy | false {
 		if (!scene || !player) {
 			return false;
 		}
 
 		const position = positionOverride ?? this.getSpawnPosition(scene, player);
-		let enemy = this.enemies.getFirstDead(false);
+		let enemy = this.enemies.getFirstDead(false) as ManagedEnemy | null;
 
 		// Get enemy type: explicit id > weighted wave pool > random catalog entry
-		const enemyType = (typeId ? this.getEnemyTypeById(typeId) : this.pickFromSpawnPool()) ?? {};
+		const enemyType = (typeId ? this.getEnemyTypeById(typeId) : this.pickFromSpawnPool()) ?? ({} as Partial<EnemyDefinition>);
 		const config = enemyType ?? {};
 
 		// Determine texture key based on spriteType
@@ -97,7 +181,7 @@ export default class EnemyManager {
 		}
 
 		if (!enemy) {
-			enemy = this.enemies.create(position.x, position.y, textureKey);
+			enemy = this.enemies.create(position.x, position.y, textureKey) as ManagedEnemy | null;
 		} else {
 			enemy.setTexture(textureKey);
 			enemy.setFrame?.(0);
@@ -126,23 +210,23 @@ export default class EnemyManager {
 		enemy.critChance = config.critChance ?? 0;
 		enemy.critDamageMultiplier = config.critDamageMultiplier ?? 1.0;
 		enemy.spriteType = config.spriteType ?? 'placeholder';
-		enemy.catalog = config; // Store full config for later animation access
+		enemy.catalog = config as EnemyDefinition; // Store full config for later animation access
 		enemy.knockbackUntil = 0;
 		enemy.knockbackResist = config.knockbackResist ?? 0;
 		enemy.healthBarWidth = config.healthBarWidth ?? 40;
 		enemy.isDying = false;
 		enemy.spawnGeneration = (enemy.spawnGeneration ?? 0) + 1;
-		enemy.behavior = config.behavior ?? null;
+		enemy.behavior = (config.behavior ?? null) as EnemyBehaviorSpec | undefined;
 		enemy.physicalResist = config.physicalResist ?? 0;
 		enemy.magicResist = config.magicResist ?? 0;
-		enemy.splitInto = config.splitInto ?? null;
+		enemy.splitInto = (config.splitInto ?? null) as EnemySprite['splitInto'];
 		enemy.fireTimer = Phaser.Math.Between(0, 800);
 		enemy.healTimer = 0;
 		enemy.fuseStartedAt = 0;
 		enemy.dotUntil = 0;
 		enemy.dotDps = 0;
 		enemy.dotTick = 0;
-		enemy.dotColor = null;
+		enemy.dotColor = null as unknown as number;
 		enemy.slowUntil = 0;
 		enemy.slowFactor = 1;
 
@@ -170,7 +254,7 @@ export default class EnemyManager {
 					enemy.play(idleAnimKey, true);
 					console.log(`✓ Playing animation: ${idleAnimKey}`);
 				} catch (err) {
-					console.warn(`Failed to play animation ${idleAnimKey}:`, err.message);
+					console.warn(`Failed to play animation ${idleAnimKey}:`, (err as Error).message);
 				}
 			} else {
 				console.warn(`Animation not found: ${idleAnimKey}`);
@@ -178,15 +262,15 @@ export default class EnemyManager {
 		}
 
 		if (enemy.body) {
-			enemy.body.setAllowGravity(false);
-			enemy.body.setImmovable(false);
+			(enemy.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+			(enemy.body as Phaser.Physics.Arcade.Body).setImmovable(false);
 		}
 
 		this.totalSpawned += 1;
 		return enemy;
 	}
 
-	update(player, delta) {
+	update(player: PlayerSprite, delta: number): void {
 		if (!this.scene || !player) {
 			return;
 		}
@@ -201,7 +285,7 @@ export default class EnemyManager {
 
 		// Keep the pressure on: top up to the wave's minimum alive count.
 		if (this.minAlive > 0) {
-			const aliveCount = this.enemies.getChildren().filter((enemy) => this.isAliveEnemy(enemy)).length;
+			const aliveCount = this.enemies.getChildren().filter((enemy) => this.isAliveEnemy(enemy as EnemySprite)).length;
 			const deficit = Math.min(this.minAlive - aliveCount, this.maxBurstPerFrame);
 			for (let i = 0; i < deficit; i += 1) {
 				this.spawnEnemy(this.scene, player);
@@ -209,7 +293,7 @@ export default class EnemyManager {
 		}
 
 		const now = this.scene.time?.now ?? 0;
-		for (const enemy of this.enemies.getChildren()) {
+		for (const enemy of this.enemies.getChildren() as ManagedEnemy[]) {
 			if (!this.isAliveEnemy(enemy)) {
 				continue;
 			}
@@ -242,7 +326,7 @@ export default class EnemyManager {
 	// Behaviors: ranged / bomber / healer / default chase
 	// ---------------------------------------------------------------
 
-	updateEnemyBehavior(enemy, player, now, delta) {
+	updateEnemyBehavior(enemy: ManagedEnemy, player: PlayerSprite, now: number, delta: number): void {
 		const behavior = enemy.behavior;
 		const slowed = now < (enemy.slowUntil ?? 0);
 		const speed = (enemy.speed ?? this.enemySpeed) * (slowed ? (enemy.slowFactor ?? 1) : 1);
@@ -319,7 +403,7 @@ export default class EnemyManager {
 		this.scene.physics.moveTo(enemy, player.x, player.y, speed);
 	}
 
-	fireProjectiles(enemy, player, behavior) {
+	fireProjectiles(enemy: ManagedEnemy, player: PlayerSprite, behavior: EnemyBehaviorSpec): void {
 		const count = behavior.projectileCount ?? 1;
 		const spread = Phaser.Math.DegToRad(behavior.spreadDeg ?? 0);
 		const baseAngle = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
@@ -328,9 +412,9 @@ export default class EnemyManager {
 			const offset = count > 1 ? spread * (i / (count - 1) - 0.5) : 0;
 			const angle = baseAngle + offset;
 
-			let bullet = this.projectiles.getFirstDead(false);
+			let bullet = this.projectiles.getFirstDead(false) as ManagedProjectile | null;
 			if (!bullet) {
-				bullet = this.projectiles.create(enemy.x, enemy.y, 'enemy_bullet');
+				bullet = this.projectiles.create(enemy.x, enemy.y, 'enemy_bullet') as ManagedProjectile | null;
 			}
 			if (!bullet) {
 				return;
@@ -344,22 +428,22 @@ export default class EnemyManager {
 			bullet.damage = behavior.projectileDamage ?? 12;
 			bullet.expiresAt = (this.scene.time?.now ?? 0) + 3000;
 			if (bullet.body) {
-				bullet.body.setAllowGravity(false);
+				(bullet.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
 			}
 			const speed = behavior.projectileSpeed ?? 260;
 			bullet.setVelocity(Math.cos(angle) * speed, Math.sin(angle) * speed);
 		}
 	}
 
-	updateProjectiles(now) {
-		for (const bullet of this.projectiles.getChildren()) {
+	updateProjectiles(now: number): void {
+		for (const bullet of this.projectiles.getChildren() as ManagedProjectile[]) {
 			if (bullet.active && now >= (bullet.expiresAt ?? 0)) {
 				this.recycleProjectile(bullet);
 			}
 		}
 	}
 
-	recycleProjectile(bullet) {
+	recycleProjectile(bullet: EnemyProjectile | null | undefined): void {
 		if (!bullet) {
 			return;
 		}
@@ -369,7 +453,7 @@ export default class EnemyManager {
 		bullet.setVisible(false);
 	}
 
-	explodeBomber(enemy, player, behavior) {
+	explodeBomber(enemy: ManagedEnemy, player: PlayerSprite, behavior: EnemyBehaviorSpec): void {
 		const radius = behavior.explodeRadius ?? 170;
 		const blast = this.scene.add.circle(enemy.x, enemy.y, radius, 0xf97316, 0.4).setDepth(58);
 		this.scene.tweens.add({
@@ -391,12 +475,12 @@ export default class EnemyManager {
 		this.die(enemy, player);
 	}
 
-	healPulse(healer, behavior) {
+	healPulse(healer: ManagedEnemy, behavior: EnemyBehaviorSpec): void {
 		const radius = behavior.healRadius ?? 260;
 		const radiusSquared = radius * radius;
 		let healedAny = false;
 
-		for (const ally of this.enemies.getChildren()) {
+		for (const ally of this.enemies.getChildren() as ManagedEnemy[]) {
 			if (!this.isAliveEnemy(ally) || ally === healer || ally.isDying) {
 				continue;
 			}
@@ -427,7 +511,7 @@ export default class EnemyManager {
 	}
 
 	// Damage-over-time (sword burn/poison specials)
-	applyDot(enemy, dps, durationMs, color = 0xf97316) {
+	applyDot(enemy: EnemySprite, dps: number, durationMs: number, color: number = 0xf97316): void {
 		if (!this.isAliveEnemy(enemy)) {
 			return;
 		}
@@ -438,7 +522,7 @@ export default class EnemyManager {
 		enemy.dotColor = color;
 	}
 
-	updateDot(enemy, now, delta) {
+	updateDot(enemy: ManagedEnemy, now: number, delta: number): void {
 		if (!enemy.dotUntil || now >= enemy.dotUntil) {
 			enemy.dotDps = 0;
 			return;
@@ -457,8 +541,8 @@ export default class EnemyManager {
 	}
 
 	// Round transition: wipe the field (bosses and the reaper survive)
-	clearField() {
-		for (const enemy of this.enemies.getChildren()) {
+	clearField(): void {
+		for (const enemy of this.enemies.getChildren() as ManagedEnemy[]) {
 			if (!this.isAliveEnemy(enemy)) {
 				continue;
 			}
@@ -468,12 +552,17 @@ export default class EnemyManager {
 			this.recycleEnemy(enemy);
 		}
 
-		for (const bullet of this.projectiles.getChildren()) {
+		for (const bullet of this.projectiles.getChildren() as ManagedProjectile[]) {
 			this.recycleProjectile(bullet);
 		}
 	}
 
-	takeDamage(enemy, amount, player = this.scene?.player, options = {}) {
+	takeDamage(
+		enemy: EnemySprite,
+		amount: number,
+		player: PlayerSprite | undefined = this.scene?.player,
+		options: TakeDamageOptions = {},
+	): void {
 		if (!this.isAliveEnemy(enemy) || enemy.isDying) {
 			return;
 		}
@@ -481,13 +570,8 @@ export default class EnemyManager {
 		// Typed mitigation: physical/magic resist, reduced by the attacker's penetration.
 		// ignoreResist (true damage, %HP damage) bypasses everything.
 		if (!options.ignoreResist) {
-			const resist = options.damageType === 'magic'
-				? (enemy.magicResist ?? 0)
-				: (enemy.physicalResist ?? 0);
-			const effectiveResist = Math.max(0, resist - (options.pen ?? 0));
-			if (effectiveResist > 0) {
-				amount = Math.max(1, Math.round(amount * (1 - effectiveResist)));
-			}
+			const resist = resistFor(options.damageType, enemy.physicalResist ?? 0, enemy.magicResist ?? 0);
+			amount = mitigateEnemyDamage(amount, resist, options.pen ?? 0);
 		}
 
 		enemy.hp -= amount;
@@ -507,7 +591,7 @@ export default class EnemyManager {
 		const resist = enemy.knockbackResist ?? 0;
 		if (!options.silent && resist < 1 && player && enemy.body) {
 			const angle = Phaser.Math.Angle.Between(player.x, player.y, enemy.x, enemy.y);
-			const force = 220 * (1 - resist);
+			const force = enemyKnockbackForce(resist);
 			enemy.setVelocity(Math.cos(angle) * force, Math.sin(angle) * force);
 			enemy.knockbackUntil = (this.scene?.time?.now ?? 0) + 140;
 		}
@@ -523,7 +607,7 @@ export default class EnemyManager {
 				try {
 					enemy.play(hitAnimKey, true);
 				} catch (err) {
-					console.warn(`Failed to play animation ${hitAnimKey}:`, err.message);
+					console.warn(`Failed to play animation ${hitAnimKey}:`, (err as Error).message);
 				}
 			}
 		}
@@ -533,7 +617,7 @@ export default class EnemyManager {
 		}
 	}
 
-	die(enemy, player = this.scene?.player) {
+	die(enemy: EnemySprite, player: PlayerSprite | undefined = this.scene?.player): void {
 		if (!enemy || enemy.destroyed || enemy.isDying) {
 			return;
 		}
@@ -547,7 +631,7 @@ export default class EnemyManager {
 				try {
 					enemy.play(deathAnimKey, true);
 				} catch (err) {
-					console.warn(`Failed to play animation ${deathAnimKey}:`, err.message);
+					console.warn(`Failed to play animation ${deathAnimKey}:`, (err as Error).message);
 				}
 			}
 		}
@@ -576,7 +660,7 @@ export default class EnemyManager {
 			this.scene?.soundSystem?.play('kill');
 		}
 
-		this.scene?.events?.emit('enemy-died', {
+		this.scene?.events?.emit(GameEvents.ENEMY_DIED, {
 			enemy,
 			x: enemy.x,
 			y: enemy.y,
@@ -595,7 +679,7 @@ export default class EnemyManager {
 		});
 	}
 
-	playDeathEffect(x, y, sizeMultiplier = 1) {
+	playDeathEffect(x: number, y: number, sizeMultiplier = 1): void {
 		if (!this.scene) {
 			return;
 		}
@@ -613,7 +697,7 @@ export default class EnemyManager {
 		});
 	}
 
-	recycleEnemy(enemy) {
+	recycleEnemy(enemy: EnemySprite | null | undefined): void {
 		if (!enemy) {
 			return;
 		}
@@ -626,11 +710,11 @@ export default class EnemyManager {
 		this.scene?.visualEffects?.removeHealthBar(enemy);
 	}
 
-	increaseSpawnRate() {
+	increaseSpawnRate(): void {
 		this.nextSpawnInterval = Math.max(this.minimumSpawnInterval, this.nextSpawnInterval - this.spawnIntervalStep);
 	}
 
-	getSpawnPosition(scene, player) {
+	getSpawnPosition(scene: GameScene, player: PlayerSprite): { x: number; y: number } {
 		const { width, height } = scene.scale;
 		const camera = scene.cameras.main;
 		const worldCenterX = player.x;
@@ -656,7 +740,7 @@ export default class EnemyManager {
 		};
 	}
 
-	isAliveEnemy(enemy) {
+	isAliveEnemy(enemy: EnemySprite | null | undefined): boolean {
 		return Boolean(enemy && enemy.active !== false && enemy.visible !== false && !enemy.destroyed);
 	}
 }

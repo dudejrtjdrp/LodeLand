@@ -1,10 +1,25 @@
 import Phaser from 'phaser';
-import playerCatalog from '../data/playerCatalog.json';
-import MetaProgression from '../systems/MetaProgression.js';
+import playerCatalogRaw from '../data/playerCatalog.json';
+import MetaProgression from '../systems/MetaProgression';
+import type { PlayerDefinition } from '../types/catalogs';
+
+const playerCatalog = playerCatalogRaw as unknown as PlayerDefinition[];
 
 const MAX_DANGER = 2;
 
+interface CharacterCard {
+	character: PlayerDefinition;
+	background: Phaser.GameObjects.Rectangle;
+	statusText: Phaser.GameObjects.Text;
+}
+
 export default class CharacterSelectScene extends Phaser.Scene {
+	selectedId!: string;
+	danger!: number;
+	goldText!: Phaser.GameObjects.Text;
+	dangerText!: Phaser.GameObjects.Text;
+	cards!: CharacterCard[];
+
 	constructor() {
 		super('CharacterSelectScene');
 	}
@@ -53,10 +68,10 @@ export default class CharacterSelectScene extends Phaser.Scene {
 		}).setOrigin(0.5);
 		this.tweens.add({ targets: startText, alpha: 0.45, yoyo: true, repeat: -1, duration: 650 });
 
-		this.input.keyboard.on('keydown-SPACE', () => this.startRun());
-		this.input.keyboard.on('keydown-LEFT', () => this.cycleDanger(-1));
-		this.input.keyboard.on('keydown-RIGHT', () => this.cycleDanger(1));
-		this.input.keyboard.on('keydown-ESC', () => this.scene.start('TitleScene'));
+		this.input.keyboard!.on('keydown-SPACE', () => this.startRun());
+		this.input.keyboard!.on('keydown-LEFT', () => this.cycleDanger(-1));
+		this.input.keyboard!.on('keydown-RIGHT', () => this.cycleDanger(1));
+		this.input.keyboard!.on('keydown-ESC', () => this.scene.start('TitleScene'));
 
 		this.refresh();
 	}
@@ -126,7 +141,7 @@ export default class CharacterSelectScene extends Phaser.Scene {
 		});
 	}
 
-	handleCardClick(character) {
+	handleCardClick(character: PlayerDefinition) {
 		const unlocked = MetaProgression.isCharacterUnlocked(character.id, character.unlockGold ?? 0);
 
 		if (unlocked) {

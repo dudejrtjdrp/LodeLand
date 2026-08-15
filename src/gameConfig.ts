@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import GameScene from './scenes/GameScene.js';
+import GameScene from './scenes/GameScene';
 
-export const gameConfig = {
+export const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: 'app',
   width: 1280,
@@ -10,7 +10,7 @@ export const gameConfig = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 0 },
+      gravity: { y: 0 } as Phaser.Types.Math.Vector2Like,
       debug: false,
     },
   },

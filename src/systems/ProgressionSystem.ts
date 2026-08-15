@@ -1,7 +1,60 @@
 import Phaser from 'phaser';
+import type GameScene from '../scenes/GameScene';
+import type { EnemySprite, PlayerSprite } from '../types/actors';
+import { GameEvents } from '../core/events';
+
+/** XP orb pooled sprite with the runtime fields this system attaches. */
+export interface XPOrbSprite extends Phaser.Physics.Arcade.Sprite {
+	amount?: number;
+	_isAttracting?: boolean;
+	destroyed?: boolean;
+}
+
+/** Runtime HUD mirror fields written onto the player (not in PlayerSprite). */
+export interface ProgressionPlayer extends PlayerSprite {
+	xp?: number;
+	level?: number;
+	xpToNext?: number;
+}
+
+/** Payload emitted by EnemyManager on GameEvents.ENEMY_DIED. */
+export interface EnemyDiedPayload {
+	enemy?: EnemySprite;
+	x?: number;
+	y?: number;
+	amount?: number;
+	player?: PlayerSprite;
+}
+
+export interface ProgressionSystemOptions {
+	maxLevel?: number;
+	orbXp?: number;
+	collectRadius?: number;
+	maxOrbs?: number;
+	magnetRadius?: number;
+	orbAttractDurationPerPx?: number;
+}
 
 export default class ProgressionSystem {
-	constructor(scene, swordOrbit, options = {}) {
+	scene: GameScene;
+	swordOrbit: unknown;
+	player: ProgressionPlayer | null;
+	level: number;
+	xp: number;
+	maxLevel: number;
+	xpToNext: number;
+	orbXp: number;
+	collectRadius: number;
+	orbs: Phaser.Physics.Arcade.Group;
+	magnetRadius: number;
+	orbAttractDurationPerPx: number;
+	hudBackground: Phaser.GameObjects.Graphics;
+	hudFill: Phaser.GameObjects.Graphics;
+	hudText: Phaser.GameObjects.Text;
+	/** Set externally (shop XP upgrade); read with `?? 1` fallback. */
+	xpMultiplier?: number;
+
+	constructor(scene: GameScene, swordOrbit?: unknown, options: ProgressionSystemOptions = {}) {
 		this.scene = scene;
 		this.swordOrbit = swordOrbit ?? null;
 		this.player = null;
@@ -23,18 +76,18 @@ export default class ProgressionSystem {
 		}).setScrollFactor(0).setDepth(1002);
 
 		this.hudText.setShadow(0, 2, '#000000', 2, false, true);
-		this.scene.events.on('enemy-died', this.handleEnemyDeath, this);
+		this.scene.events.on(GameEvents.ENEMY_DIED, this.handleEnemyDeath, this);
 		this.refreshPlayerStats();
 		this.drawHud();
 	}
 
-	attachPlayer(player) {
+	attachPlayer(player: ProgressionPlayer): void {
 		this.player = player;
 		this.refreshPlayerStats();
 		this.drawHud();
 	}
 
-	handleEnemyDeath(payload) {
+	handleEnemyDeath(payload: EnemyDiedPayload): void {
 		const x = payload?.x ?? payload?.enemy?.x;
 		const y = payload?.y ?? payload?.enemy?.y;
 		if (typeof x !== 'number' || typeof y !== 'number') {
@@ -49,11 +102,11 @@ export default class ProgressionSystem {
 		this.spawnXPOrb(x, y, amount);
 	}
 
-	spawnXPOrb(x, y, amount = this.orbXp) {
-		let orb = this.orbs.getFirstDead(false);
+	spawnXPOrb(x: number, y: number, amount: number = this.orbXp): XPOrbSprite | false {
+		let orb = this.orbs.getFirstDead(false) as XPOrbSprite | null;
 
 		if (!orb) {
-			orb = this.orbs.create(x, y, 'xp_orb');
+			orb = this.orbs.create(x, y, 'xp_orb') as XPOrbSprite | null;
 		}
 
 		if (!orb) {
@@ -75,14 +128,14 @@ export default class ProgressionSystem {
 		}
 
 		if (orb.body) {
-			orb.body.setAllowGravity(false);
-			orb.body.setImmovable(true);
+			(orb.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+			(orb.body as Phaser.Physics.Arcade.Body).setImmovable(true);
 		}
 
 		return orb;
 	}
 
-	update(player = this.player, delta) {
+	update(player: ProgressionPlayer | null = this.player, delta: number): void {
 		if (player) {
 			this.player = player;
 		}
@@ -91,7 +144,7 @@ export default class ProgressionSystem {
 			return;
 		}
 
-		for (const orb of this.orbs.getChildren()) {
+		for (const orb of this.orbs.getChildren() as XPOrbSprite[]) {
 			if (!this.isAliveOrb(orb)) {
 				continue;
 			}
@@ -121,7 +174,7 @@ export default class ProgressionSystem {
 		this.drawHud();
 	}
 
-	collectOrb(orb) {
+	collectOrb(orb: XPOrbSprite): void {
 		if (!this.isAliveOrb(orb)) {
 			return;
 		}
@@ -132,11 +185,11 @@ export default class ProgressionSystem {
 	}
 
 	// Gentle quadratic curve tuned for a 60-round run to level 65
-	xpRequiredFor(level) {
+	xpRequiredFor(level: number): number {
 		return Math.ceil(80 + 35 * level + 1.8 * level * level);
 	}
 
-	addXP(amount) {
+	addXP(amount: number): void {
 		if (this.level >= this.maxLevel) {
 			return;
 		}
@@ -152,15 +205,15 @@ export default class ProgressionSystem {
 		this.drawHud();
 	}
 
-	levelUp() {
+	levelUp(): void {
 		this.level += 1;
 		this.xpToNext = this.xpRequiredFor(this.level);
 
 		this.refreshPlayerStats();
-		this.scene.events.emit('levelup', this.level);
+		this.scene.events.emit(GameEvents.LEVEL_UP, this.level);
 	}
 
-	refreshPlayerStats() {
+	refreshPlayerStats(): void {
 		if (!this.player) {
 			return;
 		}
@@ -170,7 +223,7 @@ export default class ProgressionSystem {
 		this.player.xpToNext = this.xpToNext;
 	}
 
-	drawHud() {
+	drawHud(): void {
 		const barX = 16;
 		const barY = 44;
 		const barWidth = 180;
@@ -194,11 +247,11 @@ export default class ProgressionSystem {
 		}
 	}
 
-	isAliveOrb(orb) {
+	isAliveOrb(orb: XPOrbSprite | null | undefined): boolean {
 		return Boolean(orb && orb.active !== false && orb.visible !== false && !orb.destroyed);
 	}
 
-	recycleOrb(orb) {
+	recycleOrb(orb: XPOrbSprite | null): void {
 		if (!orb) {
 			return;
 		}

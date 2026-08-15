@@ -1,7 +1,25 @@
 import Phaser from 'phaser';
+import type GameScene from '../scenes/GameScene';
+import type { EnemySprite, PlayerSprite } from '../types/actors';
+
+/** Phaser sets no public `destroyed` flag; the game checks it defensively. */
+type Rect = Phaser.GameObjects.Rectangle & { destroyed?: boolean };
+
+type HealthBarEntity = PlayerSprite | EnemySprite;
+
+export interface HealthBar {
+	background: Rect;
+	bar: Rect;
+	entity: HealthBarEntity;
+}
 
 export default class VisualEffectsSystem {
-	constructor(scene) {
+	scene: GameScene;
+	healthBars: Map<HealthBarEntity, HealthBar>;
+	damageTexts: Phaser.GameObjects.Text[];
+	hitStopActive: boolean;
+
+	constructor(scene: GameScene) {
 		this.scene = scene;
 		this.healthBars = new Map(); // track health bars by owner (player/enemy)
 		this.damageTexts = [];
@@ -9,7 +27,7 @@ export default class VisualEffectsSystem {
 	}
 
 	// Brief freeze-frame on impactful moments (crits, elite kills).
-	hitStop(durationMs = 50) {
+	hitStop(durationMs = 50): void {
 		const scene = this.scene;
 
 		if (this.hitStopActive || scene.levelUpSystem?.isOpen || scene.player?.isDead || scene.isPaused || scene.shopSystem?.isOpen) {
@@ -30,7 +48,7 @@ export default class VisualEffectsSystem {
 	}
 
 	// White flash on hit, restoring the sprite's variant tint afterwards.
-	flashSprite(sprite, durationMs = 70) {
+	flashSprite(sprite: EnemySprite, durationMs = 70): void {
 		if (!sprite || sprite.destroyed) {
 			return;
 		}
@@ -51,12 +69,13 @@ export default class VisualEffectsSystem {
 	}
 
 	// Create or update health bar above an entity
-	updateHealthBar(entity, maxHp, currentHp, width = 40, height = 6) {
+	updateHealthBar(entity: HealthBarEntity, maxHp: number, currentHp: number, width = 40, height = 6): HealthBar | null {
 		if (!entity || maxHp <= 0) {
 			return null;
 		}
 
-		const key = entity.constructor.name + '_' + entity.id ?? Math.random();
+		// (original JS appended `?? Math.random()` — unreachable, the string is never nullish)
+		const key = entity.constructor.name + '_' + (entity as { id?: number }).id;
 		let barContainer = this.healthBars.get(entity);
 
 		if (!barContainer) {
@@ -92,7 +111,7 @@ export default class VisualEffectsSystem {
 	}
 
 	// Remove health bar
-	removeHealthBar(entity) {
+	removeHealthBar(entity: HealthBarEntity): void {
 		if (!entity) return;
 		const bar = this.healthBars.get(entity);
 		if (bar) {
@@ -107,7 +126,7 @@ export default class VisualEffectsSystem {
 	}
 
 	// Show floating damage text
-	showDamageText(x, y, damage, isCrit = false, colorOverride = null) {
+	showDamageText(x: number, y: number, damage: number | string, isCrit = false, colorOverride: string | null = null): void {
 		const fontSize = isCrit ? 28 : 20;
 		const color = colorOverride ?? (isCrit ? '#ffff00' : '#ff4444');
 		const shadowColor = isCrit ? '#ff8800' : '#000000';
@@ -118,7 +137,7 @@ export default class VisualEffectsSystem {
 			stroke: shadowColor,
 			strokeThickness: 2,
 			align: 'center',
-		});
+		} as Phaser.Types.GameObjects.Text.TextStyle);
 
 		text.setOrigin(0.5, 0.5);
 		text.setDepth(100);
@@ -139,7 +158,7 @@ export default class VisualEffectsSystem {
 	}
 
 	// Clean up all health bars
-	destroy() {
+	destroy(): void {
 		for (const [entity, bar] of this.healthBars) {
 			bar.background.destroy();
 			bar.bar.destroy();

@@ -1,14 +1,77 @@
 import Phaser from 'phaser';
-import waveTable from '../data/waveTable.json';
-import MetaProgression from './MetaProgression.js';
+import rawWaveTable from '../data/waveTable.json';
+import MetaProgression from './MetaProgression';
+import type GameScene from '../scenes/GameScene';
+import type { WavePoolEntry, WaveSpec, WaveTable } from '../types/catalogs';
+import type { EnemySprite, PlayerSprite } from '../types/actors';
+import { GameEvents } from '../core/events';
+import type EnemyManager from './EnemyManager';
+
+const waveTable = rawWaveTable as unknown as WaveTable;
 
 const TOTAL_ROUNDS = 60;
 const MINIBOSS_ROTATION = ['mb-bulwark', 'mb-slimeking', 'mb-archerlord', 'mb-plaguehealer'];
 
+interface WaveSystemOptions {
+	enemyManager?: EnemyManager | null;
+}
+
+/**
+ * A round objective. `type` decides which of the optional fields are present:
+ * kill-count/kill-target carry `required`, kill-target carries `targetId`
+ * (+ optional `poolBoost`), survive carries `durationMs` + `overridePool`.
+ */
+interface RoundObjective {
+	type: 'kill-count' | 'kill-target' | 'survive';
+	label: string;
+	required?: number;
+	targetId?: string;
+	poolBoost?: boolean;
+	durationMs?: number;
+	overridePool?: WavePoolEntry[];
+}
+
+/** Payload emitted by EnemyManager.die via GameEvents.ENEMY_DIED. */
+interface EnemyDiedPayload {
+	enemy: EnemySprite;
+	x: number;
+	y: number;
+	amount: number;
+	player?: PlayerSprite;
+}
+
+interface WaveResults {
+	survivedMs: number;
+	killCount: number;
+	completed: boolean;
+	round: number;
+}
+
 // Objective-based rounds: each round ends when its goal is met
 // (kill count / hunt / survive / elites / miniboss / boss), not on a timer.
 export default class WaveSystem {
-	constructor(scene, options = {}) {
+	scene: GameScene;
+	enemyManager: EnemyManager | null;
+	waves: WaveSpec[];
+	totalRounds: number;
+	round: number;
+	roundActive: boolean;
+	roundElapsedMs: number;
+	elapsedMs: number;
+	killCount: number;
+	killsThisRound: number;
+	targetKills: number;
+	objective: RoundObjective | null;
+	runCompleted: boolean;
+	ensureTimer: number;
+	roundOpener: { until: number } | null;
+	timerText: Phaser.GameObjects.Text;
+	objectiveText: Phaser.GameObjects.Text;
+	killText: Phaser.GameObjects.Text;
+	onEnemyDied: (payload: EnemyDiedPayload) => void;
+	activeAnnouncements?: number;
+
+	constructor(scene: GameScene, options: WaveSystemOptions = {}) {
 		this.scene = scene;
 		this.enemyManager = options.enemyManager ?? null;
 
@@ -57,19 +120,19 @@ export default class WaveSystem {
 				this.targetKills += 1;
 			}
 		};
-		scene.events.on('enemy-died', this.onEnemyDied);
+		scene.events.on(GameEvents.ENEMY_DIED, this.onEnemyDied);
 	}
 
 	// ---------------------------------------------------------------
 	// Round definitions
 	// ---------------------------------------------------------------
 
-	getWaveForRound(round) {
+	getWaveForRound(round: number): WaveSpec {
 		const bracket = Math.min(this.waves.length - 1, Math.floor((round - 1) / 4));
 		return this.waves[bracket] ?? this.waves[0];
 	}
 
-	buildObjective(round) {
+	buildObjective(round: number): RoundObjective {
 		if (round === this.totalRounds) {
 			return { type: 'kill-target', targetId: 'death-lord', required: 1, label: '☠ 최종 보스: 데스 로드 처치' };
 		}
@@ -120,7 +183,7 @@ export default class WaveSystem {
 		return { type: 'kill-target', targetId: 'skullwolf-elite', required, label: `정예 ${required}마리 처치` };
 	}
 
-	getToughHalf(pool) {
+	getToughHalf(pool: WavePoolEntry[]): WavePoolEntry[] {
 		if (!Array.isArray(pool) || pool.length <= 1) {
 			return pool ?? [];
 		}
@@ -138,7 +201,7 @@ export default class WaveSystem {
 	// Round lifecycle
 	// ---------------------------------------------------------------
 
-	startRound(round) {
+	startRound(round: number): void {
 		this.round = round;
 		this.roundActive = true;
 		this.roundElapsedMs = 0;
@@ -158,7 +221,7 @@ export default class WaveSystem {
 
 		let pool = this.objective.overridePool ?? wave.pool;
 		if (this.objective.poolBoost) {
-			pool = [...wave.pool, { id: this.objective.targetId, weight: 8 }];
+			pool = [...wave.pool, { id: this.objective.targetId!, weight: 8 }];
 		}
 
 		this.enemyManager?.setSpawnProfile?.({
@@ -183,7 +246,7 @@ export default class WaveSystem {
 
 		// Spawn kill-target objectives up front (bosses, minibosses, elites, hunt seeds)
 		if (this.objective.type === 'kill-target' && !this.objective.poolBoost) {
-			for (let i = 0; i < this.objective.required; i += 1) {
+			for (let i = 0; i < this.objective.required!; i += 1) {
 				this.enemyManager?.spawnEnemy?.(this.scene, this.scene.player, this.objective.targetId);
 			}
 			this.scene.cameras.main.shake(280, 0.006);
@@ -193,24 +256,24 @@ export default class WaveSystem {
 		this.announce(`ROUND ${round}  —  ${this.objective.label}`, round % 10 === 0 ? '#ef4444' : '#fbbf24');
 	}
 
-	isObjectiveComplete() {
+	isObjectiveComplete(): boolean {
 		if (!this.objective) {
 			return false;
 		}
 
 		switch (this.objective.type) {
 			case 'kill-count':
-				return this.killsThisRound >= this.objective.required;
+				return this.killsThisRound >= this.objective.required!;
 			case 'kill-target':
-				return this.targetKills >= this.objective.required;
+				return this.targetKills >= this.objective.required!;
 			case 'survive':
-				return this.roundElapsedMs >= this.objective.durationMs;
+				return this.roundElapsedMs >= this.objective.durationMs!;
 			default:
 				return false;
 		}
 	}
 
-	completeRound() {
+	completeRound(): void {
 		this.roundActive = false;
 		this.roundOpener = null;
 
@@ -230,7 +293,7 @@ export default class WaveSystem {
 		this.scene.shopSystem?.open?.(this.round);
 	}
 
-	update(delta) {
+	update(delta: number): void {
 		this.elapsedMs += delta;
 
 		if (this.runCompleted) {
@@ -254,7 +317,7 @@ export default class WaveSystem {
 			const wave = this.getWaveForRound(this.round);
 			let pool = this.objective?.overridePool ?? wave.pool;
 			if (this.objective?.poolBoost) {
-				pool = [...wave.pool, { id: this.objective.targetId, weight: 8 }];
+				pool = [...wave.pool, { id: this.objective.targetId!, weight: 8 }];
 			}
 			this.enemyManager?.setSpawnProfile?.({ pool });
 		}
@@ -265,9 +328,9 @@ export default class WaveSystem {
 			this.ensureTimer += delta;
 			if (this.ensureTimer >= 4000) {
 				this.ensureTimer = 0;
-				const remaining = this.objective.required - this.targetKills;
-				const alive = this.enemyManager?.enemies?.getChildren()
-					?.filter((enemy) => enemy.active && enemy.enemyType === this.objective.targetId).length ?? 0;
+				const remaining = this.objective.required! - this.targetKills;
+				const alive = (this.enemyManager?.enemies?.getChildren() as EnemySprite[] | undefined)
+					?.filter((enemy) => enemy.active && enemy.enemyType === this.objective!.targetId).length ?? 0;
 				if (remaining > 0 && alive < remaining) {
 					this.enemyManager?.spawnEnemy?.(this.scene, this.scene.player, this.objective.targetId);
 				}
@@ -285,18 +348,18 @@ export default class WaveSystem {
 	// HUD & helpers
 	// ---------------------------------------------------------------
 
-	getObjectiveProgress() {
+	getObjectiveProgress(): string {
 		if (!this.objective) {
 			return '';
 		}
 
 		switch (this.objective.type) {
 			case 'kill-count':
-				return `${this.objective.label}  (${Math.min(this.killsThisRound, this.objective.required)}/${this.objective.required})`;
+				return `${this.objective.label}  (${Math.min(this.killsThisRound, this.objective.required!)}/${this.objective.required})`;
 			case 'kill-target':
-				return `${this.objective.label}  (${Math.min(this.targetKills, this.objective.required)}/${this.objective.required})`;
+				return `${this.objective.label}  (${Math.min(this.targetKills, this.objective.required!)}/${this.objective.required})`;
 			case 'survive': {
-				const remaining = Math.max(0, Math.ceil((this.objective.durationMs - this.roundElapsedMs) / 1000));
+				const remaining = Math.max(0, Math.ceil((this.objective.durationMs! - this.roundElapsedMs) / 1000));
 				return `${this.objective.label}  (남은 시간 ${remaining}초)`;
 			}
 			default:
@@ -304,7 +367,7 @@ export default class WaveSystem {
 		}
 	}
 
-	updateHud() {
+	updateHud(): void {
 		const width = this.scene.scale.width;
 
 		this.timerText.setText(`ROUND ${Math.max(1, this.round)} / ${this.totalRounds}`);
@@ -317,7 +380,7 @@ export default class WaveSystem {
 		this.killText.setX(width / 2);
 	}
 
-	announce(message, color = '#fbbf24') {
+	announce(message: string, color = '#fbbf24'): void {
 		const { width, height } = this.scene.scale;
 		this.activeAnnouncements = (this.activeAnnouncements ?? 0) + 1;
 		const stackOffset = (this.activeAnnouncements - 1) * 44;
@@ -351,7 +414,7 @@ export default class WaveSystem {
 		});
 	}
 
-	getResults() {
+	getResults(): WaveResults {
 		return {
 			survivedMs: this.elapsedMs,
 			killCount: this.killCount,
@@ -360,8 +423,8 @@ export default class WaveSystem {
 		};
 	}
 
-	destroy() {
-		this.scene.events.off('enemy-died', this.onEnemyDied);
+	destroy(): void {
+		this.scene.events.off(GameEvents.ENEMY_DIED, this.onEnemyDied);
 		this.timerText?.destroy();
 		this.objectiveText?.destroy();
 		this.killText?.destroy();

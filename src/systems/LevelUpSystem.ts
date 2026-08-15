@@ -1,10 +1,69 @@
 import Phaser from 'phaser';
-import upgradeCatalog from '../data/upgradeCatalog.json';
+import rawUpgradeCatalog from '../data/upgradeCatalog.json';
+import type GameScene from '../scenes/GameScene';
+import type { RarityId, RaritySpec, SwordDefinition, UpgradeCatalog, UpgradeDefinition } from '../types/catalogs';
+import type ProgressionSystem from './ProgressionSystem';
+import type { ProgressionPlayer } from './ProgressionSystem';
+import { GameEvents } from '../core/events';
+
+const upgradeCatalog = rawUpgradeCatalog as unknown as UpgradeCatalog;
 
 const CHOICE_COUNT = 4;
 
+/**
+ * Not every upgrade defines a value for every rarity, so the catalog's
+ * Record<RarityId, number> is treated as partial at the lookup sites.
+ */
+type UpgradeValues = Partial<Record<RarityId, number>>;
+
+/** Minimal structural view of SwordOrbitSystem (converted by another agent). */
+interface SwordOrbitLike {
+	swords: unknown[];
+	maxSwords: number;
+	damageMultiplier?: number;
+	radius: number;
+	orbitSpeed: number;
+	applyCooldownMultiplier?: (multiplier: number) => void;
+	applyLaunchSpeedMultiplier?: (multiplier: number) => void;
+	addSword?: (scene: GameScene, definition?: SwordDefinition | null) => unknown;
+	checkFusions?: () => void;
+	addBonusHits?: (value: number) => void;
+	addCleave?: (value: number) => void;
+}
+
+export interface UpgradeChoice {
+	upgrade: UpgradeDefinition;
+	rarity: RaritySpec;
+	value: number;
+	swordDefinition: SwordDefinition | null;
+}
+
+export interface LevelUpCard {
+	container: Phaser.GameObjects.Container;
+	choice: UpgradeChoice;
+}
+
+export interface LevelUpSystemOptions {
+	swordOrbit?: SwordOrbitLike | null;
+	progression?: ProgressionSystem | null;
+	swordCatalog?: SwordDefinition[];
+}
+
 export default class LevelUpSystem {
-	constructor(scene, options = {}) {
+	scene: GameScene;
+	swordOrbit: SwordOrbitLike | null;
+	progression: ProgressionSystem | null;
+	swordCatalog: SwordDefinition[];
+	rarities: RaritySpec[];
+	upgrades: UpgradeDefinition[];
+	swordTierByRarity: Record<RarityId, number[]>;
+	isOpen: boolean;
+	pendingChoices: number;
+	uiObjects: Phaser.GameObjects.GameObject[];
+	cards: LevelUpCard[];
+	keyHandler: ((event: KeyboardEvent) => void) | null;
+
+	constructor(scene: GameScene, options: LevelUpSystemOptions = {}) {
 		this.scene = scene;
 		this.swordOrbit = options.swordOrbit ?? null;
 		this.progression = options.progression ?? null;
@@ -21,7 +80,7 @@ export default class LevelUpSystem {
 		this.keyHandler = null;
 	}
 
-	enqueue() {
+	enqueue(): void {
 		this.pendingChoices += 1;
 
 		if (!this.isOpen) {
@@ -29,7 +88,7 @@ export default class LevelUpSystem {
 		}
 	}
 
-	open() {
+	open(): void {
 		if (this.isOpen || this.pendingChoices <= 0) {
 			return;
 		}
@@ -45,7 +104,7 @@ export default class LevelUpSystem {
 		this.buildUi(choices);
 	}
 
-	close() {
+	close(): void {
 		this.destroyUi();
 		this.isOpen = false;
 
@@ -64,23 +123,23 @@ export default class LevelUpSystem {
 	// Rolling
 	// ---------------------------------------------------------------
 
-	getLuck() {
+	getLuck(): number {
 		return this.scene.player?.luck ?? 0;
 	}
 
-	getPlayerLevel() {
-		return this.scene.player?.level ?? this.progression?.level ?? 1;
+	getPlayerLevel(): number {
+		return (this.scene.player as ProgressionPlayer | null)?.level ?? this.progression?.level ?? 1;
 	}
 
 	// TFT-style: base odds come from the player's level bracket.
 	// A weight of 0 stays 0 - luck amplifies unlocked tiers but never
 	// unlocks a tier before its level.
-	getCurrentWeights() {
+	getCurrentWeights(): number[] {
 		const level = this.getPlayerLevel();
 		const luck = this.getLuck();
 		const table = upgradeCatalog.oddsByLevel ?? [];
 
-		let row = table[0] ?? { weights: {} };
+		let row: { minLevel?: number; weights: Partial<Record<RarityId, number>> } = table[0] ?? { weights: {} };
 		for (const candidate of table) {
 			if (level >= candidate.minLevel) {
 				row = candidate;
@@ -92,7 +151,7 @@ export default class LevelUpSystem {
 		);
 	}
 
-	rollRarity() {
+	rollRarity(): RaritySpec {
 		const weights = this.getCurrentWeights();
 		const total = weights.reduce((sum, weight) => sum + weight, 0);
 
@@ -112,7 +171,7 @@ export default class LevelUpSystem {
 		return this.rarities[0];
 	}
 
-	getOddsLabel() {
+	getOddsLabel(): string {
 		const weights = this.getCurrentWeights();
 		const total = weights.reduce((sum, weight) => sum + weight, 0);
 
@@ -127,14 +186,14 @@ export default class LevelUpSystem {
 			.join('  ·  ');
 	}
 
-	rollChoices() {
-		const choices = [];
-		const usedIds = new Set();
+	rollChoices(): UpgradeChoice[] {
+		const choices: UpgradeChoice[] = [];
+		const usedIds = new Set<string>();
 
 		for (let slot = 0; slot < CHOICE_COUNT; slot += 1) {
 			const rarity = this.rollRarity();
 			const pool = this.upgrades.filter((upgrade) =>
-				upgrade.values[rarity.id] !== undefined
+				(upgrade.values as UpgradeValues)[rarity.id] !== undefined
 				&& !usedIds.has(upgrade.id)
 				&& this.isUpgradeAvailable(upgrade),
 			);
@@ -146,9 +205,9 @@ export default class LevelUpSystem {
 					continue;
 				}
 				const fallback = Phaser.Math.RND.pick(fallbackPool);
-				const fallbackRarityId = this.rarities.find((r) => fallback.values[r.id] !== undefined)?.id ?? 'common';
+				const fallbackRarityId = this.rarities.find((r) => (fallback.values as UpgradeValues)[r.id] !== undefined)?.id ?? 'common';
 				usedIds.add(fallback.id);
-				choices.push(this.makeChoice(fallback, this.rarities.find((r) => r.id === fallbackRarityId)));
+				choices.push(this.makeChoice(fallback, this.rarities.find((r) => r.id === fallbackRarityId)!));
 				continue;
 			}
 
@@ -161,10 +220,10 @@ export default class LevelUpSystem {
 	}
 
 	// Single random reward (used by treasure chests)
-	rollSingleChoice() {
+	rollSingleChoice(): UpgradeChoice | null {
 		const rarity = this.rollRarity();
 		const pool = this.upgrades.filter((upgrade) =>
-			upgrade.values[rarity.id] !== undefined && this.isUpgradeAvailable(upgrade),
+			(upgrade.values as UpgradeValues)[rarity.id] !== undefined && this.isUpgradeAvailable(upgrade),
 		);
 
 		if (pool.length === 0) {
@@ -174,7 +233,7 @@ export default class LevelUpSystem {
 		return this.makeChoice(Phaser.Math.RND.pick(pool), rarity);
 	}
 
-	isUpgradeAvailable(upgrade) {
+	isUpgradeAvailable(upgrade: UpgradeDefinition) {
 		if (upgrade.type === 'addSword') {
 			return this.swordOrbit
 				&& this.swordOrbit.swords.length < this.swordOrbit.maxSwords
@@ -184,9 +243,9 @@ export default class LevelUpSystem {
 		return true;
 	}
 
-	makeChoice(upgrade, rarity) {
-		const value = upgrade.values[rarity.id];
-		const choice = { upgrade, rarity, value, swordDefinition: null };
+	makeChoice(upgrade: UpgradeDefinition, rarity: RaritySpec): UpgradeChoice {
+		const value = (upgrade.values as UpgradeValues)[rarity.id] as number;
+		const choice: UpgradeChoice = { upgrade, rarity, value, swordDefinition: null };
 
 		if (upgrade.type === 'addSword') {
 			const tierIndices = this.swordTierByRarity[rarity.id] ?? [0];
@@ -197,7 +256,7 @@ export default class LevelUpSystem {
 		return choice;
 	}
 
-	describeChoice(choice) {
+	describeChoice(choice: UpgradeChoice): string {
 		const { upgrade, value, swordDefinition } = choice;
 		const pct = `${Math.round(value * 100)}%`;
 
@@ -211,7 +270,7 @@ export default class LevelUpSystem {
 	// Applying
 	// ---------------------------------------------------------------
 
-	applyChoice(choice) {
+	applyChoice(choice: UpgradeChoice): void {
 		const player = this.scene.player;
 		const { upgrade, value } = choice;
 
@@ -291,14 +350,14 @@ export default class LevelUpSystem {
 				break;
 		}
 
-		this.scene.events.emit('upgrade-chosen', choice);
+		this.scene.events.emit(GameEvents.UPGRADE_CHOSEN, choice);
 	}
 
 	// ---------------------------------------------------------------
 	// UI
 	// ---------------------------------------------------------------
 
-	buildUi(choices) {
+	buildUi(choices: UpgradeChoice[]): void {
 		const { width, height } = this.scene.scale;
 		const centerX = width / 2;
 		const centerY = height / 2;
@@ -350,16 +409,16 @@ export default class LevelUpSystem {
 			this.cards.push(card);
 		});
 
-		this.keyHandler = (event) => {
+		this.keyHandler = (event: KeyboardEvent) => {
 			const slot = Number.parseInt(event.key, 10) - 1;
 			if (Number.isInteger(slot) && slot >= 0 && slot < choices.length) {
 				this.selectChoice(choices[slot]);
 			}
 		};
-		this.scene.input.keyboard.on('keydown', this.keyHandler);
+		this.scene.input.keyboard!.on('keydown', this.keyHandler);
 	}
 
-	buildCard(choice, index, x, y, cardWidth, cardHeight) {
+	buildCard(choice: UpgradeChoice, index: number, x: number, y: number, cardWidth: number, cardHeight: number): LevelUpCard {
 		const { rarity, upgrade } = choice;
 		const rarityColor = Phaser.Display.Color.HexStringToColor(rarity.color).color;
 		const isLegendary = rarity.id === 'legendary';
@@ -444,7 +503,7 @@ export default class LevelUpSystem {
 		return { container, choice };
 	}
 
-	selectChoice(choice) {
+	selectChoice(choice: UpgradeChoice): void {
 		if (!this.isOpen) {
 			return;
 		}
@@ -454,9 +513,9 @@ export default class LevelUpSystem {
 		this.close();
 	}
 
-	destroyUi() {
+	destroyUi(): void {
 		if (this.keyHandler) {
-			this.scene.input.keyboard.off('keydown', this.keyHandler);
+			this.scene.input.keyboard!.off('keydown', this.keyHandler);
 			this.keyHandler = null;
 		}
 

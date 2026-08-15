@@ -1,11 +1,26 @@
 import Phaser from 'phaser';
-import GameScene from './scenes/GameScene.js';
-import TitleScene from './scenes/TitleScene.js';
-import PowerUpScene from './scenes/PowerUpScene.js';
-import CharacterSelectScene from './scenes/CharacterSelectScene.js';
-import SoundSystem from './systems/SoundSystem.js';
-import playerCatalog from './data/playerCatalog.json';
-import enemyCatalog from './data/enemyCatalog.json';
+import GameScene from './scenes/GameScene';
+import TitleScene from './scenes/TitleScene';
+import PowerUpScene from './scenes/PowerUpScene';
+import CharacterSelectScene from './scenes/CharacterSelectScene';
+import SoundSystem from './systems/SoundSystem';
+import playerCatalogRaw from './data/playerCatalog.json';
+import enemyCatalogRaw from './data/enemyCatalog.json';
+import type { PlayerDefinition, EnemyDefinition, EnemySpritesheetSpec } from './types/catalogs';
+
+const playerCatalog = playerCatalogRaw as unknown as PlayerDefinition[];
+const enemyCatalog = enemyCatalogRaw as unknown as EnemyDefinition[];
+
+// 'separate'-type enemies keep per-animation frame data directly on each sheet
+// entry; EnemySpritesheetSpec in types/catalogs.ts does not declare those
+// fields, so extend it locally here.
+interface SeparateSpritesheetSpec extends EnemySpritesheetSpec {
+	frameStart: number;
+	frameCount?: number;
+	frameEnd?: number;
+	frameRate: number;
+	repeat: number;
+}
 
 const defaultPlayer = playerCatalog[0];
 
@@ -20,7 +35,7 @@ class BootScene extends Phaser.Scene {
 			frameHeight: 32,
 		});
 
-		const queuedPlayerKeys = new Set();
+		const queuedPlayerKeys = new Set<string>();
 		for (const player of playerCatalog) {
 			for (const sheet of Object.values(player.spritesheets)) {
 				if (queuedPlayerKeys.has(sheet.textureKey)) {
@@ -35,19 +50,20 @@ class BootScene extends Phaser.Scene {
 		}
 
 		// Load enemy spritesheets (variants may share one sheet - load each key once)
-		const queuedSheetKeys = new Set();
+		const queuedSheetKeys = new Set<string>();
 		for (const enemy of enemyCatalog) {
 			if (enemy.spriteType === 'aseprite') {
-				if (queuedSheetKeys.has(enemy.spritesheet.textureKey)) {
+				const spritesheet = enemy.spritesheet!;
+				if (queuedSheetKeys.has(spritesheet.textureKey)) {
 					continue;
 				}
-				queuedSheetKeys.add(enemy.spritesheet.textureKey);
-				this.load.spritesheet(enemy.spritesheet.textureKey, enemy.spritesheet.filePath, {
-					frameWidth: enemy.spritesheet.frameWidth,
-					frameHeight: enemy.spritesheet.frameHeight,
+				queuedSheetKeys.add(spritesheet.textureKey);
+				this.load.spritesheet(spritesheet.textureKey, spritesheet.filePath, {
+					frameWidth: spritesheet.frameWidth,
+					frameHeight: spritesheet.frameHeight,
 				});
 			} else if (enemy.spriteType === 'separate') {
-				for (const sheet of Object.values(enemy.spritesheets)) {
+				for (const sheet of Object.values(enemy.spritesheets!)) {
 					this.load.spritesheet(sheet.textureKey, sheet.filePath, {
 						frameWidth: sheet.frameWidth,
 						frameHeight: sheet.frameHeight,
@@ -83,7 +99,8 @@ class BootScene extends Phaser.Scene {
 	createPlayerAnimations() {
 		for (const player of playerCatalog) {
 			for (const [animationName, sheet] of Object.entries(player.spritesheets)) {
-				const animationKey = player.animations?.[animationName] ?? `${player.id}-${animationName}`;
+				const animationKey =
+					player.animations?.[animationName as keyof typeof player.animations] ?? `${player.id}-${animationName}`;
 
 				if (this.anims.exists(animationKey)) {
 					continue;
@@ -142,11 +159,14 @@ class BootScene extends Phaser.Scene {
 		for (const enemy of enemyCatalog) {
 			if (enemy.spriteType === 'aseprite') {
 				// Aseprite type: row-based animations from single spritesheet
-				const { frameWidth, frameHeight, animations: animDefs } = enemy.spritesheet;
-				const textureKey = enemy.spritesheet.textureKey;
-				
+				const { frameWidth, frameHeight, animations: animDefs } = enemy.spritesheet!;
+				const textureKey = enemy.spritesheet!.textureKey;
+
 				// Get texture to calculate frames per row
-				const texture = this.textures.get(textureKey);
+				const texture = this.textures.get(textureKey) as Phaser.Textures.Texture & {
+					width: number;
+					height: number;
+				};
 				if (!texture) {
 					console.warn(`Texture not found: ${textureKey}`);
 					continue;
@@ -155,16 +175,16 @@ class BootScene extends Phaser.Scene {
 				const framesPerRow = Math.floor(texture.width / frameWidth);
 				console.log(`Aseprite ${enemy.id}: texture ${texture.width}×${texture.height}, frameWidth=${frameWidth}, framesPerRow=${framesPerRow}`);
 
-				for (const animDef of animDefs) {
+				for (const animDef of animDefs!) {
 					const animationKey = `${enemy.id}-${animDef.name}`;
 					if (this.anims.exists(animationKey)) {
 						continue;
 					}
 
 					// Calculate frame indices based on row
-					const rowStartFrame = animDef.row * framesPerRow;
+					const rowStartFrame = animDef.row! * framesPerRow;
 					const frameStart = rowStartFrame + animDef.frameStart;
-					const frameEnd = frameStart + animDef.frameCount - 1;
+					const frameEnd = frameStart + animDef.frameCount! - 1;
 
 					console.log(`Creating animation: ${animationKey} (row ${animDef.row}, frames ${frameStart}-${frameEnd}, count ${animDef.frameCount})`);
 
@@ -180,16 +200,18 @@ class BootScene extends Phaser.Scene {
 						});
 						console.log(`✓ Animation created: ${animationKey}`);
 					} catch (err) {
-						console.warn(`✗ Failed to create animation ${animationKey}:`, err.message);
+						console.warn(`✗ Failed to create animation ${animationKey}:`, (err as Error).message);
 					}
 				}
 			} else if (enemy.spriteType === 'separate') {
 				// Separate type: different file per animation
-				for (const [animationName, sheet] of Object.entries(enemy.spritesheets)) {
+				for (const [animationName, sheet] of Object.entries(enemy.spritesheets!) as Array<
+					[string, SeparateSpritesheetSpec]
+				>) {
 					const animationKey = `${enemy.id}-${animationName}`;
 					if (this.anims.exists(animationKey)) continue;
 
-					const frameEnd = sheet.frameEnd !== undefined ? sheet.frameEnd : sheet.frameStart + sheet.frameCount - 1;
+					const frameEnd = sheet.frameEnd !== undefined ? sheet.frameEnd : sheet.frameStart + sheet.frameCount! - 1;
 
 					this.anims.create({
 						key: animationKey,
@@ -205,8 +227,8 @@ class BootScene extends Phaser.Scene {
 		}
 	}
 
-	createCircleTexture(key, width, height, radius, color) {
-		const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+	createCircleTexture(key: string, width: number, height: number, radius: number, color: number) {
+		const graphics = this.make.graphics({ x: 0, y: 0, add: false } as Phaser.Types.GameObjects.Graphics.Options);
 		graphics.fillStyle(color, 1);
 		graphics.fillCircle(width / 2, height / 2, radius);
 
@@ -217,8 +239,8 @@ class BootScene extends Phaser.Scene {
 		graphics.destroy();
 	}
 
-	createRectangleTexture(key, width, height, color) {
-		const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+	createRectangleTexture(key: string, width: number, height: number, color: number) {
+		const graphics = this.make.graphics({ x: 0, y: 0, add: false } as Phaser.Types.GameObjects.Graphics.Options);
 		graphics.fillStyle(color, 1);
 		graphics.fillRect(0, 0, width, height);
 
@@ -229,8 +251,8 @@ class BootScene extends Phaser.Scene {
 		graphics.destroy();
 	}
 
-	createBackgroundTexture(key, width, height) {
-		const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+	createBackgroundTexture(key: string, width: number, height: number) {
+		const graphics = this.make.graphics({ x: 0, y: 0, add: false } as Phaser.Types.GameObjects.Graphics.Options);
 		graphics.fillStyle(0x1f1f1f, 1);
 		graphics.fillRect(0, 0, width, height);
 
@@ -257,7 +279,7 @@ class BootScene extends Phaser.Scene {
 	}
 }
 
-const gameConfig = {
+const gameConfig: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
 	parent: 'game',
 	width: window.innerWidth,
@@ -265,7 +287,7 @@ const gameConfig = {
 	physics: {
 		default: 'arcade',
 		arcade: {
-			gravity: { y: 0 },
+			gravity: { y: 0 } as Phaser.Types.Math.Vector2Like,
 			debug: false,
 		},
 	},

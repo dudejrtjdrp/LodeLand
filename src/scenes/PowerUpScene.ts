@@ -1,8 +1,19 @@
 import Phaser from 'phaser';
-import MetaProgression from '../systems/MetaProgression.js';
+import MetaProgression from '../systems/MetaProgression';
+import type { MetaUpgradeDefinition } from '../types/catalogs';
+
+interface PowerUpRow {
+	entry: MetaUpgradeDefinition;
+	background: Phaser.GameObjects.Rectangle;
+	label: Phaser.GameObjects.Text;
+	costText: Phaser.GameObjects.Text;
+}
 
 // Permanent upgrade shop (VS PowerUp menu style). Full refund supported.
 export default class PowerUpScene extends Phaser.Scene {
+	goldText!: Phaser.GameObjects.Text;
+	rows!: PowerUpRow[];
+
 	constructor() {
 		super('PowerUpScene');
 	}
@@ -51,7 +62,7 @@ export default class PowerUpScene extends Phaser.Scene {
 		}).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
 		back.on('pointerdown', () => this.scene.start('TitleScene'));
-		this.input.keyboard.on('keydown-ESC', () => this.scene.start('TitleScene'));
+		this.input.keyboard!.on('keydown-ESC', () => this.scene.start('TitleScene'));
 	}
 
 	buildRows() {
@@ -61,7 +72,7 @@ export default class PowerUpScene extends Phaser.Scene {
 		const rowHeight = 46;
 		const startY = 146;
 
-		catalog.forEach((entry, index) => {
+		catalog.forEach((entry: MetaUpgradeDefinition, index: number) => {
 			const y = startY + index * (rowHeight + 8);
 
 			const background = this.add.rectangle(width / 2, y, rowWidth, rowHeight, 0x1f2937, 0.95)
@@ -97,7 +108,7 @@ export default class PowerUpScene extends Phaser.Scene {
 		});
 	}
 
-	describe(entry) {
+	describe(entry: MetaUpgradeDefinition) {
 		const value = entry.perRank;
 		const pct = `${Math.round(value * 100)}%`;
 		return entry.descTemplate.replace('{pct}', pct).replace('{value}', `${value}`);
@@ -116,7 +127,7 @@ export default class PowerUpScene extends Phaser.Scene {
 
 			if (isMax) {
 				row.costText.setText('MAX').setColor('#4ade80');
-			} else if (state.gold < cost) {
+			} else if (state.gold < cost!) {
 				row.costText.setText(`🪙 ${cost}`).setColor('#6b7280');
 			} else {
 				row.costText.setText(`🪙 ${cost}`).setColor('#fbbf24');

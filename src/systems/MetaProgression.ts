@@ -1,15 +1,50 @@
-import metaCatalog from '../data/metaCatalog.json';
+import rawMetaCatalog from '../data/metaCatalog.json';
+import type { MetaUpgradeDefinition } from '../types/catalogs';
+
+const metaCatalog = rawMetaCatalog as unknown as MetaUpgradeDefinition[];
 
 const STORAGE_KEY = 'movesword-meta-v1';
+
+export interface MetaState {
+	gold: number;
+	ranks: Record<string, number>;
+	characters: string[];
+	clearedDanger: number;
+	lifetimeGold: number;
+	guaranteeCoins: number;
+}
+
+export interface MetaBonuses {
+	damageMult: number;
+	maxHpFlat: number;
+	cooldownRed: number;
+	moveSpeedMult: number;
+	luck: number;
+	magnetMult: number;
+	goldMult: number;
+	extraSword: number;
+	revival: number;
+}
+
+export type MetaBuyResult =
+	| { ok: false; reason: 'unknown' | 'max' | 'gold' }
+	| { ok: true; state: MetaState };
 
 // Permanent, refundable meta progression stored in localStorage.
 // Failed runs still bank their gold - "no run is wasted".
 export default class MetaProgression {
-	static load() {
+	static load(): MetaState {
 		try {
 			const raw = localStorage.getItem(STORAGE_KEY);
 			const state = raw ? JSON.parse(raw) : null;
-			const loaded = {
+			const loaded: {
+				gold: number;
+				ranks: Record<string, number>;
+				characters: string[];
+				clearedDanger: number;
+				lifetimeGold: number | null;
+				guaranteeCoins: number;
+			} = {
 				gold: state?.gold ?? 0,
 				ranks: state?.ranks ?? {},
 				characters: state?.characters ?? [],
@@ -20,28 +55,28 @@ export default class MetaProgression {
 
 			// Migration for older saves: approximate lifetime as current + spent
 			if (loaded.lifetimeGold === null) {
-				loaded.lifetimeGold = loaded.gold + this.totalSpent(loaded);
+				loaded.lifetimeGold = loaded.gold + this.totalSpent(loaded as MetaState);
 			}
 
-			return loaded;
+			return loaded as MetaState;
 		} catch {
 			return { gold: 0, ranks: {}, characters: [], clearedDanger: -1, lifetimeGold: 0, guaranteeCoins: 0 };
 		}
 	}
 
 	// 특별 강화 코인 (💎): guarantees the next enhancement. Persists across runs.
-	static getGuaranteeCoins() {
+	static getGuaranteeCoins(): number {
 		return this.load().guaranteeCoins;
 	}
 
-	static addGuaranteeCoin(amount = 1) {
+	static addGuaranteeCoin(amount = 1): number {
 		const state = this.load();
 		state.guaranteeCoins += amount;
 		this.save(state);
 		return state.guaranteeCoins;
 	}
 
-	static useGuaranteeCoin() {
+	static useGuaranteeCoin(): boolean {
 		const state = this.load();
 		if (state.guaranteeCoins <= 0) {
 			return false;
@@ -51,18 +86,18 @@ export default class MetaProgression {
 		return true;
 	}
 
-	static addLifetime(amount) {
+	static addLifetime(amount: number): number {
 		const state = this.load();
 		state.lifetimeGold += Math.max(0, Math.round(amount));
 		this.save(state);
 		return state.lifetimeGold;
 	}
 
-	static getLifetimeGold() {
+	static getLifetimeGold(): number {
 		return this.load().lifetimeGold;
 	}
 
-	static save(state) {
+	static save(state: MetaState): void {
 		try {
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 		} catch {
@@ -70,24 +105,24 @@ export default class MetaProgression {
 		}
 	}
 
-	static catalog() {
+	static catalog(): MetaUpgradeDefinition[] {
 		return metaCatalog;
 	}
 
-	static getEntry(id) {
+	static getEntry(id: string): MetaUpgradeDefinition | null {
 		return metaCatalog.find((entry) => entry.id === id) ?? null;
 	}
 
-	static getRank(id, state = this.load()) {
+	static getRank(id: string, state: MetaState = this.load()): number {
 		return state.ranks[id] ?? 0;
 	}
 
-	static costOf(entry, rank) {
+	static costOf(entry: MetaUpgradeDefinition, rank: number): number {
 		// Each rank costs more: base * (rank + 1)
 		return Math.round(entry.baseCost * (rank + 1));
 	}
 
-	static totalSpent(state = this.load()) {
+	static totalSpent(state: MetaState = this.load()): number {
 		let spent = 0;
 
 		for (const entry of metaCatalog) {
@@ -100,14 +135,14 @@ export default class MetaProgression {
 		return spent;
 	}
 
-	static addGold(amount) {
+	static addGold(amount: number): number {
 		const state = this.load();
 		state.gold += Math.max(0, Math.round(amount));
 		this.save(state);
 		return state.gold;
 	}
 
-	static buy(id) {
+	static buy(id: string): MetaBuyResult {
 		const state = this.load();
 		const entry = this.getEntry(id);
 
@@ -133,7 +168,7 @@ export default class MetaProgression {
 	}
 
 	// Full refund, VS-style: encourages experimentation.
-	static refundAll() {
+	static refundAll(): MetaState {
 		const state = this.load();
 		state.gold += this.totalSpent(state);
 		state.ranks = {};
@@ -143,7 +178,7 @@ export default class MetaProgression {
 
 	// Characters unlock automatically by LIFETIME earned gold (누적 코인).
 	// Old purchase-based unlocks are honored too.
-	static isCharacterUnlocked(id, unlockGold = 0) {
+	static isCharacterUnlocked(id: string, unlockGold = 0): boolean {
 		if (!unlockGold) {
 			return true;
 		}
@@ -152,11 +187,11 @@ export default class MetaProgression {
 		return state.characters.includes(id) || state.lifetimeGold >= unlockGold;
 	}
 
-	static getClearedDanger() {
+	static getClearedDanger(): number {
 		return this.load().clearedDanger;
 	}
 
-	static recordClear(danger) {
+	static recordClear(danger: number): void {
 		const state = this.load();
 		if (danger > state.clearedDanger) {
 			state.clearedDanger = danger;
@@ -164,9 +199,9 @@ export default class MetaProgression {
 		}
 	}
 
-	static getBonuses() {
+	static getBonuses(): MetaBonuses {
 		const state = this.load();
-		const bonuses = {
+		const bonuses: Record<string, number> = {
 			damageMult: 0,
 			maxHpFlat: 0,
 			cooldownRed: 0,
@@ -185,6 +220,6 @@ export default class MetaProgression {
 			}
 		}
 
-		return bonuses;
+		return bonuses as unknown as MetaBonuses;
 	}
 }

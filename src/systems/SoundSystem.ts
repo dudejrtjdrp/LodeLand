@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import type GameScene from '../scenes/GameScene';
 
 const SFX_KEYS = [
 	'hit', 'crit', 'kill', 'bigkill', 'hurt',
@@ -8,14 +9,22 @@ const SFX_KEYS = [
 
 const MUTE_KEY = 'movesword-muted';
 
+export interface SoundPlayOptions {
+	volume?: number;
+}
+
 // Thin wrapper over Phaser sound: throttling for spammy SFX,
 // slight pitch variation so repeated hits don't sound robotic.
 export default class SoundSystem {
-	static keys() {
+	scene: GameScene;
+	lastPlayed: Map<string, number>;
+	throttleMs: Record<string, number>;
+
+	static keys(): string[] {
 		return SFX_KEYS;
 	}
 
-	constructor(scene) {
+	constructor(scene: GameScene) {
 		this.scene = scene;
 		this.lastPlayed = new Map();
 		this.throttleMs = {
@@ -33,7 +42,7 @@ export default class SoundSystem {
 		scene.sound.volume = 0.5;
 	}
 
-	play(key, options = {}) {
+	play(key: string, options: SoundPlayOptions = {}): void {
 		if (!this.scene.cache.audio.exists(key)) {
 			return;
 		}
@@ -52,7 +61,7 @@ export default class SoundSystem {
 		});
 	}
 
-	toggleMute() {
+	toggleMute(): boolean {
 		const muted = !this.scene.sound.mute;
 		this.scene.sound.mute = muted;
 
@@ -63,7 +72,7 @@ export default class SoundSystem {
 		return muted;
 	}
 
-	isMuted() {
+	isMuted(): boolean {
 		return this.scene.sound.mute;
 	}
 }

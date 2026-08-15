@@ -1,17 +1,32 @@
 import Phaser from 'phaser';
-import EnemyManager from '../systems/EnemyManager.js';
-import ProgressionSystem from '../systems/ProgressionSystem.js';
-import SwordOrbitSystem from '../systems/SwordOrbitSystem.js';
-import VisualEffectsSystem from '../systems/VisualEffectsSystem.js';
-import LevelUpSystem from '../systems/LevelUpSystem.js';
-import WaveSystem from '../systems/WaveSystem.js';
-import PickupSystem from '../systems/PickupSystem.js';
-import MetaProgression from '../systems/MetaProgression.js';
-import SoundSystem from '../systems/SoundSystem.js';
-import ShopSystem from '../systems/ShopSystem.js';
-import swordCatalog from '../data/swordCatalog.json';
-import playerCatalog from '../data/playerCatalog.json';
-import enemyCatalog from '../data/enemyCatalog.json';
+import EnemyManager from '../systems/EnemyManager';
+import ProgressionSystem from '../systems/ProgressionSystem';
+import SwordOrbitSystem from '../systems/sword/SwordOrbitSystem';
+import VisualEffectsSystem from '../systems/VisualEffectsSystem';
+import LevelUpSystem from '../systems/LevelUpSystem';
+import WaveSystem from '../systems/WaveSystem';
+import PickupSystem from '../systems/PickupSystem';
+import MetaProgression from '../systems/MetaProgression';
+import type { MetaBonuses } from '../systems/MetaProgression';
+import SoundSystem from '../systems/SoundSystem';
+import ShopSystem from '../systems/shop/ShopSystem';
+import swordCatalogJson from '../data/swordCatalog.json';
+import playerCatalogJson from '../data/playerCatalog.json';
+import enemyCatalogJson from '../data/enemyCatalog.json';
+import { GameEvents } from '../core/events';
+import { mitigatePlayerDamage } from '../logic/combat';
+import type {
+  DamageType,
+  EnemyDefinition,
+  PlayerDefinition,
+  PlayerTraits,
+  SwordDefinition,
+} from '../types/catalogs';
+import type { EnemyProjectile, EnemySprite, PlayerSprite } from '../types/actors';
+
+const swordCatalog = swordCatalogJson as unknown as SwordDefinition[];
+const playerCatalog = playerCatalogJson as unknown as PlayerDefinition[];
+const enemyCatalog = enemyCatalogJson as unknown as EnemyDefinition[];
 
 const defaultPlayer = playerCatalog[0];
 
@@ -21,7 +36,70 @@ const DANGER_LEVELS = [
   { hpMult: 1.6, damageMult: 1.6, goldMult: 1.5 },
 ];
 
+/** A pooled ground chunk: one tilemap and its painted layer. */
+interface ChunkTile {
+  map: Phaser.Tilemaps.Tilemap;
+  layer: Phaser.Tilemaps.TilemapLayer;
+}
+
+/** A chunk build request queued for the per-frame budgeted builder. */
+interface ChunkMeta {
+  x: number;
+  y: number;
+  key: string;
+}
+
+/** Data passed into the scene via scene.start / scene.restart. */
+interface GameSceneData {
+  characterId?: string;
+  danger?: number;
+}
+
+type PhysicsCallbackObject =
+  | Phaser.Types.Physics.Arcade.GameObjectWithBody
+  | Phaser.Physics.Arcade.Body
+  | Phaser.Physics.Arcade.StaticBody
+  | Phaser.Tilemaps.Tile;
+
 export default class GameScene extends Phaser.Scene {
+  tileSize: number;
+  chunkTiles: number;
+  chunkPixelSize: number;
+  chunkLoadRadius: number;
+  loadedChunks: Map<string, ChunkTile>;
+  chunkPool: ChunkTile[];
+  maxPoolSize: number;
+  chunkBuildQueue: ChunkMeta[];
+  pendingChunkKeys: Set<string>;
+  chunkBuildBudgetMs: number;
+  playerChunkX: number | null;
+  playerChunkY: number | null;
+
+  isGameOver!: boolean;
+  isPaused!: boolean;
+  pauseUi!: Phaser.GameObjects.GameObject[];
+  pauseMenuText?: Phaser.GameObjects.Text | null;
+  soundSystem!: SoundSystem;
+  metaBonuses!: MetaBonuses;
+  revivalsLeft!: number;
+  characterId!: string;
+  dangerLevel!: number;
+  dangerConfig!: (typeof DANGER_LEVELS)[number];
+  playerConfig!: PlayerDefinition;
+  traits!: PlayerTraits;
+  player!: PlayerSprite;
+  swordOrbit!: SwordOrbitSystem;
+  visualEffects!: VisualEffectsSystem;
+  enemyManager!: EnemyManager;
+  progression!: ProgressionSystem;
+  levelUpSystem!: LevelUpSystem;
+  waveSystem!: WaveSystem;
+  pickupSystem!: PickupSystem;
+  shopSystem!: ShopSystem;
+  enemyHitOverlap!: Phaser.Physics.Arcade.Collider;
+  cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
+  keys!: Record<'W' | 'A' | 'S' | 'D', Phaser.Input.Keyboard.Key>;
+
   constructor() {
     super('GameScene');
 
@@ -58,14 +136,14 @@ export default class GameScene extends Phaser.Scene {
     this.metaBonuses = MetaProgression.getBonuses();
     this.revivalsLeft = this.metaBonuses.revival ?? 0;
 
-    const sceneData = this.scene.settings.data ?? {};
+    const sceneData = (this.scene.settings.data ?? {}) as GameSceneData;
     this.characterId = sceneData.characterId ?? defaultPlayer.id;
     this.dangerLevel = Phaser.Math.Clamp(sceneData.danger ?? 0, 0, DANGER_LEVELS.length - 1);
     this.dangerConfig = DANGER_LEVELS[this.dangerLevel];
 
     this.playerConfig = playerCatalog.find((entry) => entry.id === this.characterId) ?? defaultPlayer;
     this.traits = this.playerConfig.traits ?? {};
-    this.player = this.physics.add.sprite(width / 2, height / 2, this.playerConfig.spritesheets.idle.textureKey, this.playerConfig.spritesheets.idle.frameStart);
+    this.player = this.physics.add.sprite(width / 2, height / 2, this.playerConfig.spritesheets.idle.textureKey, this.playerConfig.spritesheets.idle.frameStart) as PlayerSprite;
     this.player.setCollideWorldBounds(false);
     this.player.setDepth(10);
     this.player.setDisplaySize(this.playerConfig.displaySize.width, this.playerConfig.displaySize.height);
@@ -126,7 +204,7 @@ export default class GameScene extends Phaser.Scene {
       progression: this.progression,
       swordCatalog,
     });
-    this.events.on('levelup', () => {
+    this.events.on(GameEvents.LEVEL_UP, () => {
       if (!this.player?.isDead) {
         this.levelUpSystem.enqueue();
       }
@@ -147,7 +225,8 @@ export default class GameScene extends Phaser.Scene {
     });
 
     // Enemy projectiles hurt the player
-    this.physics.add.overlap(this.player, this.enemyManager.projectiles, (player, bullet) => {
+    this.physics.add.overlap(this.player, this.enemyManager.projectiles, (playerObj, bulletObj) => {
+      const bullet = bulletObj as EnemyProjectile;
       if (!bullet.active) {
         return;
       }
@@ -156,7 +235,7 @@ export default class GameScene extends Phaser.Scene {
     });
 
     // Lifesteal: heal on every kill
-    this.events.on('enemy-died', () => {
+    this.events.on(GameEvents.ENEMY_DIED, () => {
       if (!this.player.isDead && (this.player.killHeal ?? 0) > 0) {
         this.player.hp = Math.min(this.player.maxHp, this.player.hp + this.player.killHeal);
       }
@@ -173,10 +252,10 @@ export default class GameScene extends Phaser.Scene {
 
     // Scene restarts reuse the same event emitter: drop this run's listeners on shutdown.
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
-      this.events.off('enemy-died');
-      this.events.off('levelup');
-      this.events.off('upgrade-chosen');
-      this.events.off('sword-fused');
+      this.events.off(GameEvents.ENEMY_DIED);
+      this.events.off(GameEvents.LEVEL_UP);
+      this.events.off(GameEvents.UPGRADE_CHOSEN);
+      this.events.off(GameEvents.SWORD_FUSED);
       this.waveSystem?.destroy();
       this.pickupSystem?.destroy();
     });
@@ -189,27 +268,27 @@ export default class GameScene extends Phaser.Scene {
       this.player,
       this.enemyManager.enemies,
       this.handlePlayerEnemyOverlap,
-      null,
+      undefined,
       this,
     );
 
     this.player.anims.play(this.playerConfig.animations.idle);
     this.player.on(Phaser.Animations.Events.ANIMATION_COMPLETE, this.handlePlayerAnimationComplete, this);
 
-    this.cursors = this.input.keyboard.createCursorKeys();
-    this.keys = this.input.keyboard.addKeys('W,A,S,D');
+    this.cursors = this.input.keyboard!.createCursorKeys();
+    this.keys = this.input.keyboard!.addKeys('W,A,S,D') as Record<'W' | 'A' | 'S' | 'D', Phaser.Input.Keyboard.Key>;
 
-    this.input.keyboard.on('keydown-ESC', () => this.togglePause());
-    this.input.keyboard.on('keydown-M', () => {
+    this.input.keyboard!.on('keydown-ESC', () => this.togglePause());
+    this.input.keyboard!.on('keydown-M', () => {
       this.soundSystem.toggleMute();
       this.refreshPauseUi();
     });
-    this.input.keyboard.on('keydown-R', () => {
+    this.input.keyboard!.on('keydown-R', () => {
       if (this.isPaused) {
         this.scene.restart({ characterId: this.characterId, danger: this.dangerLevel });
       }
     });
-    this.input.keyboard.on('keydown-T', () => {
+    this.input.keyboard!.on('keydown-T', () => {
       if (this.isPaused) {
         this.scene.start('TitleScene');
       }
@@ -222,7 +301,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  applyPlayerHitbox(player, playerConfig) {
+  applyPlayerHitbox(player: PlayerSprite, playerConfig: PlayerDefinition) {
     const hitbox = playerConfig?.hitbox;
 
     if (!player || !hitbox) {
@@ -230,17 +309,17 @@ export default class GameScene extends Phaser.Scene {
     }
 
     if (hitbox.shape === 'circle') {
-      player.setCircle?.(hitbox.radius, hitbox.offsetX, hitbox.offsetY);
+      player.setCircle?.(hitbox.radius!, hitbox.offsetX, hitbox.offsetY);
       return;
     }
 
     if (hitbox.shape === 'box') {
-      player.setSize(hitbox.width, hitbox.height);
+      player.setSize(hitbox.width!, hitbox.height!);
       player.setOffset(hitbox.offsetX ?? 0, hitbox.offsetY ?? 0);
     }
   }
 
-  createInitialChunks(viewportWidth, viewportHeight) {
+  createInitialChunks(viewportWidth: number, viewportHeight: number) {
     const visibleChunksX = Math.ceil(viewportWidth / this.chunkPixelSize);
     const visibleChunksY = Math.ceil(viewportHeight / this.chunkPixelSize);
     const minRadius = Math.ceil(Math.max(visibleChunksX, visibleChunksY) / 2) + 1;
@@ -248,7 +327,7 @@ export default class GameScene extends Phaser.Scene {
     this.chunkLoadRadius = Math.max(2, minRadius);
   }
 
-  handleResize(gameSize) {
+  handleResize(gameSize: Phaser.Structs.Size) {
     const { width, height } = gameSize;
 
     if (this.player) {
@@ -257,7 +336,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  updateChunksAroundPlayer(playerX, playerY, forceUpdate = false) {
+  updateChunksAroundPlayer(playerX: number, playerY: number, forceUpdate = false) {
     const currentChunkX = Math.floor(playerX / this.chunkPixelSize);
     const currentChunkY = Math.floor(playerY / this.chunkPixelSize);
 
@@ -268,9 +347,9 @@ export default class GameScene extends Phaser.Scene {
     this.playerChunkX = currentChunkX;
     this.playerChunkY = currentChunkY;
 
-    const requiredKeys = new Set();
+    const requiredKeys = new Set<string>();
 
-    const missingChunks = [];
+    const missingChunks: ChunkMeta[] = [];
 
     for (let y = currentChunkY - this.chunkLoadRadius; y <= currentChunkY + this.chunkLoadRadius; y += 1) {
       for (let x = currentChunkX - this.chunkLoadRadius; x <= currentChunkX + this.chunkLoadRadius; x += 1) {
@@ -319,7 +398,7 @@ export default class GameScene extends Phaser.Scene {
 
       const chunk = this.acquireChunk(nextChunk.x, nextChunk.y);
       this.paintChunk(chunk, nextChunk.x, nextChunk.y);
-      this.loadedChunks.set(nextChunk.key, chunk);
+      this.loadedChunks.set(nextChunk.key, chunk as ChunkTile);
 
       if (performance.now() - startedAt >= forcedBudgetMs) {
         break;
@@ -327,7 +406,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  acquireChunk(chunkX, chunkY) {
+  acquireChunk(chunkX: number, chunkY: number): ChunkTile | null {
     const pooledChunk = this.chunkPool.pop();
 
     if (pooledChunk) {
@@ -350,13 +429,13 @@ export default class GameScene extends Phaser.Scene {
       return null;
     }
 
-    const layer = map.createBlankLayer('ground', tileset, chunkX * this.chunkPixelSize, chunkY * this.chunkPixelSize);
+    const layer = map.createBlankLayer('ground', tileset, chunkX * this.chunkPixelSize, chunkY * this.chunkPixelSize)!;
     layer.setDepth(-5);
 
     return { map, layer };
   }
 
-  paintChunk(chunk, chunkX, chunkY) {
+  paintChunk(chunk: ChunkTile | null, chunkX: number, chunkY: number) {
     if (!chunk) {
       return;
     }
@@ -395,7 +474,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  unloadFarChunks(requiredKeys) {
+  unloadFarChunks(requiredKeys: Set<string>) {
     for (const [key, chunk] of this.loadedChunks.entries()) {
       if (!requiredKeys.has(key)) {
         chunk.layer.setVisible(false);
@@ -418,13 +497,13 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  tileNoise(x, y) {
+  tileNoise(x: number, y: number): number {
     const seed = (x * 374761393 + y * 668265263) ^ 0x27d4eb2d;
     const hashed = (seed ^ (seed >>> 13)) * 1274126177;
     return ((hashed ^ (hashed >>> 16)) >>> 0) / 4294967295;
   }
 
-  update(time, delta) {
+  update(time: number, delta: number) {
     if (this.player?.isDead) {
       this.player.setVelocity(0, 0);
       return;
@@ -465,7 +544,7 @@ export default class GameScene extends Phaser.Scene {
 
     // Update health bars for all active enemies
     if (this.visualEffects && this.enemyManager.enemies) {
-      for (const enemy of this.enemyManager.enemies.getChildren()) {
+      for (const enemy of this.enemyManager.enemies.getChildren() as EnemySprite[]) {
         if (enemy && enemy.active && enemy.visible) {
           this.visualEffects.updateHealthBar(enemy, enemy.maxHp ?? 30, Math.max(0, enemy.hp ?? 30), enemy.healthBarWidth ?? 40);
         } else if (enemy) {
@@ -475,7 +554,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  updatePlayerFacing(velocityX) {
+  updatePlayerFacing(velocityX: number) {
     if (!this.player || this.player.isDead) {
       return;
     }
@@ -490,7 +569,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  updatePlayerAnimation(velocityX, velocityY, time) {
+  updatePlayerAnimation(velocityX: number, velocityY: number, time: number) {
     if (!this.player || this.player.isDead) {
       return;
     }
@@ -511,7 +590,9 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  handlePlayerEnemyOverlap(player, enemy) {
+  handlePlayerEnemyOverlap(playerObj: PhysicsCallbackObject, enemyObj: PhysicsCallbackObject) {
+    const player = playerObj as PlayerSprite;
+    const enemy = enemyObj as EnemySprite;
     const damage = typeof enemy?.damage === 'number' ? enemy.damage : this.enemyManager.enemyDamage;
     const applied = this.applyPlayerDamage(damage, enemy.x, enemy.y);
 
@@ -522,7 +603,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   // Central player damage pipeline: invulnerability -> dodge -> defense/typed resist -> knockback
-  applyPlayerDamage(rawDamage, sourceX = null, sourceY = null, damageType = 'physical') {
+  applyPlayerDamage(rawDamage: number, sourceX: number | null = null, sourceY: number | null = null, damageType: DamageType = 'physical'): boolean {
     const player = this.player;
 
     if (!player || player.isDead) {
@@ -541,16 +622,14 @@ export default class GameScene extends Phaser.Scene {
         fill: '#94a3b8',
         stroke: '#000000',
         strokeThickness: 2,
-      }).setOrigin(0.5).setDepth(100);
+      } as Phaser.Types.GameObjects.Text.TextStyle).setOrigin(0.5).setDepth(100);
       this.tweens.add({ targets: missText, y: missText.y - 40, alpha: 0, duration: 600, onComplete: () => missText.destroy() });
       player.invulnerableUntil = now + 300;
       return false;
     }
 
     // Defense (방어력, % 감소, 최대 60%) + 타입별 저항 (최대 50%)
-    const defense = Math.min(60, player.defense ?? 0);
-    const typedResist = Math.min(50, damageType === 'magic' ? (player.magicResist ?? 0) : (player.physicalResist ?? 0));
-    const damage = Math.max(1, Math.round(rawDamage * (1 - defense / 100) * (1 - typedResist / 100)));
+    const damage = mitigatePlayerDamage(rawDamage, player.defense ?? 0, player.physicalResist ?? 0, player.magicResist ?? 0, damageType);
 
     player.hp = Math.max(0, (player.hp ?? player.maxHp ?? 100) - damage);
 
@@ -600,7 +679,7 @@ export default class GameScene extends Phaser.Scene {
       this.soundSystem?.play('revive');
       this.waveSystem?.announce?.('✨ 부활!', '#4ade80');
 
-      for (const enemy of this.enemyManager.enemies.getChildren()) {
+      for (const enemy of this.enemyManager.enemies.getChildren() as EnemySprite[]) {
         if (!this.enemyManager.isAliveEnemy(enemy) || enemy.catalog?.isReaper) {
           continue;
         }
@@ -616,7 +695,7 @@ export default class GameScene extends Phaser.Scene {
     this.player.isHurting = false;
     this.player.isKnockedBack = false;
     this.player.setVelocity(0, 0);
-    this.player.body?.setEnable(false);
+    (this.player.body as Phaser.Physics.Arcade.Body | null)?.setEnable(false);
     this.player.anims.play(this.playerConfig.animations.death, true);
 
     this.visualEffects?.removeHealthBar(this.player);
@@ -625,7 +704,7 @@ export default class GameScene extends Phaser.Scene {
     this.soundSystem?.play('gameover');
     this.physics.pause();
 
-    this.player.once(Phaser.Animations.Events.ANIMATION_COMPLETE, (animation) => {
+    this.player.once(Phaser.Animations.Events.ANIMATION_COMPLETE, (animation: Phaser.Animations.Animation) => {
       if (animation.key !== this.playerConfig.animations.death) {
         return;
       }
@@ -716,7 +795,12 @@ export default class GameScene extends Phaser.Scene {
     }
 
     const { width, height } = this.scale;
-    const results = this.waveSystem?.getResults?.() ?? { survivedMs: 0, killCount: 0, completed: false };
+    const results = (this.waveSystem?.getResults?.() ?? { survivedMs: 0, killCount: 0, completed: false }) as {
+      survivedMs: number;
+      killCount: number;
+      completed: boolean;
+      round?: number;
+    };
     const totalSeconds = Math.floor(results.survivedMs / 1000);
     const timeLabel = `${String(Math.floor(totalSeconds / 60)).padStart(2, '0')}:${String(totalSeconds % 60).padStart(2, '0')}`;
 
@@ -766,15 +850,15 @@ export default class GameScene extends Phaser.Scene {
       duration: 600,
     });
 
-    this.input.keyboard.once('keydown-R', () => {
+    this.input.keyboard!.once('keydown-R', () => {
       this.scene.restart({ characterId: this.characterId, danger: this.dangerLevel });
     });
-    this.input.keyboard.once('keydown-T', () => {
+    this.input.keyboard!.once('keydown-T', () => {
       this.scene.start('TitleScene');
     });
   }
 
-  handlePlayerAnimationComplete(animation) {
+  handlePlayerAnimationComplete(animation: Phaser.Animations.Animation) {
     if (!this.player || this.player.isDead || !animation) {
       return;
     }
@@ -785,7 +869,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  getHorizontalInput() {
+  getHorizontalInput(): number {
     let direction = 0;
 
     if (this.cursors.left.isDown || this.keys.A.isDown) {
@@ -799,7 +883,7 @@ export default class GameScene extends Phaser.Scene {
     return direction;
   }
 
-  getVerticalInput() {
+  getVerticalInput(): number {
     let direction = 0;
 
     if (this.cursors.up.isDown || this.keys.W.isDown) {
