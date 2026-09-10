@@ -46,20 +46,18 @@ export function tryEnhanceSlot(system: SwordOrbitSystem, slotIndex: number, guar
 	return 'success';
 }
 
-// Legendary trait gacha: random trait into the slot's next socket
+// 각인 가챠: 무작위 각인을 그 자리에 앉은 "검"에 새긴다 (각인은 검 귀속 — 2026-08-28)
 export function pullTrait(system: SwordOrbitSystem, slotIndex: number): TraitDefinition | null {
 	if (!system.canAddTrait(slotIndex)) {
 		return null;
 	}
 
+	const sword = system.swords[slotIndex]!;
 	const trait = Phaser.Math.RND.pick(traitCatalog.traits);
-	system.getSlotState(slotIndex)!.traits.push(trait.id);
+	(sword.traits ??= []).push(trait.id);
 
-	const sword = system.swords[slotIndex];
-	if (sword) {
-		system.recalculateSwordStats(sword);
-		system.refreshAura(sword);
-	}
+	system.recalculateSwordStats(sword);
+	system.refreshAura(sword);
 	system.refreshSwordHud();
 	return trait;
 }
@@ -84,22 +82,21 @@ export function computeSlotModifiers(system: SwordOrbitSystem, sword: OrbitSword
 		synergyElement: null,
 	};
 
+	// 자리 강화(+4% dmg / -1.5% cd per level)는 위치 기반으로 유지
 	const slotIndex = system.swords.indexOf(sword);
 	const state = system.getSlotState(slotIndex);
-	if (!state) {
-		return mods;
+	if (state) {
+		mods.damageMult += (system.slotConfig.enhanceDamagePerLevel ?? 0.04) * state.enhance;
+		mods.cooldownMult -= (system.slotConfig.enhanceCooldownPerLevel ?? 0.015) * state.enhance;
 	}
-
-	// Enhancement (+4% dmg / -1.5% cd per level)
-	mods.damageMult += (system.slotConfig.enhanceDamagePerLevel ?? 0.04) * state.enhance;
-	mods.cooldownMult -= (system.slotConfig.enhanceCooldownPerLevel ?? 0.015) * state.enhance;
 
 	const swordElement = sword.definition?.element ?? null;
 
 	// 숫자 누적용 인덱스 뷰 (런타임 객체는 동일)
 	const bag = mods as unknown as Record<string, number>;
 
-	for (const traitId of state.traits) {
+	// 각인은 검 귀속 — 검이 자리를 옮겨도 따라간다 (2026-08-28)
+	for (const traitId of sword.traits ?? []) {
 		const trait = system.getTraitById(traitId);
 		if (!trait) {
 			continue;
@@ -147,6 +144,8 @@ export function refreshAura(system: SwordOrbitSystem, sword: OrbitSword | null):
 			duration: 600,
 		});
 	} else if (!mods.hasSynergy && sword.aura) {
+		// repeat:-1 트윈은 대상이 destroy돼도 TweenManager에 남아 매 프레임 계속 돈다.
+		system.scene?.tweens?.killTweensOf(sword.aura);
 		sword.aura.destroy();
 		sword.aura = null;
 	}

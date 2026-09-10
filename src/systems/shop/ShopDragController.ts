@@ -34,14 +34,17 @@ export default class ShopDragController {
 
 		this.onDragStart = (pointer, gameObject) => {
 			if (gameObject.getData('shopDragType')) {
+				gameObject.setData('wasDragged', true); // pointerup 선택과 드래그를 구분
 				gameObject.setDepth(2500);
 				gameObject.clearMask(); // 창고 밖으로 드래그해도 보이게
 				this.ui.hideTooltip();
 			}
 		};
-		this.onDrag = (pointer, gameObject, dragX, dragY) => {
+		// UI 루트가 스케일된 상태라 Phaser 가 넘겨주는 dragX/dragY 대신
+		// 포인터를 로컬 좌표로 직접 변환해 따라가게 한다.
+		this.onDrag = (pointer, gameObject) => {
 			if (gameObject.getData('shopDragType')) {
-				gameObject.setPosition(dragX, dragY);
+				gameObject.setPosition(this.ui.toLocalX(pointer.x), this.ui.toLocalY(pointer.y));
 			}
 		};
 		this.onDragEnd = (pointer, gameObject) => {
@@ -74,17 +77,30 @@ export default class ShopDragController {
 	// Hit-testing
 	// ---------------------------------------------------------------
 
-	findSlotAt(x: number, y: number): number {
+	/** 스크린 포인터 좌표를 받아 로컬 좌표로 변환한 뒤 히트테스트 */
+	findSlotAt(screenX: number, screenY: number): number {
 		if (!this.ui.slotButtons) {
 			return -1;
 		}
+		const x = this.ui.toLocalX(screenX);
+		const y = this.ui.toLocalY(screenY);
 		return this.ui.slotButtons.findIndex((button) =>
-			Math.abs(x - button.x) <= 37 && Math.abs(y - button.y) <= 37,
+			Math.abs(x - button.x) <= button.size / 2 && Math.abs(y - button.y) <= button.size / 2,
 		);
 	}
 
-	isOverInventory(x: number, y: number): boolean {
+	isOverInventory(screenX: number, screenY: number): boolean {
 		const rect = this.ui.invStripRect;
+		const x = this.ui.toLocalX(screenX);
+		const y = this.ui.toLocalY(screenY);
+		return Boolean(rect && x >= rect.x && x <= rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h);
+	}
+
+	/** 판매 버튼(드롭 영역) 위인가 */
+	isOverSell(screenX: number, screenY: number): boolean {
+		const rect = this.ui.sellRect;
+		const x = this.ui.toLocalX(screenX);
+		const y = this.ui.toLocalY(screenY);
 		return Boolean(rect && x >= rect.x && x <= rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h);
 	}
 
@@ -98,12 +114,30 @@ export default class ShopDragController {
 		if (type === 'reserve') {
 			if (slotIndex >= 0 && slotIndex < so.unlockedSlots) {
 				acted = so.equipFromReserve(index, slotIndex);
+			} else if (this.isOverSell(pointer.x, pointer.y)) {
+				// 판매 버튼에 놓으면 즉시 판매 (효과음/announce는 sellReserve가 담당)
+				this.shop.sellReserve(index);
+				return;
+			} else {
+				// 보관함 안의 다른 칸에 놓으면 위치 교환/이동 (정렬)
+				const cell = this.ui.findReserveCellAt(pointer.x, pointer.y);
+				if (cell >= 0 && cell !== index) {
+					acted = this.shop.moveReserve(index, cell);
+				}
 			}
 		} else if (type === 'slot') {
 			if (slotIndex >= 0 && slotIndex !== index && slotIndex < so.unlockedSlots) {
 				acted = so.swapSlots(index, slotIndex);
+			} else if (this.isOverSell(pointer.x, pointer.y)) {
+				this.shop.sellEquipped(index);
+				return;
 			} else if (this.isOverInventory(pointer.x, pointer.y)) {
 				acted = so.unequipToReserve(index);
+				// 해제된 검(맨 뒤에 들어감)을 실제로 놓은 칸으로 옮겨준다
+				const cell = this.ui.findReserveCellAt(pointer.x, pointer.y);
+				if (acted && cell >= 0 && cell < so.reserve.length - 1) {
+					this.shop.moveReserve(so.reserve.length - 1, cell);
+				}
 			}
 		}
 

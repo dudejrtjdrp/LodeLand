@@ -1,7 +1,7 @@
 [
   {
     "id": "hero-basic",
-    "name": "기사",
+    "name": "ASH",
     "displaySize": {
       "width": 200,
       "height": 200
@@ -61,23 +61,33 @@
       "hurt": "player-hurt",
       "death": "player-death"
     },
-    "description": "균형 잡힌 표준 전사",
-    "unlockGold": 0
+    "description": "스승의 무리를 물려받은 신참 키퍼 — 균형 잡힌 표준 무리",
+    "unlockGold": 0,
+    "mechanic": {
+      "id": "succession",
+      "name": "승계",
+      "short": "서로 다른 검이 이어 때릴수록 무리 전체 피해 +6% (최대 5중첩)",
+      "desc": "서로 다른 검이 1.6초 안에 이어서 명중하면 승계가 한 단 쌓입니다 (최대 5단).\n한 단마다 무리 전체의 피해가 6% 오릅니다 — 한 자루에 기대지 말고 골고루 굴리라는 뜻입니다.\n1.6초 동안 아무 검도 때리지 못하면 처음으로 돌아갑니다.",
+      "windowMs": 1600,
+      "maxStacks": 5,
+      "damagePerStack": 0.06
+    }
   },
   {
     "id": "berserker",
-    "name": "광전사",
+    "name": "BASTION",
     "displaySize": {
-      "width": 200,
-      "height": 200
+      "width": 100,
+      "height": 100
     },
     "hitbox": {
       "shape": "box",
-      "width": 40,
-      "height": 56,
-      "offsetX": 46,
-      "offsetY": 24
+      "width": 32,
+      "height": 45,
+      "offsetX": 17,
+      "offsetY": 10
     },
+    "portraitScale": 0.5,
     "stats": {
       "moveSpeed": 350,
       "damage": 10,
@@ -88,56 +98,64 @@
     },
     "spritesheets": {
       "idle": {
-        "assetName": "playerIdle.png",
-        "filePath": "player/playerIdle.png",
-        "textureKey": "player-idle-sheet",
-        "frameWidth": 128,
-        "frameHeight": 128,
+        "assetName": "eleonoreIdle.png",
+        "filePath": "player/eleonoreIdle.png",
+        "textureKey": "eleonore-idle-sheet",
+        "frameWidth": 64,
+        "frameHeight": 64,
         "frameStart": 0,
-        "frameEnd": 5,
-        "frameRate": 8,
+        "frameEnd": 8,
+        "frameRate": 9,
         "repeat": -1
       },
       "hurt": {
-        "assetName": "playerHurt.png",
-        "filePath": "player/playerHurt.png",
-        "textureKey": "player-hurt-sheet",
-        "frameWidth": 128,
-        "frameHeight": 128,
+        "assetName": "eleonoreHurt.png",
+        "filePath": "player/eleonoreHurt.png",
+        "textureKey": "eleonore-hurt-sheet",
+        "frameWidth": 64,
+        "frameHeight": 64,
         "frameStart": 0,
         "frameEnd": 3,
         "frameRate": 10,
         "repeat": 0
       },
       "death": {
-        "assetName": "playerDeath.png",
-        "filePath": "player/playerDeath.png",
-        "textureKey": "player-death-sheet",
-        "frameWidth": 128,
-        "frameHeight": 128,
+        "assetName": "eleonoreDeath.png",
+        "filePath": "player/eleonoreDeath.png",
+        "textureKey": "eleonore-death-sheet",
+        "frameWidth": 64,
+        "frameHeight": 64,
         "frameStart": 0,
-        "frameEnd": 7,
+        "frameEnd": 11,
         "frameRate": 10,
         "repeat": 0
       }
     },
     "animations": {
-      "idle": "player-idle",
-      "hurt": "player-hurt",
-      "death": "player-death"
+      "idle": "eleonore-idle",
+      "hurt": "eleonore-hurt",
+      "death": "eleonore-death"
     },
-    "description": "검이 발사되지 않는 대신 궤도 접촉 피해 2.5배 · 궤도 반경 +25% · 체력 +20",
-    "tint": "#f87171",
+    "description": "검을 절대 풀지 않는 고참. 사슬 궤도 — 접촉 피해 2.5배 · 궤도 +25% · 체력 +20",
     "traits": {
       "noLaunch": true,
       "orbitDamageMult": 2.5,
       "orbitRadiusMult": 1.25
     },
-    "unlockGold": 5000
+    "unlockGold": 5000,
+    "mechanic": {
+      "id": "counterstrike",
+      "name": "반격 사출",
+      "short": "피격 순간 검 한 자루가 풀려 2배 피해로 되찌른다 (1.2초)",
+      "desc": "피격당하는 순간 사슬 궤도의 검 한 자루가 풀려 가장 가까운 적을 찌릅니다.\n그 출격의 피해는 2배이며, 때린 뒤 다시 궤도로 감깁니다.\nBASTION 의 검이 궤도를 떠나는 유일한 순간입니다. 재사용 1.2초.",
+      "cooldownMs": 1200,
+      "damageMult": 2.0,
+      "searchRadius": 420
+    }
   },
   {
     "id": "swordmaster",
-    "name": "검성",
+    "name": "TALON",
     "displaySize": {
       "width": 200,
       "height": 200
@@ -197,19 +215,28 @@
       "hurt": "player-hurt",
       "death": "player-death"
     },
-    "description": "검 1자루 고정 · 피해 2.5배 · 발사 대기 -40% · 행운 +20%",
-    "tint": "#a78bfa",
+    "description": "한 자루만 기르는 유파. 검 1자루 · 피해 2.5배 · 쿨다운 -40% · 행운 +20%",
+    "tint": "#a794d1",
     "traits": {
       "maxSwords": 1,
       "damageMult": 2.5,
       "cooldownMult": 0.6,
       "luckBonus": 0.2
     },
-    "unlockGold": 15000
+    "unlockGold": 15000,
+    "mechanic": {
+      "id": "galewalk",
+      "name": "질풍 보법",
+      "short": "대시 재사용 절반 + 대시 경로의 적을 검이 훑는다",
+      "desc": "대시(SHIFT) 재사용 시간이 절반으로 줄어듭니다.\n미끄러진 자리를 검이 함께 훑어, 경로에 닿은 적은 검 피해의 90%를 한 번씩 받습니다.\n한 자루로 싸우는 유파가 거리를 버는 방법입니다.",
+      "dashCooldownMult": 0.5,
+      "trailDamagePct": 0.9,
+      "trailRadius": 58
+    }
   },
   {
     "id": "gambler",
-    "name": "도박꾼",
+    "name": "GILDER",
     "displaySize": {
       "width": 200,
       "height": 200
@@ -269,13 +296,22 @@
       "hurt": "player-hurt",
       "death": "player-death"
     },
-    "description": "행운 +100% · 골드 +50% · 최대 체력 -30%",
-    "tint": "#fbbf24",
+    "description": "황금에 전 재산을 건 전직 감정사. 행운 +100% · 골드 +50% · 체력 -30%",
+    "tint": "#d9a83c",
     "traits": {
       "luckBonus": 1.0,
       "goldMult": 1.5,
       "hpMult": 0.7
     },
-    "unlockGold": 10000
+    "unlockGold": 10000,
+    "mechanic": {
+      "id": "wager",
+      "name": "감정사의 내기",
+      "short": "상점 첫 되굴림 무료 + 주운 검의 등급이 오르내린다",
+      "desc": "상점에 들를 때마다 첫 되굴림이 공짜입니다.\n주워 든 검은 감정대에 오릅니다 — 45%로 한 등급 오르고, 20%로 한 등급 떨어집니다.\n상점에서 값을 치르고 산 검은 내기에 걸지 않습니다.",
+      "freeFirstReroll": true,
+      "upChance": 0.45,
+      "downChance": 0.2
+    }
   }
 ]

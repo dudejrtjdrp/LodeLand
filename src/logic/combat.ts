@@ -57,8 +57,9 @@ export function resistFor(
  * %-max-HP bonus damage from ultra-rare swords: at least 1, capped at 300
  * so bosses don't melt.
  */
-export function maxHpBonusDamage(enemyMaxHp: number, maxHpDamageFraction: number): number {
-	return Math.min(300, Math.max(1, Math.round(enemyMaxHp * maxHpDamageFraction)));
+export function maxHpBonusDamage(enemyMaxHp: number, maxHpDamageFraction: number, capScale = 1): number {
+	// 상한 300 은 피해 규모(레벨 성장)에 따라 같이 커진다 (2026-09-04)
+	return Math.min(300 * Math.max(1, capScale), Math.max(1, Math.round(enemyMaxHp * maxHpDamageFraction)));
 }
 
 /** Knockback speed for an enemy given its resist fraction (>=1 = immune). */

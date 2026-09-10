@@ -2,3 +2,13 @@ node_modules/
 dist/
 _to_delete/
 .DS_Store
+
+# 밸런스 시뮬 산출물
+scripts/balance-sim/out/
+scripts/balance-sim/.build/
+
+# vite 임시 파일
+vite.config.ts.timestamp-*.mjs
+
+# 마케팅 작업 폴더(비공개 문서·대용량 영상) — 공개 저장소에 올리지 않음
+marketing/

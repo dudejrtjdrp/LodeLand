@@ -1,0 +1,20 @@
+# Cloudflare Pages / Netlify 캐시 규칙.
+# public/ 안에 두면 vite build 시 dist/ 루트로 복사된다.
+# 아래로 갈수록 우선순위가 높다(나중에 매칭된 규칙이 헤더를 덮어씀).
+
+/*
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# 파일명에 해시가 붙는 번들 — 영구 캐시 가능
+/build/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# BGM 14MB. 파일명이 고정이라 immutable은 위험하지만 오래 캐시할 가치가 있다.
+/bgm/*
+  Cache-Control: public, max-age=604800
+
+# 진입점은 항상 최신을 받아야 새 빌드가 반영된다
+/index.html
+  Cache-Control: no-cache

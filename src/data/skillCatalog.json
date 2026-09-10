@@ -1,0 +1,120 @@
+{
+  "dive": {
+    "id": "dive",
+    "name": "활공 사냥",
+    "short": "활공",
+    "keys": [
+      "Q"
+    ],
+    "icon": "g-fang",
+    "cooldownMs": 8000,
+    "damageBonus": 0.3,
+    "bonusWindowMs": 1600,
+    "searchRadius": 560,
+    "maxCandidates": 12,
+    "desc": "무리 전체를 바라보는 쪽(이동 중이면 이동 방향)으로 즉시 몰아친다. 이 출격의 피해가 30% 오른다.",
+    "levels": {
+      "2": {
+        "name": "활공 사냥 Ⅱ",
+        "desc": "출격 피해 보너스 +30%p · 재사용 -15%",
+        "damageBonusAdd": 0.3,
+        "cooldownMult": 0.85
+      },
+      "3": {
+        "name": "활공 사냥 Ⅲ",
+        "desc": "보너스 창 1.5배 · 활공 착탄마다 평균 1타의 60% 충격파",
+        "bonusWindowMult": 1.5,
+        "impactPct": 0.6
+      }
+    }
+  },
+  "recall": {
+    "id": "recall",
+    "name": "귀소",
+    "short": "귀소",
+    "keys": [
+      "SPACE"
+    ],
+    "icon": "g-bird",
+    "cooldownMs": 12000,
+    "invulnerableMs": 500,
+    "knockbackForce": 340,
+    "sweepRadius": 66,
+    "sweepMs": 520,
+    "desc": "무리를 즉시 불러들인다. 돌아오는 궤적이 적을 밀어내고, 0.5초 동안 피해를 받지 않는다.",
+    "levels": {
+      "2": {
+        "name": "귀소 Ⅱ",
+        "desc": "무적 0.5→0.9초 · 밀어내기 반경 +30%",
+        "invulnAddMs": 400,
+        "knockbackRadiusAdd": 0.3
+      },
+      "3": {
+        "name": "귀소 Ⅲ",
+        "desc": "귀환 궤적이 검 피해의 60%를 입힌다 · 시전 시 체력 5% 회복",
+        "sweepDamagePct": 0.6,
+        "healPct": 0.05
+      }
+    }
+  },
+  "dash": {
+    "id": "dash",
+    "name": "대시",
+    "short": "대시",
+    "keys": [
+      "SHIFT"
+    ],
+    "icon": "g-boot",
+    "cooldownMs": 3000,
+    "distance": 120,
+    "durationMs": 150,
+    "ghostIntervalMs": 32,
+    "desc": "이동 방향으로 짧게 미끄러진다. 무적은 없다 — 자리를 옮기는 용도.",
+    "levels": {
+      "2": {
+        "name": "대시 Ⅱ",
+        "desc": "재사용 3.0→2.2초 · 거리 +25%",
+        "cooldownMult": 0.73,
+        "distanceAdd": 0.25
+      },
+      "3": {
+        "name": "대시 Ⅲ",
+        "desc": "잔상이 스치는 적에게 최강 검 피해의 45% · 대시 후 2초간 출격 +30%",
+        "ghostDamagePct": 0.45,
+        "strikeBonus": {
+          "mult": 0.3,
+          "windowMs": 2000
+        }
+      }
+    }
+  },
+  "ult": {
+    "id": "ult",
+    "name": "필살기",
+    "short": "필살",
+    "keys": [
+      "R"
+    ],
+    "icon": "g-spark",
+    "chargePerKill": 0.012,
+    "chargePerElite": 0.05,
+    "chargePerMiniboss": 0.1,
+    "chargePerBoss": 0.25,
+    "chargePerHurt": 0.04,
+    "damageMult": 4.0,
+    "radiusMult": 1.3,
+    "bossBonusPctMaxHp": 0.04,
+    "interruptRadius": 420,
+    "desc": "처치·피격으로 게이지를 채워 장착 검의 주 원소 필살기를 터뜨린다. 보스의 시전을 끊고 최대체력 4%를 추가로 깎는다."
+  },
+  "hitStop": {
+    "killMs": 20,
+    "critMs": 20,
+    "bigKillMs": 50,
+    "bossHitMs": 50,
+    "bossHitGapMs": 700,
+    "minGapMs": 110,
+    "maxMs": 140,
+    "slowFactor": 24
+  }
+}

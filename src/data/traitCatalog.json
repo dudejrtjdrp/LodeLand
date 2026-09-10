@@ -3,8 +3,8 @@
   "traits": [
     {
       "id": "storm-sigil",
-      "name": "뇌운 각인",
-      "icon": "⚡",
+      "name": "번개 각인",
+      "icon": "g-el-electric",
       "element": "electric",
       "effects": {
         "chainBonus": 1
@@ -13,18 +13,18 @@
     },
     {
       "id": "flame-sigil",
-      "name": "화염 각인",
-      "icon": "🔥",
+      "name": "불꽃 각인",
+      "icon": "g-el-fire",
       "element": "fire",
       "effects": {
         "dotDpsBonus": 6
       },
-      "desc": "화상/맹독 피해 +6/s"
+      "desc": "지속 피해 +6/s"
     },
     {
       "id": "venom-sigil",
       "name": "맹독 각인",
-      "icon": "☠️",
+      "icon": "g-el-poison",
       "element": "poison",
       "effects": {
         "dotDurationBonus": 1000
@@ -34,7 +34,7 @@
     {
       "id": "void-sigil",
       "name": "공허 각인",
-      "icon": "🕳️",
+      "icon": "g-el-void",
       "element": "void",
       "effects": {
         "executeBonus": 0.05
@@ -44,17 +44,17 @@
     {
       "id": "gold-sigil",
       "name": "황금 각인",
-      "icon": "🪙",
+      "icon": "g-el-gold",
       "element": "gold",
       "effects": {
         "goldOnHitChance": 0.08
       },
-      "desc": "타격 시 8% 확률 골드"
+      "desc": "타격 시 8% 확률로 골드"
     },
     {
       "id": "frost-sigil",
       "name": "서리 각인",
-      "icon": "❄️",
+      "icon": "g-drop",
       "element": "ice",
       "effects": {
         "slowOnHit": 0.35
@@ -63,8 +63,8 @@
     },
     {
       "id": "blood-sigil",
-      "name": "혈맹 각인",
-      "icon": "🩸",
+      "name": "흡혈 각인",
+      "icon": "g-drop",
       "element": "blood",
       "effects": {
         "healOnHitChance": 0.1
@@ -74,28 +74,28 @@
     {
       "id": "gale-sigil",
       "name": "질풍 각인",
-      "icon": "🌪️",
+      "icon": "g-feather",
       "element": "wind",
       "effects": {
         "launchSpeedMult": 0.15,
         "cooldownMult": -0.05
       },
-      "desc": "발사속도 +15% · 쿨다운 -5%"
+      "desc": "출격 속도 +15% · 쿨다운 -5%"
     },
     {
       "id": "hunter-sigil",
-      "name": "거인 사냥꾼",
-      "icon": "🏹",
+      "name": "사냥꾼 각인",
+      "icon": "g-crown",
       "element": null,
       "effects": {
         "bigGameDamage": 0.25
       },
-      "desc": "정예/보스급 피해 +25%"
+      "desc": "정예·보스 피해 +25%"
     },
     {
       "id": "ruin-sigil",
       "name": "파멸 각인",
-      "icon": "💥",
+      "icon": "g-spark",
       "element": null,
       "effects": {
         "critDamageAdd": 0.4
@@ -105,17 +105,17 @@
     {
       "id": "gravity-sigil",
       "name": "중력 각인",
-      "icon": "🌀",
+      "icon": "g-magnet",
       "element": "void",
       "effects": {
         "cleaveBonus": 1
       },
-      "desc": "검기 파동 대상 +1"
+      "desc": "휩쓸기 대상 +1"
     },
     {
       "id": "titan-sigil",
-      "name": "거신 각인",
-      "icon": "⚔️",
+      "name": "거인 각인",
+      "icon": "g-blade",
       "element": null,
       "effects": {
         "damageMult": 0.2

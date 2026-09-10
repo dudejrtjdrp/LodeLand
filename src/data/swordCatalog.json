@@ -1,8 +1,8 @@
 [
   {
     "id": "bronze",
-    "name": "Bronze Sword",
-    "assetName": "sword01.png",
+    "name": "Brasswing",
+    "assetName": "swords.png",
     "sheetOrder": 0,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 360,
@@ -13,7 +13,7 @@
     "critDamageMultiplier": 1.3,
     "effect": {
       "type": "slash",
-      "tint": "#f6c177"
+      "tint": "#c9a25f"
     },
     "hitbox": {
       "width": 18,
@@ -21,12 +21,14 @@
       "offsetX": 7,
       "offsetY": 7
     },
-    "damageType": "physical"
+    "damageType": "physical",
+    "lore": "모든 키퍼가 처음 들이는 검. 스승의 검걸이에 남아 있던 두 자루 중 하나.",
+    "rarity": "common"
   },
   {
     "id": "rusty",
-    "name": "Rusty Sword",
-    "assetName": "sword01.png",
+    "name": "Rustbeak",
+    "assetName": "swords.png",
     "sheetOrder": 1,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 390,
@@ -37,7 +39,7 @@
     "critDamageMultiplier": 1.8,
     "effect": {
       "type": "spark",
-      "tint": "#d97706"
+      "tint": "#b07a4a"
     },
     "hitbox": {
       "width": 20,
@@ -45,12 +47,14 @@
       "offsetX": 6,
       "offsetY": 6
     },
-    "damageType": "physical"
+    "damageType": "physical",
+    "lore": "부리가 무뎌진 늙은 검. 좀처럼 날지 않지만, 한 번 물면 급소다.",
+    "rarity": "common"
   },
   {
     "id": "steel",
-    "name": "Steel Sword",
-    "assetName": "sword01.png",
+    "name": "Steelhawk",
+    "assetName": "swords.png",
     "sheetOrder": 2,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 420,
@@ -61,7 +65,7 @@
     "critDamageMultiplier": 1.5,
     "effect": {
       "type": "flash",
-      "tint": "#cbd5e1"
+      "tint": "#aebfc9"
     },
     "hitbox": {
       "width": 22,
@@ -70,23 +74,25 @@
       "offsetY": 5
     },
     "damageType": "physical",
-    "physicalPen": 0.15
+    "physicalPen": 0.15,
+    "lore": "딱지를 뚫으라고 벼린 곧은 부리. 관통은 이 계열의 자존심이다.",
+    "rarity": "uncommon"
   },
   {
     "id": "ruby",
-    "name": "Ruby Sword",
-    "assetName": "sword01.png",
+    "name": "Emberkite",
+    "assetName": "swords.png",
     "sheetOrder": 3,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 450,
-    "damage": 30,
+    "damage": 25,
     "cooldownMs": 1150,
     "maxHits": 1,
     "critChance": 0.12,
     "critDamageMultiplier": 1.6,
     "effect": {
       "type": "ember",
-      "tint": "#ef4444"
+      "tint": "#d9702e"
     },
     "hitbox": {
       "width": 22,
@@ -96,17 +102,19 @@
     },
     "special": {
       "type": "burn",
-      "dps": 6,
+      "dps": 5,
       "durationMs": 2000,
-      "label": "화상"
+      "label": "Ignite"
     },
     "element": "fire",
-    "damageType": "magic"
+    "damageType": "magic",
+    "lore": "심지에 잉걸을 품고 난다. 스친 자리마다 불이 남는다.",
+    "rarity": "rare"
   },
   {
     "id": "emerald",
-    "name": "Emerald Sword",
-    "assetName": "sword01.png",
+    "name": "Blightwing",
+    "assetName": "swords.png",
     "sheetOrder": 4,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 470,
@@ -117,7 +125,7 @@
     "critDamageMultiplier": 1.7,
     "effect": {
       "type": "trail",
-      "tint": "#22c55e"
+      "tint": "#84b04a"
     },
     "hitbox": {
       "width": 24,
@@ -129,26 +137,28 @@
       "type": "poison",
       "dps": 8,
       "durationMs": 2500,
-      "label": "맹독"
+      "label": "Corrode"
     },
     "element": "poison",
-    "damageType": "magic"
+    "damageType": "magic",
+    "lore": "길들인 녹을 삼켜 무기로 벼린 검. 녹으로 녹을 잡는다.",
+    "rarity": "epic"
   },
   {
     "id": "gold",
-    "name": "Gold Sword",
-    "assetName": "sword01.png",
+    "name": "Gildfinch",
+    "assetName": "swords.png",
     "sheetOrder": 5,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 510,
-    "damage": 40,
-    "cooldownMs": 950,
+    "damage": 48,
+    "cooldownMs": 860,
     "maxHits": 2,
-    "critChance": 0.2,
+    "critChance": 0.25,
     "critDamageMultiplier": 1.8,
     "effect": {
       "type": "burst",
-      "tint": "#fbbf24"
+      "tint": "#d9a83c"
     },
     "hitbox": {
       "width": 24,
@@ -159,27 +169,29 @@
     "special": {
       "type": "midas",
       "chance": 0.15,
-      "label": "황금손"
+      "label": "Gild"
     },
     "element": "gold",
     "damageType": "physical",
-    "physicalPen": 0.2
+    "physicalPen": 0.2,
+    "lore": "시금석 부리로 적의 몸에서 골드를 쪼아낸다. 에다가 가장 아끼는 계열.",
+    "rarity": "epic"
   },
   {
     "id": "violet",
-    "name": "Violet Sword",
-    "assetName": "sword01.png",
+    "name": "Voltswift",
+    "assetName": "swords.png",
     "sheetOrder": 6,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 540,
-    "damage": 46,
+    "damage": 42,
     "cooldownMs": 875,
     "maxHits": 2,
     "critChance": 0.25,
     "critDamageMultiplier": 2.0,
     "effect": {
       "type": "arc",
-      "tint": "#a855f7"
+      "tint": "#63b3d9"
     },
     "hitbox": {
       "width": 26,
@@ -191,27 +203,29 @@
       "type": "chain",
       "targets": 1,
       "damagePct": 0.6,
-      "label": "연쇄 번개"
+      "label": "Arc"
     },
     "element": "electric",
     "damageType": "magic",
-    "magicPen": 0.2
+    "magicPen": 0.2,
+    "lore": "Lodeland에서 가장 빠른 날개. 스치면 벼락이 이웃으로 옮겨붙는다.",
+    "rarity": "legendary"
   },
   {
     "id": "obsidian",
-    "name": "Obsidian Sword",
-    "assetName": "sword01.png",
+    "name": "Nullowl",
+    "assetName": "swords.png",
     "sheetOrder": 7,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 580,
-    "damage": 55,
+    "damage": 40,
     "cooldownMs": 800,
     "maxHits": 3,
-    "critChance": 0.3,
+    "critChance": 0.36,
     "critDamageMultiplier": 2.2,
     "effect": {
       "type": "void",
-      "tint": "#111827"
+      "tint": "#8d7bb5"
     },
     "hitbox": {
       "width": 28,
@@ -221,29 +235,31 @@
     },
     "special": {
       "type": "execute",
-      "threshold": 0.12,
-      "label": "처형"
+      "threshold": 0.096,
+      "label": "Cull"
     },
     "element": "void",
     "damageType": "magic",
-    "magicPen": 0.3
+    "magicPen": 0.3,
+    "lore": "자기장을 지우며 나는 소리 없는 사냥꾼. 장이 끊긴 것은 형태를 잃는다.",
+    "rarity": "legendary"
   },
   {
     "id": "inferno",
-    "name": "Inferno Blade",
-    "assetName": "sword01.png",
+    "name": "Emberroc",
+    "assetName": "swords.png",
     "sheetOrder": 8,
     "evolved": true,
     "orbitSpeedMultiplier": 1.0,
     "launchSpeed": 620,
-    "damage": 75,
+    "damage": 62,
     "cooldownMs": 700,
     "maxHits": 3,
     "critChance": 0.25,
-    "critDamageMultiplier": 2.0,
+    "critDamageMultiplier": 2.3,
     "effect": {
       "type": "ember",
-      "tint": "#f97316"
+      "tint": "#e0813a"
     },
     "hitbox": {
       "width": 30,
@@ -253,31 +269,33 @@
     },
     "special": {
       "type": "burn",
-      "dps": 14,
+      "dps": 12,
       "durationMs": 2500,
-      "label": "겁화"
+      "label": "Wildfire"
     },
     "element": "fire",
     "damageType": "magic",
     "magicPen": 0.25,
-    "trueDamage": 12
+    "trueDamage": 12,
+    "lore": "Emberkite와 Gildfinch를 REFORGE로 겹쳐 벼린 대형종. 지나간 길이 들불이 된다.",
+    "rarity": "legendary"
   },
   {
     "id": "storm",
-    "name": "Storm Blade",
-    "assetName": "sword01.png",
+    "name": "Stormroc",
+    "assetName": "swords.png",
     "sheetOrder": 9,
     "evolved": true,
     "orbitSpeedMultiplier": 1.5,
     "launchSpeed": 700,
-    "damage": 60,
+    "damage": 54,
     "cooldownMs": 500,
     "maxHits": 4,
     "critChance": 0.3,
     "critDamageMultiplier": 1.8,
     "effect": {
       "type": "arc",
-      "tint": "#38bdf8"
+      "tint": "#7cc3e0"
     },
     "hitbox": {
       "width": 30,
@@ -289,29 +307,31 @@
       "type": "chain",
       "targets": 2,
       "damagePct": 0.7,
-      "label": "폭풍 연쇄"
+      "label": "Cyclone"
     },
     "element": "electric",
     "damageType": "magic",
     "magicPen": 0.3,
-    "trueDamage": 8
+    "trueDamage": 8,
+    "lore": "Blightwing과 Voltswift의 조합작. 날갯짓 한 번에 돌개바람이 인다.",
+    "rarity": "legendary"
   },
   {
     "id": "voidreaver",
-    "name": "Void Reaver",
-    "assetName": "sword01.png",
+    "name": "Nullroc",
+    "assetName": "swords.png",
     "sheetOrder": 10,
     "evolved": true,
     "orbitSpeedMultiplier": 1.2,
     "launchSpeed": 650,
-    "damage": 120,
+    "damage": 87,
     "cooldownMs": 650,
     "maxHits": 5,
     "critChance": 0.35,
     "critDamageMultiplier": 2.5,
     "effect": {
       "type": "void",
-      "tint": "#a78bfa"
+      "tint": "#a08fd0"
     },
     "hitbox": {
       "width": 36,
@@ -321,12 +341,5421 @@
     },
     "special": {
       "type": "execute",
-      "threshold": 0.18,
-      "label": "공허 처형"
+      "threshold": 0.144,
+      "label": "Deep Null"
     },
     "element": "void",
     "damageType": "magic",
     "magicPen": 0.4,
-    "maxHpDamage": 0.02
+    "maxHpDamage": 0.02,
+    "lore": "Voltswift와 Nullowl의 조합작. 그 그림자가 닿으면 큰 것도 형태를 잃는다.",
+    "rarity": "legendary"
+  },
+  {
+    "id": "anvilkite",
+    "name": "Anvilkite",
+    "assetName": "swords.png",
+    "sheetOrder": 11,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 600,
+    "damage": 72,
+    "cooldownMs": 760,
+    "maxHits": 3,
+    "critChance": 0.15,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#c9ccd4"
+    },
+    "hitbox": {
+      "width": 30,
+      "height": 30,
+      "offsetX": 1,
+      "offsetY": 1
+    },
+    "damageType": "physical",
+    "physicalPen": 0.4,
+    "trueDamage": 10,
+    "lore": "Brasswing과 Steelhawk의 조합작. 모루째 날아드는 묵직한 일격 — 딱지도 갑주도 소용없다.",
+    "rarity": "rare"
+  },
+  {
+    "id": "coinquill",
+    "name": "Coinquill",
+    "assetName": "swords.png",
+    "sheetOrder": 12,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.1,
+    "launchSpeed": 640,
+    "damage": 70,
+    "cooldownMs": 590,
+    "maxHits": 3,
+    "critChance": 0.24,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "burst",
+      "tint": "#ffd166"
+    },
+    "hitbox": {
+      "width": 28,
+      "height": 28,
+      "offsetX": 2,
+      "offsetY": 2
+    },
+    "special": {
+      "type": "midas",
+      "chance": 0.35,
+      "label": "Goldrush"
+    },
+    "element": "gold",
+    "damageType": "physical",
+    "physicalPen": 0.25,
+    "lore": "Brasswing과 Gildfinch의 조합작. 깃 하나하나가 시금석 — 스치는 족족 골드가 쏟아진다.",
+    "rarity": "epic"
+  },
+  {
+    "id": "slagroc",
+    "name": "Slagroc",
+    "assetName": "swords.png",
+    "sheetOrder": 13,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 620,
+    "damage": 58,
+    "cooldownMs": 740,
+    "maxHits": 2,
+    "critChance": 0.18,
+    "critDamageMultiplier": 1.7,
+    "effect": {
+      "type": "ember",
+      "tint": "#ef6c33"
+    },
+    "hitbox": {
+      "width": 32,
+      "height": 32,
+      "offsetX": 0,
+      "offsetY": 0
+    },
+    "special": {
+      "type": "blast",
+      "radius": 130,
+      "damagePct": 0.468,
+      "label": "Slagburst"
+    },
+    "element": "fire",
+    "damageType": "magic",
+    "magicPen": 0.2,
+    "lore": "Rustbeak과 Emberkite의 조합작. 맞은 자리가 통째로 터진다 — 슬래그가 사방으로 튄다.",
+    "rarity": "rare"
+  },
+  {
+    "id": "rotwing",
+    "name": "Rotwing",
+    "assetName": "swords.png",
+    "sheetOrder": 14,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 630,
+    "damage": 62,
+    "cooldownMs": 640,
+    "maxHits": 3,
+    "critChance": 0.18,
+    "critDamageMultiplier": 1.7,
+    "effect": {
+      "type": "trail",
+      "tint": "#79a33f"
+    },
+    "hitbox": {
+      "width": 30,
+      "height": 30,
+      "offsetX": 1,
+      "offsetY": 1
+    },
+    "special": {
+      "type": "poison",
+      "dps": 18,
+      "durationMs": 3000,
+      "label": "Blightrot"
+    },
+    "element": "poison",
+    "damageType": "magic",
+    "magicPen": 0.25,
+    "lore": "Rustbeak과 Blightwing의 조합작. 물린 자리는 낫지 않는다 — 녹이 뼛속까지 스민다.",
+    "rarity": "rare"
+  },
+  {
+    "id": "railshrike",
+    "name": "Railshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 15,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.4,
+    "launchSpeed": 720,
+    "damage": 50,
+    "cooldownMs": 480,
+    "maxHits": 4,
+    "critChance": 0.3,
+    "critDamageMultiplier": 1.9,
+    "effect": {
+      "type": "arc",
+      "tint": "#7cd0f0"
+    },
+    "hitbox": {
+      "width": 28,
+      "height": 28,
+      "offsetX": 2,
+      "offsetY": 2
+    },
+    "special": {
+      "type": "chain",
+      "targets": 2,
+      "damagePct": 0.65,
+      "label": "Railbolt"
+    },
+    "element": "electric",
+    "damageType": "magic",
+    "magicPen": 0.3,
+    "lore": "Steelhawk와 Voltswift의 조합작. 곧게 벼린 궤도 위로 벼락이 줄지어 달린다.",
+    "rarity": "epic",
+    "behavior": "lance"
+  },
+  {
+    "id": "hollowowl",
+    "name": "Hollowowl",
+    "assetName": "swords.png",
+    "sheetOrder": 16,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.1,
+    "launchSpeed": 640,
+    "damage": 62,
+    "cooldownMs": 700,
+    "maxHits": 3,
+    "critChance": 0.28,
+    "critDamageMultiplier": 2.2,
+    "effect": {
+      "type": "void",
+      "tint": "#9a86c8"
+    },
+    "hitbox": {
+      "width": 32,
+      "height": 32,
+      "offsetX": 0,
+      "offsetY": 0
+    },
+    "element": "void",
+    "damageType": "magic",
+    "magicPen": 0.35,
+    "maxHpDamage": 0.015,
+    "lore": "Steelhawk와 Nullowl의 조합작. 강철의 뼈대에 무음의 깃 — 큰 것일수록 깊이 베인다.",
+    "rarity": "epic"
+  },
+  {
+    "id": "verdiwing",
+    "name": "Verdiwing",
+    "assetName": "swords.png",
+    "sheetOrder": 17,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 620,
+    "damage": 60,
+    "cooldownMs": 620,
+    "maxHits": 3,
+    "critChance": 0.2,
+    "critDamageMultiplier": 1.7,
+    "effect": {
+      "type": "trail",
+      "tint": "#a7c957"
+    },
+    "hitbox": {
+      "width": 30,
+      "height": 30,
+      "offsetX": 1,
+      "offsetY": 1
+    },
+    "special": {
+      "type": "slow",
+      "slowPct": 0.45,
+      "durationMs": 1600,
+      "label": "Verdigrip"
+    },
+    "element": "poison",
+    "damageType": "magic",
+    "magicPen": 0.2,
+    "lore": "Blightwing과 Gildfinch의 조합작. 청록 녹이 관절에 들러붙어 걸음을 굳힌다.",
+    "rarity": "epic"
+  },
+  {
+    "id": "pyreroc",
+    "name": "Pyreroc",
+    "assetName": "swords.png",
+    "sheetOrder": 18,
+    "evolved": true,
+    "orbitSpeedMultiplier": 1.4,
+    "launchSpeed": 760,
+    "damage": 91,
+    "cooldownMs": 450,
+    "maxHits": 5,
+    "critChance": 0.32,
+    "critDamageMultiplier": 2.2,
+    "effect": {
+      "type": "ember",
+      "tint": "#ff9e4a"
+    },
+    "hitbox": {
+      "width": 36,
+      "height": 36,
+      "offsetX": 0,
+      "offsetY": 0
+    },
+    "special": {
+      "type": "burn",
+      "dps": 19,
+      "durationMs": 3000,
+      "label": "Pyrestorm"
+    },
+    "element": "fire",
+    "damageType": "magic",
+    "magicPen": 0.4,
+    "trueDamage": 15,
+    "lore": "Emberroc과 Stormroc의 이중 REFORGE. 폭풍이 잉걸을 삼키고, 하늘 전체가 화로가 된다.",
+    "rarity": "legendary"
+  },
+  {
+    "id": "thornswift",
+    "name": "Thornswift",
+    "assetName": "swords.png",
+    "sheetOrder": 19,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 450,
+    "damage": 16,
+    "cooldownMs": 760,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "poison",
+    "lore": "덩굴이 제 스스로 사냥감을 조른다."
+  },
+  {
+    "id": "boltbeak",
+    "name": "Boltbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 20,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 335,
+    "damage": 37,
+    "cooldownMs": 1650,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "화살촉을 통째로 벼린 묵직한 부리."
+  },
+  {
+    "id": "palefeather",
+    "name": "Palefeather",
+    "assetName": "swords.png",
+    "sheetOrder": 21,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 380,
+    "damage": 25,
+    "cooldownMs": 1110,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "장식 세공 사이에 초록 심이 하나 박혀 있다."
+  },
+  {
+    "id": "chainshrike",
+    "name": "Chainshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 22,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 435,
+    "damage": 47,
+    "cooldownMs": 1000,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "physicalPen": 0.15,
+    "lore": "사슬 고리가 풀리며 사냥감을 얽어맨다."
+  },
+  {
+    "id": "mosskite",
+    "name": "Mosskite",
+    "assetName": "swords.png",
+    "sheetOrder": 23,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 410,
+    "damage": 31,
+    "cooldownMs": 1130,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "poison",
+    "magicPen": 0.1,
+    "special": {
+      "type": "poison",
+      "dps": 12,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "숲의 오래된 그늘에서 벼려졌다."
+  },
+  {
+    "id": "duskquill",
+    "name": "Duskquill",
+    "assetName": "swords.png",
+    "sheetOrder": 24,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 430,
+    "damage": 24,
+    "cooldownMs": 960,
+    "maxHits": 1,
+    "critChance": 0.3,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "void",
+    "magicPen": 0.1,
+    "special": {
+      "type": "execute",
+      "threshold": 0.096,
+      "label": "Null"
+    },
+    "lore": "해질녘의 보랏빛만 모아 갈았다."
+  },
+  {
+    "id": "woodfinch",
+    "name": "Woodfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 25,
+    "orbitSpeedMultiplier": 1.15,
+    "launchSpeed": 335,
+    "damage": 7,
+    "cooldownMs": 310,
+    "maxHits": 3,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "견습 키퍼의 첫 연습 상대. 가볍고 정직하다."
+  },
+  {
+    "id": "runekite",
+    "name": "Runekite",
+    "assetName": "swords.png",
+    "sheetOrder": 26,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 20,
+    "cooldownMs": 1120,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "fire",
+    "lore": "홈마다 새긴 룬이 아직 뜨겁다."
+  },
+  {
+    "id": "gnarlowl",
+    "name": "Gnarlowl",
+    "assetName": "swords.png",
+    "sheetOrder": 27,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 320,
+    "damage": 26,
+    "cooldownMs": 1650,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "void",
+    "lore": "뒤틀린 쇠가 뒤틀린 울음을 운다."
+  },
+  {
+    "id": "sunfinch",
+    "name": "Sunfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 28,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 405,
+    "damage": 41,
+    "cooldownMs": 1010,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "왕가의 금고에서 날아올랐다는 소문."
+  },
+  {
+    "id": "boneshrike",
+    "name": "Boneshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 29,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 455,
+    "damage": 30,
+    "cooldownMs": 900,
+    "maxHits": 1,
+    "critChance": 0.29,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "뼈처럼 희고, 뼈를 노린다."
+  },
+  {
+    "id": "hornbeak",
+    "name": "Hornbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 30,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 365,
+    "damage": 67,
+    "cooldownMs": 1310,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "blood",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.3,
+      "label": "Leech"
+    },
+    "lore": "황소의 마지막 돌진이 깃들어 있다."
+  },
+  {
+    "id": "glacierowl",
+    "name": "Glacierowl",
+    "assetName": "swords.png",
+    "sheetOrder": 31,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 41,
+    "cooldownMs": 920,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "ice",
+    "magicPen": 0.1,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.4,
+      "durationMs": 1600,
+      "label": "Chill"
+    },
+    "lore": "고리 안의 냉기가 녹지 않는다."
+  },
+  {
+    "id": "ironbeak",
+    "name": "Ironbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 32,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 345,
+    "damage": 16,
+    "cooldownMs": 1190,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "군말 없는 무쇠. 키퍼들의 기본기."
+  },
+  {
+    "id": "cleaverkite",
+    "name": "Cleaverkite",
+    "assetName": "swords.png",
+    "sheetOrder": 33,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 350,
+    "damage": 36,
+    "cooldownMs": 1560,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "한 번에 자르지 못하면 두 번 자른다."
+  },
+  {
+    "id": "shadewing",
+    "name": "Shadewing",
+    "assetName": "swords.png",
+    "sheetOrder": 34,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 430,
+    "damage": 12,
+    "cooldownMs": 760,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "void",
+    "lore": "그림자를 접어 만든 날개."
+  },
+  {
+    "id": "frostfinch",
+    "name": "Frostfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 35,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 405,
+    "damage": 13,
+    "cooldownMs": 690,
+    "maxHits": 2,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "common",
+    "element": "ice",
+    "lore": "첫서리처럼 얇고 차갑다."
+  },
+  {
+    "id": "tidequill",
+    "name": "Tidequill",
+    "assetName": "swords.png",
+    "sheetOrder": 36,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 370,
+    "damage": 29,
+    "cooldownMs": 1000,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "ice",
+    "lore": "물방울이 검 끝을 떠나지 않는다."
+  },
+  {
+    "id": "rosetalon",
+    "name": "Rosetalon",
+    "assetName": "swords.png",
+    "sheetOrder": 37,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 415,
+    "damage": 29,
+    "cooldownMs": 810,
+    "maxHits": 1,
+    "critChance": 0.27,
+    "critDamageMultiplier": 2.0,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 19,
+      "height": 23,
+      "offsetX": 6,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "blood",
+    "lore": "장미 한 송이 값은 피로 치른다."
+  },
+  {
+    "id": "coralshrike",
+    "name": "Coralshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 38,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 25,
+    "cooldownMs": 1130,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "poison",
+    "lore": "깊은 바다의 산호독을 머금었다."
+  },
+  {
+    "id": "flarekite",
+    "name": "Flarekite",
+    "assetName": "swords.png",
+    "sheetOrder": 39,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 485,
+    "damage": 19,
+    "cooldownMs": 760,
+    "maxHits": 2,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "fire",
+    "magicPen": 0.1,
+    "special": {
+      "type": "burn",
+      "dps": 10,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "lore": "불꽃 리본이 궤적을 따라 남는다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "redquill",
+    "name": "Redquill",
+    "assetName": "swords.png",
+    "sheetOrder": 40,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 405,
+    "damage": 12,
+    "cooldownMs": 710,
+    "maxHits": 2,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "element": "blood",
+    "lore": "붉은 줄무늬는 장식이 아니다."
+  },
+  {
+    "id": "silverwing",
+    "name": "Silverwing",
+    "assetName": "swords.png",
+    "sheetOrder": 41,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 340,
+    "damage": 16,
+    "cooldownMs": 1120,
+    "maxHits": 1,
+    "critChance": 0.09,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "가장 많은 키퍼가 거쳐 간 은빛 정석."
+  },
+  {
+    "id": "amberfinch",
+    "name": "Amberfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 42,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 380,
+    "damage": 28,
+    "cooldownMs": 1030,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "gold",
+    "lore": "호박 구슬 속에 옛 볕이 갇혀 있다."
+  },
+  {
+    "id": "crosshawk",
+    "name": "Crosshawk",
+    "assetName": "swords.png",
+    "sheetOrder": 43,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 345,
+    "damage": 15,
+    "cooldownMs": 1150,
+    "maxHits": 1,
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "주황 십자 날밑이 손을 지킨다."
+  },
+  {
+    "id": "glassbeak",
+    "name": "Glassbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 45,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 450,
+    "damage": 38,
+    "cooldownMs": 810,
+    "maxHits": 1,
+    "critChance": 0.29,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "ice",
+    "magicPen": 0.1,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.4,
+      "durationMs": 1600,
+      "label": "Chill"
+    },
+    "lore": "얼음인지 유리인지, 맞아본 자만 안다."
+  },
+  {
+    "id": "twigfinch",
+    "name": "Twigfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 46,
+    "orbitSpeedMultiplier": 1.15,
+    "launchSpeed": 355,
+    "damage": 7,
+    "cooldownMs": 310,
+    "maxHits": 3,
+    "critChance": 0.09,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "common",
+    "element": "poison",
+    "lore": "잔가지 같지만 새순의 독이 오른다."
+  },
+  {
+    "id": "songquill",
+    "name": "Songquill",
+    "assetName": "swords.png",
+    "sheetOrder": 47,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 405,
+    "damage": 40,
+    "cooldownMs": 940,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "베는 소리가 노래처럼 들린다."
+  },
+  {
+    "id": "gazehawk",
+    "name": "Gazehawk",
+    "assetName": "swords.png",
+    "sheetOrder": 48,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 415,
+    "damage": 31,
+    "cooldownMs": 1030,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "void",
+    "magicPen": 0.15,
+    "special": {
+      "type": "execute",
+      "threshold": 0.112,
+      "label": "Null"
+    },
+    "lore": "칼끝의 눈은 감기는 법이 없다."
+  },
+  {
+    "id": "venomswift",
+    "name": "Venomswift",
+    "assetName": "swords.png",
+    "sheetOrder": 49,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 510,
+    "damage": 31,
+    "cooldownMs": 750,
+    "maxHits": 2,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "poison",
+    "magicPen": 0.15,
+    "special": {
+      "type": "poison",
+      "dps": 15,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "초록 빛무리가 스치면 이미 늦었다."
+  },
+  {
+    "id": "brineshrike",
+    "name": "Brineshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 50,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 44,
+    "cooldownMs": 940,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "ice",
+    "magicPen": 0.1,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.4,
+      "durationMs": 1600,
+      "label": "Chill"
+    },
+    "lore": "세 갈래 물결이 한 점에서 만난다."
+  },
+  {
+    "id": "gildwing",
+    "name": "Gildwing",
+    "assetName": "swords.png",
+    "sheetOrder": 51,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 30,
+    "cooldownMs": 1020,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "gold",
+    "lore": "금박 날개깃이 손잡이를 감싼다."
+  },
+  {
+    "id": "coilbeak",
+    "name": "Coilbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 52,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 350,
+    "damage": 16,
+    "cooldownMs": 1180,
+    "maxHits": 1,
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "가죽끈을 감고 또 감은 실전용."
+  },
+  {
+    "id": "graywing",
+    "name": "Graywing",
+    "assetName": "swords.png",
+    "sheetOrder": 53,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 350,
+    "damage": 15,
+    "cooldownMs": 1100,
+    "maxHits": 1,
+    "critChance": 0.09,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "이름 없는 병사들의 이름 없는 검."
+  },
+  {
+    "id": "crosstalon",
+    "name": "Crosstalon",
+    "assetName": "swords.png",
+    "sheetOrder": 54,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 360,
+    "damage": 50,
+    "cooldownMs": 1580,
+    "maxHits": 1,
+    "critChance": 0.17,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "엇갈린 두 날이 한 번에 떨어진다."
+  },
+  {
+    "id": "regalkite",
+    "name": "Regalkite",
+    "assetName": "swords.png",
+    "sheetOrder": 55,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 430,
+    "damage": 56,
+    "cooldownMs": 890,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.9,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "gold",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "midas",
+      "chance": 0.21,
+      "label": "Midas"
+    },
+    "lore": "보석 박힌 날밑이 왕좌를 기억한다."
+  },
+  {
+    "id": "lockshrike",
+    "name": "Lockshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 56,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 410,
+    "damage": 25,
+    "cooldownMs": 1100,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "void",
+    "magicPen": 0.1,
+    "special": {
+      "type": "execute",
+      "threshold": 0.096,
+      "label": "Null"
+    },
+    "lore": "열지 못하는 문을 여는 검은 열쇠."
+  },
+  {
+    "id": "verdantowl",
+    "name": "Verdantowl",
+    "assetName": "swords.png",
+    "sheetOrder": 57,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 415,
+    "damage": 34,
+    "cooldownMs": 1050,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "poison",
+    "magicPen": 0.1,
+    "special": {
+      "type": "poison",
+      "dps": 12,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "덩굴 눈동자가 청록으로 빛난다."
+  },
+  {
+    "id": "aurichawk",
+    "name": "Aurichawk",
+    "assetName": "swords.png",
+    "sheetOrder": 58,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 465,
+    "damage": 102,
+    "cooldownMs": 910,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "mythic",
+    "element": "gold",
+    "physicalPen": 0.25,
+    "special": {
+      "type": "midas",
+      "chance": 0.27,
+      "label": "Midas"
+    },
+    "trueDamage": 15,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "금빛 소용돌이가 낮게 운다."
+  },
+  {
+    "id": "jadewing",
+    "name": "Jadewing",
+    "assetName": "swords.png",
+    "sheetOrder": 59,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 370,
+    "damage": 25,
+    "cooldownMs": 1170,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "자루 끝 비취가 균형을 잡아준다."
+  },
+  {
+    "id": "plumehawk",
+    "name": "Plumehawk",
+    "assetName": "swords.png",
+    "sheetOrder": 60,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 495,
+    "damage": 32,
+    "cooldownMs": 710,
+    "maxHits": 2,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "wind",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "blast",
+      "radius": 145,
+      "damagePct": 0.51,
+      "label": "Gust"
+    },
+    "lore": "깃털 하나가 강철을 가른다."
+  },
+  {
+    "id": "pyrefinch",
+    "name": "Pyrefinch",
+    "assetName": "swords.png",
+    "sheetOrder": 61,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 405,
+    "damage": 25,
+    "cooldownMs": 1100,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "fire",
+    "magicPen": 0.1,
+    "special": {
+      "type": "burn",
+      "dps": 10,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "lore": "불꽃이 장미 모양으로 피어난다."
+  },
+  {
+    "id": "vexshrike",
+    "name": "Vexshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 62,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 430,
+    "damage": 24,
+    "cooldownMs": 930,
+    "maxHits": 1,
+    "critChance": 0.29,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "void",
+    "magicPen": 0.1,
+    "special": {
+      "type": "execute",
+      "threshold": 0.096,
+      "label": "Null"
+    },
+    "lore": "자홍 줄무늬가 어지럽게 시야를 흔든다."
+  },
+  {
+    "id": "solarkite",
+    "name": "Solarkite",
+    "assetName": "swords.png",
+    "sheetOrder": 63,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 455,
+    "damage": 49,
+    "cooldownMs": 980,
+    "maxHits": 2,
+    "critChance": 0.14,
+    "critDamageMultiplier": 2.4,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "legendary",
+    "element": "fire",
+    "magicPen": 0.2,
+    "special": {
+      "type": "burn",
+      "dps": 15,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "trueDamage": 11,
+    "lore": "정오의 태양을 그대로 오려냈다."
+  },
+  {
+    "id": "leafswift",
+    "name": "Leafswift",
+    "assetName": "swords.png",
+    "sheetOrder": 64,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 455,
+    "damage": 15,
+    "cooldownMs": 800,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "wind",
+    "lore": "잎맥까지 벼린 초록 깃."
+  },
+  {
+    "id": "ashenowl",
+    "name": "Ashenowl",
+    "assetName": "swords.png",
+    "sheetOrder": 65,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 435,
+    "damage": 30,
+    "cooldownMs": 1090,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "void",
+    "magicPen": 0.15,
+    "special": {
+      "type": "execute",
+      "threshold": 0.112,
+      "label": "Null"
+    },
+    "lore": "재가 된 것들의 기억이 연기로 남는다."
+  },
+  {
+    "id": "lunarowl",
+    "name": "Lunarowl",
+    "assetName": "swords.png",
+    "sheetOrder": 66,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 24,
+    "cooldownMs": 1030,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 2.2,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "void",
+    "magicPen": 0.1,
+    "special": {
+      "type": "execute",
+      "threshold": 0.096,
+      "label": "Null"
+    },
+    "lore": "초승달 날밑이 밤을 끌어온다."
+  },
+  {
+    "id": "dawnfinch",
+    "name": "Dawnfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 67,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 41,
+    "cooldownMs": 1010,
+    "maxHits": 1,
+    "critChance": 0.13,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "동트는 순간의 금빛만 두드려 만들었다."
+  },
+  {
+    "id": "wavetalon",
+    "name": "Wavetalon",
+    "assetName": "swords.png",
+    "sheetOrder": 68,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 56,
+    "cooldownMs": 890,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 22,
+      "offsetX": 4,
+      "offsetY": 5
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "ice",
+    "magicPen": 0.15,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.45,
+      "durationMs": 1700,
+      "label": "Chill"
+    },
+    "evolved": true,
+    "lore": "두 물길이 만나 파도가 된다."
+  },
+  {
+    "id": "keenswift",
+    "name": "Keenswift",
+    "assetName": "swords.png",
+    "sheetOrder": 69,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 455,
+    "damage": 18,
+    "cooldownMs": 760,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "짧고, 빠르고, 정확하다."
+  },
+  {
+    "id": "needlequill",
+    "name": "Needlequill",
+    "assetName": "swords.png",
+    "sheetOrder": 70,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 415,
+    "damage": 23,
+    "cooldownMs": 1000,
+    "maxHits": 1,
+    "critChance": 0.27,
+    "critDamageMultiplier": 2.0,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "바늘귀 고리 사이로 급소만 꿴다."
+  },
+  {
+    "id": "shardowl",
+    "name": "Shardowl",
+    "assetName": "swords.png",
+    "sheetOrder": 71,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 30,
+    "cooldownMs": 1090,
+    "maxHits": 1,
+    "critChance": 0.135,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "void",
+    "magicPen": 0.15,
+    "special": {
+      "type": "execute",
+      "threshold": 0.112,
+      "label": "Null"
+    },
+    "lore": "흑요석 파편이 궤도를 떠돈다."
+  },
+  {
+    "id": "rimehawk",
+    "name": "Rimehawk",
+    "assetName": "swords.png",
+    "sheetOrder": 72,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 435,
+    "damage": 71,
+    "cooldownMs": 840,
+    "maxHits": 2,
+    "critChance": 0.14,
+    "critDamageMultiplier": 1.7,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "legendary",
+    "element": "ice",
+    "magicPen": 0.2,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.5,
+      "durationMs": 1800,
+      "label": "Chill"
+    },
+    "trueDamage": 13,
+    "lore": "서리꽃이 피는 자리마다 시간이 멈춘다."
+  },
+  {
+    "id": "sporefinch",
+    "name": "Sporefinch",
+    "assetName": "swords.png",
+    "sheetOrder": 73,
+    "orbitSpeedMultiplier": 1.15,
+    "launchSpeed": 380,
+    "damage": 11,
+    "cooldownMs": 300,
+    "maxHits": 3,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "poison",
+    "lore": "귀엽다고 만지면 포자가 터진다."
+  },
+  {
+    "id": "wraithswift",
+    "name": "Wraithswift",
+    "assetName": "swords.png",
+    "sheetOrder": 74,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 435,
+    "damage": 14,
+    "cooldownMs": 780,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "void",
+    "lore": "베인 자리가 잠깐 투명해진다."
+  },
+  {
+    "id": "sawbeak",
+    "name": "Sawbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 75,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 365,
+    "damage": 54,
+    "cooldownMs": 1500,
+    "maxHits": 1,
+    "critChance": 0.16,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "톱니 하나하나가 제 몫을 문다."
+  },
+  {
+    "id": "cinderkite",
+    "name": "Cinderkite",
+    "assetName": "swords.png",
+    "sheetOrder": 76,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 370,
+    "damage": 21,
+    "cooldownMs": 1100,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "fire",
+    "lore": "잉걸불 위를 나는 주황 연."
+  },
+  {
+    "id": "gorequill",
+    "name": "Gorequill",
+    "assetName": "swords.png",
+    "sheetOrder": 77,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 68,
+    "cooldownMs": 950,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "blood",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.35,
+      "label": "Leech"
+    },
+    "evolved": true,
+    "lore": "찔린 상처는 아물 줄을 모른다."
+  },
+  {
+    "id": "fernwing",
+    "name": "Fernwing",
+    "assetName": "swords.png",
+    "sheetOrder": 78,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 375,
+    "damage": 24,
+    "cooldownMs": 1070,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "poison",
+    "lore": "고사리 잎이 칼몸을 감아 오른다."
+  },
+  {
+    "id": "mossroc",
+    "name": "Mossroc",
+    "assetName": "swords.png",
+    "sheetOrder": 79,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 425,
+    "damage": 115,
+    "cooldownMs": 1350,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "mythic",
+    "element": "poison",
+    "magicPen": 0.25,
+    "special": {
+      "type": "poison",
+      "dps": 21,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "trueDamage": 21,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "이끼가 삼킨 옛 거신의 날개."
+  },
+  {
+    "id": "redowl",
+    "name": "Redowl",
+    "assetName": "swords.png",
+    "sheetOrder": 80,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 59,
+    "cooldownMs": 930,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "blood",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.35,
+      "label": "Leech"
+    },
+    "lore": "눈알이 사냥감을 먼저 찾는다."
+  },
+  {
+    "id": "frosthawk",
+    "name": "Frosthawk",
+    "assetName": "swords.png",
+    "sheetOrder": 81,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 330,
+    "damage": 49,
+    "cooldownMs": 1430,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 22,
+      "offsetX": 4,
+      "offsetY": 5
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "ice",
+    "lore": "얼음 덩이가 그대로 철퇴다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "malletbeak",
+    "name": "Malletbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 82,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 295,
+    "damage": 26,
+    "cooldownMs": 1730,
+    "maxHits": 1,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "베지 못하면 부수면 된다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "galewing",
+    "name": "Galewing",
+    "assetName": "swords.png",
+    "sheetOrder": 83,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 23,
+    "cooldownMs": 1080,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "wind",
+    "lore": "날밑의 깃이 바람을 가른다."
+  },
+  {
+    "id": "stitchquill",
+    "name": "Stitchquill",
+    "assetName": "swords.png",
+    "sheetOrder": 84,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 29,
+    "cooldownMs": 980,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "blood",
+    "lore": "붉은 실이 상처를 꿰매지는 않는다."
+  },
+  {
+    "id": "mothwing",
+    "name": "Mothwing",
+    "assetName": "swords.png",
+    "sheetOrder": 85,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 440,
+    "damage": 13,
+    "cooldownMs": 810,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "void",
+    "lore": "나방 날개 인분이 빛을 홀린다."
+  },
+  {
+    "id": "tineshrike",
+    "name": "Tineshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 86,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 390,
+    "damage": 26,
+    "cooldownMs": 1040,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "void",
+    "magicPen": 0.1,
+    "special": {
+      "type": "execute",
+      "threshold": 0.096,
+      "label": "Null"
+    },
+    "lore": "세 갈래 검은 이빨.",
+    "behavior": "lance"
+  },
+  {
+    "id": "dunetalon",
+    "name": "Dunetalon",
+    "assetName": "swords.png",
+    "sheetOrder": 88,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 335,
+    "damage": 36,
+    "cooldownMs": 1540,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "사구에 묻혔다 파낸 낡은 대검."
+  },
+  {
+    "id": "borealroc",
+    "name": "Borealroc",
+    "assetName": "swords.png",
+    "sheetOrder": 89,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 470,
+    "damage": 100,
+    "cooldownMs": 840,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "mythic",
+    "element": "ice",
+    "magicPen": 0.25,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.55,
+      "durationMs": 1900,
+      "label": "Chill"
+    },
+    "trueDamage": 19,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "북녘의 빛이 칼날에 얼어붙었다."
+  },
+  {
+    "id": "chimekite",
+    "name": "Chimekite",
+    "assetName": "swords.png",
+    "sheetOrder": 90,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 58,
+    "cooldownMs": 900,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.9,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "gold",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "midas",
+      "chance": 0.21,
+      "label": "Midas"
+    },
+    "lore": "울릴 때마다 금속 종소리가 난다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "lichenbeak",
+    "name": "Lichenbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 91,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 405,
+    "damage": 35,
+    "cooldownMs": 1110,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "poison",
+    "magicPen": 0.1,
+    "special": {
+      "type": "poison",
+      "dps": 12,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "천 년 이끼가 날을 덮어도 무뎌지지 않았다."
+  },
+  {
+    "id": "drakewing",
+    "name": "Drakewing",
+    "assetName": "swords.png",
+    "sheetOrder": 92,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 405,
+    "damage": 40,
+    "cooldownMs": 940,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "ice",
+    "magicPen": 0.1,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.4,
+      "durationMs": 1600,
+      "label": "Chill"
+    },
+    "lore": "용의 지느러미를 본떠 벼렸다."
+  },
+  {
+    "id": "lavaquill",
+    "name": "Lavaquill",
+    "assetName": "swords.png",
+    "sheetOrder": 93,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 360,
+    "damage": 20,
+    "cooldownMs": 1110,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "fire",
+    "lore": "식지 않는 주황 심지."
+  },
+  {
+    "id": "pearlhawk",
+    "name": "Pearlhawk",
+    "assetName": "swords.png",
+    "sheetOrder": 94,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 390,
+    "damage": 40,
+    "cooldownMs": 970,
+    "maxHits": 1,
+    "critChance": 0.13,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "자루의 진주가 달빛을 모은다."
+  },
+  {
+    "id": "ashfinch",
+    "name": "Ashfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 95,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 355,
+    "damage": 15,
+    "cooldownMs": 1120,
+    "maxHits": 1,
+    "critChance": 0.09,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 22,
+      "offsetX": 4,
+      "offsetY": 5
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "잿빛 무쇠, 수수하지만 성실하다."
+  },
+  {
+    "id": "hookowl",
+    "name": "Hookowl",
+    "assetName": "swords.png",
+    "sheetOrder": 96,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 375,
+    "damage": 17,
+    "cooldownMs": 1090,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "void",
+    "lore": "갈고리가 놓친 사냥감은 없다."
+  },
+  {
+    "id": "crystalswift",
+    "name": "Crystalswift",
+    "assetName": "swords.png",
+    "sheetOrder": 97,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 460,
+    "damage": 20,
+    "cooldownMs": 690,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "ice",
+    "lore": "수정 날이 빛을 조각낸다."
+  },
+  {
+    "id": "ivoryquill",
+    "name": "Ivoryquill",
+    "assetName": "swords.png",
+    "sheetOrder": 98,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 430,
+    "damage": 38,
+    "cooldownMs": 830,
+    "maxHits": 1,
+    "critChance": 0.29,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "상아빛 세공 아래 금촉이 숨어 있다."
+  },
+  {
+    "id": "stingshrike",
+    "name": "Stingshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 99,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 29,
+    "cooldownMs": 880,
+    "maxHits": 1,
+    "critChance": 0.27,
+    "critDamageMultiplier": 2.0,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "blood",
+    "lore": "독침처럼 스치고 사라진다."
+  },
+  {
+    "id": "aegiskite",
+    "name": "Aegiskite",
+    "assetName": "swords.png",
+    "sheetOrder": 100,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 385,
+    "damage": 81,
+    "cooldownMs": 1350,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "gold",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "midas",
+      "chance": 0.21,
+      "label": "Midas"
+    },
+    "lore": "방패의 심장을 검에 옮겨 심었다."
+  },
+  {
+    "id": "solroc",
+    "name": "Solroc",
+    "assetName": "swords.png",
+    "sheetOrder": 102,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 450,
+    "damage": 74,
+    "cooldownMs": 950,
+    "maxHits": 2,
+    "critChance": 0.14,
+    "critDamageMultiplier": 1.7,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "legendary",
+    "element": "gold",
+    "physicalPen": 0.2,
+    "special": {
+      "type": "midas",
+      "chance": 0.24,
+      "label": "Midas"
+    },
+    "trueDamage": 10,
+    "lore": "태양 매듭 문양이 스스로 타오른다."
+  },
+  {
+    "id": "acidswift",
+    "name": "Acidswift",
+    "assetName": "swords.png",
+    "sheetOrder": 103,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 505,
+    "damage": 32,
+    "cooldownMs": 690,
+    "maxHits": 2,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "poison",
+    "magicPen": 0.15,
+    "special": {
+      "type": "poison",
+      "dps": 15,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "닿은 자리부터 초록으로 녹는다."
+  },
+  {
+    "id": "whitewing",
+    "name": "Whitewing",
+    "assetName": "swords.png",
+    "sheetOrder": 104,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 365,
+    "damage": 22,
+    "cooldownMs": 1100,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "wind",
+    "lore": "흰 날개깃처럼 소리 없이 낙하한다."
+  },
+  {
+    "id": "bulwarkbeak",
+    "name": "Bulwarkbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 105,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 360,
+    "damage": 48,
+    "cooldownMs": 1540,
+    "maxHits": 1,
+    "critChance": 0.17,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "성벽 한 조각을 떼어 벼린 듯하다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "prismshrike",
+    "name": "Prismshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 106,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 410,
+    "damage": 40,
+    "cooldownMs": 910,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "ice",
+    "magicPen": 0.1,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.4,
+      "durationMs": 1600,
+      "label": "Chill"
+    },
+    "lore": "분홍 결정이 빛을 일곱 갈래로 쪼갠다."
+  },
+  {
+    "id": "carrionowl",
+    "name": "Carrionowl",
+    "assetName": "swords.png",
+    "sheetOrder": 107,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 54,
+    "cooldownMs": 870,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "blood",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.35,
+      "label": "Leech"
+    },
+    "lore": "썩은 것 위를 도는 붉은 낫.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "triggerbeak",
+    "name": "Triggerbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 109,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 400,
+    "damage": 32,
+    "cooldownMs": 1130,
+    "maxHits": 1,
+    "critChance": 0.17,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "방아쇠 감각으로 급소를 겨눈다.",
+    "behavior": "lance"
+  },
+  {
+    "id": "haloroc",
+    "name": "Haloroc",
+    "assetName": "swords.png",
+    "sheetOrder": 110,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 490,
+    "damage": 64,
+    "cooldownMs": 1000,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "mythic",
+    "element": "fire",
+    "magicPen": 0.25,
+    "special": {
+      "type": "burn",
+      "dps": 18,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "trueDamage": 22,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "타오르는 고리가 하늘을 연다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "swanroc",
+    "name": "Swanroc",
+    "assetName": "swords.png",
+    "sheetOrder": 111,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 560,
+    "damage": 56,
+    "cooldownMs": 690,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "mythic",
+    "element": "wind",
+    "physicalPen": 0.25,
+    "special": {
+      "type": "blast",
+      "radius": 175,
+      "damagePct": 0.595,
+      "label": "Gust"
+    },
+    "trueDamage": 21,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "백조의 목이 휘어지는 곳에 폭풍이 인다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "corvusroc",
+    "name": "Corvusroc",
+    "assetName": "swords.png",
+    "sheetOrder": 112,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 500,
+    "damage": 52,
+    "cooldownMs": 870,
+    "maxHits": 2,
+    "critChance": 0.35,
+    "critDamageMultiplier": 2.4,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "mythic",
+    "element": "void",
+    "magicPen": 0.25,
+    "special": {
+      "type": "execute",
+      "threshold": 0.144,
+      "label": "Null"
+    },
+    "trueDamage": 15,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "까마귀 깃 사이에서 눈 하나가 뜬다."
+  },
+  {
+    "id": "sproutswift",
+    "name": "Sproutswift",
+    "assetName": "swords.png",
+    "sheetOrder": 113,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 445,
+    "damage": 18,
+    "cooldownMs": 790,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "poison",
+    "lore": "새싹이라 얕보면 뿌리까지 후회한다."
+  },
+  {
+    "id": "burrbeak",
+    "name": "Burrbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 115,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 365,
+    "damage": 23,
+    "cooldownMs": 1080,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "가시 돋친 씨앗처럼 들러붙는다."
+  },
+  {
+    "id": "brambleshrike",
+    "name": "Brambleshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 116,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 40,
+    "cooldownMs": 930,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "blood",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.3,
+      "label": "Leech"
+    },
+    "lore": "장미 덤불의 값비싼 가시."
+  },
+  {
+    "id": "thornowl",
+    "name": "Thornowl",
+    "assetName": "swords.png",
+    "sheetOrder": 117,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 430,
+    "damage": 48,
+    "cooldownMs": 1040,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "poison",
+    "magicPen": 0.15,
+    "special": {
+      "type": "poison",
+      "dps": 15,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "evolved": true,
+    "lore": "가시덤불이 검의 형상을 기억해냈다."
+  },
+  {
+    "id": "brackentalon",
+    "name": "Brackentalon",
+    "assetName": "swords.png",
+    "sheetOrder": 118,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 35,
+    "cooldownMs": 1120,
+    "maxHits": 1,
+    "critChance": 0.16,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "고비 빛깔 그대로 벼린 들녘의 검."
+  },
+  {
+    "id": "azureswift",
+    "name": "Azureswift",
+    "assetName": "swords.png",
+    "sheetOrder": 119,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 430,
+    "damage": 21,
+    "cooldownMs": 660,
+    "maxHits": 2,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "ice",
+    "lore": "쪽빛 곡선이 물처럼 흐른다."
+  },
+  {
+    "id": "bloomkite",
+    "name": "Bloomkite",
+    "assetName": "swords.png",
+    "sheetOrder": 120,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 28,
+    "cooldownMs": 1060,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 19,
+      "height": 23,
+      "offsetX": 6,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "fire",
+    "magicPen": 0.1,
+    "special": {
+      "type": "burn",
+      "dps": 10,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "lore": "칼끝에서 불꽃이 꽃봉오리로 맺힌다."
+  },
+  {
+    "id": "snowquill",
+    "name": "Snowquill",
+    "assetName": "swords.png",
+    "sheetOrder": 121,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 420,
+    "damage": 54,
+    "cooldownMs": 940,
+    "maxHits": 1,
+    "critChance": 0.135,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "ice",
+    "magicPen": 0.15,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.45,
+      "durationMs": 1700,
+      "label": "Chill"
+    },
+    "lore": "눈송이가 녹지 않고 날에 앉는다."
+  },
+  {
+    "id": "groveowl",
+    "name": "Groveowl",
+    "assetName": "swords.png",
+    "sheetOrder": 122,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 385,
+    "damage": 74,
+    "cooldownMs": 1440,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "poison",
+    "magicPen": 0.15,
+    "special": {
+      "type": "poison",
+      "dps": 15,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "숲 하나의 무게로 내리친다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "twinhawk",
+    "name": "Twinhawk",
+    "assetName": "swords.png",
+    "sheetOrder": 123,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 395,
+    "damage": 64,
+    "cooldownMs": 1450,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "physicalPen": 0.15,
+    "lore": "쌍둥이 날이 같은 곳을 두 번 때린다."
+  },
+  {
+    "id": "flareowl",
+    "name": "Flareowl",
+    "assetName": "swords.png",
+    "sheetOrder": 124,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 410,
+    "damage": 38,
+    "cooldownMs": 1030,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "fire",
+    "magicPen": 0.15,
+    "special": {
+      "type": "burn",
+      "dps": 12,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "lore": "섬광이 지나간 뒤에야 소리가 온다."
+  },
+  {
+    "id": "anchorbeak",
+    "name": "Anchorbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 125,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 365,
+    "damage": 60,
+    "cooldownMs": 1390,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 19,
+      "offsetX": 4,
+      "offsetY": 6
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "ice",
+    "magicPen": 0.1,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.4,
+      "durationMs": 1600,
+      "label": "Chill"
+    },
+    "lore": "닻처럼 가라앉고 파도처럼 돌아온다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "prismroc",
+    "name": "Prismroc",
+    "assetName": "swords.png",
+    "sheetOrder": 126,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 470,
+    "damage": 91,
+    "cooldownMs": 860,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "mythic",
+    "element": "gold",
+    "physicalPen": 0.25,
+    "special": {
+      "type": "midas",
+      "chance": 0.27,
+      "label": "Midas"
+    },
+    "trueDamage": 14,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "일곱 빛이 한 자루에 갇혔다."
+  },
+  {
+    "id": "amethowl",
+    "name": "Amethowl",
+    "assetName": "swords.png",
+    "sheetOrder": 127,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 410,
+    "damage": 25,
+    "cooldownMs": 1130,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 22,
+      "offsetX": 4,
+      "offsetY": 5
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "void",
+    "magicPen": 0.1,
+    "special": {
+      "type": "execute",
+      "threshold": 0.096,
+      "label": "Null"
+    },
+    "lore": "자수정 끝이 어둠을 빨아들인다."
+  },
+  {
+    "id": "dewswift",
+    "name": "Dewswift",
+    "assetName": "swords.png",
+    "sheetOrder": 128,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 440,
+    "damage": 21,
+    "cooldownMs": 660,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "ice",
+    "lore": "이슬방울이 마르기 전에 벤다."
+  },
+  {
+    "id": "hollykite",
+    "name": "Hollykite",
+    "assetName": "swords.png",
+    "sheetOrder": 129,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 35,
+    "cooldownMs": 1130,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "poison",
+    "magicPen": 0.1,
+    "special": {
+      "type": "poison",
+      "dps": 12,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "붉은 열매는 겨울새의 몫, 가시는 녹의 몫.",
+    "behavior": "lance"
+  },
+  {
+    "id": "aurewing",
+    "name": "Aurewing",
+    "assetName": "swords.png",
+    "sheetOrder": 130,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 29,
+    "cooldownMs": 1060,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "wind",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "blast",
+      "radius": 130,
+      "damagePct": 0.468,
+      "label": "Gust"
+    },
+    "lore": "금빛 날개깃이 순풍을 부른다."
+  },
+  {
+    "id": "cirruswing",
+    "name": "Cirruswing",
+    "assetName": "swords.png",
+    "sheetOrder": 131,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 480,
+    "damage": 20,
+    "cooldownMs": 770,
+    "maxHits": 2,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "wind",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "blast",
+      "radius": 130,
+      "damagePct": 0.468,
+      "label": "Gust"
+    },
+    "lore": "새털구름의 높이에서 떨어진다.",
+    "behavior": "lance"
+  },
+  {
+    "id": "glintroc",
+    "name": "Glintroc",
+    "assetName": "swords.png",
+    "sheetOrder": 132,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 540,
+    "damage": 53,
+    "cooldownMs": 700,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "spark",
+      "tint": "#63b3d9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "mythic",
+    "element": "electric",
+    "magicPen": 0.25,
+    "special": {
+      "type": "chain",
+      "targets": 2,
+      "damagePct": 0.75,
+      "label": "Arc"
+    },
+    "trueDamage": 18,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "별빛 스파크가 칼몸을 타고 흐른다."
+  },
+  {
+    "id": "tinderquill",
+    "name": "Tinderquill",
+    "assetName": "swords.png",
+    "sheetOrder": 133,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 410,
+    "damage": 10,
+    "cooldownMs": 810,
+    "maxHits": 2,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "common",
+    "element": "fire",
+    "lore": "부싯깃 하나로 시작되는 들불."
+  },
+  {
+    "id": "vanewing",
+    "name": "Vanewing",
+    "assetName": "swords.png",
+    "sheetOrder": 134,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 400,
+    "damage": 33,
+    "cooldownMs": 1120,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "wind",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "blast",
+      "radius": 130,
+      "damagePct": 0.468,
+      "label": "Gust"
+    },
+    "lore": "바람개비 깃이 풍향을 읽는다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "umbralswift",
+    "name": "Umbralswift",
+    "assetName": "swords.png",
+    "sheetOrder": 135,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 475,
+    "damage": 16,
+    "cooldownMs": 770,
+    "maxHits": 2,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "void",
+    "magicPen": 0.1,
+    "special": {
+      "type": "execute",
+      "threshold": 0.096,
+      "label": "Null"
+    },
+    "lore": "보랏빛 잔상이 반 박자 늦게 도착한다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "scarbeak",
+    "name": "Scarbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 136,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 58,
+    "cooldownMs": 900,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "blood",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.35,
+      "label": "Leech"
+    },
+    "lore": "갈고리 흉터는 평생 남는다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "grimwing",
+    "name": "Grimwing",
+    "assetName": "swords.png",
+    "sheetOrder": 137,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 360,
+    "damage": 15,
+    "cooldownMs": 1180,
+    "maxHits": 1,
+    "critChance": 0.09,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 22,
+      "offsetX": 4,
+      "offsetY": 5
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "전장의 흙빛을 그대로 입었다."
+  },
+  {
+    "id": "slatetalon",
+    "name": "Slatetalon",
+    "assetName": "swords.png",
+    "sheetOrder": 138,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 335,
+    "damage": 35,
+    "cooldownMs": 1550,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "석판처럼 넓고 무겁게 눌러 벤다."
+  },
+  {
+    "id": "downswift",
+    "name": "Downswift",
+    "assetName": "swords.png",
+    "sheetOrder": 139,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 445,
+    "damage": 15,
+    "cooldownMs": 780,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 22,
+      "offsetX": 4,
+      "offsetY": 5
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "wind",
+    "lore": "솜털처럼 내려앉아 칼처럼 끝난다."
+  },
+  {
+    "id": "toxinhawk",
+    "name": "Toxinhawk",
+    "assetName": "swords.png",
+    "sheetOrder": 140,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 410,
+    "damage": 43,
+    "cooldownMs": 1090,
+    "maxHits": 1,
+    "critChance": 0.135,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "poison",
+    "magicPen": 0.15,
+    "special": {
+      "type": "poison",
+      "dps": 15,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "유리병 속 초록이 넘칠 듯 출렁인다."
+  },
+  {
+    "id": "rusttalon",
+    "name": "Rusttalon",
+    "assetName": "swords.png",
+    "sheetOrder": 141,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 360,
+    "damage": 25,
+    "cooldownMs": 1120,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "녹슨 게 아니다, 사냥의 흔적이다."
+  },
+  {
+    "id": "sparkquill",
+    "name": "Sparkquill",
+    "assetName": "swords.png",
+    "sheetOrder": 142,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 430,
+    "damage": 29,
+    "cooldownMs": 850,
+    "maxHits": 1,
+    "critChance": 0.27,
+    "critDamageMultiplier": 2.0,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "gold",
+    "lore": "금침이 스칠 때마다 불티가 튄다."
+  },
+  {
+    "id": "magmatalon",
+    "name": "Magmatalon",
+    "assetName": "swords.png",
+    "sheetOrder": 143,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 375,
+    "damage": 54,
+    "cooldownMs": 1470,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "fire",
+    "magicPen": 0.15,
+    "special": {
+      "type": "burn",
+      "dps": 12,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "lore": "갈라진 틈으로 용암이 비친다."
+  },
+  {
+    "id": "gemhawk",
+    "name": "Gemhawk",
+    "assetName": "swords.png",
+    "sheetOrder": 144,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 390,
+    "damage": 44,
+    "cooldownMs": 980,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "두 보석이 서로의 값을 겨룬다."
+  },
+  {
+    "id": "reefwing",
+    "name": "Reefwing",
+    "assetName": "swords.png",
+    "sheetOrder": 145,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 370,
+    "damage": 30,
+    "cooldownMs": 990,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "blood",
+    "lore": "산호초의 분홍은 경고색이다."
+  },
+  {
+    "id": "garnetswift",
+    "name": "Garnetswift",
+    "assetName": "swords.png",
+    "sheetOrder": 146,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 480,
+    "damage": 30,
+    "cooldownMs": 620,
+    "maxHits": 2,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "blood",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.3,
+      "label": "Leech"
+    },
+    "lore": "석류석 조각이 동맥을 찾는다.",
+    "behavior": "lance"
+  },
+  {
+    "id": "gildowl",
+    "name": "Gildowl",
+    "assetName": "swords.png",
+    "sheetOrder": 147,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 370,
+    "damage": 30,
+    "cooldownMs": 970,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "gold",
+    "lore": "흰 바탕에 금테, 야장 에다의 취향."
+  },
+  {
+    "id": "nightswift",
+    "name": "Nightswift",
+    "assetName": "swords.png",
+    "sheetOrder": 148,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 430,
+    "damage": 14,
+    "cooldownMs": 770,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "void",
+    "lore": "밤의 곡선을 그대로 벼렸다."
+  },
+  {
+    "id": "bandkite",
+    "name": "Bandkite",
+    "assetName": "swords.png",
+    "sheetOrder": 149,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 400,
+    "damage": 40,
+    "cooldownMs": 940,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "금띠 세 줄이 계급을 말해준다."
+  },
+  {
+    "id": "dirgeowl",
+    "name": "Dirgeowl",
+    "assetName": "swords.png",
+    "sheetOrder": 150,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 415,
+    "damage": 30,
+    "cooldownMs": 1070,
+    "maxHits": 2,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "void",
+    "magicPen": 0.15,
+    "special": {
+      "type": "execute",
+      "threshold": 0.112,
+      "label": "Null"
+    },
+    "evolved": true,
+    "lore": "장송곡의 첫 소절로 벼린 검."
+  },
+  {
+    "id": "luminkite",
+    "name": "Luminkite",
+    "assetName": "swords.png",
+    "sheetOrder": 151,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 435,
+    "damage": 56,
+    "cooldownMs": 970,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.9,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "gold",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "midas",
+      "chance": 0.21,
+      "label": "Midas"
+    },
+    "lore": "금가루 섬광이 눈을 못 뜨게 한다."
+  },
+  {
+    "id": "palmswift",
+    "name": "Palmswift",
+    "assetName": "swords.png",
+    "sheetOrder": 152,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 23,
+    "cooldownMs": 1100,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "poison",
+    "lore": "종려잎이 바람 없이 흔들린다."
+  },
+  {
+    "id": "mistshrike",
+    "name": "Mistshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 153,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 400,
+    "damage": 37,
+    "cooldownMs": 970,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 2.2,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "ice",
+    "magicPen": 0.1,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.4,
+      "durationMs": 1600,
+      "label": "Chill"
+    },
+    "lore": "안개가 걷히면 이미 끝나 있다."
+  },
+  {
+    "id": "brandowl",
+    "name": "Brandowl",
+    "assetName": "swords.png",
+    "sheetOrder": 154,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 440,
+    "damage": 36,
+    "cooldownMs": 1070,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "fire",
+    "magicPen": 0.15,
+    "special": {
+      "type": "burn",
+      "dps": 12,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "lore": "사슬에 감긴 불씨가 몸부림친다."
+  },
+  {
+    "id": "stormswift",
+    "name": "Stormswift",
+    "assetName": "swords.png",
+    "sheetOrder": 156,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 470,
+    "damage": 23,
+    "cooldownMs": 720,
+    "maxHits": 2,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "spark",
+      "tint": "#63b3d9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "electric",
+    "magicPen": 0.1,
+    "special": {
+      "type": "chain",
+      "targets": 1,
+      "damagePct": 0.6,
+      "label": "Arc"
+    },
+    "lore": "정전기가 깃털처럼 곤두선다."
+  },
+  {
+    "id": "clawbeak",
+    "name": "Clawbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 157,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 385,
+    "damage": 17,
+    "cooldownMs": 1140,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "void",
+    "lore": "세 발톱이 한 상처를 낸다."
+  },
+  {
+    "id": "ribbonquill",
+    "name": "Ribbonquill",
+    "assetName": "swords.png",
+    "sheetOrder": 158,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 375,
+    "damage": 30,
+    "cooldownMs": 930,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "blood",
+    "lore": "분홍 리본의 매듭은 풀리지 않는다."
+  },
+  {
+    "id": "rippletalon",
+    "name": "Rippletalon",
+    "assetName": "swords.png",
+    "sheetOrder": 159,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 370,
+    "damage": 26,
+    "cooldownMs": 1070,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "lore": "물결날이 상처를 넓힌다."
+  },
+  {
+    "id": "lanternroc",
+    "name": "Lanternroc",
+    "assetName": "swords.png",
+    "sheetOrder": 160,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 465,
+    "damage": 49,
+    "cooldownMs": 1040,
+    "maxHits": 2,
+    "critChance": 0.14,
+    "critDamageMultiplier": 2.4,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "legendary",
+    "element": "fire",
+    "magicPen": 0.2,
+    "special": {
+      "type": "burn",
+      "dps": 15,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "trueDamage": 11,
+    "lore": "등불의 눈이 어둠 속 사냥감을 비춘다.",
+    "behavior": "lance"
+  },
+  {
+    "id": "broadfinch",
+    "name": "Broadfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 161,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 360,
+    "damage": 16,
+    "cooldownMs": 1120,
+    "maxHits": 1,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "넓적한 날이 수풀을 헤친다."
+  },
+  {
+    "id": "thicketwing",
+    "name": "Thicketwing",
+    "assetName": "swords.png",
+    "sheetOrder": 162,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 400,
+    "damage": 32,
+    "cooldownMs": 1080,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.8,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 21,
+      "height": 21,
+      "offsetX": 6,
+      "offsetY": 6
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "poison",
+    "magicPen": 0.1,
+    "special": {
+      "type": "poison",
+      "dps": 12,
+      "durationMs": 2500,
+      "label": "Venom"
+    },
+    "lore": "덤불 속 장미가 미끼다."
+  },
+  {
+    "id": "barbtalon",
+    "name": "Barbtalon",
+    "assetName": "swords.png",
+    "sheetOrder": 163,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 415,
+    "damage": 30,
+    "cooldownMs": 1050,
+    "maxHits": 1,
+    "critChance": 0.16,
+    "critDamageMultiplier": 2.2,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "미늘이 박히면 빠지지 않는다."
+  },
+  {
+    "id": "petalfinch",
+    "name": "Petalfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 164,
+    "orbitSpeedMultiplier": 1.15,
+    "launchSpeed": 355,
+    "damage": 7,
+    "cooldownMs": 290,
+    "maxHits": 3,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "trail",
+      "tint": "#84b04a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "common",
+    "element": "poison",
+    "lore": "흰 꽃잎이 지기 전에 돌아온다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "sterlingkite",
+    "name": "Sterlingkite",
+    "assetName": "swords.png",
+    "sheetOrder": 165,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 415,
+    "damage": 33,
+    "cooldownMs": 1050,
+    "maxHits": 1,
+    "critChance": 0.16,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "physicalPen": 0.1,
+    "lore": "은세공 장인의 마지막 작품."
+  },
+  {
+    "id": "harvestkite",
+    "name": "Harvestkite",
+    "assetName": "swords.png",
+    "sheetOrder": 166,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 41,
+    "cooldownMs": 1010,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "밀이삭이 금빛으로 여무는 계절의 검.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "maplewing",
+    "name": "Maplewing",
+    "assetName": "swords.png",
+    "sheetOrder": 167,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 375,
+    "damage": 19,
+    "cooldownMs": 1140,
+    "maxHits": 1,
+    "critChance": 0.105,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "fire",
+    "lore": "단풍잎이 타면서 떨어진다."
+  },
+  {
+    "id": "larkquill",
+    "name": "Larkquill",
+    "assetName": "swords.png",
+    "sheetOrder": 168,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 30,
+    "cooldownMs": 1130,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "wind",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "blast",
+      "radius": 130,
+      "damagePct": 0.468,
+      "label": "Gust"
+    },
+    "lore": "종달새 울음을 닮은 검명(劍鳴)."
+  },
+  {
+    "id": "zephyrhawk",
+    "name": "Zephyrhawk",
+    "assetName": "swords.png",
+    "sheetOrder": 169,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 435,
+    "damage": 39,
+    "cooldownMs": 1030,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "element": "wind",
+    "physicalPen": 0.15,
+    "special": {
+      "type": "blast",
+      "radius": 145,
+      "damagePct": 0.51,
+      "label": "Gust"
+    },
+    "lore": "산들바람의 탈을 쓴 돌풍."
+  },
+  {
+    "id": "dreadtalon",
+    "name": "Dreadtalon",
+    "assetName": "swords.png",
+    "sheetOrder": 170,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 400,
+    "damage": 48,
+    "cooldownMs": 1490,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "void",
+    "magicPen": 0.15,
+    "special": {
+      "type": "execute",
+      "threshold": 0.112,
+      "label": "Null"
+    },
+    "lore": "붉은 심이 박힌 검은 위압."
+  },
+  {
+    "id": "crimsonroc",
+    "name": "Crimsonroc",
+    "assetName": "swords.png",
+    "sheetOrder": 171,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 450,
+    "damage": 161,
+    "cooldownMs": 1230,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "mythic",
+    "element": "blood",
+    "physicalPen": 0.25,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.45,
+      "label": "Leech"
+    },
+    "trueDamage": 21,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "피가 마르지 않는 날개."
+  },
+  {
+    "id": "tinkertalon",
+    "name": "Tinkertalon",
+    "assetName": "swords.png",
+    "sheetOrder": 172,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 420,
+    "damage": 46,
+    "cooldownMs": 1000,
+    "maxHits": 1,
+    "critChance": 0.135,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "epic",
+    "physicalPen": 0.15,
+    "lore": "접이식 날 여덟 개, 전부 진심이다."
+  },
+  {
+    "id": "spirefinch",
+    "name": "Spirefinch",
+    "assetName": "swords.png",
+    "sheetOrder": 173,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 360,
+    "damage": 15,
+    "cooldownMs": 1100,
+    "maxHits": 1,
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "첨탑 끝처럼 곧은 창날.",
+    "behavior": "lance"
+  },
+  {
+    "id": "orchidshrike",
+    "name": "Orchidshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 174,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 395,
+    "damage": 40,
+    "cooldownMs": 970,
+    "maxHits": 1,
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "blood",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.3,
+      "label": "Leech"
+    },
+    "lore": "난초 향에 섞인 쇠 냄새."
+  },
+  {
+    "id": "fallowbeak",
+    "name": "Fallowbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 175,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 350,
+    "damage": 16,
+    "cooldownMs": 1160,
+    "maxHits": 1,
+    "critChance": 0.09,
+    "critDamageMultiplier": 1.5,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "common",
+    "lore": "묵정밭 빛깔의 무던한 대검."
+  },
+  {
+    "id": "cosmoroc",
+    "name": "Cosmoroc",
+    "assetName": "swords.png",
+    "sheetOrder": 176,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 480,
+    "damage": 60,
+    "cooldownMs": 1010,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "mythic",
+    "element": "void",
+    "magicPen": 0.25,
+    "special": {
+      "type": "execute",
+      "threshold": 0.144,
+      "label": "Null"
+    },
+    "trueDamage": 15,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "칼몸 안에서 별자리가 돈다."
+  },
+  {
+    "id": "grindroc",
+    "name": "Grindroc",
+    "assetName": "swords.png",
+    "sheetOrder": 177,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 440,
+    "damage": 123,
+    "cooldownMs": 1460,
+    "maxHits": 2,
+    "critChance": 0.155,
+    "critDamageMultiplier": 1.75,
+    "effect": {
+      "type": "slash",
+      "tint": "#aebfc9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "mythic",
+    "physicalPen": 0.25,
+    "trueDamage": 16,
+    "maxHpDamage": 0.015,
+    "evolved": true,
+    "lore": "맞물린 톱니가 멈추지 않는다."
+  },
+  {
+    "id": "wispwing",
+    "name": "Wispwing",
+    "assetName": "swords.png",
+    "sheetOrder": 178,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 475,
+    "damage": 23,
+    "cooldownMs": 730,
+    "maxHits": 2,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "wind",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "blast",
+      "radius": 130,
+      "damagePct": 0.468,
+      "label": "Gust"
+    },
+    "lore": "흩날리는 은빛 잔깃."
+  },
+  {
+    "id": "runetalon",
+    "name": "Runetalon",
+    "assetName": "swords.png",
+    "sheetOrder": 179,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 400,
+    "damage": 26,
+    "cooldownMs": 1080,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "ember",
+      "tint": "#d9702e"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "fire",
+    "magicPen": 0.1,
+    "special": {
+      "type": "burn",
+      "dps": 10,
+      "durationMs": 2000,
+      "label": "Ignite"
+    },
+    "lore": "룬 사슬이 달아오르면 놓아줄 때다."
+  },
+  {
+    "id": "sparkfinch",
+    "name": "Sparkfinch",
+    "assetName": "swords.png",
+    "sheetOrder": 180,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 450,
+    "damage": 16,
+    "cooldownMs": 790,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "spark",
+      "tint": "#63b3d9"
+    },
+    "hitbox": {
+      "width": 22,
+      "height": 23,
+      "offsetX": 5,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "electric",
+    "lore": "깃털 끝마다 잔불꽃 대신 잔전류가 튄다."
+  },
+  {
+    "id": "arcshrike",
+    "name": "Arcshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 181,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 455,
+    "damage": 27,
+    "cooldownMs": 900,
+    "maxHits": 1,
+    "critChance": 0.29,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "spark",
+      "tint": "#63b3d9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "rare",
+    "element": "electric",
+    "magicPen": 0.1,
+    "special": {
+      "type": "chain",
+      "targets": 1,
+      "damagePct": 0.6,
+      "label": "Arc"
+    },
+    "lore": "한 번 그은 자리에 파란 금이 오래 남는다."
+  },
+  {
+    "id": "thunderowl",
+    "name": "Thunderowl",
+    "assetName": "swords.png",
+    "sheetOrder": 182,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 380,
+    "damage": 61,
+    "cooldownMs": 1430,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "spark",
+      "tint": "#63b3d9"
+    },
+    "hitbox": {
+      "width": 23,
+      "height": 23,
+      "offsetX": 4,
+      "offsetY": 4
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "electric",
+    "magicPen": 0.15,
+    "special": {
+      "type": "chain",
+      "targets": 1,
+      "damagePct": 0.65,
+      "label": "Arc"
+    },
+    "lore": "날개를 접고 나서야 천둥이 뒤늦게 따라온다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "curlewing",
+    "name": "Curlewing",
+    "assetName": "swords.png",
+    "sheetOrder": 183,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 430,
+    "damage": 18,
+    "cooldownMs": 760,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#9fd8c0"
+    },
+    "hitbox": {
+      "width": 17,
+      "height": 17,
+      "offsetX": 8,
+      "offsetY": 8
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "wind",
+    "lore": "던져 놓고 손을 펴고 기다리면, 반드시 제 손으로 돌아온다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "ringtalon",
+    "name": "Ringtalon",
+    "assetName": "swords.png",
+    "sheetOrder": 44,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 485,
+    "damage": 29,
+    "cooldownMs": 730,
+    "maxHits": 2,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "spark",
+      "tint": "#63b3d9"
+    },
+    "hitbox": {
+      "width": 17,
+      "height": 18,
+      "offsetX": 8,
+      "offsetY": 7
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "electric",
+    "magicPen": 0.15,
+    "special": {
+      "type": "chain",
+      "targets": 1,
+      "damagePct": 0.65,
+      "label": "Arc"
+    },
+    "lore": "지나간 자리마다 파란 고리가 하나씩 남는다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "stakebeak",
+    "name": "Stakebeak",
+    "assetName": "swords.png",
+    "sheetOrder": 184,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 335,
+    "damage": 40,
+    "cooldownMs": 1620,
+    "maxHits": 1,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 15,
+      "height": 15,
+      "offsetX": 8,
+      "offsetY": 8
+    },
+    "damageType": "physical",
+    "rarity": "uncommon",
+    "element": "blood",
+    "lore": "한 번 박히면 뽑을 때까지 피가 멈추지 않는다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "cairnowl",
+    "name": "Cairnowl",
+    "assetName": "swords.png",
+    "sheetOrder": 87,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 375,
+    "damage": 72,
+    "cooldownMs": 1510,
+    "maxHits": 1,
+    "critChance": 0.125,
+    "critDamageMultiplier": 1.65,
+    "effect": {
+      "type": "flash",
+      "tint": "#8d7bb5"
+    },
+    "hitbox": {
+      "width": 15,
+      "height": 15,
+      "offsetX": 8,
+      "offsetY": 8
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "void",
+    "magicPen": 0.15,
+    "special": {
+      "type": "execute",
+      "threshold": 0.14,
+      "label": "Null"
+    },
+    "lore": "돌무지처럼 꽂혀 제 둘레의 빛을 천천히 삼킨다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "lancequill",
+    "name": "Lancequill",
+    "assetName": "swords.png",
+    "sheetOrder": 185,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 405,
+    "damage": 22,
+    "cooldownMs": 970,
+    "maxHits": 1,
+    "critChance": 0.27,
+    "critDamageMultiplier": 2.0,
+    "effect": {
+      "type": "spark",
+      "tint": "#63b3d9"
+    },
+    "hitbox": {
+      "width": 19,
+      "height": 19,
+      "offsetX": 6,
+      "offsetY": 6
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "electric",
+    "lore": "한 줄로 늘어선 것들을 한 번에 꿴다.",
+    "behavior": "lance"
+  },
+  {
+    "id": "pikehawk",
+    "name": "Pikehawk",
+    "assetName": "swords.png",
+    "sheetOrder": 101,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 465,
+    "damage": 44,
+    "cooldownMs": 870,
+    "maxHits": 1,
+    "critChance": 0.31,
+    "critDamageMultiplier": 2.2,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 19,
+      "height": 19,
+      "offsetX": 6,
+      "offsetY": 6
+    },
+    "damageType": "magic",
+    "rarity": "epic",
+    "element": "ice",
+    "magicPen": 0.15,
+    "special": {
+      "type": "slow",
+      "slowPct": 0.45,
+      "durationMs": 1700,
+      "label": "Chill"
+    },
+    "lore": "찌른 자리에서부터 서리가 곧게 뻗어 나간다.",
+    "behavior": "lance"
+  },
+  {
+    "id": "gyrefinch",
+    "name": "Gyrefinch",
+    "assetName": "swords.png",
+    "sheetOrder": 114,
+    "orbitSpeedMultiplier": 1.05,
+    "launchSpeed": 460,
+    "damage": 18,
+    "cooldownMs": 750,
+    "maxHits": 2,
+    "critChance": 0.095,
+    "critDamageMultiplier": 1.55,
+    "effect": {
+      "type": "trail",
+      "tint": "#8fc3d8"
+    },
+    "hitbox": {
+      "width": 16,
+      "height": 17,
+      "offsetX": 8,
+      "offsetY": 8
+    },
+    "damageType": "magic",
+    "rarity": "uncommon",
+    "element": "ice",
+    "lore": "서리 호가 한 바퀴를 돌아 제자리로 온다.",
+    "behavior": "boomerang"
+  },
+  {
+    "id": "pylonbeak",
+    "name": "Pylonbeak",
+    "assetName": "swords.png",
+    "sheetOrder": 155,
+    "orbitSpeedMultiplier": 0.92,
+    "launchSpeed": 360,
+    "damage": 48,
+    "cooldownMs": 1490,
+    "maxHits": 1,
+    "critChance": 0.11,
+    "critDamageMultiplier": 1.6,
+    "effect": {
+      "type": "slash",
+      "tint": "#c9455a"
+    },
+    "hitbox": {
+      "width": 15,
+      "height": 15,
+      "offsetX": 8,
+      "offsetY": 8
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "blood",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "leech",
+      "chance": 0.35,
+      "damagePct": 0.3,
+      "label": "Leech"
+    },
+    "lore": "박아 넣은 자리를 중심으로 붉은 웅덩이가 넓어진다.",
+    "behavior": "stake"
+  },
+  {
+    "id": "aurumshrike",
+    "name": "Aurumshrike",
+    "assetName": "swords.png",
+    "sheetOrder": 108,
+    "orbitSpeedMultiplier": 1.0,
+    "launchSpeed": 425,
+    "damage": 30,
+    "cooldownMs": 960,
+    "maxHits": 1,
+    "critChance": 0.29,
+    "critDamageMultiplier": 2.1,
+    "effect": {
+      "type": "flash",
+      "tint": "#d9a83c"
+    },
+    "hitbox": {
+      "width": 19,
+      "height": 19,
+      "offsetX": 6,
+      "offsetY": 6
+    },
+    "damageType": "physical",
+    "rarity": "rare",
+    "element": "gold",
+    "physicalPen": 0.1,
+    "special": {
+      "type": "midas",
+      "chance": 0.18,
+      "label": "Midas"
+    },
+    "lore": "금빛 궤도 하나에 늘어선 것들이 전부 꿰인다.",
+    "behavior": "lance"
   }
 ]

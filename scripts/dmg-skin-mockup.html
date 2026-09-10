@@ -1,0 +1,123 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>데미지 스킨 시안</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #0b0d12; font-family: "Jua", "Apple SD Gothic Neo", sans-serif; color: #dfe6ea; }
+  .wrap { padding: 18px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card { background: #171b23; border: 1px solid #2b3240; border-radius: 6px; padding: 10px 12px 12px; }
+  .card h2 { margin: 0 0 4px; font-size: 17px; color: #f2d488; }
+  .card p { margin: 0 0 8px; font-size: 12px; color: #8d9aa5; }
+  canvas { display: block; width: 100%; image-rendering: auto; border-radius: 4px; }
+</style>
+<div class="wrap" id="wrap"></div>
+<script>
+// 게임과 같은 규칙으로 그린다: 셀 폭 = 숫자 최대 폭 + 외곽선 여유, 자간 = -셀폭×spacing, 자리수 모두 캔버스에 직접.
+const SAMPLES = [
+  { text: '48213', kind: 'normal', x: 0.16, y: 0.30 },
+  { text: '152880!', kind: 'crit', x: 0.60, y: 0.30 },
+  { text: '3200', kind: 'magic', x: 0.14, y: 0.66 },
+  { text: '+2400', kind: 'heal', x: 0.42, y: 0.72 },
+  { text: '7777', kind: 'weak', x: 0.70, y: 0.70 },
+];
+const SKINS = [
+  {
+    id: 'A', name: 'A. 그라데이션 볼드 (현재 개선판)',
+    desc: '위 밝음→아래 본색 세로 그라데이션 · 두꺼운 검 외곽선 · 하단 그림자. 자간 -20%, 일반 32px / 치명 56px.',
+    px: { normal: 32, crit: 56 }, spacing: 0.20, weight: 900, stroke: 7, shadow: 3,
+    fill: { normal: ['#ffffff', '#e8eef2', '#c9d6e2'], crit: ['#fff3b8', '#d9a83c', '#ff9a2e'], magic: ['#eaf3ff', '#93c5fd', '#5f9dff'], heal: ['#eaffd0', '#84b04a', '#5fa332'], weak: ['#ffe4c4', '#ffab5e', '#ff8a2a'] },
+    outline: '#0b0d12', highlight: true,
+  },
+  {
+    id: 'B', name: 'B. 메이플 클래식',
+    desc: '단색 흰/노랑 + 갈색 두꺼운 외곽선 + 진한 하단 드롭섀도. 자간 -28%(숫자가 살짝 겹침), 일반 34px / 치명 60px.',
+    px: { normal: 34, crit: 60 }, spacing: 0.28, weight: 900, stroke: 8, shadow: 4,
+    fill: { normal: ['#ffffff', '#f7f7f7', '#e2e2e2'], crit: ['#ffe680', '#ffd21f', '#ffb000'], magic: ['#cfe6ff', '#a9d0ff', '#7db6ff'], heal: ['#d9ffb3', '#a6e26b', '#7bc24a'], weak: ['#ffd9b0', '#ffb877', '#ff9a4d'] },
+    outline: '#3a2410', highlight: false,
+  },
+  {
+    id: 'C', name: 'C. 네온 글로우',
+    desc: '밝은 코어 + 색 글로우(블러) · 외곽선 얇게. 어두운 맵에서 튄다. 자간 -18%, 일반 32px / 치명 58px.',
+    px: { normal: 32, crit: 58 }, spacing: 0.18, weight: 900, stroke: 3, shadow: 0, glow: 14,
+    fill: { normal: ['#ffffff', '#f0f6ff', '#dfe9f5'], crit: ['#fff6cc', '#ffcf4d', '#ff8a00'], magic: ['#ffffff', '#b9dcff', '#6fb0ff'], heal: ['#ffffff', '#c8f7a0', '#7ad14a'], weak: ['#ffffff', '#ffc38a', '#ff8a2a'] },
+    glowColor: { normal: '#8fb8ff', crit: '#ff9a2e', magic: '#4f9dff', heal: '#6fd14a', weak: '#ff8a2a' },
+    outline: '#0b0d12', highlight: true,
+  },
+  {
+    id: 'D', name: 'D. 하드 섀도 (도트/레트로)',
+    desc: '단색 채움 + 오프셋 3px 하드 섀도 + 검 외곽선. 픽셀 게임 톤. 자간 -22%, 일반 33px / 치명 58px.',
+    px: { normal: 33, crit: 58 }, spacing: 0.22, weight: 900, stroke: 5, shadow: 0, hardShadow: 4,
+    fill: { normal: ['#f4f7fa', '#f4f7fa', '#f4f7fa'], crit: ['#ffcc33', '#ffcc33', '#ffcc33'], magic: ['#8ec5ff', '#8ec5ff', '#8ec5ff'], heal: ['#9ad36a', '#9ad36a', '#9ad36a'], weak: ['#ffab5e', '#ffab5e', '#ffab5e'] },
+    hardShadowColor: { normal: '#3b4a5a', crit: '#7a3d00', magic: '#1e4a80', heal: '#2d5c1c', weak: '#7a3a12' },
+    outline: '#0b0d12', highlight: false,
+  },
+  {
+    id: 'E', name: 'E. 금속 양각 (이중 외곽선)',
+    desc: '색 외곽선 안에 검 외곽선 · 강한 상단 하이라이트로 볼록하게. 치명은 붉은 주황. 자간 -20%, 일반 32px / 치명 56px.',
+    px: { normal: 32, crit: 56 }, spacing: 0.20, weight: 900, stroke: 5, shadow: 2, outerStroke: 4,
+    fill: { normal: ['#ffffff', '#dfe6ea', '#a9b7c3'], crit: ['#fff0b0', '#ffb347', '#e0562e'], magic: ['#ffffff', '#93c5fd', '#3f7fd6'], heal: ['#f2ffe0', '#9ad36a', '#4c8a2e'], weak: ['#fff0dc', '#ffab5e', '#c85a12'] },
+    outerColor: { normal: '#6b7b8a', crit: '#7a1f0a', magic: '#1e3e78', heal: '#22521a', weak: '#7a3a12' },
+    outline: '#0b0d12', highlight: true,
+  },
+];
+
+function drawBackdrop(ctx, w, h) {
+  // 던전 벽 타일 흉내 (게임 배경 톤)
+  ctx.fillStyle = '#5a5666'; ctx.fillRect(0, 0, w, h);
+  for (let y = 0; y < h; y += 26) {
+    for (let x = ((y / 26) % 2) * 32 - 32; x < w; x += 64) {
+      ctx.fillStyle = (Math.floor(x / 64 + y / 26) % 3 === 0) ? '#66627a' : '#5f5b70';
+      ctx.fillRect(x + 2, y + 2, 60, 22);
+    }
+  }
+  ctx.fillStyle = 'rgba(0,0,0,0.18)'; ctx.fillRect(0, 0, w, h);
+}
+
+function drawText(ctx, skin, text, kind, cx, cy) {
+  const px = kind === 'crit' ? skin.px.crit : skin.px.normal;
+  ctx.font = `${skin.weight} ${px}px "Jua", "Apple SD Gothic Neo", sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  // 셀 폭 = 숫자 최대 폭 + 외곽선 0.6
+  let widest = 0; for (const ch of '0123456789') widest = Math.max(widest, ctx.measureText(ch).width);
+  const cell = Math.ceil(widest + skin.stroke * 0.6);
+  const step = cell - Math.round(cell * skin.spacing);
+  const total = step * text.length;
+  const stops = skin.fill[kind];
+  for (let i = 0; i < text.length; i += 1) {
+    const ch = text[i];
+    const x = cx - total / 2 + step * (i + 0.5);
+    const glyphW = ctx.measureText(ch).width + skin.stroke;
+    const squeeze = glyphW > cell ? cell / glyphW : 1;
+    ctx.save(); ctx.translate(x, 0); ctx.scale(squeeze, 1); ctx.translate(-x, 0);
+    if (skin.glow) { ctx.shadowColor = skin.glowColor[kind]; ctx.shadowBlur = skin.glow; }
+    if (skin.hardShadow) {
+      ctx.lineWidth = skin.stroke; ctx.strokeStyle = skin.hardShadowColor[kind];
+      ctx.strokeText(ch, x + skin.hardShadow, cy + skin.hardShadow);
+      ctx.fillStyle = skin.hardShadowColor[kind]; ctx.fillText(ch, x + skin.hardShadow, cy + skin.hardShadow);
+    }
+    if (skin.shadow) { ctx.lineWidth = skin.stroke; ctx.strokeStyle = 'rgba(0,0,0,0.55)'; ctx.strokeText(ch, x, cy + skin.shadow); }
+    if (skin.outerStroke) { ctx.lineWidth = skin.stroke + skin.outerStroke * 2; ctx.strokeStyle = skin.outerColor[kind]; ctx.strokeText(ch, x, cy); }
+    ctx.lineWidth = skin.stroke; ctx.strokeStyle = skin.outline; ctx.strokeText(ch, x, cy);
+    ctx.shadowBlur = 0;
+    const g = ctx.createLinearGradient(0, cy - px * 0.5, 0, cy + px * 0.5);
+    g.addColorStop(0, stops[0]); g.addColorStop(0.55, stops[1]); g.addColorStop(1, stops[2]);
+    ctx.fillStyle = g; ctx.fillText(ch, x, cy);
+    if (skin.highlight) { ctx.lineWidth = 1.2; ctx.strokeStyle = 'rgba(255,255,255,0.35)'; ctx.strokeText(ch, x, cy - 1); }
+    ctx.restore();
+  }
+}
+
+document.fonts.load('900 40px "Jua"').then(() => {
+  const wrap = document.getElementById('wrap');
+  for (const skin of SKINS) {
+    const card = document.createElement('div'); card.className = 'card';
+    card.innerHTML = `<h2>${skin.name}</h2><p>${skin.desc}</p>`;
+    const c = document.createElement('canvas'); c.width = 620; c.height = 190;
+    card.appendChild(c); wrap.appendChild(card);
+    const ctx = c.getContext('2d');
+    drawBackdrop(ctx, c.width, c.height);
+    for (const s of SAMPLES) drawText(ctx, skin, s.text, s.kind, c.width * s.x + 40, c.height * s.y);
+  }
+  document.body.dataset.ready = '1';
+});
+</script>

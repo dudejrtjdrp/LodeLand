@@ -1,13 +1,18 @@
 {
-  "name": "moveSword",
+  "name": "lodeland",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=lodeland --branch=main --commit-dirty=true",
+    "smoke:dist": "node scripts/deploy-smoke.mjs",
+    "typecheck": "tsc --noEmit",
+    "atlas": "node scripts/build-atlas.mjs",
+    "balance-sim": "node scripts/balance-sim/run.mjs",
+    "balance-gate": "node scripts/balance-sim/run.mjs --gate --rounds=100"
   },
   "dependencies": {
     "phaser": "^3.90.0"

@@ -19,6 +19,9 @@ await page.waitForSelector('canvas', { timeout: 15000 });
 await page.waitForTimeout(2500); // let BootScene finish loading assets
 
 // Title → CharacterSelect
+// 부팅 대기: 타이틀 씬이 뜨기 전에 Space 를 누르면 입력이 씹힌다 (2026-09-02 — 보스 에셋
+// 추가로 프리로드가 길어져 고정 대기 2.6초로는 느린 머신에서 부족하다).
+await page.waitForFunction(() => !!window.__titleScene, null, { timeout: 40000 });
 await page.keyboard.press('Space');
 await page.waitForTimeout(800);
 // CharacterSelect → GameScene (default character)
@@ -71,6 +74,14 @@ const snapshot2 = await page.evaluate(() => {
 	};
 });
 
+// LEVEL UP 카드가 열려 있으면 먼저 1번 카드를 골라 닫는다 (ESC 는 오버레이 중 무시됨)
+for (let i = 0; i < 4; i += 1) {
+	const overlayOpen = await page.evaluate(() => window.__gameScene.levelUpSystem?.isOpen === true);
+	if (!overlayOpen) break;
+	await page.keyboard.press('1');
+	await page.waitForTimeout(350);
+}
+
 // Pause toggle check
 await page.keyboard.press('Escape');
 await page.waitForTimeout(400);
@@ -81,11 +92,15 @@ const resumedState = await page.evaluate(() => window.__gameScene.isPaused);
 
 await browser.close();
 
-const report = { snapshot1, snapshot2, pausedState, resumedState, errors, warnings: warnings.slice(0, 10) };
+// 샌드박스/프록시 환경의 리소스 로드 실패(웹폰트 등)는 게임 오류가 아니다
+const gameErrors = errors.filter((message) =>
+	!message.includes('Proxy Authentication Required') && !message.includes('Failed to load resource'));
+
+const report = { snapshot1, snapshot2, pausedState, resumedState, errors: gameErrors, warnings: warnings.slice(0, 10) };
 console.log(JSON.stringify(report, null, 2));
 
 const failed =
-	errors.length > 0 ||
+	gameErrors.length > 0 ||
 	!snapshot2.playerAlive === undefined ||
 	!(snapshot1.swordCount >= 1) ||
 	!(snapshot2.activeEnemies >= 0) ||

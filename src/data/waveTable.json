@@ -3,7 +3,7 @@
   "reaper": {
     "enemyId": "reaper",
     "repeatEveryMs": 60000,
-    "announcement": "사신이 나타났다..."
+    "announcement": "HUNGER 가 깨어났다 — 달아나라"
   },
   "waves": [
     {
@@ -29,6 +29,10 @@
         {
           "id": "skullwolf-swift",
           "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
         }
       ]
     },
@@ -48,6 +52,10 @@
         {
           "id": "shooter",
           "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
         }
       ]
     },
@@ -71,6 +79,14 @@
         {
           "id": "slime",
           "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
         }
       ]
     },
@@ -98,6 +114,14 @@
         {
           "id": "skullwolf-brute",
           "weight": 1
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
         }
       ]
     },
@@ -129,6 +153,18 @@
         {
           "id": "skullwolf-brute",
           "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 1
         }
       ]
     },
@@ -164,6 +200,22 @@
         {
           "id": "skullwolf-brute",
           "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 2
+        },
+        {
+          "id": "veil-caller",
+          "weight": 1
         }
       ]
     },
@@ -203,6 +255,26 @@
         {
           "id": "skullwolf-brute",
           "weight": 3
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 2
+        },
+        {
+          "id": "veil-caller",
+          "weight": 1
         }
       ]
     },
@@ -238,6 +310,30 @@
         {
           "id": "skullwolf-brute",
           "weight": 3
+        },
+        {
+          "id": "charger",
+          "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 2
+        },
+        {
+          "id": "veil-caller",
+          "weight": 2
         }
       ]
     },
@@ -273,6 +369,38 @@
         {
           "id": "skullwolf-brute",
           "weight": 4
+        },
+        {
+          "id": "charger",
+          "weight": 2
+        },
+        {
+          "id": "sniper",
+          "weight": 1
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 3
+        },
+        {
+          "id": "veil-caller",
+          "weight": 2
         }
       ]
     },
@@ -308,6 +436,42 @@
         {
           "id": "skullwolf-brute",
           "weight": 4
+        },
+        {
+          "id": "charger",
+          "weight": 3
+        },
+        {
+          "id": "sniper",
+          "weight": 2
+        },
+        {
+          "id": "blinker",
+          "weight": 1
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 3
+        },
+        {
+          "id": "veil-caller",
+          "weight": 2
         }
       ]
     },
@@ -347,6 +511,42 @@
         {
           "id": "skullwolf-brute",
           "weight": 4
+        },
+        {
+          "id": "sniper",
+          "weight": 2
+        },
+        {
+          "id": "blinker",
+          "weight": 2
+        },
+        {
+          "id": "broodcaller",
+          "weight": 1
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 3
+        },
+        {
+          "id": "veil-caller",
+          "weight": 2
         }
       ]
     },
@@ -386,6 +586,42 @@
         {
           "id": "skullwolf-brute",
           "weight": 4
+        },
+        {
+          "id": "charger",
+          "weight": 3
+        },
+        {
+          "id": "blinker",
+          "weight": 2
+        },
+        {
+          "id": "broodcaller",
+          "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 3
+        },
+        {
+          "id": "veil-caller",
+          "weight": 3
         }
       ]
     },
@@ -421,6 +657,42 @@
         {
           "id": "skullwolf-brute",
           "weight": 4
+        },
+        {
+          "id": "sniper",
+          "weight": 3
+        },
+        {
+          "id": "banneret",
+          "weight": 1
+        },
+        {
+          "id": "cindermaul",
+          "weight": 1
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 3
+        },
+        {
+          "id": "veil-caller",
+          "weight": 3
         }
       ]
     },
@@ -452,6 +724,357 @@
         {
           "id": "skullwolf-brute",
           "weight": 5
+        },
+        {
+          "id": "charger",
+          "weight": 4
+        },
+        {
+          "id": "blinker",
+          "weight": 3
+        },
+        {
+          "id": "banneret",
+          "weight": 2
+        },
+        {
+          "id": "cindermaul",
+          "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 4
+        },
+        {
+          "id": "veil-caller",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "minute": 15,
+      "spawnIntervalMs": 380,
+      "minAlive": 32,
+      "pool": [
+        {
+          "id": "shielded-shooter",
+          "weight": 4
+        },
+        {
+          "id": "venom-slime",
+          "weight": 3
+        },
+        {
+          "id": "cindermaul",
+          "weight": 3
+        },
+        {
+          "id": "charger",
+          "weight": 4
+        },
+        {
+          "id": "sniper",
+          "weight": 3
+        },
+        {
+          "id": "blinker",
+          "weight": 3
+        },
+        {
+          "id": "banneret",
+          "weight": 2
+        },
+        {
+          "id": "healer",
+          "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 4
+        },
+        {
+          "id": "veil-caller",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "minute": 16,
+      "spawnIntervalMs": 360,
+      "minAlive": 34,
+      "pool": [
+        {
+          "id": "charger",
+          "weight": 4
+        },
+        {
+          "id": "cindermaul",
+          "weight": 4
+        },
+        {
+          "id": "sniper",
+          "weight": 4
+        },
+        {
+          "id": "blinker",
+          "weight": 3
+        },
+        {
+          "id": "banneret",
+          "weight": 3
+        },
+        {
+          "id": "broodcaller",
+          "weight": 3
+        },
+        {
+          "id": "shieldbearer",
+          "weight": 3
+        },
+        {
+          "id": "healer",
+          "weight": 2
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 4
+        },
+        {
+          "id": "veil-caller",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "minute": 17,
+      "spawnIntervalMs": 340,
+      "minAlive": 36,
+      "pool": [
+        {
+          "id": "cindermaul",
+          "weight": 5
+        },
+        {
+          "id": "charger",
+          "weight": 4
+        },
+        {
+          "id": "sniper",
+          "weight": 4
+        },
+        {
+          "id": "blinker",
+          "weight": 4
+        },
+        {
+          "id": "banneret",
+          "weight": 3
+        },
+        {
+          "id": "broodcaller",
+          "weight": 3
+        },
+        {
+          "id": "venom-slime",
+          "weight": 3
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 4
+        },
+        {
+          "id": "veil-caller",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "minute": 18,
+      "spawnIntervalMs": 320,
+      "minAlive": 38,
+      "pool": [
+        {
+          "id": "cindermaul",
+          "weight": 5
+        },
+        {
+          "id": "charger",
+          "weight": 5
+        },
+        {
+          "id": "sniper",
+          "weight": 4
+        },
+        {
+          "id": "blinker",
+          "weight": 4
+        },
+        {
+          "id": "banneret",
+          "weight": 4
+        },
+        {
+          "id": "broodcaller",
+          "weight": 3
+        },
+        {
+          "id": "skullwolf-brute",
+          "weight": 4
+        },
+        {
+          "id": "hound",
+          "weight": 4
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 4
+        },
+        {
+          "id": "veil-caller",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "minute": 19,
+      "spawnIntervalMs": 300,
+      "minAlive": 40,
+      "pool": [
+        {
+          "id": "cindermaul",
+          "weight": 6
+        },
+        {
+          "id": "charger",
+          "weight": 5
+        },
+        {
+          "id": "sniper",
+          "weight": 5
+        },
+        {
+          "id": "blinker",
+          "weight": 5
+        },
+        {
+          "id": "banneret",
+          "weight": 4
+        },
+        {
+          "id": "broodcaller",
+          "weight": 4
+        },
+        {
+          "id": "hound",
+          "weight": 5
+        },
+        {
+          "id": "bomber",
+          "weight": 4
+        },
+        {
+          "id": "verdrat",
+          "weight": 4
+        },
+        {
+          "id": "duskbat",
+          "weight": 3
+        },
+        {
+          "id": "demonling",
+          "weight": 3
+        },
+        {
+          "id": "blood-horror",
+          "weight": 2
+        },
+        {
+          "id": "volley-marksman",
+          "weight": 4
+        },
+        {
+          "id": "veil-caller",
+          "weight": 4
         }
       ]
     }
@@ -461,49 +1084,49 @@
       "timeMs": 120000,
       "enemyId": "mb-bulwark",
       "count": 1,
-      "announcement": "⚔ 중간보스: 불워크"
+      "announcement": "GREATER — Bulwark"
     },
     {
       "timeMs": 180000,
       "enemyId": "skullwolf-elite",
       "count": 1,
-      "announcement": "정예 스컬울프가 나타났다!"
+      "announcement": "ALPHA — Alpha Rusthound"
     },
     {
       "timeMs": 240000,
       "enemyId": "mb-slimeking",
       "count": 1,
-      "announcement": "⚔ 중간보스: 슬라임 킹"
+      "announcement": "GREATER — Greatsludge"
     },
     {
       "timeMs": 360000,
       "enemyId": "mb-archerlord",
       "count": 1,
-      "announcement": "⚔ 중간보스: 아처 로드"
+      "announcement": "GREATER — Spineback"
     },
     {
       "timeMs": 420000,
       "enemyId": "skullwolf-elite",
       "count": 1,
-      "announcement": "정예 스컬울프가 나타났다!"
+      "announcement": "ALPHA — Alpha Rusthound"
     },
     {
       "timeMs": 480000,
       "enemyId": "mb-plaguehealer",
       "count": 1,
-      "announcement": "⚔ 중간보스: 역병 사제"
+      "announcement": "GREATER — Archmender"
     },
     {
       "timeMs": 600000,
       "enemyId": "skullwolf-boss",
       "count": 1,
-      "announcement": "⚠ 보스 등장 ⚠"
+      "announcement": "BOSS — Packlord"
     },
     {
       "timeMs": 720000,
       "enemyId": "mb-bulwark",
       "count": 1,
-      "announcement": "⚔ 중간보스 2인조!"
+      "announcement": "GREATER — Bulwark"
     },
     {
       "timeMs": 720000,
@@ -514,18 +1137,62 @@
       "timeMs": 780000,
       "enemyId": "skullwolf-elite",
       "count": 2,
-      "announcement": "정예 무리가 몰려온다!"
+      "announcement": "ALPHA — Alpha Rusthound"
     },
     {
       "timeMs": 840000,
       "enemyId": "mb-slimeking",
       "count": 1,
-      "announcement": "⚔ 중간보스 2인조!"
+      "announcement": "GREATER — Greatsludge"
     },
     {
       "timeMs": 840000,
       "enemyId": "mb-plaguehealer",
       "count": 1
     }
-  ]
+  ],
+  "scaling": {
+    "hpLinear": 0.05,
+    "hpExpBase": 1.093,
+    "damageBase": 2.0,
+    "damageLinear": 0.03,
+    "damageExpBase": 1.045,
+    "damageCap": 34,
+    "bossHpExponent": 0.95,
+    "minibossHpExponent": 0.9,
+    "lateStartRound": 27,
+    "lateHpExpBase": 1.0,
+    "resistStartRound": 8,
+    "resistPerRound": 0.003,
+    "resistCap": 0.58,
+    "spikeEvery": 10,
+    "spikeMaxTiers": 10,
+    "spikeHpStep": 1.26,
+    "spikeHpSteps": [
+      1.09,
+      1.3,
+      1.32,
+      1.3,
+      1.3,
+      1.34,
+      1.3,
+      1.28,
+      1.26,
+      1.24
+    ],
+    "spikeDamageStep": 1.1,
+    "spikeResistStep": 0.028,
+    "speedPerRound": 0.014,
+    "speedCap": 2.0,
+    "speedFloorStartRound": 4,
+    "speedFloorPerRound": 5.5,
+    "speedFloorCap": 250,
+    "speedFloorRatioCap": 3,
+    "projectileSpeedPerRound": 0.01,
+    "projectileSpeedCap": 1.6,
+    "projectileRangePerRound": 0.008,
+    "projectileRangeCap": 1.5,
+    "fireIntervalPerRound": 0.006,
+    "fireIntervalFloor": 0.6
+  }
 }

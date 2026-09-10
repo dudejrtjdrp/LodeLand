@@ -4,6 +4,9 @@
 // 원본 SwordOrbitSystem.js 의 해당 구간을 기계적으로 옮긴 것.
 
 import Phaser from 'phaser';
+import { recordSwordSeen } from '../../core/codex';
+import { behaviorOf, behaviorSpec } from '../../logic/swordBehavior';
+import { softSwordTint } from '../../logic/swordTint';
 import type { LoadoutEntry, OrbitSword, OrbitSwordDefinition } from './types';
 import type SwordOrbitSystem from './SwordOrbitSystem';
 import type GameScene from '../../scenes/GameScene';
@@ -19,6 +22,11 @@ export function addSword(
 
 	const slot = system.swords.length;
 	const definition = definitionOverride ?? system.getSwordDefinition(slot);
+	// 도감 기록: 검을 실제로 손에 넣는 유일한 두 경로가 addSword / addToReserve 다.
+	// 이미 기록된 id 면 Set 조회 한 번으로 끝나고, 신규일 때만 localStorage 에 쓴다.
+	if (recordSwordSeen(definition?.id)) {
+		scene.achievements?.onCodexRecorded?.();
+	}
 	const frame = definition.sheetOrder ?? slot % 30;
 	const sword = scene.physics.add.sprite(0, 0, 'sword', frame) as OrbitSword;
 
@@ -43,12 +51,19 @@ export function addSword(
 
 	sword.slot = slot;
 	sword.definition = definition;
+	// 거동 아키타입은 항상 카탈로그에서 다시 읽는다 (세이브에 저장하지 않는다)
+	sword.behavior = behaviorOf(definition);
 	sword.orbitSpeedMultiplier = definition.orbitSpeedMultiplier ?? 1;
 	sword.level = 1;
+	sword.traits = []; // 각인은 검 귀속 — rebuildLoadout 이 엔트리에서 복사한다
+
 	sword.launchSpeed = (definition.launchSpeed ?? 400) * system.launchSpeedMultiplier;
 	sword.damage = definition.damage ?? 20;
-	sword.scanInterval = (definition.cooldownMs ?? 1500) * system.cooldownMultiplier;
-	sword.hitsPerLaunch = (definition.maxHits ?? 1) + system.bonusHits;
+	sword.scanInterval = (definition.cooldownMs ?? 1500) * system.cooldownMultiplier
+		* behaviorSpec(sword.behavior).cooldownMult;
+	// 질풍 각성(gale): 각성된 검은 재생성돼도 연속 타격 +1 유지
+	sword.hitsPerLaunch = (definition.maxHits ?? 1) + system.bonusHits
+		+ (system.awakenings?.[definition.id ?? ''] === 'gale' ? 1 : 0);
 	sword.special = definition.special ?? null;
 	sword.remainingHits = sword.hitsPerLaunch;
 	sword.hitCooldownMs = definition.hitCooldownMs ?? 110;
@@ -65,8 +80,11 @@ export function addSword(
 		configurable: true,
 	});
 
+	// 원소색 틴트 — 단색 곱셈이 아니라 휘도 복원 + 광원(좌상단) 방향 그라디언트다.
+	// 도트의 5단계 명암을 살려 둔 채 색만 얹는다 (src/logic/swordTint.ts).
 	if (sword.effect?.tint && typeof sword.setTint === 'function') {
-		sword.setTint(Phaser.Display.Color.HexStringToColor(sword.effect.tint).color);
+		const corners = softSwordTint(Phaser.Display.Color.HexStringToColor(sword.effect.tint).color);
+		sword.setTint(corners.topLeft, corners.topRight, corners.bottomLeft, corners.bottomRight);
 	}
 
 	// Evolved swords render larger to feel special
@@ -75,6 +93,10 @@ export function addSword(
 	}
 
 	system.swords.push(sword);
+	// 칸 강화·각성·레벨 성장 배율까지 반영한 실제 스탯으로 (raw 카탈로그 값으로 남아 있던 버그, 2026-09-04)
+	system.recalculateSwordStats(sword);
+	// 링 배치 캐시(_ringIndex/_ringCount)를 새 구성으로 갱신한 뒤 위치를 잡는다.
+	system.recomputeRingLayout();
 	system.bindSwordOverlap(sword);
 	system.updateSwordPositions(system.scene?.player ?? null);
 	system.refreshSwordHud();
@@ -90,6 +112,12 @@ export function levelUpSword(system: SwordOrbitSystem, sword: OrbitSword | null)
 
 	sword.level += 1;
 	system.recalculateSwordStats(sword);
+
+	// 도전과제: 검을 최고 단계까지 올린 순간 (전이 시점에 한 번만 — 이미 만렙이면
+	// 위 가드에서 false 로 빠지므로 중복 호출되지 않는다)
+	if (sword.level >= system.maxSwordLevel) {
+		system.scene?.achievements?.onSwordMaxLevel?.();
+	}
 
 	// Milestone: at level 3 and 5 the sword gains an extra hit per launch
 	if (sword.level === 3 || sword.level === 5) {
@@ -109,20 +137,48 @@ export function recalculateSwordStats(system: SwordOrbitSystem, sword: OrbitSwor
 	const definition: Partial<OrbitSwordDefinition> = sword.definition ?? {};
 	const levelBonus = sword.level - 1;
 	const slotMods = system.computeSlotModifiers(sword);
+	// 검 각성 (라운드 40, 증강 시스템): 파괴=피해 +85%, 질풍=대기시간 -35%
+	const awakening = system.awakenings?.[definition.id ?? ''];
 
 	sword.damage = Math.round(
 		(definition.damage ?? 20)
 		* (1 + system.levelDamageBonus * levelBonus)
-		* (1 + slotMods.damageMult),
+		* (1 + slotMods.damageMult)
+		* (awakening === 'ruin' ? 1.85 : 1)
+		// 키퍼 레벨 성장 (logic/growth.ts) — 숫자 인플레이션의 플레이어 쪽 축
+		* (system.growthDamageMult ?? 1),
 	);
 	sword.scanInterval = (definition.cooldownMs ?? 1500)
 		* system.cooldownMultiplier
+		// 거동 아키타입 대가: 관통·설치는 재출격이 느리다 (swordBehavior.ts)
+		* behaviorSpec(sword.behavior ?? behaviorOf(definition)).cooldownMult
 		* Math.max(0.5, 1 - system.levelCooldownBonus * levelBonus)
-		* Math.max(0.4, 1 + slotMods.cooldownMult);
+		* Math.max(0.4, 1 + slotMods.cooldownMult)
+		* (awakening === 'gale' ? 0.65 : 1);
 	sword.launchSpeed = (definition.launchSpeed ?? 400)
 		* system.launchSpeedMultiplier
 		* (1 + slotMods.launchSpeedMult);
 	sword.traitMods = slotMods;
+}
+
+/**
+ * 검을 파괴하기 직전에 붙어 있던 물리 콜라이더·트윈·아우라를 정리한다.
+ * Phaser의 GameObject.destroy()는 physics.add.overlap이 만든 Collider도,
+ * repeat:-1 트윈도 회수하지 않으므로 런이 길어질수록 좀비 객체가 누적됐다.
+ */
+function releaseSwordResources(system: SwordOrbitSystem, sword: OrbitSword): void {
+	const scene = system.scene;
+	if (sword._overlapCollider) {
+		scene?.physics?.world?.removeCollider(sword._overlapCollider);
+		sword._overlapCollider = null;
+	}
+	sword._orbitEnemyGroup = null;
+	if (sword.aura) {
+		scene?.tweens?.killTweensOf(sword.aura);
+		sword.aura.destroy();
+		sword.aura = undefined;
+	}
+	scene?.tweens?.killTweensOf(sword);
 }
 
 export function removeSword(system: SwordOrbitSystem, sword: OrbitSword): void {
@@ -132,7 +188,9 @@ export function removeSword(system: SwordOrbitSystem, sword: OrbitSword): void {
 	}
 
 	system.swords.splice(index, 1);
-	sword.aura?.destroy();
+	// 검을 파괴해도 Phaser는 콜라이더/트윈을 회수하지 않는다 — 융합·재장착마다 죽은
+	// 콜라이더와 무한 트윈(시너지 아우라)이 월드에 쌓이던 누수를 여기서 끊는다.
+	releaseSwordResources(system, sword);
 	sword.destroy();
 	system.reindexSlots();
 
@@ -147,7 +205,7 @@ export function removeSword(system: SwordOrbitSystem, sword: OrbitSword): void {
 // Rebuild all equipped sword sprites from a data list (safe way to reorder)
 export function rebuildLoadout(system: SwordOrbitSystem, loadout: LoadoutEntry[]): void {
 	for (const sword of [...system.swords]) {
-		sword.aura?.destroy();
+		releaseSwordResources(system, sword);
 		sword.destroy();
 	}
 	system.swords = [];
@@ -156,8 +214,12 @@ export function rebuildLoadout(system: SwordOrbitSystem, loadout: LoadoutEntry[]
 		const sword = system.addSword(system.scene, entry.definition);
 		if (sword) {
 			sword.level = entry.level;
+			sword.traits = [...(entry.traits ?? [])];
 			system.recalculateSwordStats(sword);
 			system.refreshAura(sword);
+		} else {
+			// 안전망: 칸 부족 등으로 재생성에 실패한 검은 소멸시키지 말고 보관함으로 회수
+			system.reserve.push({ definition: entry.definition, level: entry.level, traits: [...(entry.traits ?? [])] });
 		}
 	}
 
@@ -187,7 +249,7 @@ export function equipFromReserve(system: SwordOrbitSystem, reserveIndex: number,
 	}
 
 	system.rebuildLoadout(loadout);
-	system.checkFusions();
+	// 자동 융합 없음 — 조합은 상점 REFORGE 모달에서만 (2026-08-25)
 	system.checkSetAnnouncements();
 	return true;
 }

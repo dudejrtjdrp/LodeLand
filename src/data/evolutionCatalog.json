@@ -5,7 +5,7 @@
       "gold"
     ],
     "result": "inferno",
-    "announcement": "⚔ 진화! Inferno Blade"
+    "announcement": "조합 성공 — Emberroc"
   },
   {
     "ingredients": [
@@ -13,7 +13,7 @@
       "violet"
     ],
     "result": "storm",
-    "announcement": "⚔ 진화! Storm Blade"
+    "announcement": "조합 성공 — Stormroc"
   },
   {
     "ingredients": [
@@ -21,6 +21,190 @@
       "obsidian"
     ],
     "result": "voidreaver",
-    "announcement": "⚔ 진화! Void Reaver"
+    "announcement": "조합 성공 — Nullroc"
+  },
+  {
+    "ingredients": [
+      "bronze",
+      "steel"
+    ],
+    "result": "anvilkite",
+    "announcement": "조합 성공 — Anvilkite"
+  },
+  {
+    "ingredients": [
+      "bronze",
+      "gold"
+    ],
+    "result": "coinquill",
+    "announcement": "조합 성공 — Coinquill"
+  },
+  {
+    "ingredients": [
+      "rusty",
+      "ruby"
+    ],
+    "result": "slagroc",
+    "announcement": "조합 성공 — Slagroc"
+  },
+  {
+    "ingredients": [
+      "rusty",
+      "emerald"
+    ],
+    "result": "rotwing",
+    "announcement": "조합 성공 — Rotwing"
+  },
+  {
+    "ingredients": [
+      "steel",
+      "violet"
+    ],
+    "result": "railshrike",
+    "announcement": "조합 성공 — Railshrike"
+  },
+  {
+    "ingredients": [
+      "steel",
+      "obsidian"
+    ],
+    "result": "hollowowl",
+    "announcement": "조합 성공 — Hollowowl"
+  },
+  {
+    "ingredients": [
+      "emerald",
+      "gold"
+    ],
+    "result": "verdiwing",
+    "announcement": "조합 성공 — Verdiwing"
+  },
+  {
+    "ingredients": [
+      "inferno",
+      "storm"
+    ],
+    "result": "pyreroc",
+    "announcement": "조합 성공 — Pyreroc (이중 개조)"
+  },
+  {
+    "ingredients": [
+      "tidequill",
+      "dewswift"
+    ],
+    "result": "wavetalon",
+    "announcement": "조합 성공 — Wavetalon"
+  },
+  {
+    "ingredients": [
+      "hornbeak",
+      "stingshrike"
+    ],
+    "result": "gorequill",
+    "announcement": "조합 성공 — Gorequill"
+  },
+  {
+    "ingredients": [
+      "sporefinch",
+      "sproutswift"
+    ],
+    "result": "thornowl",
+    "announcement": "조합 성공 — Thornowl"
+  },
+  {
+    "ingredients": [
+      "songquill",
+      "larkquill"
+    ],
+    "result": "dirgeowl",
+    "announcement": "조합 성공 — Dirgeowl"
+  },
+  {
+    "ingredients": [
+      "gold",
+      "solroc"
+    ],
+    "result": "aurichawk",
+    "announcement": "조합 성공 — Aurichawk"
+  },
+  {
+    "ingredients": [
+      "rimehawk",
+      "snowquill"
+    ],
+    "result": "borealroc",
+    "announcement": "조합 성공 — Borealroc"
+  },
+  {
+    "ingredients": [
+      "solarkite",
+      "flareowl"
+    ],
+    "result": "haloroc",
+    "announcement": "조합 성공 — Haloroc"
+  },
+  {
+    "ingredients": [
+      "plumehawk",
+      "zephyrhawk"
+    ],
+    "result": "swanroc",
+    "announcement": "조합 성공 — Swanroc"
+  },
+  {
+    "ingredients": [
+      "obsidian",
+      "ashenowl"
+    ],
+    "result": "corvusroc",
+    "announcement": "조합 성공 — Corvusroc"
+  },
+  {
+    "ingredients": [
+      "regalkite",
+      "aegiskite"
+    ],
+    "result": "prismroc",
+    "announcement": "조합 성공 — Prismroc"
+  },
+  {
+    "ingredients": [
+      "violet",
+      "stormswift"
+    ],
+    "result": "glintroc",
+    "announcement": "조합 성공 — Glintroc"
+  },
+  {
+    "ingredients": [
+      "carrionowl",
+      "redowl"
+    ],
+    "result": "crimsonroc",
+    "announcement": "조합 성공 — Crimsonroc"
+  },
+  {
+    "ingredients": [
+      "dreadtalon",
+      "shardowl"
+    ],
+    "result": "cosmoroc",
+    "announcement": "조합 성공 — Cosmoroc"
+  },
+  {
+    "ingredients": [
+      "twinhawk",
+      "bulwarkbeak"
+    ],
+    "result": "grindroc",
+    "announcement": "조합 성공 — Grindroc"
+  },
+  {
+    "ingredients": [
+      "acidswift",
+      "toxinhawk"
+    ],
+    "result": "mossroc",
+    "announcement": "조합 성공 — Mossroc"
   }
 ]

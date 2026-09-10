@@ -12,6 +12,8 @@ export interface MetaState {
 	clearedDanger: number;
 	lifetimeGold: number;
 	guaranteeCoins: number;
+	/** 한 번이라도 조합에 성공한 레시피의 결과 검 id — 조합 모달에서 ??? 대신 공개 */
+	discoveredRecipes: string[];
 }
 
 export interface MetaBonuses {
@@ -44,6 +46,7 @@ export default class MetaProgression {
 				clearedDanger: number;
 				lifetimeGold: number | null;
 				guaranteeCoins: number;
+				discoveredRecipes: string[];
 			} = {
 				gold: state?.gold ?? 0,
 				ranks: state?.ranks ?? {},
@@ -51,6 +54,7 @@ export default class MetaProgression {
 				clearedDanger: state?.clearedDanger ?? -1,
 				lifetimeGold: state?.lifetimeGold ?? null,
 				guaranteeCoins: state?.guaranteeCoins ?? 0,
+				discoveredRecipes: Array.isArray(state?.discoveredRecipes) ? state.discoveredRecipes : [],
 			};
 
 			// Migration for older saves: approximate lifetime as current + spent
@@ -60,8 +64,26 @@ export default class MetaProgression {
 
 			return loaded as MetaState;
 		} catch {
-			return { gold: 0, ranks: {}, characters: [], clearedDanger: -1, lifetimeGold: 0, guaranteeCoins: 0 };
+			return { gold: 0, ranks: {}, characters: [], clearedDanger: -1, lifetimeGold: 0, guaranteeCoins: 0, discoveredRecipes: [] };
 		}
+	}
+
+	// 조합 도감: 한 번 성공한 레시피는 영구히 공개된다 (런 간 유지).
+	static getDiscoveredRecipes(): string[] {
+		return this.load().discoveredRecipes;
+	}
+
+	static isRecipeDiscovered(resultId: string): boolean {
+		return this.load().discoveredRecipes.includes(resultId);
+	}
+
+	static recordRecipeDiscovered(resultId: string): void {
+		const state = this.load();
+		if (state.discoveredRecipes.includes(resultId)) {
+			return;
+		}
+		state.discoveredRecipes.push(resultId);
+		this.save(state);
 	}
 
 	// 특별 강화 코인 (💎): guarantees the next enhancement. Persists across runs.

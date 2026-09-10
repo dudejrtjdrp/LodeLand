@@ -8,7 +8,7 @@
     {
       "id": "hp",
       "name": "체력",
-      "icon": "❤️",
+      "icon": "g-furnace",
       "type": "maxHpFlat",
       "value": 20,
       "baseCost": 20,
@@ -16,8 +16,8 @@
     },
     {
       "id": "defense",
-      "name": "방어력",
-      "icon": "🛡️",
+      "name": "방어",
+      "icon": "g-shield",
       "type": "defenseAdd",
       "value": 4,
       "baseCost": 25,
@@ -26,7 +26,7 @@
     {
       "id": "dodge",
       "name": "회피",
-      "icon": "💨",
+      "icon": "g-boot",
       "type": "dodgeAdd",
       "value": 0.03,
       "baseCost": 25,
@@ -35,7 +35,7 @@
     {
       "id": "moveSpeed",
       "name": "이동 속도",
-      "icon": "👟",
+      "icon": "g-boot",
       "type": "moveSpeedMult",
       "value": 0.04,
       "baseCost": 20,
@@ -44,7 +44,7 @@
     {
       "id": "regen",
       "name": "재생",
-      "icon": "💚",
+      "icon": "g-drop",
       "type": "regenAdd",
       "value": 0.5,
       "baseCost": 25,
@@ -52,8 +52,8 @@
     },
     {
       "id": "lifesteal",
-      "name": "흡혈",
-      "icon": "🩸",
+      "name": "처치 회복",
+      "icon": "g-drop",
       "type": "killHealAdd",
       "value": 1,
       "baseCost": 30,
@@ -62,16 +62,16 @@
     {
       "id": "damage",
       "name": "공격력",
-      "icon": "⚔️",
+      "icon": "g-blade",
       "type": "damageMultAdd",
-      "value": 0.06,
+      "value": 0.08,
       "baseCost": 30,
-      "desc": "모든 검 공격력 +6%"
+      "desc": "모든 검 공격력 +8%"
     },
     {
       "id": "critChance",
       "name": "치명타 확률",
-      "icon": "🎯",
+      "icon": "g-eye",
       "type": "critChanceAdd",
       "value": 0.03,
       "baseCost": 25,
@@ -80,7 +80,7 @@
     {
       "id": "critDamage",
       "name": "치명타 피해",
-      "icon": "💥",
+      "icon": "g-spark",
       "type": "critDamageAdd",
       "value": 0.15,
       "baseCost": 25,
@@ -88,17 +88,17 @@
     },
     {
       "id": "cooldown",
-      "name": "쿨다운",
-      "icon": "⏱️",
+      "name": "쿨다운 감소",
+      "icon": "g-hourglass",
       "type": "cooldownReduce",
       "value": 0.04,
       "baseCost": 35,
-      "desc": "검 발사 대기시간 -4%"
+      "desc": "검 쿨다운 -4%"
     },
     {
       "id": "magnet",
-      "name": "자석",
-      "icon": "🧲",
+      "name": "획득 범위",
+      "icon": "g-magnet",
       "type": "magnetMult",
       "value": 0.15,
       "baseCost": 15,
@@ -107,7 +107,7 @@
     {
       "id": "luck",
       "name": "행운",
-      "icon": "🍀",
+      "icon": "g-bird",
       "type": "luckAdd",
       "value": 0.1,
       "baseCost": 30,
@@ -115,26 +115,26 @@
     },
     {
       "id": "xpGain",
-      "name": "경험치",
-      "icon": "📘",
+      "name": "경험치 획득",
+      "icon": "g-scroll",
       "type": "xpGainAdd",
       "value": 0.08,
       "baseCost": 30,
-      "desc": "경험치 획득 +8%"
+      "desc": "경험치 획득량 +8%"
     },
     {
       "id": "thorns",
       "name": "가시",
-      "icon": "🌵",
+      "icon": "g-fang",
       "type": "thornsAdd",
       "value": 5,
       "baseCost": 20,
-      "desc": "몸에 닿은 적에게 5 피해 반사"
+      "desc": "접촉한 적에게 5 피해 반사"
     },
     {
       "id": "physResist",
       "name": "물리 저항",
-      "icon": "🛡️",
+      "icon": "g-shield",
       "type": "physResistAdd",
       "value": 3,
       "baseCost": 30,
@@ -143,7 +143,7 @@
     {
       "id": "magicResist",
       "name": "마법 저항",
-      "icon": "🔮",
+      "icon": "g-shield",
       "type": "magicResistAdd",
       "value": 3,
       "baseCost": 30,
@@ -152,10 +152,17 @@
   ],
   "slots": {
     "startUnlocked": 2,
-    "unlockBaseCost": 80,
-    "unlockGrowth": 2.0,
+    "unlockBaseCost": 150,
+    "unlockGrowth": 2.2,
+    "unlockRounds": [
+      3,
+      8,
+      15,
+      30,
+      50
+    ],
     "enhanceBaseCost": 30,
-    "enhanceMaxLevel": 10,
+    "enhanceMaxLevel": 15,
     "enhanceSuccessRates": [
       0.95,
       0.9,
@@ -166,10 +173,37 @@
       0.4,
       0.32,
       0.25,
-      0.18
+      0.18,
+      0.15,
+      0.12,
+      0.1,
+      0.08,
+      0.06
     ],
-    "enhanceDamagePerLevel": 0.04,
+    "enhanceDamagePerLevel": 0.07,
     "enhanceCooldownPerLevel": 0.015,
     "traitSockets": 3
+  },
+  "swordPriceByRarity": {
+    "common": 25,
+    "uncommon": 45,
+    "rare": 75,
+    "epic": 120,
+    "legendary": 190,
+    "mythic": 280
+  },
+  "swordRarityUnlockRound": {
+    "common": 1,
+    "uncommon": 2,
+    "rare": 6,
+    "epic": 12,
+    "legendary": 20
+  },
+  "swordRarityWeight": {
+    "common": 100,
+    "uncommon": 55,
+    "rare": 30,
+    "epic": 14,
+    "legendary": 6
   }
 }

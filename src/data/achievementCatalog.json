@@ -1,0 +1,202 @@
+[
+  {
+    "id": "kill_100",
+    "name": "첫 사냥",
+    "desc": "녹슨 것들을 100마리 처치한다",
+    "category": "사냥",
+    "icon": "g-blade",
+    "source": "kills",
+    "goal": 100,
+    "reward": 20
+  },
+  {
+    "id": "kill_1000",
+    "name": "무리의 사냥꾼",
+    "desc": "누적 1,000마리를 처치한다",
+    "category": "사냥",
+    "icon": "g-rust",
+    "source": "kills",
+    "goal": 1000,
+    "reward": 45
+  },
+  {
+    "id": "kill_10000",
+    "name": "녹을 쓸어내는 자",
+    "desc": "누적 10,000마리를 처치한다",
+    "category": "사냥",
+    "icon": "g-fang",
+    "source": "kills",
+    "goal": 10000,
+    "reward": 120
+  },
+  {
+    "id": "boss_first",
+    "name": "우두머리를 넘다",
+    "desc": "보스를 한 번 쓰러뜨린다",
+    "category": "사냥",
+    "icon": "g-crown",
+    "source": "bossKills",
+    "goal": 1,
+    "reward": 30
+  },
+  {
+    "id": "boss_10",
+    "name": "왕관 사냥꾼",
+    "desc": "보스를 누적 10회 쓰러뜨린다",
+    "category": "사냥",
+    "icon": "g-crown",
+    "source": "bossKills",
+    "goal": 10,
+    "reward": 80
+  },
+  {
+    "id": "boss_flawless",
+    "name": "무결한 사냥",
+    "desc": "한 대도 맞지 않고 보스를 처치한다",
+    "category": "숙련",
+    "icon": "g-shield",
+    "source": "bossFlawless",
+    "goal": 1,
+    "reward": 90
+  },
+  {
+    "id": "affix_triple",
+    "name": "세 겹의 저주",
+    "desc": "어픽스 3개 이상이 붙은 적을 처치한다",
+    "category": "숙련",
+    "icon": "g-vein",
+    "source": "affixTriple",
+    "goal": 1,
+    "reward": 60
+  },
+  {
+    "id": "round_30",
+    "name": "깊은 광맥",
+    "desc": "라운드 30에 도달한다",
+    "category": "탐험",
+    "icon": "g-boot",
+    "source": "bestRound",
+    "goal": 30,
+    "reward": 50
+  },
+  {
+    "id": "round_60",
+    "name": "더 깊은 곳",
+    "desc": "라운드 60에 도달한다",
+    "category": "탐험",
+    "icon": "g-vein",
+    "source": "bestRound",
+    "goal": 60,
+    "reward": 90
+  },
+  {
+    "id": "round_100",
+    "name": "광맥의 끝",
+    "desc": "라운드 100에 도달한다",
+    "category": "탐험",
+    "icon": "g-crown",
+    "source": "bestRound",
+    "goal": 100,
+    "reward": 160
+  },
+  {
+    "id": "danger_3",
+    "name": "위험도 Ⅲ 답파",
+    "desc": "위험도 Ⅲ에서 런을 완주한다",
+    "category": "탐험",
+    "icon": "g-rekindle",
+    "source": "clearedDanger",
+    "goal": 3,
+    "reward": 140
+  },
+  {
+    "id": "runs_10",
+    "name": "열 번의 출격",
+    "desc": "광맥에 10번 들어간다",
+    "category": "탐험",
+    "icon": "g-feather",
+    "source": "runs",
+    "goal": 10,
+    "reward": 25
+  },
+  {
+    "id": "reforge_first",
+    "name": "첫 조합",
+    "desc": "검 두 자루를 하나로 조합한다",
+    "category": "조합",
+    "icon": "g-anvil",
+    "source": "reforges",
+    "goal": 1,
+    "reward": 30
+  },
+  {
+    "id": "reforge_10",
+    "name": "모루 앞의 밤",
+    "desc": "조합을 누적 10회 성공한다",
+    "category": "조합",
+    "icon": "g-anvil",
+    "source": "reforges",
+    "goal": 10,
+    "reward": 70
+  },
+  {
+    "id": "sword_max_level",
+    "name": "끝까지 벼린 검",
+    "desc": "검 한 자루를 최고 단계까지 올린다",
+    "category": "조합",
+    "icon": "g-spark",
+    "source": "swordMaxLevel",
+    "goal": 1,
+    "reward": 45
+  },
+  {
+    "id": "element_set_7",
+    "name": "한 빛깔의 무리",
+    "desc": "같은 원소 검 7자루 세트를 완성한다",
+    "category": "숙련",
+    "icon": "g-el-fire",
+    "source": "elementSet7",
+    "goal": 1,
+    "reward": 100
+  },
+  {
+    "id": "codex_25",
+    "name": "검걸이의 시작",
+    "desc": "도감에 검 25종을 기록한다",
+    "category": "도감",
+    "icon": "g-scroll",
+    "source": "codex",
+    "goal": 25,
+    "reward": 30
+  },
+  {
+    "id": "codex_50",
+    "name": "쉰 자루의 부리",
+    "desc": "도감에 검 50종을 기록한다",
+    "category": "도감",
+    "icon": "g-scroll",
+    "source": "codex",
+    "goal": 50,
+    "reward": 50
+  },
+  {
+    "id": "codex_100",
+    "name": "백 자루의 날개",
+    "desc": "도감에 검 100종을 기록한다",
+    "category": "도감",
+    "icon": "g-bird",
+    "source": "codex",
+    "goal": 100,
+    "reward": 110
+  },
+  {
+    "id": "codex_all",
+    "name": "도감 완성",
+    "desc": "도감의 검 186종을 모두 기록한다",
+    "category": "도감",
+    "icon": "g-crate",
+    "source": "codex",
+    "goal": 186,
+    "reward": 250
+  }
+]

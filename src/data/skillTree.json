@@ -1,0 +1,1839 @@
+{
+	"pointsPerLevel": 10,
+	"branches": [
+		{
+			"id": "hunt",
+			"name": "사냥",
+			"desc": "활공 사냥 계열 — 무리를 몰아 한 놈을 끝장낸다",
+			"color": "#e8874a",
+			"icon": "g-fang"
+		},
+		{
+			"id": "guard",
+			"name": "수호",
+			"desc": "귀소 계열 — 검을 불러들여 몸을 지킨다",
+			"color": "#63b3d9",
+			"icon": "g-shield"
+		},
+		{
+			"id": "swift",
+			"name": "기동",
+			"desc": "대시 계열 — 잡히지 않는 것은 죽지 않는다",
+			"color": "#9fd8c0",
+			"icon": "g-boot"
+		},
+		{
+			"id": "resonance",
+			"name": "공명",
+			"desc": "필살기 계열 — 원소가 검을 타고 울린다",
+			"color": "#e879f9",
+			"icon": "g-spark"
+		},
+		{
+			"id": "blade",
+			"name": "검술",
+			"desc": "무리 전체의 화력 — 새 출격 기술",
+			"color": "#d9a83c",
+			"icon": "g-blade"
+		},
+		{
+			"id": "ember",
+			"name": "화로",
+			"desc": "생존 — 꺼지지 않는 심장",
+			"color": "#e0623c",
+			"icon": "g-furnace"
+		},
+		{
+			"id": "tactics",
+			"name": "전술",
+			"desc": "판을 바꾸는 기술 — 시간·화염·유인",
+			"color": "#a78bda",
+			"icon": "g-hourglass"
+		},
+		{
+			"id": "fortune",
+			"name": "재화",
+			"desc": "황금 — 돈이 곧 힘이다",
+			"color": "#f2d488",
+			"icon": "g-crown"
+		},
+		{
+			"id": "storm",
+			"name": "천둥",
+			"desc": "낙뢰 — 하늘이 검을 돕는다",
+			"color": "#93c5fd",
+			"icon": "g-el-electric"
+		},
+		{
+			"id": "shadow",
+			"name": "그림자",
+			"desc": "분신·은신·암살 — 보이지 않는 칼",
+			"color": "#8d7bb5",
+			"icon": "g-eye"
+		},
+		{
+			"id": "frost",
+			"name": "서리",
+			"desc": "빙결 — 멈춘 것은 부서진다",
+			"color": "#8fc3d8",
+			"icon": "g-el-ice"
+		},
+		{
+			"id": "rage",
+			"name": "광기",
+			"desc": "피와 광폭 — 위험할수록 강하게",
+			"color": "#c9455a",
+			"icon": "g-el-blood"
+		}
+	],
+	"nodes": [
+		{
+			"id": "hunt-1",
+			"branch": "hunt",
+			"tier": 1,
+			"name": "활공 강화 Ⅰ",
+			"icon": "g-fang",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "활공 출격 피해 보너스 +30%p · 활공 재사용 -15%",
+			"passive": {
+				"skillLevel": {
+					"dive": 2
+				}
+			},
+			"lore": "하늘을 찢고, 그림자를 내려 꽂는다.\n발끝이 닿는 곳, 그곳이 사냥터가 된다."
+		},
+		{
+			"id": "hunt-5",
+			"branch": "hunt",
+			"tier": 1,
+			"name": "치명타 +8%",
+			"icon": "g-eye",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "치명타 확률 +8%",
+			"passive": {
+				"critChanceAdd": 0.08
+			},
+			"lore": "급소는 배우는 것이 아니라 기억하는 것.\n손이 먼저 그 자리를 안다."
+		},
+		{
+			"id": "hunt-2",
+			"branch": "hunt",
+			"tier": 2,
+			"name": "활공 강화 Ⅱ",
+			"icon": "g-fang",
+			"cost": 2,
+			"requires": [
+				"hunt-1"
+			],
+			"kind": "passive",
+			"desc": "보너스 창 1.5배 · 활공 착탄마다 평균 1타의 60% 충격파",
+			"passive": {
+				"skillLevel": {
+					"dive": 3
+				}
+			},
+			"lore": "한 번 내리꽂은 자리는 두 번 울린다.\n땅이 먼저 알고, 적이 나중에 안다."
+		},
+		{
+			"id": "hunt-3",
+			"branch": "hunt",
+			"tier": 2,
+			"name": "사냥감 표식",
+			"icon": "g-eye",
+			"cost": 2,
+			"requires": [
+				"hunt-1"
+			],
+			"kind": "passive",
+			"desc": "활공이 지목한 사냥감은 3초간 받는 피해 +15%",
+			"passive": {
+				"huntMark": 0.15
+			},
+			"lore": "표식은 상처가 아니라 약속이다.\n무리는 표식을 향해서만 날아간다."
+		},
+		{
+			"id": "hunt-4",
+			"branch": "hunt",
+			"tier": 3,
+			"name": "덮치기",
+			"icon": "g-feather",
+			"cost": 3,
+			"requires": [
+				"hunt-2"
+			],
+			"kind": "active",
+			"desc": "바라보는 쪽(이동 중이면 이동 방향)으로 220px 덮치며 무리를 즉시 출격시킨다 (활공 쿨다운 소모 없음) · 0.4초 무적",
+			"active": {
+				"type": "swoop",
+				"cooldownMs": 10000,
+				"distance": 220,
+				"invulnMs": 400
+			},
+			"lore": "덮치는 자에게는 거리가 없다.\n숨을 들이켠 만큼만 앞으로 간다."
+		},
+		{
+			"id": "hunt-6",
+			"branch": "hunt",
+			"tier": 3,
+			"name": "활공 재사용 -25%",
+			"icon": "g-fang",
+			"cost": 2,
+			"requires": [
+				"hunt-3"
+			],
+			"kind": "passive",
+			"desc": "활공 재사용 -25%",
+			"passive": {
+				"diveCooldownMult": 0.75
+			},
+			"lore": "새는 오래 쉬지 않는다.\n내려앉기 무섭게 다시 떠오른다."
+		},
+		{
+			"id": "hunt-8",
+			"branch": "hunt",
+			"tier": 3,
+			"name": "매의 눈",
+			"icon": "g-eye",
+			"cost": 2,
+			"requires": [
+				"hunt-5"
+			],
+			"kind": "passive",
+			"desc": "치명타 확률 +6%",
+			"passive": {
+				"critChanceAdd": 0.06
+			},
+			"lore": "눈이 먼저 닿은 곳에 날이 늦게 닿을 뿐이다."
+		},
+		{
+			"id": "hunt-7",
+			"branch": "hunt",
+			"tier": 4,
+			"name": "활공 피해 +60%",
+			"icon": "g-cross",
+			"cost": 3,
+			"requires": [
+				"hunt-4",
+				"hunt-6"
+			],
+			"kind": "passive",
+			"desc": "[변형] 활공 출격 피해 보너스 +60%p — 한 방에 끝낸다",
+			"passive": {
+				"diveDamageBonusAdd": 0.6
+			},
+			"lore": "두 번은 없다.\n한 번에 끝내는 자만 다음 사냥터로 간다."
+		},
+		{
+			"id": "hunt-9",
+			"branch": "hunt",
+			"tier": 4,
+			"name": "잔혹한 마무리",
+			"icon": "g-fang",
+			"cost": 2,
+			"requires": [
+				"hunt-8"
+			],
+			"kind": "passive",
+			"desc": "치명타 피해 +20%",
+			"passive": {
+				"critDamageAdd": 0.2
+			},
+			"lore": "사냥은 무는 순간이 아니라 놓지 않는 순간에 끝난다."
+		},
+		{
+			"id": "guard-1",
+			"branch": "guard",
+			"tier": 1,
+			"name": "귀소 강화 Ⅰ",
+			"icon": "g-bird",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "귀소 무적 0.5→0.9초 · 밀어내기 반경 +30%",
+			"passive": {
+				"skillLevel": {
+					"recall": 2
+				}
+			},
+			"lore": "돌아오는 검은 주인을 먼저 살핀다.\n그 짧은 순간, 무엇도 닿지 못한다."
+		},
+		{
+			"id": "guard-4",
+			"branch": "guard",
+			"tier": 1,
+			"name": "방어 +8",
+			"icon": "g-shield",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "방어 +8",
+			"passive": {
+				"defenseAdd": 8
+			},
+			"lore": "가죽보다 두꺼운 것은 습관이다.\n맞아본 자리는 다시 열리지 않는다."
+		},
+		{
+			"id": "guard-2",
+			"branch": "guard",
+			"tier": 2,
+			"name": "귀소 강화 Ⅱ",
+			"icon": "g-bird",
+			"cost": 2,
+			"requires": [
+				"guard-1"
+			],
+			"kind": "passive",
+			"desc": "귀환 궤적이 검 피해의 60%를 입힌다 · 시전 시 체력 5% 회복",
+			"passive": {
+				"skillLevel": {
+					"recall": 3
+				}
+			},
+			"lore": "귀로도 길이다.\n돌아오는 길목마다 쇠가 스친다."
+		},
+		{
+			"id": "guard-5",
+			"branch": "guard",
+			"tier": 2,
+			"name": "피격 반격",
+			"icon": "g-blade",
+			"cost": 2,
+			"requires": [
+				"guard-4"
+			],
+			"kind": "passive",
+			"desc": "피격 시 무리 전체가 가까운 적으로 즉시 출격 (6초에 1회)",
+			"passive": {
+				"counterStorm": 6000
+			},
+			"lore": "맞은 만큼 되돌려주는 것은 예의다.\n무리는 그 예의를 잊지 않는다."
+		},
+		{
+			"id": "guard-3",
+			"branch": "guard",
+			"tier": 3,
+			"name": "검 방패",
+			"icon": "g-shield",
+			"cost": 3,
+			"requires": [
+				"guard-2"
+			],
+			"kind": "active",
+			"desc": "1.2초 동안 모든 피해를 막고 주변 적을 밀어낸다",
+			"active": {
+				"type": "bulwark",
+				"cooldownMs": 14000,
+				"invulnMs": 1200,
+				"pushRadius": 180,
+				"pushForce": 420
+			},
+			"lore": "검을 세워 벽을 만든다.\n벽이 된 쇠는 물러서는 법을 잊는다."
+		},
+		{
+			"id": "guard-6",
+			"branch": "guard",
+			"tier": 3,
+			"name": "체력 +15%",
+			"icon": "g-furnace",
+			"cost": 2,
+			"requires": [
+				"guard-5"
+			],
+			"kind": "passive",
+			"desc": "최대 체력 +15%",
+			"passive": {
+				"maxHpMult": 1.15
+			},
+			"lore": "오래 버틴 쇠는 굵어진다.\n숨이 길어지면 사냥도 길어진다."
+		},
+		{
+			"id": "guard-8",
+			"branch": "guard",
+			"tier": 3,
+			"name": "무쇠 살갗",
+			"icon": "g-shield",
+			"cost": 2,
+			"requires": [
+				"guard-4"
+			],
+			"kind": "passive",
+			"desc": "방어 +6",
+			"passive": {
+				"defenseAdd": 6
+			},
+			"lore": "맞아도 되는 자리를 아는 것도 기술이다."
+		},
+		{
+			"id": "guard-7",
+			"branch": "guard",
+			"tier": 4,
+			"name": "1회 소생",
+			"icon": "g-rekindle",
+			"cost": 3,
+			"requires": [
+				"guard-3",
+				"guard-6"
+			],
+			"kind": "passive",
+			"desc": "[변형] 런당 1회, 쓰러지면 체력 40%로 다시 선다",
+			"passive": {
+				"unyielding": 1
+			},
+			"lore": "쓰러진다고 끝은 아니다.\n식은 화로에도 불씨는 남는다."
+		},
+		{
+			"id": "guard-9",
+			"branch": "guard",
+			"tier": 4,
+			"name": "버티는 몸",
+			"icon": "g-rekindle",
+			"cost": 2,
+			"requires": [
+				"guard-8"
+			],
+			"kind": "passive",
+			"desc": "최대 체력 +12%",
+			"passive": {
+				"maxHpMult": 1.12
+			},
+			"lore": "무너지지 않는 것은 단단해서가 아니라 두꺼워서다."
+		},
+		{
+			"id": "swift-1",
+			"branch": "swift",
+			"tier": 1,
+			"name": "대시 강화 Ⅰ",
+			"icon": "g-boot",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "대시 재사용 3.0→2.2초 · 거리 +25%",
+			"passive": {
+				"skillLevel": {
+					"dash": 2
+				}
+			},
+			"lore": "빠른 것은 잡히지 않는다.\n잡히지 않는 것은 죽지 않는다."
+		},
+		{
+			"id": "swift-3",
+			"branch": "swift",
+			"tier": 1,
+			"name": "이동 +8%",
+			"icon": "g-boot",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "이동 속도 +8%",
+			"passive": {
+				"moveSpeedMult": 1.08
+			},
+			"lore": "발이 가벼우면 검도 가볍다.\n무게는 적의 몫으로 남겨둔다."
+		},
+		{
+			"id": "swift-2",
+			"branch": "swift",
+			"tier": 2,
+			"name": "대시 강화 Ⅱ",
+			"icon": "g-boot",
+			"cost": 2,
+			"requires": [
+				"swift-1"
+			],
+			"kind": "passive",
+			"desc": "잔상이 스치는 적에게 최강 검 피해의 45% · 대시 후 2초간 출격 +30%",
+			"passive": {
+				"skillLevel": {
+					"dash": 3
+				}
+			},
+			"lore": "지나간 자리에 잔상이 남는다.\n잔상에도 날이 서 있다."
+		},
+		{
+			"id": "swift-5",
+			"branch": "swift",
+			"tier": 2,
+			"name": "대시 잔상 강화",
+			"icon": "g-feather",
+			"cost": 2,
+			"requires": [
+				"swift-3"
+			],
+			"kind": "passive",
+			"desc": "대시 잔상 피해가 최강 검 피해의 75%로",
+			"passive": {
+				"dashGhostDamagePct": 0.75
+			},
+			"lore": "잔상은 흉내가 아니다.\n그림자에도 벼려진 날이 있다."
+		},
+		{
+			"id": "swift-4",
+			"branch": "swift",
+			"tier": 3,
+			"name": "순간이동",
+			"icon": "g-spark",
+			"cost": 3,
+			"requires": [
+				"swift-2"
+			],
+			"kind": "active",
+			"desc": "바라보는 쪽으로 240px 순간이동 · 0.3초 무적",
+			"active": {
+				"type": "blink",
+				"cooldownMs": 9000,
+				"distance": 240,
+				"invulnMs": 300
+			},
+			"lore": "한 걸음을 지우면 그곳에 이미 서 있다.\n거리는 마음이 정하는 것이다."
+		},
+		{
+			"id": "swift-6",
+			"branch": "swift",
+			"tier": 3,
+			"name": "대시 재사용 -30%",
+			"icon": "g-boot",
+			"cost": 2,
+			"requires": [
+				"swift-5"
+			],
+			"kind": "passive",
+			"desc": "대시 재사용 -30%",
+			"passive": {
+				"dashCooldownMult": 0.7
+			},
+			"lore": "숨 고를 틈을 줄이면 길이 짧아진다.\n짧은 길은 언제나 유리하다."
+		},
+		{
+			"id": "swift-8",
+			"branch": "swift",
+			"tier": 3,
+			"name": "가벼운 걸음",
+			"icon": "g-boot",
+			"cost": 2,
+			"requires": [
+				"swift-3"
+			],
+			"kind": "passive",
+			"desc": "이동 속도 +6%",
+			"passive": {
+				"moveSpeedMult": 1.06
+			},
+			"lore": "먼저 도착한 자가 먼저 고른다."
+		},
+		{
+			"id": "swift-7",
+			"branch": "swift",
+			"tier": 4,
+			"name": "대시 후 가속",
+			"icon": "g-el-wind",
+			"cost": 3,
+			"requires": [
+				"swift-4",
+				"swift-6"
+			],
+			"kind": "passive",
+			"desc": "[변형] 대시 후 2초간 이동 속도 +35% · 무피격 3초마다 대시 쿨다운 초기화",
+			"passive": {
+				"dashWind": {
+					"mult": 0.35,
+					"durationMs": 2000,
+					"resetAfterMs": 3000
+				}
+			},
+			"lore": "바람은 지나간 뒤에 더 세진다.\n등 뒤에서 미는 손이 있다."
+		},
+		{
+			"id": "swift-9",
+			"branch": "swift",
+			"tier": 4,
+			"name": "숨 고르기",
+			"icon": "g-hourglass",
+			"cost": 2,
+			"requires": [
+				"swift-8"
+			],
+			"kind": "passive",
+			"desc": "대시 재사용 -15%",
+			"passive": {
+				"dashCooldownMult": 0.85
+			},
+			"lore": "들이쉰 만큼만 다시 뛸 수 있다."
+		},
+		{
+			"id": "res-1",
+			"branch": "resonance",
+			"tier": 1,
+			"name": "게이지 충전 +25%",
+			"icon": "g-spark",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "필살기 게이지 충전 +25%",
+			"passive": {
+				"ultChargeMult": 1.25
+			},
+			"lore": "원소는 조급하지 않다.\n다만 채워지면 반드시 넘친다."
+		},
+		{
+			"id": "res-2",
+			"branch": "resonance",
+			"tier": 2,
+			"name": "필살기 피해 강화",
+			"icon": "g-el-fire",
+			"cost": 2,
+			"requires": [
+				"res-1"
+			],
+			"kind": "passive",
+			"desc": "필살기 피해 배율 +1.5 (평균 1타 ×4 → ×5.5)",
+			"passive": {
+				"ultDamageAdd": 1.5
+			},
+			"lore": "울림이 깊을수록 파문은 멀리 간다.\n검 일곱 자루가 한꺼번에 운다."
+		},
+		{
+			"id": "res-3",
+			"branch": "resonance",
+			"tier": 2,
+			"name": "필살기 후 강화",
+			"icon": "g-ring",
+			"cost": 2,
+			"requires": [
+				"res-1"
+			],
+			"kind": "passive",
+			"desc": "필살기 뒤 4초간 모든 출격 피해 +25%",
+			"passive": {
+				"afterglow": {
+					"mult": 0.25,
+					"durationMs": 4000
+				}
+			},
+			"lore": "큰 소리가 지나간 자리엔 여운이 남는다.\n여운도 무기다."
+		},
+		{
+			"id": "res-4",
+			"branch": "resonance",
+			"tier": 3,
+			"name": "필살기 범위 +30%",
+			"icon": "g-ring",
+			"cost": 2,
+			"requires": [
+				"res-2"
+			],
+			"kind": "passive",
+			"desc": "필살기 반경 +30%",
+			"passive": {
+				"ultRadiusAdd": 0.3
+			},
+			"lore": "울림에는 경계가 없다.\n닿는 데까지가 사거리다."
+		},
+		{
+			"id": "res-5",
+			"branch": "resonance",
+			"tier": 3,
+			"name": "라운드 시작 게이지",
+			"icon": "g-rekindle",
+			"cost": 2,
+			"requires": [
+				"res-3"
+			],
+			"kind": "passive",
+			"desc": "라운드 시작 시 필살기 게이지 30% 보장",
+			"passive": {
+				"roundStartCharge": 0.3
+			},
+			"lore": "싸움은 시작부터 기울어 있다.\n먼저 울린 쪽으로."
+		},
+		{
+			"id": "res-7",
+			"branch": "resonance",
+			"tier": 3,
+			"name": "빠른 공명",
+			"icon": "g-spark",
+			"cost": 2,
+			"requires": [
+				"res-1"
+			],
+			"kind": "passive",
+			"desc": "필살기 게이지 충전 +20%",
+			"passive": {
+				"ultChargeMult": 1.2
+			},
+			"lore": "울림은 쌓이는 것이지 기다리는 것이 아니다."
+		},
+		{
+			"id": "res-6",
+			"branch": "resonance",
+			"tier": 4,
+			"name": "이중 필살기",
+			"icon": "g-el-void",
+			"cost": 3,
+			"requires": [
+				"res-4",
+				"res-5"
+			],
+			"kind": "passive",
+			"desc": "[변형] 필살기가 두 번째 원소의 필살기도 함께 터뜨린다 (피해 60%)",
+			"passive": {
+				"dualResonance": 0.6
+			},
+			"lore": "두 원소가 한 검에서 만난다.\n울림은 둘, 상처는 하나."
+		},
+		{
+			"id": "res-8",
+			"branch": "resonance",
+			"tier": 4,
+			"name": "깊은 울림",
+			"icon": "g-spark",
+			"cost": 2,
+			"requires": [
+				"res-7"
+			],
+			"kind": "passive",
+			"desc": "필살기 피해 +25%",
+			"passive": {
+				"ultDamageAdd": 0.25
+			},
+			"lore": "한 번의 울림이 길수록 벽은 늦게 돌아온다."
+		},
+		{
+			"id": "blade-1",
+			"branch": "blade",
+			"tier": 1,
+			"name": "검기 발사",
+			"icon": "g-blade",
+			"cost": 2,
+			"kind": "active",
+			"desc": "바라보는 쪽으로 검기 한 줄기 — 길 위의 적에게 평균 1타 ×1.5, 무리도 그쪽으로 출격",
+			"active": {
+				"type": "swordWave",
+				"cooldownMs": 7000,
+				"length": 360,
+				"halfWidth": 70,
+				"damageMult": 1.5
+			},
+			"lore": "검을 던지지 않고 검기를 던진다.\n쇠보다 빠른 것은 쇠의 뜻이다."
+		},
+		{
+			"id": "blade-3",
+			"branch": "blade",
+			"tier": 1,
+			"name": "공격력 +8%",
+			"icon": "g-blade",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "모든 검 공격력 +8%",
+			"passive": {
+				"damageMultAdd": 0.08
+			},
+			"lore": "잘 벼린 날은 변명하지 않는다.\n그냥 벤다."
+		},
+		{
+			"id": "blade-2",
+			"branch": "blade",
+			"tier": 2,
+			"name": "검 회오리",
+			"icon": "g-ring",
+			"cost": 3,
+			"requires": [
+				"blade-1"
+			],
+			"kind": "active",
+			"desc": "3초간 궤도 회전 ×3 · 스치는 궤도 피해 ×2.5",
+			"active": {
+				"type": "spinBurst",
+				"cooldownMs": 12000,
+				"durationMs": 3000,
+				"orbitSpeedMult": 3,
+				"orbitDamageMult": 2.5
+			},
+			"lore": "궤도가 미쳐 돌면 그 안이 지옥이다.\n중심에 선 자만 고요하다."
+		},
+		{
+			"id": "blade-4",
+			"branch": "blade",
+			"tier": 2,
+			"name": "연속 타격 +1",
+			"icon": "g-cross",
+			"cost": 3,
+			"requires": [
+				"blade-3"
+			],
+			"kind": "passive",
+			"desc": "출격당 연속 타격 +1",
+			"passive": {
+				"bonusHits": 1
+			},
+			"lore": "한 번 나간 검은 한 번만 물지 않는다.\n두 번째 이가 더 깊다."
+		},
+		{
+			"id": "blade-5",
+			"branch": "blade",
+			"tier": 3,
+			"name": "타격 전이 +1",
+			"icon": "g-filings",
+			"cost": 2,
+			"requires": [
+				"blade-4"
+			],
+			"kind": "passive",
+			"desc": "명중 시 주변 적 1기에 추가로 번진다",
+			"passive": {
+				"cleave": 1
+			},
+			"lore": "상처는 옮는다.\n옆에 선 것이 죄다."
+		},
+		{
+			"id": "blade-7",
+			"branch": "blade",
+			"tier": 3,
+			"name": "벼린 날",
+			"icon": "g-blade",
+			"cost": 2,
+			"requires": [
+				"blade-3"
+			],
+			"kind": "passive",
+			"desc": "공격력 +7%",
+			"passive": {
+				"damageMultAdd": 0.07
+			},
+			"lore": "숫돌에 준 시간은 전장에서 돌려받는다."
+		},
+		{
+			"id": "blade-6",
+			"branch": "blade",
+			"tier": 4,
+			"name": "쌍검 출격",
+			"icon": "g-el-electric",
+			"cost": 3,
+			"requires": [
+				"blade-2",
+				"blade-5"
+			],
+			"kind": "active",
+			"desc": "[변형] 5초간 모든 출격이 동반 출격(2자루)이 된다",
+			"active": {
+				"type": "swordStorm",
+				"cooldownMs": 22000,
+				"durationMs": 5000
+			},
+			"lore": "한 자루로 모자라면 두 자루.\n무리는 늘 그렇게 답한다."
+		},
+		{
+			"id": "blade-8",
+			"branch": "blade",
+			"tier": 4,
+			"name": "급소 베기",
+			"icon": "g-fang",
+			"cost": 2,
+			"requires": [
+				"blade-7"
+			],
+			"kind": "passive",
+			"desc": "치명타 피해 +22%",
+			"passive": {
+				"critDamageAdd": 0.22
+			},
+			"lore": "같은 자리를 두 번 베면 그것은 다른 상처다."
+		},
+		{
+			"id": "ember-1",
+			"branch": "ember",
+			"tier": 1,
+			"name": "불꽃 회복",
+			"icon": "g-rekindle",
+			"cost": 2,
+			"kind": "active",
+			"desc": "즉시 체력 20% 회복 + 4초간 초당 3% 재생",
+			"active": {
+				"type": "emberHeal",
+				"cooldownMs": 18000,
+				"healPct": 0.2,
+				"regenPct": 0.03,
+				"regenMs": 4000
+			},
+			"lore": "화로는 상처를 지지는 곳이기도 하다.\n뜨거움이 지나가면 살이 붙는다."
+		},
+		{
+			"id": "ember-3",
+			"branch": "ember",
+			"tier": 1,
+			"name": "체력 +10%",
+			"icon": "g-furnace",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "최대 체력 +10%",
+			"passive": {
+				"maxHpMult": 1.1
+			},
+			"lore": "불을 품은 몸은 쉬이 식지 않는다.\n식지 않는 것이 곧 힘이다."
+		},
+		{
+			"id": "ember-2",
+			"branch": "ember",
+			"tier": 2,
+			"name": "불바다",
+			"icon": "g-el-fire",
+			"cost": 3,
+			"requires": [
+				"ember-1"
+			],
+			"kind": "active",
+			"desc": "발밑에 5초 화염 지대 (반경 150) — 안의 적은 초당 평균 1타의 45% 화상",
+			"active": {
+				"type": "fireZone",
+				"cooldownMs": 14000,
+				"durationMs": 5000,
+				"radius": 150,
+				"dpsMult": 0.45
+			},
+			"lore": "발밑을 태우면 아무도 다가오지 못한다.\n불은 가장 정직한 울타리다."
+		},
+		{
+			"id": "ember-4",
+			"branch": "ember",
+			"tier": 2,
+			"name": "체력 재생 1%",
+			"icon": "g-drop",
+			"cost": 2,
+			"requires": [
+				"ember-3"
+			],
+			"kind": "passive",
+			"desc": "초당 최대체력 1% 재생",
+			"passive": {
+				"hpRegenAdd": 1
+			},
+			"lore": "잉걸은 밤새 스스로를 되살린다.\n숨을 쉬는 한 계속."
+		},
+		{
+			"id": "ember-5",
+			"branch": "ember",
+			"tier": 3,
+			"name": "타격 회복 +3%",
+			"icon": "g-drop",
+			"cost": 2,
+			"requires": [
+				"ember-4"
+			],
+			"kind": "passive",
+			"desc": "타격 회복 예산 초당 +3% (기본 6%)",
+			"passive": {
+				"healBudgetAdd": 0.03
+			},
+			"lore": "때린 만큼 살아난다.\n화로의 셈법은 늘 그랬다."
+		},
+		{
+			"id": "ember-7",
+			"branch": "ember",
+			"tier": 3,
+			"name": "잔불",
+			"icon": "g-rekindle",
+			"cost": 2,
+			"requires": [
+				"ember-3"
+			],
+			"kind": "passive",
+			"desc": "초당 체력 재생 +0.8%",
+			"passive": {
+				"hpRegenAdd": 0.008
+			},
+			"lore": "꺼진 줄 알았던 자리에서 다시 붙는다."
+		},
+		{
+			"id": "ember-6",
+			"branch": "ember",
+			"tier": 4,
+			"name": "위기 무적",
+			"icon": "g-el-fire",
+			"cost": 3,
+			"requires": [
+				"ember-2",
+				"ember-5"
+			],
+			"kind": "passive",
+			"desc": "[변형] 체력 25% 아래로 떨어지면 3초 무적 + 15% 회복 (라운드당 1회)",
+			"passive": {
+				"phoenix": {
+					"healPct": 0.15,
+					"invulnMs": 3000
+				}
+			},
+			"lore": "꺼지기 직전의 불이 가장 밝다.\n그 빛에는 아무것도 닿지 않는다."
+		},
+		{
+			"id": "ember-8",
+			"branch": "ember",
+			"tier": 4,
+			"name": "따뜻한 강철",
+			"icon": "g-rekindle",
+			"cost": 2,
+			"requires": [
+				"ember-7"
+			],
+			"kind": "passive",
+			"desc": "타격 회복 예산 +2.5%",
+			"passive": {
+				"healBudgetAdd": 0.025
+			},
+			"lore": "베어낸 만큼 데워진다."
+		},
+		{
+			"id": "tac-1",
+			"branch": "tactics",
+			"tier": 1,
+			"name": "시간 감속",
+			"icon": "g-hourglass",
+			"cost": 2,
+			"kind": "active",
+			"desc": "반경 320 안의 적을 4초간 55% 감속",
+			"active": {
+				"type": "timeWarp",
+				"cooldownMs": 16000,
+				"radius": 320,
+				"slow": 0.55,
+				"durationMs": 4000
+			},
+			"lore": "시간을 늦추는 것이 아니라\n적의 시간만 무겁게 만드는 것이다."
+		},
+		{
+			"id": "tac-2",
+			"branch": "tactics",
+			"tier": 1,
+			"name": "화염탄",
+			"icon": "g-el-fire",
+			"cost": 2,
+			"kind": "active",
+			"desc": "바라보는 쪽 320px에 0.5초 뒤 폭발 — 반경 150, 평균 1타 ×3 + 화상",
+			"active": {
+				"type": "bomb",
+				"cooldownMs": 8000,
+				"range": 320,
+				"delayMs": 500,
+				"radius": 150,
+				"damageMult": 3
+			},
+			"lore": "던지고 세 번 세면 된다.\n셋을 세는 동안 물러서면 그만이다."
+		},
+		{
+			"id": "tac-3",
+			"branch": "tactics",
+			"tier": 2,
+			"name": "미끼 횃불",
+			"icon": "g-furnace",
+			"cost": 3,
+			"requires": [
+				"tac-1"
+			],
+			"kind": "active",
+			"desc": "바라보는 쪽 300px에 3.5초 횃불 — 반경 420 안의 잡몹이 그쪽으로 몰린다",
+			"active": {
+				"type": "lure",
+				"cooldownMs": 15000,
+				"range": 300,
+				"radius": 420,
+				"durationMs": 3500
+			},
+			"lore": "가장 밝은 것을 쫓는 것이 짐승이다.\n횃불 하나면 무리를 옮긴다."
+		},
+		{
+			"id": "tac-4",
+			"branch": "tactics",
+			"tier": 2,
+			"name": "경험치 +10%",
+			"icon": "g-scroll",
+			"cost": 1,
+			"requires": [
+				"tac-2"
+			],
+			"kind": "passive",
+			"desc": "경험치 획득 +10%",
+			"passive": {
+				"xpMultAdd": 0.1
+			},
+			"lore": "배움은 전리품 중 가장 무겁다.\n그리고 가장 오래 간다."
+		},
+		{
+			"id": "tac-5",
+			"branch": "tactics",
+			"tier": 3,
+			"name": "재사용 -10%",
+			"icon": "g-hourglass",
+			"cost": 2,
+			"requires": [
+				"tac-3",
+				"tac-4"
+			],
+			"kind": "passive",
+			"desc": "모든 스킬 재사용 -10%",
+			"passive": {
+				"skillCooldownMult": 0.9
+			},
+			"lore": "전술이란 결국 기다림을 줄이는 기술.\n숨 고르는 시간을 훔친다."
+		},
+		{
+			"id": "tac-7",
+			"branch": "tactics",
+			"tier": 3,
+			"name": "군더더기 없음",
+			"icon": "g-hourglass",
+			"cost": 2,
+			"requires": [
+				"tac-4"
+			],
+			"kind": "passive",
+			"desc": "모든 스킬 재사용 -7%",
+			"passive": {
+				"skillCooldownMult": 0.93
+			},
+			"lore": "군더더기를 버린 손이 가장 빠르다."
+		},
+		{
+			"id": "tac-6",
+			"branch": "tactics",
+			"tier": 4,
+			"name": "시간 정지",
+			"icon": "g-hourglass",
+			"cost": 3,
+			"requires": [
+				"tac-5"
+			],
+			"kind": "active",
+			"desc": "[변형] 반경 420 안의 적을 2초간 완전히 멈춘다",
+			"active": {
+				"type": "timeWarp",
+				"cooldownMs": 30000,
+				"radius": 420,
+				"slow": 0.98,
+				"durationMs": 2000
+			},
+			"lore": "멈춘 시간 속에서는\n검만이 유일하게 움직인다."
+		},
+		{
+			"id": "tac-8",
+			"branch": "tactics",
+			"tier": 4,
+			"name": "전장 학습",
+			"icon": "g-spark",
+			"cost": 2,
+			"requires": [
+				"tac-7"
+			],
+			"kind": "passive",
+			"desc": "경험치 획득 +12%",
+			"passive": {
+				"xpMultAdd": 0.12
+			},
+			"lore": "살아 돌아온 자만이 배운다."
+		},
+		{
+			"id": "for-1",
+			"branch": "fortune",
+			"tier": 1,
+			"name": "골드 +10%",
+			"icon": "g-crown",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "골드 획득 +10%",
+			"passive": {
+				"goldBonusAdd": 0.1
+			},
+			"lore": "쇳조각도 모이면 검이 된다.\n주워 담는 손이 부지런해야 한다."
+		},
+		{
+			"id": "for-2",
+			"branch": "fortune",
+			"tier": 1,
+			"name": "행운 +",
+			"icon": "g-chip",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "행운 +0.15 (상위 등급 카드·전리품)",
+			"passive": {
+				"luckAdd": 0.15
+			},
+			"lore": "운은 준비된 자에게만 눈길을 준다.\n눈길이 곧 등급이다."
+		},
+		{
+			"id": "for-3",
+			"branch": "fortune",
+			"tier": 2,
+			"name": "상자 골드 +25%",
+			"icon": "g-crate",
+			"cost": 2,
+			"requires": [
+				"for-1"
+			],
+			"kind": "passive",
+			"desc": "상자 골드 +25%",
+			"passive": {
+				"chestGoldMult": 1.25
+			},
+			"lore": "잠긴 것은 언제나 값지다.\n여는 법을 아는 자에게만."
+		},
+		{
+			"id": "for-5",
+			"branch": "fortune",
+			"tier": 2,
+			"name": "검 가격 -8%",
+			"icon": "g-anvil",
+			"cost": 2,
+			"requires": [
+				"for-2"
+			],
+			"kind": "passive",
+			"desc": "대장간 검 가격 -8%",
+			"passive": {
+				"swordDiscount": 0.08
+			},
+			"lore": "값을 깎는 것도 실력이다.\n대장장이는 눈썰미를 알아본다."
+		},
+		{
+			"id": "for-4",
+			"branch": "fortune",
+			"tier": 3,
+			"name": "황금 처치",
+			"icon": "g-crown",
+			"cost": 3,
+			"requires": [
+				"for-3"
+			],
+			"kind": "active",
+			"desc": "6초간 모든 처치가 금화를 떨어뜨린다",
+			"active": {
+				"type": "goldRush",
+				"cooldownMs": 25000,
+				"durationMs": 6000
+			},
+			"lore": "죽음이 값을 치르는 시간.\n짧지만 아주 달다."
+		},
+		{
+			"id": "for-7",
+			"branch": "fortune",
+			"tier": 3,
+			"name": "노획",
+			"icon": "g-el-gold",
+			"cost": 2,
+			"requires": [
+				"for-1"
+			],
+			"kind": "passive",
+			"desc": "골드 획득 +12%",
+			"passive": {
+				"goldBonusAdd": 0.12
+			},
+			"lore": "전장에 떨어진 것은 이미 주인이 없다."
+		},
+		{
+			"id": "for-6",
+			"branch": "fortune",
+			"tier": 4,
+			"name": "명중 금화",
+			"icon": "g-el-gold",
+			"cost": 3,
+			"requires": [
+				"for-4",
+				"for-5"
+			],
+			"kind": "passive",
+			"desc": "[변형] 골드 획득 +15% · 명중 시 5% 확률로 금화",
+			"passive": {
+				"goldBonusAdd": 0.15,
+				"goldOnHitChance": 0.05
+			},
+			"lore": "때릴 때마다 금화가 튄다.\n싸움과 벌이가 같은 말이 된다."
+		},
+		{
+			"id": "for-8",
+			"branch": "fortune",
+			"tier": 4,
+			"name": "길한 조짐",
+			"icon": "g-el-gold",
+			"cost": 2,
+			"requires": [
+				"for-7"
+			],
+			"kind": "passive",
+			"desc": "행운 +2",
+			"passive": {
+				"luckAdd": 2
+			},
+			"lore": "운은 자주 오는 자에게 자주 온다."
+		},
+		{
+			"id": "storm-1",
+			"branch": "storm",
+			"tier": 1,
+			"name": "낙뢰",
+			"icon": "g-el-electric",
+			"cost": 2,
+			"kind": "active",
+			"desc": "반경 420 안의 적 3기에게 번개 — 각각 평균 1타 ×2 + 연쇄 1",
+			"active": {
+				"type": "lightning",
+				"cooldownMs": 9000,
+				"radius": 420,
+				"bolts": 3,
+				"damageMult": 2,
+				"chain": 1
+			},
+			"lore": "하늘이 먼저 화를 낸다.\n검은 그 뒤를 따를 뿐이다."
+		},
+		{
+			"id": "storm-2",
+			"branch": "storm",
+			"tier": 1,
+			"name": "명중 시 연쇄 10%",
+			"icon": "g-el-electric",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "검이 맞힐 때 10% 확률로 가까운 적 1기에 피해의 60%가 튄다",
+			"passive": {
+				"chainOnHit": {
+					"chance": 0.1,
+					"pct": 0.6
+				}
+			},
+			"lore": "번개는 한 놈에게 멈추지 않는다.\n서 있는 모두가 길이다."
+		},
+		{
+			"id": "storm-3",
+			"branch": "storm",
+			"tier": 2,
+			"name": "감속 적 피해 +12%",
+			"icon": "g-hourglass",
+			"cost": 2,
+			"requires": [
+				"storm-2"
+			],
+			"kind": "passive",
+			"desc": "감속·빙결·감전 상태의 적에게 주는 피해 +12%",
+			"passive": {
+				"slowedDamageAdd": 0.12
+			},
+			"lore": "느려진 것은 이미 반쯤 진 것이다.\n남은 반을 마저 가져간다."
+		},
+		{
+			"id": "storm-4",
+			"branch": "storm",
+			"tier": 2,
+			"name": "폭풍우",
+			"icon": "g-el-electric",
+			"cost": 3,
+			"requires": [
+				"storm-1"
+			],
+			"kind": "active",
+			"desc": "6초 동안 0.6초마다 가장 가까운 적에게 낙뢰 (평균 1타 ×1.2)",
+			"active": {
+				"type": "stormCall",
+				"cooldownMs": 20000,
+				"durationMs": 6000,
+				"intervalMs": 600,
+				"radius": 380,
+				"damageMult": 1.2
+			},
+			"lore": "구름을 불러 세워두면\n한동안 알아서 내리친다."
+		},
+		{
+			"id": "storm-5",
+			"branch": "storm",
+			"tier": 3,
+			"name": "낙뢰 +2발",
+			"icon": "g-el-electric",
+			"cost": 2,
+			"requires": [
+				"storm-4"
+			],
+			"kind": "passive",
+			"desc": "낙뢰·폭풍우가 한 번에 2발 더 떨어진다",
+			"passive": {
+				"extraBolts": 2
+			},
+			"lore": "한 줄기로는 성에 차지 않는다.\n하늘은 인색하지 않다."
+		},
+		{
+			"id": "storm-7",
+			"branch": "storm",
+			"tier": 3,
+			"name": "먹구름",
+			"icon": "g-el-electric",
+			"cost": 2,
+			"requires": [
+				"storm-2"
+			],
+			"kind": "passive",
+			"desc": "낙뢰 +1발",
+			"passive": {
+				"extraBolts": 1
+			},
+			"lore": "구름이 두꺼울수록 셈이 늦어질 뿐이다."
+		},
+		{
+			"id": "storm-6",
+			"branch": "storm",
+			"tier": 4,
+			"name": "천벌",
+			"icon": "g-spark",
+			"cost": 3,
+			"requires": [
+				"storm-3",
+				"storm-5"
+			],
+			"kind": "passive",
+			"desc": "[변형] 필살기를 쓰면 반경 안 적 6기에게 낙뢰가 함께 떨어진다 (평균 1타 ×2)",
+			"passive": {
+				"ultLightning": 6
+			},
+			"lore": "울림과 번개가 같이 온다.\n그 아래에서는 아무도 서 있지 못한다."
+		},
+		{
+			"id": "storm-8",
+			"branch": "storm",
+			"tier": 4,
+			"name": "젖은 땅",
+			"icon": "g-el-ice",
+			"cost": 2,
+			"requires": [
+				"storm-7"
+			],
+			"kind": "passive",
+			"desc": "감속된 적에게 주는 피해 +10%",
+			"passive": {
+				"slowedDamageAdd": 0.1
+			},
+			"lore": "발이 묶인 것은 이미 절반이 끝난 것이다."
+		},
+		{
+			"id": "shadow-1",
+			"branch": "shadow",
+			"tier": 1,
+			"name": "그림자 분신",
+			"icon": "g-eye",
+			"cost": 2,
+			"kind": "active",
+			"desc": "바라보는 쪽 160px에 5초 분신 — 잡몹이 분신을 쫓고, 끝나면 폭발 (평균 1타 ×3)",
+			"active": {
+				"type": "shadowClone",
+				"cooldownMs": 16000,
+				"distance": 160,
+				"durationMs": 5000,
+				"radius": 400,
+				"explodeRadius": 170,
+				"damageMult": 3
+			},
+			"lore": "그림자에게도 이름을 준다.\n짧게 살고 크게 터진다."
+		},
+		{
+			"id": "shadow-2",
+			"branch": "shadow",
+			"tier": 1,
+			"name": "치명타 피해 +30%",
+			"icon": "g-blade",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "치명타 피해 배율 +0.3",
+			"passive": {
+				"critDamageAdd": 0.3
+			},
+			"lore": "급소를 두 번 아는 자는\n한 번에 두 배를 가져간다."
+		},
+		{
+			"id": "shadow-3",
+			"branch": "shadow",
+			"tier": 2,
+			"name": "은신",
+			"icon": "g-eye",
+			"cost": 3,
+			"requires": [
+				"shadow-1"
+			],
+			"kind": "active",
+			"desc": "2.5초 동안 피해를 받지 않고 이동 +40% · 끝날 때 주변 적 감속",
+			"active": {
+				"type": "stealth",
+				"cooldownMs": 18000,
+				"durationMs": 2500,
+				"speedMult": 0.4,
+				"radius": 220
+			},
+			"lore": "보이지 않는 자를 벨 수는 없다.\n숨는 것도 검술이다."
+		},
+		{
+			"id": "shadow-4",
+			"branch": "shadow",
+			"tier": 2,
+			"name": "처형 10%",
+			"icon": "g-cross",
+			"cost": 2,
+			"requires": [
+				"shadow-2"
+			],
+			"kind": "passive",
+			"desc": "체력 10% 이하의 잡몹은 맞는 즉시 죽는다",
+			"passive": {
+				"executeThreshold": 0.1
+			},
+			"lore": "다 죽은 것을 오래 두지 않는다.\n그것이 예의다."
+		},
+		{
+			"id": "shadow-5",
+			"branch": "shadow",
+			"tier": 3,
+			"name": "무피격 이동 +15%",
+			"icon": "g-boot",
+			"cost": 2,
+			"requires": [
+				"shadow-3",
+				"shadow-4"
+			],
+			"kind": "passive",
+			"desc": "3초 이상 맞지 않으면 이동 속도 +15%",
+			"passive": {
+				"shadowStep": {
+					"mult": 0.15,
+					"afterMs": 3000
+				}
+			},
+			"lore": "맞지 않는 동안 발이 가벼워진다.\n그림자는 상처를 싫어한다."
+		},
+		{
+			"id": "shadow-7",
+			"branch": "shadow",
+			"tier": 3,
+			"name": "등 뒤",
+			"icon": "g-fang",
+			"cost": 2,
+			"requires": [
+				"shadow-2"
+			],
+			"kind": "passive",
+			"desc": "치명타 피해 +25%",
+			"passive": {
+				"critDamageAdd": 0.25
+			},
+			"lore": "보이지 않는 쪽에 급소가 있다."
+		},
+		{
+			"id": "shadow-6",
+			"branch": "shadow",
+			"tier": 4,
+			"name": "암살자",
+			"icon": "g-el-void",
+			"cost": 3,
+			"requires": [
+				"shadow-5"
+			],
+			"kind": "passive",
+			"desc": "[변형] 처형 문턱 20% · 처형 시 주변에 평균 1타 ×1 폭발",
+			"passive": {
+				"executeThreshold": 0.2,
+				"executeExplode": 1
+			},
+			"lore": "끝을 맺는 손은 소리를 내지 않는다.\n남는 것은 잠깐의 파문뿐."
+		},
+		{
+			"id": "shadow-8",
+			"branch": "shadow",
+			"tier": 4,
+			"name": "소리 없는 날",
+			"icon": "g-blade",
+			"cost": 2,
+			"requires": [
+				"shadow-7"
+			],
+			"kind": "passive",
+			"desc": "공격력 +6%",
+			"passive": {
+				"damageMultAdd": 0.06
+			},
+			"lore": "소리를 줄인 만큼 날이 남는다."
+		},
+		{
+			"id": "frost-1",
+			"branch": "frost",
+			"tier": 1,
+			"name": "서리 폭발",
+			"icon": "g-el-ice",
+			"cost": 2,
+			"kind": "active",
+			"desc": "반경 220 폭발 — 평균 1타 ×1.5 + 1.5초 빙결",
+			"active": {
+				"type": "frostNova",
+				"cooldownMs": 11000,
+				"radius": 220,
+				"damageMult": 1.5,
+				"freezeMs": 1500
+			},
+			"lore": "숨을 뱉으면 하얗게 언다.\n언 것은 부서지기 마련이다."
+		},
+		{
+			"id": "frost-2",
+			"branch": "frost",
+			"tier": 1,
+			"name": "냉기 오라",
+			"icon": "g-el-ice",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "궤도 반경 안의 적은 20% 느려진다",
+			"passive": {
+				"frostAura": 0.2
+			},
+			"lore": "곁에 서 있는 것만으로 춥다.\n궤도가 곧 겨울이다."
+		},
+		{
+			"id": "frost-3",
+			"branch": "frost",
+			"tier": 2,
+			"name": "얼음 감옥",
+			"icon": "g-lock",
+			"cost": 3,
+			"requires": [
+				"frost-1"
+			],
+			"kind": "active",
+			"desc": "가장 가까운 정예/보스를 3초 동안 얼린다 (시전도 끊는다)",
+			"active": {
+				"type": "iceCage",
+				"cooldownMs": 22000,
+				"radius": 480,
+				"durationMs": 3000
+			},
+			"lore": "큰 놈일수록 오래 언다.\n무거운 것이 먼저 멈춘다."
+		},
+		{
+			"id": "frost-4",
+			"branch": "frost",
+			"tier": 2,
+			"name": "빙결 적 피해 +20%",
+			"icon": "g-el-ice",
+			"cost": 2,
+			"requires": [
+				"frost-2"
+			],
+			"kind": "passive",
+			"desc": "빙결·강감속(70%↑) 상태의 적에게 주는 피해 +20%",
+			"passive": {
+				"frozenDamageAdd": 0.2
+			},
+			"lore": "얼어붙은 것은 깊이 벤다.\n칼이 미끄러지지 않는다."
+		},
+		{
+			"id": "frost-5",
+			"branch": "frost",
+			"tier": 3,
+			"name": "냉기 오라 강화",
+			"icon": "g-el-ice",
+			"cost": 2,
+			"requires": [
+				"frost-3",
+				"frost-4"
+			],
+			"kind": "passive",
+			"desc": "오라 감속 35% · 반경 +40%",
+			"passive": {
+				"frostAura": 0.35,
+				"frostAuraRadiusMult": 1.4
+			},
+			"lore": "겨울은 넓어지려 한다.\n한 발 물러서도 소용없다."
+		},
+		{
+			"id": "frost-7",
+			"branch": "frost",
+			"tier": 3,
+			"name": "살얼음",
+			"icon": "g-el-ice",
+			"cost": 2,
+			"requires": [
+				"frost-2"
+			],
+			"kind": "passive",
+			"desc": "빙결된 적에게 주는 피해 +15%",
+			"passive": {
+				"frozenDamageAdd": 0.15
+			},
+			"lore": "굳은 것은 부서지기 위해 굳는다."
+		},
+		{
+			"id": "frost-6",
+			"branch": "frost",
+			"tier": 4,
+			"name": "산산조각",
+			"icon": "g-filings",
+			"cost": 3,
+			"requires": [
+				"frost-5"
+			],
+			"kind": "passive",
+			"desc": "[변형] 빙결 상태로 죽은 적이 터져 주변에 평균 1타 ×1.2 피해 + 감속",
+			"passive": {
+				"shatter": 1.2
+			},
+			"lore": "언 것은 반드시 부서진다.\n부서진 것은 옆을 다치게 한다."
+		},
+		{
+			"id": "frost-8",
+			"branch": "frost",
+			"tier": 4,
+			"name": "넓은 냉기",
+			"icon": "g-ring",
+			"cost": 2,
+			"requires": [
+				"frost-7"
+			],
+			"kind": "passive",
+			"desc": "냉기 오라 반경 +20%",
+			"passive": {
+				"frostAuraRadiusMult": 1.2
+			},
+			"lore": "추위는 닿는 것이 아니라 번지는 것이다."
+		},
+		{
+			"id": "rage-1",
+			"branch": "rage",
+			"tier": 1,
+			"name": "광폭화",
+			"icon": "g-el-blood",
+			"cost": 2,
+			"kind": "active",
+			"desc": "8초 동안 공격력 +40% · 이동 +15% · 받는 피해 +25%",
+			"active": {
+				"type": "berserk",
+				"cooldownMs": 24000,
+				"durationMs": 8000,
+				"damageAdd": 0.4,
+				"speedMult": 0.15,
+				"takenMult": 1.25
+			},
+			"lore": "제 몸을 태워 쓰는 힘이 있다.\n오래 쓰면 남는 것이 없다."
+		},
+		{
+			"id": "rage-2",
+			"branch": "rage",
+			"tier": 1,
+			"name": "저체력 공격 +25%",
+			"icon": "g-drop",
+			"cost": 1,
+			"kind": "passive",
+			"desc": "체력 50% 이하일 때 공격력 +25%",
+			"passive": {
+				"lowHpRage": 0.25
+			},
+			"lore": "몰릴수록 손이 매워진다.\n등 뒤에 벽이 있을 때 가장 강하다."
+		},
+		{
+			"id": "rage-3",
+			"branch": "rage",
+			"tier": 2,
+			"name": "처치 가속",
+			"icon": "g-boot",
+			"cost": 2,
+			"requires": [
+				"rage-2"
+			],
+			"kind": "passive",
+			"desc": "처치마다 3초 동안 이동 +4% (5중첩)",
+			"passive": {
+				"killHaste": {
+					"mult": 0.04,
+					"stacks": 5,
+					"durationMs": 3000
+				}
+			},
+			"lore": "피 냄새는 발을 가볍게 한다.\n하나를 눕히면 다음이 가깝다."
+		},
+		{
+			"id": "rage-4",
+			"branch": "rage",
+			"tier": 2,
+			"name": "피의 일격",
+			"icon": "g-el-blood",
+			"cost": 3,
+			"requires": [
+				"rage-1"
+			],
+			"kind": "active",
+			"desc": "체력 15%를 태워 바라보는 쪽 부채꼴에 평균 1타 ×4 (잃은 체력 1%당 +2%)",
+			"active": {
+				"type": "bloodStrike",
+				"cooldownMs": 12000,
+				"costPct": 0.15,
+				"length": 300,
+				"halfAngle": 0.6,
+				"damageMult": 4
+			},
+			"lore": "제 피를 태워 한 번 크게 벤다.\n값은 나중에 치른다."
+		},
+		{
+			"id": "rage-5",
+			"branch": "rage",
+			"tier": 3,
+			"name": "위기 재사용 절반",
+			"icon": "g-hourglass",
+			"cost": 2,
+			"requires": [
+				"rage-3",
+				"rage-4"
+			],
+			"kind": "passive",
+			"desc": "체력 30% 이하일 때 모든 스킬 재사용 시간 절반",
+			"passive": {
+				"lastStand": 0.5
+			},
+			"lore": "위태로울수록 숨이 짧아진다.\n짧은 숨이 더 자주 검을 부른다."
+		},
+		{
+			"id": "rage-7",
+			"branch": "rage",
+			"tier": 3,
+			"name": "피 맛",
+			"icon": "g-el-blood",
+			"cost": 2,
+			"requires": [
+				"rage-2"
+			],
+			"kind": "passive",
+			"desc": "체력이 낮을수록 공격력 +15%",
+			"passive": {
+				"lowHpRage": 0.15
+			},
+			"lore": "바닥을 본 자가 가장 세게 밀어 올린다."
+		},
+		{
+			"id": "rage-6",
+			"branch": "rage",
+			"tier": 4,
+			"name": "피의 갑옷",
+			"icon": "g-shield",
+			"cost": 3,
+			"requires": [
+				"rage-5"
+			],
+			"kind": "passive",
+			"desc": "[변형] 잃은 체력 1%당 방어 +0.4 (최대 +30)",
+			"passive": {
+				"bloodArmor": {
+					"perPct": 0.4,
+					"cap": 30
+				}
+			},
+			"lore": "잃은 피만큼 가죽이 두꺼워진다.\n상처가 갑옷이 된다."
+		},
+		{
+			"id": "rage-8",
+			"branch": "rage",
+			"tier": 4,
+			"name": "광란",
+			"icon": "g-blade",
+			"cost": 2,
+			"requires": [
+				"rage-7"
+			],
+			"kind": "passive",
+			"desc": "공격력 +6%",
+			"passive": {
+				"damageMultAdd": 0.06
+			},
+			"lore": "멈추는 법을 잊은 팔은 무겁지 않다."
+		}
+	]
+}

@@ -3,8 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>moveSword</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>" />
+    <title>LODELAND</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗡️</text></svg>" />
+
+    <!-- UI 폰트: Jua(디스플레이 — 둥글고 통통한 제목/HUD) + Gowun Dodum(본문 — 부드러운 둥근 고딕).
+         둘 다 Google Fonts, SIL OFL 1.1, 단일 굵기(400)라 bold 지정은 브라우저 합성 굵기가 된다.
+         unicode-range 서브셋이라 실제 사용하는 글자 범위만 내려받는다.
+         네트워크가 없으면 시스템 고딕으로 폴백된다(레이아웃은 유지). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
     <style>
       html,
       body,
@@ -16,17 +27,96 @@
       }
 
       body {
-        background: #090909;
+        background: #101317;
         overflow: hidden;
       }
 
       canvas {
         display: block;
       }
+
+      /* 레티나(고밀도) 디스플레이: 브라우저의 bilinear 업스케일이 화면 전체를
+         뭉개므로, 정수 배율 nearest 업스케일로 또렷한 픽셀을 유지한다. */
+      @media (min-resolution: 2dppx) {
+        canvas {
+          image-rendering: pixelated;
+        }
+      }
+
+      /* HTML 로딩 화면 — Phaser 가 뜨기 전(번들 2MB 다운로드 + 에셋 로드 ~10MB)에도
+         검은 화면 대신 무언가가 보이게 한다. 링크로 들어온 사람의 첫 3초용.
+         BootScene 이 진행률을 채우고(#loader-bar), 타이틀 직전에 통째로 지운다. */
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #101317;
+        color: #d9dee6;
+        font-family: 'Jua', 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+        user-select: none;
+        transition: opacity 0.35s ease-out;
+      }
+      #loader.done {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #loader .title {
+        font-size: clamp(40px, 7vw, 72px);
+        letter-spacing: 0.18em;
+        color: #f2eee6;
+        text-shadow: 0 0 24px rgba(235, 160, 60, 0.35);
+      }
+      #loader .sub {
+        font-size: 14px;
+        letter-spacing: 0.35em;
+        color: #e0a04a;
+        margin-top: -6px;
+      }
+      #loader .track {
+        width: min(320px, 60vw);
+        height: 6px;
+        margin-top: 18px;
+        background: #232a33;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      #loader-bar {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #c8742a, #f0b35a);
+        transition: width 0.15s linear;
+      }
+      #loader-msg {
+        font-size: 13px;
+        color: #8d97a3;
+        min-height: 1.4em;
+      }
     </style>
   </head>
   <body>
     <div id="game"></div>
+    <div id="loader" aria-live="polite">
+      <div class="title">LODELAND</div>
+      <div class="sub">KEEPER OF THE CORE</div>
+      <div class="track"><div id="loader-bar"></div></div>
+      <div id="loader-msg">검떼를 깨우는 중…</div>
+    </div>
+    <script>
+      // 25초가 지나도 Phaser 가 로더를 지우지 못했으면 안내 문구를 바꾼다
+      // (느린 회선, 백그라운드 탭에서 열림, 스크립트 로드 실패).
+      setTimeout(function () {
+        var el = document.getElementById('loader');
+        var msg = document.getElementById('loader-msg');
+        if (el && !el.classList.contains('done') && msg) {
+          msg.textContent = '오래 걸리네요 — 이 탭을 앞으로 가져오거나 새로고침해 보세요';
+        }
+      }, 25000);
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

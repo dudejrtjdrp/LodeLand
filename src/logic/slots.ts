@@ -13,6 +13,22 @@ export function slotUnlockCost(config: Partial<SlotConfigSpec>, unlockedSlots: n
 	return Math.round((config.unlockBaseCost ?? 80) * Math.pow(config.unlockGrowth ?? 2, Math.max(0, bought)));
 }
 
+/**
+ * 다음 칸(= unlockedSlots+1 번째)을 열 수 있는 최소 라운드 (2026-09-04).
+ * 골드만으로는 15라에 7칸이 다 열려 중반이 밋밋해졌다 → 라운드 게이트.
+ * config.unlockRounds[i] = (startUnlocked + i + 1) 번째 칸의 해방 라운드.
+ */
+export function slotUnlockRound(config: Partial<SlotConfigSpec>, unlockedSlots: number): number {
+	const rounds = config.unlockRounds ?? [];
+	const bought = Math.max(0, unlockedSlots - (config.startUnlocked ?? 2));
+	return rounds[bought] ?? 1;
+}
+
+/** 현재 라운드(마지막으로 **완료한** 라운드 기준)에 다음 칸을 열 수 있는가. */
+export function canUnlockSlotAtRound(config: Partial<SlotConfigSpec>, unlockedSlots: number, round: number): boolean {
+	return round >= slotUnlockRound(config, unlockedSlots);
+}
+
 /** Cost of the next enhancement attempt for a slot at the given enhance level. */
 export function slotEnhanceCost(config: Partial<SlotConfigSpec>, enhanceLevel: number): number {
 	return Math.round((config.enhanceBaseCost ?? 30) * (enhanceLevel + 1));

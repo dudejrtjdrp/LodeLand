@@ -1,7 +1,7 @@
 [
   {
     "id": "skullwolf",
-    "name": "Skullwolf",
+    "name": "Rusthound",
     "hp": 60,
     "speed": 90,
     "damage": 18,
@@ -13,53 +13,30 @@
     "critChance": 0.12,
     "critDamageMultiplier": 1.9,
     "xpValue": 75,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
+    "spriteType": "separate",
     "goldValue": 2,
-    "goldChance": 0.35
+    "goldChance": 0.35,
+    "lore": "고철 뼈대를 뒤집어쓴 부식 무리. 정련된 심(心)의 냄새를 맡고 몰려온다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/red/warrior_run.png",
+        "textureKey": "ts-red-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 10,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "corroded"
+    ]
   },
   {
     "id": "skullwolf-swift",
-    "name": "Swift Skullwolf",
+    "name": "Swifthound",
     "hp": 35,
     "speed": 150,
     "damage": 12,
@@ -67,57 +44,33 @@
       "width": 40,
       "height": 40
     },
-    "tint": "#7dd3fc",
     "critChance": 0.1,
     "critDamageMultiplier": 1.6,
     "xpValue": 45,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 12,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 12,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 12,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 12,
-          "repeat": 0
-        }
-      ]
-    },
+    "spriteType": "separate",
     "goldValue": 1,
-    "goldChance": 0.3
+    "goldChance": 0.3,
+    "lore": "무리보다 먼저 달려 먹이를 몰아붙인다. 얇은 만큼 빠르다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/yellow/warrior_run.png",
+        "textureKey": "ts-yellow-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 13,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "featherlight"
+    ]
   },
   {
     "id": "skullwolf-brute",
-    "name": "Brute Skullwolf",
+    "name": "Slaghound",
     "hp": 200,
     "speed": 55,
     "damage": 32,
@@ -125,57 +78,33 @@
       "width": 68,
       "height": 68
     },
-    "tint": "#f87171",
     "critChance": 0.15,
     "critDamageMultiplier": 2.0,
     "xpValue": 170,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 6,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 8,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 8,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 8,
-          "repeat": 0
-        }
-      ]
-    },
+    "spriteType": "separate",
     "goldValue": 6,
-    "goldChance": 0.6
+    "goldChance": 0.6,
+    "lore": "찌꺼기 쇳물이 굳어 붙은 몸통. 밀어도 밀리지 않는다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/warrior_run.png",
+        "textureKey": "ts-black-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "unstoppable-core"
+    ]
   },
   {
     "id": "skullwolf-elite",
-    "name": "Elite Skullwolf",
+    "name": "Slagcaptain",
     "hp": 1100,
     "speed": 75,
     "damage": 45,
@@ -183,119 +112,130 @@
       "width": 96,
       "height": 96
     },
-    "tint": "#fbbf24",
     "critChance": 0.2,
     "critDamageMultiplier": 2.2,
     "xpValue": 900,
     "isElite": true,
     "knockbackResist": 0.6,
     "healthBarWidth": 70,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
+    "spriteType": "separate",
     "goldValue": 60,
-    "goldChance": 1.0
+    "goldChance": 1.0,
+    "lore": "무리를 세우는 부식된 지휘관. 먼저 끊지 않으면 줄이 서지 않는다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/purple/warrior_run.png",
+        "textureKey": "ts-purple-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 9,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "corroded",
+      "unstoppable-core"
+    ]
   },
   {
     "id": "skullwolf-boss",
-    "name": "Skullwolf King",
-    "hp": 5000,
+    "name": "Rust King",
+    "hp": 3800,
     "speed": 58,
     "damage": 60,
     "size": {
-      "width": 150,
-      "height": 150
+      "width": 216,
+      "height": 179
     },
-    "tint": "#c084fc",
     "critChance": 0.25,
     "critDamageMultiplier": 2.5,
     "xpValue": 3000,
     "isBoss": true,
     "knockbackResist": 1,
     "healthBarWidth": 110,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 7,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 9,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 9,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 9,
-          "repeat": 0
-        }
-      ]
-    },
+    "spriteType": "separate",
     "goldValue": 250,
     "goldChance": 1.0,
     "physicalResist": 0.2,
-    "magicResist": 0.2
+    "magicResist": 0.2,
+    "lore": "녹의 왕관을 쓴 첫 사냥감. 광맥의 입구를 막고 서 있다.",
+    "facing": "left",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/skullwolf-boss_idle.png",
+        "textureKey": "p2-skullwolf-boss-idle",
+        "frameWidth": 64,
+        "frameHeight": 53,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/skullwolf-boss_walk.png",
+        "textureKey": "p2-skullwolf-boss-walk",
+        "frameWidth": 64,
+        "frameHeight": 53,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/skullwolf-boss_attack.png",
+        "textureKey": "p2-skullwolf-boss-attack",
+        "frameWidth": 64,
+        "frameHeight": 53,
+        "frameStart": 0,
+        "frameEnd": 4,
+        "frameRate": 12,
+        "repeat": 0
+      },
+      "hit": {
+        "filePath": "enemy/pack2/skullwolf-boss_hit.png",
+        "textureKey": "p2-skullwolf-boss-hit",
+        "frameWidth": 64,
+        "frameHeight": 53,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/skullwolf-boss_death.png",
+        "textureKey": "p2-skullwolf-boss-death",
+        "frameWidth": 64,
+        "frameHeight": 53,
+        "frameStart": 0,
+        "frameEnd": 6,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "traits": [
+      "corroded",
+      "unstoppable-core"
+    ],
+    "hitbox": {
+      "width": 61,
+      "height": 25,
+      "offsetX": 2,
+      "offsetY": 28
+    },
+    "skillKit": [
+      "slam",
+      "mines",
+      "barrage",
+      "enrage",
+      "rush",
+      "meteor",
+      "cinch",
+      "halffield",
+      "seal"
+    ]
   },
   {
     "id": "reaper",
@@ -307,60 +247,34 @@
       "width": 130,
       "height": 130
     },
-    "tint": "#7f1d1d",
     "critChance": 0,
     "critDamageMultiplier": 1,
     "xpValue": 0,
     "isReaper": true,
     "knockbackResist": 1,
     "healthBarWidth": 90,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 10,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
+    "spriteType": "separate",
     "goldValue": 0,
-    "goldChance": 0.0
+    "goldChance": 0.0,
+    "tint": "#7f1d1d",
+    "lore": "시간이 다 되면 찾아온다. 싸울 것이 아니라 벗어날 것.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/lancer_run.png",
+        "textureKey": "ts-black-lancer",
+        "frameWidth": 160,
+        "frameHeight": 160,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 16,
+        "repeat": -1
+      }
+    }
   },
   {
     "id": "shooter",
-    "name": "Bone Shooter",
+    "name": "Bone Needler",
     "hp": 45,
     "speed": 95,
     "damage": 10,
@@ -368,65 +282,41 @@
       "width": 44,
       "height": 44
     },
-    "tint": "#34d399",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 60,
+    "spriteType": "separate",
     "goldValue": 3,
     "goldChance": 0.4,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "behavior": {
       "type": "ranged",
-      "range": 380,
+      "range": 530,
       "fireIntervalMs": 2200,
-      "projectileSpeed": 260,
+      "projectileSpeed": 310,
       "projectileDamage": 14,
       "damageType": "magic"
-    }
+    },
+    "lore": "마른 뼈를 깎아 만든 침을 쏜다. 거리를 좁히지 않으면 계속 맞는다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/red/archer_run.png",
+        "textureKey": "ts-red-archer",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 10,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "featherlight"
+    ]
   },
   {
     "id": "slime",
-    "name": "Split Slime",
+    "name": "Sludge",
     "hp": 80,
     "speed": 70,
     "damage": 14,
@@ -434,61 +324,37 @@
       "width": 52,
       "height": 52
     },
-    "tint": "#a3e635",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 60,
+    "spriteType": "separate",
     "goldValue": 3,
     "goldChance": 0.4,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "splitInto": {
       "id": "slime-small",
       "count": 2
-    }
+    },
+    "lore": "갈라질수록 수가 는다. 물러 보여도 끝이 없다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/yellow/pawn_run.png",
+        "textureKey": "ts-yellow-pawn",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "soaked"
+    ]
   },
   {
     "id": "slime-small",
-    "name": "Slimeling",
+    "name": "Sludgeling",
     "hp": 25,
     "speed": 130,
     "damage": 8,
@@ -496,57 +362,34 @@
       "width": 30,
       "height": 30
     },
-    "tint": "#bef264",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 20,
+    "spriteType": "separate",
     "goldValue": 1,
     "goldChance": 0.2,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    }
+    "tint": "#bef264",
+    "lore": "찢어진 조각이 제 발로 걸어 다닌다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/yellow/pawn_run.png",
+        "textureKey": "ts-yellow-pawn",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 12,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "soaked"
+    ]
   },
   {
     "id": "shieldbearer",
-    "name": "Shieldbearer",
+    "name": "Crustbearer",
     "hp": 150,
     "speed": 60,
     "damage": 20,
@@ -554,60 +397,37 @@
       "width": 56,
       "height": 56
     },
-    "tint": "#94a3b8",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 130,
+    "knockbackResist": 1,
+    "spriteType": "separate",
     "goldValue": 5,
     "goldChance": 0.5,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
-    "knockbackResist": 1,
     "physicalResist": 0.55,
-    "magicResist": 0.15
+    "magicResist": 0.15,
+    "lore": "두꺼운 딱지를 앞세운다. 물리 타격이 미끄러진다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/blue/warrior_run.png",
+        "textureKey": "ts-blue-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "gilded",
+      "unstoppable-core"
+    ]
   },
   {
     "id": "bomber",
-    "name": "Bomber",
+    "name": "Cinderbloat",
     "hp": 40,
     "speed": 160,
     "damage": 5,
@@ -615,63 +435,40 @@
       "width": 42,
       "height": 42
     },
-    "tint": "#fb923c",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 55,
+    "spriteType": "separate",
     "goldValue": 2,
     "goldChance": 0.3,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "behavior": {
       "type": "bomber",
       "fuseMs": 900,
       "explodeRadius": 170,
       "explodeDamage": 45
-    }
+    },
+    "tint": "#fb923c",
+    "lore": "속에 잉걸을 품고 달려온다. 곁에 두지 말 것.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/pawn_run.png",
+        "textureKey": "ts-black-pawn",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 13,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "emberflesh"
+    ]
   },
   {
     "id": "healer",
-    "name": "Bone Priest",
+    "name": "Rustmender",
     "hp": 70,
     "speed": 80,
     "damage": 8,
@@ -679,64 +476,40 @@
       "width": 46,
       "height": 46
     },
-    "tint": "#f472b6",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 100,
+    "spriteType": "separate",
     "goldValue": 4,
     "goldChance": 0.6,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "behavior": {
       "type": "healer",
       "healIntervalMs": 2500,
       "healPercent": 0.12,
       "healRadius": 260,
       "keepDistance": 320
-    }
+    },
+    "lore": "상한 녹에 새 녹을 덧입힌다. 먼저 끊지 않으면 사냥이 끝나지 않는다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/red/monk_run.png",
+        "textureKey": "ts-red-monk",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 9,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "hollow"
+    ]
   },
   {
     "id": "shielded-shooter",
-    "name": "Warded Shooter",
+    "name": "Crust Needler",
     "hp": 120,
     "speed": 85,
     "damage": 12,
@@ -744,68 +517,44 @@
       "width": 50,
       "height": 50
     },
-    "tint": "#2dd4bf",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 150,
+    "knockbackResist": 0.7,
+    "spriteType": "separate",
     "goldValue": 6,
     "goldChance": 0.5,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
-    "knockbackResist": 0.7,
     "behavior": {
       "type": "ranged",
-      "range": 400,
+      "range": 560,
       "fireIntervalMs": 2000,
-      "projectileSpeed": 280,
+      "projectileSpeed": 340,
       "projectileDamage": 16,
       "damageType": "magic"
     },
     "physicalResist": 0.45,
-    "magicResist": 0.25
+    "magicResist": 0.25,
+    "lore": "딱지를 두르고 침을 쏜다. 성가신 것 두 가지를 다 한다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/archer_run.png",
+        "textureKey": "ts-black-archer",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 9,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "gilded"
+    ]
   },
   {
     "id": "venom-slime",
-    "name": "Venom Slime",
+    "name": "Verdigris",
     "hp": 140,
     "speed": 75,
     "damage": 18,
@@ -813,59 +562,35 @@
       "width": 58,
       "height": 58
     },
-    "tint": "#4ade80",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 140,
+    "spriteType": "separate",
     "goldValue": 5,
     "goldChance": 0.5,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "splitInto": {
       "id": "slime",
       "count": 2
     },
     "physicalResist": 0.1,
-    "magicResist": 0.45
+    "magicResist": 0.45,
+    "lore": "독으로 이루어진 진창. 터뜨릴수록 번진다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/purple/pawn_run.png",
+        "textureKey": "ts-purple-pawn",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 9,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "venomous"
+    ]
   },
   {
     "id": "mb-bulwark",
@@ -874,128 +599,95 @@
     "speed": 55,
     "damage": 35,
     "size": {
-      "width": 84,
-      "height": 84
+      "width": 106,
+      "height": 106
     },
-    "tint": "#64748b",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 500,
-    "goldValue": 40,
-    "goldChance": 1.0,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "isMiniboss": true,
     "knockbackResist": 1,
     "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 40,
+    "goldChance": 1.0,
     "physicalResist": 0.6,
-    "magicResist": 0.3
+    "magicResist": 0.3,
+    "tint": "#64748b",
+    "lore": "움직이는 성벽. 뚫는 것보다 도는 편이 빠르다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/warrior_run.png",
+        "textureKey": "ts-black-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "gilded",
+      "unstoppable-core"
+    ],
+    "hitbox": {
+      "width": 76,
+      "height": 91,
+      "offsetX": 16,
+      "offsetY": 8
+    }
   },
   {
     "id": "mb-slimeking",
-    "name": "Slime King",
+    "name": "Sludge King",
     "hp": 520,
     "speed": 62,
     "damage": 30,
     "size": {
-      "width": 90,
-      "height": 90
+      "width": 123,
+      "height": 123
     },
-    "tint": "#84cc16",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 550,
-    "goldValue": 40,
-    "goldChance": 1.0,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "isMiniboss": true,
     "knockbackResist": 0.8,
+    "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 40,
+    "goldChance": 1.0,
     "splitInto": {
       "id": "slime",
       "count": 3
     },
-    "healthBarWidth": 60,
     "physicalResist": 0.2,
-    "magicResist": 0.3
+    "magicResist": 0.3,
+    "lore": "진창의 왕. 쓰러질 때마다 자식을 남긴다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/blue/pawn_run.png",
+        "textureKey": "ts-blue-pawn",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "soaked",
+      "sealed-veins"
+    ],
+    "hitbox": {
+      "width": 66,
+      "height": 77,
+      "offsetX": 19,
+      "offsetY": 20
+    }
   },
   {
     "id": "mb-archerlord",
@@ -1004,71 +696,54 @@
     "speed": 70,
     "damage": 25,
     "size": {
-      "width": 80,
-      "height": 80
+      "width": 109,
+      "height": 109
     },
-    "tint": "#10b981",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 600,
-    "goldValue": 45,
-    "goldChance": 1.0,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "isMiniboss": true,
     "knockbackResist": 0.8,
     "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 45,
+    "goldChance": 1.0,
     "behavior": {
       "type": "ranged",
-      "range": 420,
+      "range": 590,
       "fireIntervalMs": 1800,
-      "projectileSpeed": 300,
+      "projectileSpeed": 360,
       "projectileDamage": 20,
       "projectileCount": 3,
       "spreadDeg": 24,
       "damageType": "magic"
     },
     "physicalResist": 0.25,
-    "magicResist": 0.2
+    "magicResist": 0.2,
+    "lore": "세 개의 침을 한 번에 놓는다. 붙잡히지 않는 거리를 안다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/yellow/archer_run.png",
+        "textureKey": "ts-yellow-archer",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "featherlight",
+      "nimble"
+    ],
+    "hitbox": {
+      "width": 73,
+      "height": 90,
+      "offsetX": 11,
+      "offsetY": 8
+    }
   },
   {
     "id": "mb-plaguehealer",
@@ -1077,59 +752,18 @@
     "speed": 68,
     "damage": 28,
     "size": {
-      "width": 84,
-      "height": 84
+      "width": 115,
+      "height": 115
     },
-    "tint": "#ec4899",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 650,
-    "goldValue": 50,
-    "goldChance": 1.0,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
     "isMiniboss": true,
     "knockbackResist": 0.8,
     "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 50,
+    "goldChance": 1.0,
     "behavior": {
       "type": "healer",
       "healIntervalMs": 2000,
@@ -1138,7 +772,31 @@
       "keepDistance": 340
     },
     "physicalResist": 0.15,
-    "magicResist": 0.5
+    "magicResist": 0.5,
+    "lore": "옻독으로 상처를 메운다. 무리가 마르지 않는 이유.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/purple/monk_run.png",
+        "textureKey": "ts-purple-monk",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "venomous",
+      "hollow"
+    ],
+    "hitbox": {
+      "width": 82,
+      "height": 71,
+      "offsetX": 9,
+      "offsetY": 25
+    }
   },
   {
     "id": "death-lord",
@@ -1147,65 +805,81 @@
     "speed": 75,
     "damage": 90,
     "size": {
-      "width": 170,
-      "height": 170
+      "width": 270,
+      "height": 164
     },
-    "tint": "#991b1b",
     "critChance": 0.3,
     "critDamageMultiplier": 2.5,
     "xpValue": 8000,
-    "goldValue": 1000,
-    "goldChance": 1.0,
     "isBoss": true,
     "knockbackResist": 1,
     "healthBarWidth": 130,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
-    },
+    "spriteType": "separate",
+    "goldValue": 1000,
+    "goldChance": 1.0,
     "physicalResist": 0.35,
-    "magicResist": 0.35
+    "magicResist": 0.35,
+    "tint": "#991b1b",
+    "lore": "광맥 가장 깊은 곳의 주인. 스승을 삼킨 것이 이것이라는 말이 있다.",
+    "facing": "left",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/death-lord_idle.png",
+        "textureKey": "p2-death-lord-idle",
+        "frameWidth": 214,
+        "frameHeight": 130,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/death-lord_walk.png",
+        "textureKey": "p2-death-lord-walk",
+        "frameWidth": 214,
+        "frameHeight": 130,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/death-lord_attack.png",
+        "textureKey": "p2-death-lord-attack",
+        "frameWidth": 214,
+        "frameHeight": 130,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "traits": [
+      "corroded",
+      "hollow",
+      "unstoppable-core"
+    ],
+    "hitbox": {
+      "width": 106,
+      "height": 103,
+      "offsetX": 94,
+      "offsetY": 20
+    },
+    "skillKit": [
+      "slam",
+      "mines",
+      "seal",
+      "enrage",
+      "beam",
+      "halffield",
+      "barrage",
+      "cinch",
+      "sweep"
+    ]
   },
   {
     "id": "hound",
-    "name": "Relentless Hound",
+    "name": "Bloodhound",
     "hp": 55,
     "speed": 175,
     "damage": 16,
@@ -1213,53 +887,1647 @@
       "width": 44,
       "height": 44
     },
-    "tint": "#fca5a5",
     "critChance": 0.1,
     "critDamageMultiplier": 1.5,
     "xpValue": 55,
+    "knockbackResist": 0.85,
+    "spriteType": "separate",
     "goldValue": 2,
     "goldChance": 0.3,
+    "tint": "#fca5a5",
+    "lore": "피 냄새를 문 채 절대 놓지 않는다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/red/warrior_run.png",
+        "textureKey": "ts-red-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 14,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "bloodswollen"
+    ]
+  },
+  {
+    "id": "swarmling",
+    "name": "Rustmite",
+    "hp": 16,
+    "speed": 190,
+    "damage": 6,
+    "size": {
+      "width": 26,
+      "height": 26
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 10,
+    "spriteType": "separate",
+    "goldValue": 1,
+    "goldChance": 0.15,
+    "lore": "떼로만 의미가 있는 부스러기. 그러나 떼는 언제나 온다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/red/pawn_run.png",
+        "textureKey": "ts-red-pawn",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 15,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "featherlight"
+    ]
+  },
+  {
+    "id": "charger",
+    "name": "Gorehound",
+    "hp": 120,
+    "speed": 75,
+    "damage": 30,
+    "size": {
+      "width": 54,
+      "height": 54
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 150,
+    "knockbackResist": 0.4,
+    "spriteType": "separate",
+    "goldValue": 4,
+    "goldChance": 0.4,
+    "behavior": {
+      "type": "charger",
+      "windupMs": 650,
+      "dashSpeed": 430,
+      "dashDurationMs": 480,
+      "dashCooldownMs": 2100
+    },
+    "lore": "숨을 고르다 검벽을 뚫고 들이받는다. 조준선을 읽어라.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/red/lancer_run.png",
+        "textureKey": "ts-red-lancer",
+        "frameWidth": 160,
+        "frameHeight": 160,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 9,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "bloodswollen",
+      "unstoppable-core"
+    ]
+  },
+  {
+    "id": "broodcaller",
+    "name": "Broodcaller",
+    "hp": 130,
+    "speed": 78,
+    "damage": 10,
+    "size": {
+      "width": 50,
+      "height": 50
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 160,
+    "spriteType": "separate",
+    "goldValue": 5,
+    "goldChance": 0.5,
+    "behavior": {
+      "type": "summoner",
+      "summonId": "swarmling",
+      "summonCount": 2,
+      "summonIntervalMs": 4200,
+      "keepDistance": 360
+    },
+    "lore": "제 몸을 뜯어 부스러기를 낳는다. 어미를 먼저 끊어라.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/yellow/monk_run.png",
+        "textureKey": "ts-yellow-monk",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 9,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "hollow"
+    ]
+  },
+  {
+    "id": "banneret",
+    "name": "Banneret",
+    "hp": 240,
+    "speed": 62,
+    "damage": 22,
+    "size": {
+      "width": 60,
+      "height": 60
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 220,
+    "knockbackResist": 0.6,
+    "spriteType": "separate",
+    "goldValue": 6,
+    "goldChance": 0.6,
+    "behavior": {
+      "type": "aura",
+      "auraRadius": 260,
+      "auraDamageMult": 1.35,
+      "auraSpeedMult": 1.2
+    },
+    "lore": "녹의 깃발. 곁의 무리가 더 빠르고 더 아프게 문다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/blue/monk_run.png",
+        "textureKey": "ts-blue-monk",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "gilded"
+    ]
+  },
+  {
+    "id": "sniper",
+    "name": "Longspine",
+    "hp": 70,
+    "speed": 70,
+    "damage": 10,
+    "size": {
+      "width": 46,
+      "height": 46
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 130,
+    "spriteType": "separate",
+    "goldValue": 4,
+    "goldChance": 0.4,
+    "behavior": {
+      "type": "ranged",
+      "range": 900,
+      "fireIntervalMs": 3400,
+      "projectileSpeed": 560,
+      "projectileDamage": 36,
+      "damageType": "magic"
+    },
+    "lore": "화면 끝에서 척추침을 쏘아 보낸다. 가만히 서 있으면 과녁이 된다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/purple/archer_run.png",
+        "textureKey": "ts-purple-archer",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "featherlight"
+    ]
+  },
+  {
+    "id": "blinker",
+    "name": "Rustwisp",
+    "hp": 60,
+    "speed": 90,
+    "damage": 20,
+    "size": {
+      "width": 42,
+      "height": 42
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 120,
+    "spriteType": "separate",
+    "goldValue": 4,
+    "goldChance": 0.4,
+    "behavior": {
+      "type": "blinker",
+      "blinkIntervalMs": 2600,
+      "blinkRange": 190
+    },
+    "tint": "#c084fc",
+    "lore": "녹 안개가 뭉친 것. 검벽 안쪽으로 스며든다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/purple/pawn_run.png",
+        "textureKey": "ts-purple-pawn",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 10,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "nimble"
+    ]
+  },
+  {
+    "id": "cindermaul",
+    "name": "Cindermaul",
+    "hp": 750,
+    "speed": 45,
+    "damage": 55,
+    "size": {
+      "width": 80,
+      "height": 80
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 480,
+    "knockbackResist": 1,
+    "spriteType": "separate",
+    "goldValue": 12,
+    "goldChance": 0.8,
+    "physicalResist": 0.3,
+    "magicResist": 0.3,
+    "tint": "#78350f",
+    "lore": "걸어오는 재의 망치. 느리지만 멈추지 않는다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/warrior_run.png",
+        "textureKey": "ts-black-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 7,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "emberflesh"
+    ]
+  },
+  {
+    "id": "mb-gorehorn",
+    "name": "Gorehorn",
+    "hp": 950,
+    "speed": 70,
+    "damage": 48,
+    "size": {
+      "width": 141,
+      "height": 141
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 700,
+    "isMiniboss": true,
     "knockbackResist": 0.85,
-    "spriteType": "aseprite",
-    "spritesheet": {
-      "filePath": "enemy/Skullwolf/Massacre.png",
-      "textureKey": "skullwolf-sheet",
-      "frameWidth": 64,
-      "frameHeight": 64,
-      "animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "frameStart": 0,
-          "frameCount": 6,
-          "frameRate": 8,
-          "repeat": -1
-        },
-        {
-          "name": "attack",
-          "row": 1,
-          "frameStart": 0,
-          "frameCount": 5,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "hit",
-          "row": 2,
-          "frameStart": 0,
-          "frameCount": 4,
-          "frameRate": 10,
-          "repeat": 0
-        },
-        {
-          "name": "death",
-          "row": 3,
-          "frameStart": 0,
-          "frameCount": 7,
-          "frameRate": 10,
-          "repeat": 0
-        }
-      ]
+    "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 45,
+    "goldChance": 1.0,
+    "behavior": {
+      "type": "charger",
+      "windupMs": 600,
+      "dashSpeed": 540,
+      "dashDurationMs": 520,
+      "dashCooldownMs": 1800
+    },
+    "physicalResist": 0.25,
+    "magicResist": 0.15,
+    "lore": "뿔이 먼저 도착하고, 몸통이 뒤따른다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/yellow/lancer_run.png",
+        "textureKey": "ts-yellow-lancer",
+        "frameWidth": 160,
+        "frameHeight": 160,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "bloodswollen",
+      "unstoppable-core"
+    ],
+    "hitbox": {
+      "width": 67,
+      "height": 149,
+      "offsetX": 49,
+      "offsetY": 10
+    }
+  },
+  {
+    "id": "mb-broodmother",
+    "name": "Broodmother",
+    "hp": 1000,
+    "speed": 66,
+    "damage": 30,
+    "size": {
+      "width": 115,
+      "height": 115
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 750,
+    "isMiniboss": true,
+    "knockbackResist": 0.9,
+    "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 50,
+    "goldChance": 1.0,
+    "behavior": {
+      "type": "summoner",
+      "summonId": "swarmling",
+      "summonCount": 3,
+      "summonIntervalMs": 2800,
+      "keepDistance": 400
+    },
+    "physicalResist": 0.2,
+    "magicResist": 0.2,
+    "tint": "#f59e0b",
+    "lore": "낳고, 낳고, 또 낳는다. 광맥이 마를 때까지.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/yellow/monk_run.png",
+        "textureKey": "ts-yellow-monk",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "soaked",
+      "sealed-veins"
+    ],
+    "hitbox": {
+      "width": 82,
+      "height": 71,
+      "offsetX": 9,
+      "offsetY": 25
+    }
+  },
+  {
+    "id": "mb-rustbanner",
+    "name": "Rustbanner",
+    "hp": 950,
+    "speed": 64,
+    "damage": 35,
+    "size": {
+      "width": 115,
+      "height": 115
+    },
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 750,
+    "isMiniboss": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 50,
+    "goldChance": 1.0,
+    "behavior": {
+      "type": "aura",
+      "auraRadius": 320,
+      "auraDamageMult": 1.5,
+      "auraSpeedMult": 1.25
+    },
+    "physicalResist": 0.3,
+    "magicResist": 0.2,
+    "lore": "이 깃발이 서 있는 한 무리는 물러서지 않는다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/monk_run.png",
+        "textureKey": "ts-black-monk",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 8,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "corroded",
+      "gilded"
+    ],
+    "hitbox": {
+      "width": 82,
+      "height": 71,
+      "offsetX": 9,
+      "offsetY": 25
+    }
+  },
+  {
+    "id": "mb-headtaker",
+    "name": "Headtaker",
+    "hp": 850,
+    "speed": 95,
+    "damage": 60,
+    "size": {
+      "width": 106,
+      "height": 106
+    },
+    "critChance": 0.4,
+    "critDamageMultiplier": 2.5,
+    "xpValue": 800,
+    "isMiniboss": true,
+    "knockbackResist": 0.85,
+    "healthBarWidth": 60,
+    "spriteType": "separate",
+    "goldValue": 55,
+    "goldChance": 1.0,
+    "affixes": [
+      "frenzied"
+    ],
+    "physicalResist": 0.15,
+    "magicResist": 0.15,
+    "tint": "#7f1d1d",
+    "lore": "수확자. 다친 것부터 벤다 — 너처럼.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/purple/warrior_run.png",
+        "textureKey": "ts-purple-warrior",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 10,
+        "repeat": -1
+      }
+    },
+    "traits": [
+      "bloodswollen",
+      "nimble"
+    ],
+    "hitbox": {
+      "width": 76,
+      "height": 91,
+      "offsetX": 16,
+      "offsetY": 8
+    }
+  },
+  {
+    "id": "boss-siegehulk",
+    "name": "Siegehulk",
+    "hp": 8000,
+    "speed": 55,
+    "damage": 70,
+    "size": {
+      "width": 257,
+      "height": 164
+    },
+    "critChance": 0.25,
+    "critDamageMultiplier": 2.2,
+    "xpValue": 4000,
+    "isBoss": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 110,
+    "spriteType": "separate",
+    "goldValue": 300,
+    "goldChance": 1.0,
+    "behavior": {
+      "type": "charger",
+      "windupMs": 800,
+      "dashSpeed": 560,
+      "dashDurationMs": 650,
+      "dashCooldownMs": 2400
+    },
+    "affixes": [
+      "summoning"
+    ],
+    "physicalResist": 0.25,
+    "magicResist": 0.15,
+    "lore": "성문을 부수던 것이 이제 너를 향해 달린다.",
+    "facing": "left",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/boss-siegehulk_idle.png",
+        "textureKey": "p2-boss-siegehulk-idle",
+        "frameWidth": 77,
+        "frameHeight": 49,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/boss-siegehulk_walk.png",
+        "textureKey": "p2-boss-siegehulk-walk",
+        "frameWidth": 77,
+        "frameHeight": 49,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/boss-siegehulk_attack.png",
+        "textureKey": "p2-boss-siegehulk-attack",
+        "frameWidth": 77,
+        "frameHeight": 49,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 12,
+        "repeat": 0
+      },
+      "hit": {
+        "filePath": "enemy/pack2/boss-siegehulk_hit.png",
+        "textureKey": "p2-boss-siegehulk-hit",
+        "frameWidth": 77,
+        "frameHeight": 49,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/boss-siegehulk_death.png",
+        "textureKey": "p2-boss-siegehulk-death",
+        "frameWidth": 77,
+        "frameHeight": 49,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "traits": [
+      "emberflesh",
+      "unstoppable-core",
+      "sealed-veins"
+    ],
+    "hitbox": {
+      "width": 40,
+      "height": 39,
+      "offsetX": 16,
+      "offsetY": 10
+    },
+    "skillKit": [
+      "slam",
+      "rush",
+      "barrage",
+      "enrage",
+      "meteor",
+      "mines",
+      "cinch",
+      "halffield",
+      "sweep"
+    ]
+  },
+  {
+    "id": "boss-needlequeen",
+    "name": "Needle Queen",
+    "hp": 6500,
+    "speed": 60,
+    "damage": 55,
+    "size": {
+      "width": 242,
+      "height": 237
+    },
+    "critChance": 0.2,
+    "critDamageMultiplier": 2.0,
+    "xpValue": 4200,
+    "isBoss": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 110,
+    "spriteType": "separate",
+    "goldValue": 320,
+    "goldChance": 1.0,
+    "behavior": {
+      "type": "ranged",
+      "range": 600,
+      "fireIntervalMs": 1500,
+      "projectileSpeed": 380,
+      "projectileDamage": 26,
+      "projectileCount": 7,
+      "spreadDeg": 84,
+      "damageType": "magic"
+    },
+    "affixes": [
+      "regenerating"
+    ],
+    "physicalResist": 0.15,
+    "magicResist": 0.35,
+    "lore": "여왕의 바늘비. 서 있는 자리부터 꿰인다.",
+    "facing": "right",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/boss-needlequeen_idle.png",
+        "textureKey": "p2-boss-needlequeen-idle",
+        "frameWidth": 56,
+        "frameHeight": 55,
+        "frameStart": 0,
+        "frameEnd": 8,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/boss-needlequeen_walk.png",
+        "textureKey": "p2-boss-needlequeen-walk",
+        "frameWidth": 56,
+        "frameHeight": 55,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/boss-needlequeen_attack.png",
+        "textureKey": "p2-boss-needlequeen-attack",
+        "frameWidth": 56,
+        "frameHeight": 55,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 12,
+        "repeat": 0
+      },
+      "hit": {
+        "filePath": "enemy/pack2/boss-needlequeen_hit.png",
+        "textureKey": "p2-boss-needlequeen-hit",
+        "frameWidth": 56,
+        "frameHeight": 55,
+        "frameStart": 0,
+        "frameEnd": 4,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/boss-needlequeen_death.png",
+        "textureKey": "p2-boss-needlequeen-death",
+        "frameWidth": 56,
+        "frameHeight": 55,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "traits": [
+      "venomous",
+      "featherlight",
+      "nimble"
+    ],
+    "hitbox": {
+      "width": 36,
+      "height": 26,
+      "offsetX": 14,
+      "offsetY": 19
+    },
+    "skillKit": [
+      "fan",
+      "barrage",
+      "spiral",
+      "enrage",
+      "beam",
+      "meteor",
+      "sweep",
+      "cinch",
+      "seal"
+    ]
+  },
+  {
+    "id": "boss-abyss-demon",
+    "name": "Abyss Demon",
+    "hp": 14000,
+    "speed": 60,
+    "damage": 95,
+    "size": {
+      "width": 289,
+      "height": 173
+    },
+    "color": "#1f2937",
+    "critChance": 0.2,
+    "critDamageMultiplier": 2.2,
+    "xpValue": 5200,
+    "isBoss": true,
+    "knockbackResist": 0.85,
+    "healthBarWidth": 90,
+    "spriteType": "separate",
+    "goldValue": 320,
+    "goldChance": 1,
+    "facing": "right",
+    "traits": [
+      "bloodswollen",
+      "hollow",
+      "unstoppable-core"
+    ],
+    "lore": "심연에서 건져 올린 녹물이 검을 쥐는 법을 배웠다.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/boss-abyss-demon_idle.png",
+        "textureKey": "p2-boss-abyss-demon-idle",
+        "frameWidth": 216,
+        "frameHeight": 129,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/boss-abyss-demon_walk.png",
+        "textureKey": "p2-boss-abyss-demon-walk",
+        "frameWidth": 216,
+        "frameHeight": 129,
+        "frameStart": 0,
+        "frameEnd": 11,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/boss-abyss-demon_attack.png",
+        "textureKey": "p2-boss-abyss-demon-attack",
+        "frameWidth": 216,
+        "frameHeight": 129,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 12,
+        "repeat": 0
+      },
+      "hit": {
+        "filePath": "enemy/pack2/boss-abyss-demon_hit.png",
+        "textureKey": "p2-boss-abyss-demon-hit",
+        "frameWidth": 216,
+        "frameHeight": 129,
+        "frameStart": 0,
+        "frameEnd": 4,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/boss-abyss-demon_death.png",
+        "textureKey": "p2-boss-abyss-demon-death",
+        "frameWidth": 216,
+        "frameHeight": 129,
+        "frameStart": 0,
+        "frameEnd": 13,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "hitbox": {
+      "width": 91,
+      "height": 107,
+      "offsetX": 85,
+      "offsetY": 21
+    },
+    "skillKit": [
+      "slam",
+      "spiral",
+      "mines",
+      "enrage",
+      "beam",
+      "seal",
+      "halffield",
+      "meteor",
+      "cinch"
+    ]
+  },
+  {
+    "id": "boss-minos",
+    "name": "Minos",
+    "hp": 9500,
+    "speed": 72,
+    "damage": 78,
+    "size": {
+      "width": 267,
+      "height": 162
+    },
+    "color": "#1f2937",
+    "critChance": 0.18,
+    "critDamageMultiplier": 2.0,
+    "xpValue": 4200,
+    "isBoss": true,
+    "knockbackResist": 0.85,
+    "healthBarWidth": 84,
+    "spriteType": "separate",
+    "goldValue": 260,
+    "goldChance": 1,
+    "facing": "left",
+    "traits": [
+      "bloodswollen",
+      "unstoppable-core"
+    ],
+    "behavior": {
+      "type": "charger",
+      "windupMs": 900,
+      "dashSpeed": 520,
+      "dashDurationMs": 700,
+      "dashCooldownMs": 5200,
+      "dashRange": 420
+    },
+    "lore": "미궁이 무너진 뒤에도 뿔은 길을 기억한다.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/boss-minos_idle.png",
+        "textureKey": "p2-boss-minos-idle",
+        "frameWidth": 207,
+        "frameHeight": 126,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/boss-minos_walk.png",
+        "textureKey": "p2-boss-minos-walk",
+        "frameWidth": 207,
+        "frameHeight": 126,
+        "frameStart": 0,
+        "frameEnd": 11,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/boss-minos_attack.png",
+        "textureKey": "p2-boss-minos-attack",
+        "frameWidth": 207,
+        "frameHeight": 126,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "hitbox": {
+      "width": 104,
+      "height": 101,
+      "offsetX": 89,
+      "offsetY": 20
+    },
+    "skillKit": [
+      "rush",
+      "slam",
+      "mines",
+      "enrage",
+      "meteor",
+      "halffield",
+      "cinch",
+      "barrage",
+      "sweep"
+    ]
+  },
+  {
+    "id": "boss-frost-guardian",
+    "name": "Frost Guardian",
+    "hp": 11000,
+    "speed": 55,
+    "damage": 82,
+    "size": {
+      "width": 296,
+      "height": 161
+    },
+    "color": "#1f2937",
+    "critChance": 0.15,
+    "critDamageMultiplier": 2.0,
+    "xpValue": 4600,
+    "isBoss": true,
+    "knockbackResist": 0.9,
+    "healthBarWidth": 90,
+    "spriteType": "separate",
+    "goldValue": 280,
+    "goldChance": 1,
+    "facing": "left",
+    "traits": [
+      "frostborn",
+      "sealed-veins"
+    ],
+    "lore": "냉맥 최심부를 지키던 것 — 심장이 아직 얼음이다.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/boss-frost-guardian_idle.png",
+        "textureKey": "p2-boss-frost-guardian-idle",
+        "frameWidth": 191,
+        "frameHeight": 104,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/boss-frost-guardian_walk.png",
+        "textureKey": "p2-boss-frost-guardian-walk",
+        "frameWidth": 191,
+        "frameHeight": 104,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/boss-frost-guardian_attack.png",
+        "textureKey": "p2-boss-frost-guardian-attack",
+        "frameWidth": 191,
+        "frameHeight": 104,
+        "frameStart": 0,
+        "frameEnd": 8,
+        "frameRate": 12,
+        "repeat": 0
+      },
+      "hit": {
+        "filePath": "enemy/pack2/boss-frost-guardian_hit.png",
+        "textureKey": "p2-boss-frost-guardian-hit",
+        "frameWidth": 191,
+        "frameHeight": 104,
+        "frameStart": 0,
+        "frameEnd": 6,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/boss-frost-guardian_death.png",
+        "textureKey": "p2-boss-frost-guardian-death",
+        "frameWidth": 191,
+        "frameHeight": 104,
+        "frameStart": 0,
+        "frameEnd": 11,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "hitbox": {
+      "width": 79,
+      "height": 92,
+      "offsetX": 56,
+      "offsetY": 5
+    },
+    "skillKit": [
+      "fan",
+      "sweep",
+      "halffield",
+      "enrage",
+      "beam",
+      "mines",
+      "spiral",
+      "cinch",
+      "seal"
+    ]
+  },
+  {
+    "id": "mb-frost-golem",
+    "name": "Frost Golem",
+    "hp": 2600,
+    "speed": 60,
+    "damage": 50,
+    "size": {
+      "width": 174,
+      "height": 111
+    },
+    "color": "#1f2937",
+    "critChance": 0.15,
+    "critDamageMultiplier": 1.9,
+    "xpValue": 1500,
+    "isMiniboss": true,
+    "knockbackResist": 0.7,
+    "healthBarWidth": 70,
+    "spriteType": "separate",
+    "goldValue": 90,
+    "goldChance": 1,
+    "facing": "left",
+    "traits": [
+      "frostborn",
+      "unstoppable-core"
+    ],
+    "lore": "냉기가 뭉쳐 걷기 시작한 서리 결정.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/mb-frost-golem_idle.png",
+        "textureKey": "p2-mb-frost-golem-idle",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/mb-frost-golem_walk.png",
+        "textureKey": "p2-mb-frost-golem-walk",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/mb-frost-golem_attack.png",
+        "textureKey": "p2-mb-frost-golem-attack",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 12,
+        "repeat": 0
+      },
+      "hit": {
+        "filePath": "enemy/pack2/mb-frost-golem_hit.png",
+        "textureKey": "p2-mb-frost-golem-hit",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/mb-frost-golem_death.png",
+        "textureKey": "p2-mb-frost-golem-death",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "hitbox": {
+      "width": 38,
+      "height": 38,
+      "offsetX": 16,
+      "offsetY": 10
+    }
+  },
+  {
+    "id": "mb-magma-golem",
+    "name": "Magma Golem",
+    "hp": 2900,
+    "speed": 58,
+    "damage": 55,
+    "size": {
+      "width": 174,
+      "height": 111
+    },
+    "color": "#1f2937",
+    "critChance": 0.15,
+    "critDamageMultiplier": 1.9,
+    "xpValue": 1600,
+    "isMiniboss": true,
+    "knockbackResist": 0.7,
+    "healthBarWidth": 70,
+    "spriteType": "separate",
+    "goldValue": 100,
+    "goldChance": 1,
+    "facing": "left",
+    "traits": [
+      "emberflesh",
+      "sealed-veins"
+    ],
+    "lore": "광재 속 잉걸이 여태 식지 않은 채 뭉쳐 다닌다.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/mb-magma-golem_idle.png",
+        "textureKey": "p2-mb-magma-golem-idle",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "walk": {
+        "filePath": "enemy/pack2/mb-magma-golem_walk.png",
+        "textureKey": "p2-mb-magma-golem-walk",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "attack": {
+        "filePath": "enemy/pack2/mb-magma-golem_attack.png",
+        "textureKey": "p2-mb-magma-golem-attack",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 12,
+        "repeat": 0
+      },
+      "hit": {
+        "filePath": "enemy/pack2/mb-magma-golem_hit.png",
+        "textureKey": "p2-mb-magma-golem-hit",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/mb-magma-golem_death.png",
+        "textureKey": "p2-mb-magma-golem-death",
+        "frameWidth": 75,
+        "frameHeight": 48,
+        "frameStart": 0,
+        "frameEnd": 9,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    },
+    "hitbox": {
+      "width": 38,
+      "height": 38,
+      "offsetX": 16,
+      "offsetY": 10
+    }
+  },
+  {
+    "id": "demonling",
+    "name": "Demonling",
+    "hp": 150,
+    "speed": 88,
+    "damage": 26,
+    "size": {
+      "width": 66,
+      "height": 45
+    },
+    "color": "#1f2937",
+    "critChance": 0.12,
+    "critDamageMultiplier": 1.8,
+    "xpValue": 130,
+    "spriteType": "separate",
+    "goldValue": 4,
+    "goldChance": 0.4,
+    "facing": "right",
+    "traits": [
+      "hollow"
+    ],
+    "lore": "심이 빈 자리에 잿불만 채워 넣은 하급 데몬.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/demonling_idle.png",
+        "textureKey": "p2-demonling-idle",
+        "frameWidth": 46,
+        "frameHeight": 31,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 12,
+        "repeat": -1
+      },
+      "hit": {
+        "filePath": "enemy/pack2/demonling_hit.png",
+        "textureKey": "p2-demonling-hit",
+        "frameWidth": 46,
+        "frameHeight": 31,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/demonling_death.png",
+        "textureKey": "p2-demonling-death",
+        "frameWidth": 46,
+        "frameHeight": 31,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    }
+  },
+  {
+    "id": "blood-horror",
+    "name": "Blood Horror",
+    "hp": 230,
+    "speed": 74,
+    "damage": 30,
+    "size": {
+      "width": 62,
+      "height": 50
+    },
+    "color": "#1f2937",
+    "critChance": 0.14,
+    "critDamageMultiplier": 1.9,
+    "xpValue": 180,
+    "spriteType": "separate",
+    "goldValue": 6,
+    "goldChance": 0.5,
+    "facing": "right",
+    "traits": [
+      "bloodswollen"
+    ],
+    "affixes": [
+      "vampiric"
+    ],
+    "lore": "삼킨 심혈이 겉으로 배어 나온 살덩이.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/blood-horror_idle.png",
+        "textureKey": "p2-blood-horror-idle",
+        "frameWidth": 31,
+        "frameHeight": 25,
+        "frameStart": 0,
+        "frameEnd": 7,
+        "frameRate": 11,
+        "repeat": -1
+      },
+      "hit": {
+        "filePath": "enemy/pack2/blood-horror_hit.png",
+        "textureKey": "p2-blood-horror-hit",
+        "frameWidth": 31,
+        "frameHeight": 25,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 14,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/blood-horror_death.png",
+        "textureKey": "p2-blood-horror-death",
+        "frameWidth": 31,
+        "frameHeight": 25,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 12,
+        "repeat": 0
+      }
+    }
+  },
+  {
+    "id": "duskbat",
+    "name": "Duskbat",
+    "hp": 42,
+    "speed": 168,
+    "damage": 14,
+    "size": {
+      "width": 50,
+      "height": 61
+    },
+    "color": "#1f2937",
+    "critChance": 0.1,
+    "critDamageMultiplier": 1.6,
+    "xpValue": 55,
+    "spriteType": "separate",
+    "goldValue": 1,
+    "goldChance": 0.3,
+    "facing": "right",
+    "traits": [
+      "featherlight",
+      "nimble"
+    ],
+    "lore": "어스름을 마시고 자란 날개 — 떼로 몰리면 하늘이 좁아진다.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/duskbat_idle.png",
+        "textureKey": "p2-duskbat-idle",
+        "frameWidth": 44,
+        "frameHeight": 54,
+        "frameStart": 0,
+        "frameEnd": 8,
+        "frameRate": 12,
+        "repeat": -1
+      },
+      "hit": {
+        "filePath": "enemy/pack2/duskbat_hit.png",
+        "textureKey": "p2-duskbat-hit",
+        "frameWidth": 44,
+        "frameHeight": 54,
+        "frameStart": 0,
+        "frameEnd": 4,
+        "frameRate": 16,
+        "repeat": 0
+      },
+      "death": {
+        "filePath": "enemy/pack2/duskbat_death.png",
+        "textureKey": "p2-duskbat-death",
+        "frameWidth": 44,
+        "frameHeight": 54,
+        "frameStart": 0,
+        "frameEnd": 11,
+        "frameRate": 14,
+        "repeat": 0
+      }
+    }
+  },
+  {
+    "id": "verdrat",
+    "name": "Verdrat",
+    "hp": 26,
+    "speed": 145,
+    "damage": 10,
+    "size": {
+      "width": 44,
+      "height": 25
+    },
+    "color": "#1f2937",
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 24,
+    "spriteType": "separate",
+    "goldValue": 1,
+    "goldChance": 0.25,
+    "facing": "right",
+    "traits": [
+      "corroded"
+    ],
+    "lore": "녹가루를 갉아먹고 초록으로 물든 쥐.",
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/verdrat_idle.png",
+        "textureKey": "p2-verdrat-idle",
+        "frameWidth": 32,
+        "frameHeight": 18,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 12,
+        "repeat": -1
+      },
+      "death": {
+        "filePath": "enemy/pack2/verdrat_death.png",
+        "textureKey": "p2-verdrat-death",
+        "frameWidth": 32,
+        "frameHeight": 18,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 14,
+        "repeat": 0
+      }
+    }
+  },
+  {
+    "id": "boss-molt",
+    "name": "The Molting",
+    "hp": 40000,
+    "speed": 75,
+    "damage": 110,
+    "size": {
+      "width": 140,
+      "height": 164
+    },
+    "color": "#1f2937",
+    "critChance": 0.2,
+    "critDamageMultiplier": 2.2,
+    "xpValue": 20000,
+    "isBoss": true,
+    "knockbackResist": 1,
+    "healthBarWidth": 96,
+    "spriteType": "separate",
+    "goldValue": 1500,
+    "goldChance": 1,
+    "facing": "left",
+    "traits": [
+      "hollow",
+      "corroded"
+    ],
+    "lore": "허물을 벗을 때마다 다른 것이 걸어 나온다. 가슴의 초록 심장만 그대로다.",
+    "phases": [
+      {
+        "hpPct": 1.01,
+        "anim": "idle",
+        "name": "본체",
+        "traits": [
+          "hollow",
+          "corroded"
+        ],
+        "skills": [
+          "slam"
+        ]
+      },
+      {
+        "hpPct": 0.75,
+        "anim": "mud",
+        "name": "진흙 탈각",
+        "traits": [
+          "soaked",
+          "sealed-veins"
+        ],
+        "skills": [
+          "slam",
+          "barrage"
+        ]
+      },
+      {
+        "hpPct": 0.5,
+        "anim": "ice",
+        "name": "빙결 탈각",
+        "traits": [
+          "frostborn",
+          "unstoppable-core"
+        ],
+        "skills": [
+          "barrage",
+          "beam"
+        ]
+      },
+      {
+        "hpPct": 0.25,
+        "anim": "flying",
+        "name": "비상 탈각",
+        "traits": [
+          "featherlight",
+          "nimble"
+        ],
+        "skills": [
+          "beam",
+          "barrage",
+          "slam"
+        ],
+        "speedMult": 1.35
+      }
+    ],
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/pack2/boss-molt_idle.png",
+        "textureKey": "p2-boss-molt-idle",
+        "frameWidth": 128,
+        "frameHeight": 150,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 7,
+        "repeat": -1
+      },
+      "mud": {
+        "filePath": "enemy/pack2/boss-molt_mud.png",
+        "textureKey": "p2-boss-molt-mud",
+        "frameWidth": 128,
+        "frameHeight": 150,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 7,
+        "repeat": -1
+      },
+      "ice": {
+        "filePath": "enemy/pack2/boss-molt_ice.png",
+        "textureKey": "p2-boss-molt-ice",
+        "frameWidth": 128,
+        "frameHeight": 150,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 7,
+        "repeat": -1
+      },
+      "flying": {
+        "filePath": "enemy/pack2/boss-molt_flying.png",
+        "textureKey": "p2-boss-molt-flying",
+        "frameWidth": 128,
+        "frameHeight": 150,
+        "frameStart": 0,
+        "frameEnd": 5,
+        "frameRate": 8,
+        "repeat": -1
+      },
+      "hit": {
+        "filePath": "enemy/pack2/boss-molt_hit.png",
+        "textureKey": "p2-boss-molt-hit",
+        "frameWidth": 128,
+        "frameHeight": 150,
+        "frameStart": 0,
+        "frameEnd": 1,
+        "frameRate": 10,
+        "repeat": 0
+      }
+    },
+    "hitbox": {
+      "width": 97,
+      "height": 150,
+      "offsetX": 18,
+      "offsetY": 0
+    },
+    "skillKit": [
+      "slam",
+      "barrage",
+      "mines",
+      "enrage",
+      "beam",
+      "spiral",
+      "halffield",
+      "rush",
+      "cinch"
+    ]
+  },
+  {
+    "id": "volley-marksman",
+    "name": "결집 사수",
+    "hp": 110,
+    "speed": 82,
+    "damage": 12,
+    "size": {
+      "width": 46,
+      "height": 46
+    },
+    "tint": "#4fb8d9",
+    "critChance": 0.08,
+    "critDamageMultiplier": 1.5,
+    "xpValue": 72,
+    "spriteType": "separate",
+    "goldValue": 2,
+    "goldChance": 0.3,
+    "facing": "right",
+    "traits": [
+      "featherlight"
+    ],
+    "marker": {
+      "icon": "g-eye",
+      "color": "#8fe4f5"
+    },
+    "lore": "궤도 밖에서 느린 유도 화살을 흩뿌린다 — 검이 닿지 않는 자리라 직접 지목해 끊어야 한다.",
+    "behavior": {
+      "type": "volley",
+      "damageType": "magic",
+      "keepDistance": 470,
+      "fireIntervalMs": 3400,
+      "projectileCount": 4,
+      "projectileDamage": 9,
+      "projectileSpeed": 130,
+      "spreadDeg": 70,
+      "homingTurnRate": 1.5,
+      "projectileLifeMs": 5200
+    },
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/blue/archer_run.png",
+        "textureKey": "ts-blue-archer",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 9,
+        "repeat": -1
+      }
+    }
+  },
+  {
+    "id": "veil-caller",
+    "name": "장막 소환수",
+    "hp": 185,
+    "speed": 70,
+    "damage": 14,
+    "size": {
+      "width": 50,
+      "height": 50
+    },
+    "tint": "#8b6ce0",
+    "critChance": 0.06,
+    "critDamageMultiplier": 1.4,
+    "xpValue": 95,
+    "spriteType": "separate",
+    "goldValue": 3,
+    "goldChance": 0.35,
+    "facing": "right",
+    "traits": [
+      "hollow"
+    ],
+    "marker": {
+      "icon": "g-el-void",
+      "color": "#c3aef8"
+    },
+    "lore": "발밑에 잿빛 장막을 깐다. 장막 안의 녹은 검을 튕겨내니, 장막을 친 자를 먼저 지목하라.",
+    "behavior": {
+      "type": "veil",
+      "keepDistance": 380,
+      "veilIntervalMs": 7000,
+      "veilRadius": 190,
+      "veilDurationMs": 6500,
+      "veilDamageMult": 0.45
+    },
+    "spritesheets": {
+      "idle": {
+        "filePath": "enemy/tinysword/black/monk_run.png",
+        "textureKey": "ts-black-monk",
+        "frameWidth": 100,
+        "frameHeight": 100,
+        "frameStart": 0,
+        "frameEnd": 3,
+        "frameRate": 8,
+        "repeat": -1
+      }
     }
   }
 ]
